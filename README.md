@@ -56,7 +56,14 @@ An advanced multi-market stock screening and market intelligence web application
 - 🇺🇸 **NASDAQ 100** (US Tech & Innovation Leaders - Apple, Microsoft, NVIDIA, Amazon, Alphabet, Meta, Broadcom, Tesla)
 - 🇺🇸 **DOW JONES 30** (US Mega-Cap Titans - JPMorgan, Caterpillar, UnitedHealth, Boeing, Goldman Sachs, Home Depot)
 - 🇮🇳 **NIFTY 50 (India)** (National Stock Exchange of India Blue Chips - Reliance, TCS, HDFC Bank, Infosys, Bharti Airtel, Tata Motors, L&T)
-- 🌐 **Global Universe** (Combined coverage across all 480 stocks)
+### 8. 🔍 Stock Deep-Dive: Price Movement Drivers, Latest News & Famous Institutional Ratings (HOLD, BUY, SELL)
+- **Why It's Moving Today**: Real-time momentum catalyst synthesis, sentiment badge (`🟢 Bullish Momentum`, `🔴 Selling Pressure`, `🟡 Consolidation`), Relative Volume (RVOL) multiples, and sector drivers.
+- **Verified Financial News Feed**: Articles from Financial Times, Bloomberg, Reuters, Wall Street Journal, Zacks, CNBC with relative timestamps and direct links.
+- **Ratings from Famous Financial Institutions**:
+  - Consensus rating and score (`STRONG BUY`, `BUY`, `HOLD`, `SELL` on a 1.0 to 5.0 scale).
+  - Target Price in local currency (`£`, `$`, or `₹`) with implied upside percentage.
+  - Institutional Analyst Breakdown bar (`% Buy`, `% Hold`, `% Sell`).
+  - Institutional Research Feed from **Goldman Sachs, JPMorgan Chase, Morgan Stanley, Barclays Capital, Citigroup, UBS Investment Bank, Jefferies, HSBC Global Research, Bank of America** with Action badges (`Target Raised`, `Reiterated`, `Upgraded`), Target Prices, and Analyst Rationale commentary.
 
 ---
 

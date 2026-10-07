@@ -853,7 +853,52 @@ function generateSparklineSvg(data, isUp) {
   `;
 }
 
-// ================= STOCK DEEP-DIVE MODAL & CHART =================
+// ================= STOCK DEEP-DIVE MODAL & INTELLIGENCE =================
+function setModalSection(section) {
+  const tabs = ['all', 'moving', 'ratings', 'chart'];
+  const pills = {
+    all: document.getElementById('modalTabAll'),
+    moving: document.getElementById('modalTabMoving'),
+    ratings: document.getElementById('modalTabRatings'),
+    chart: document.getElementById('modalTabChart')
+  };
+
+  const sections = {
+    moving: document.getElementById('mSectionMoving'),
+    ratings: document.getElementById('mSectionRatings'),
+    chart: document.getElementById('mSectionChart')
+  };
+
+  tabs.forEach(t => {
+    if (pills[t]) {
+      if (t === section) {
+        pills[t].className = "modal-nav-pill px-3 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 transition flex items-center space-x-1.5 shadow-sm font-bold text-xs";
+      } else {
+        pills[t].className = "modal-nav-pill px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center space-x-1.5 font-bold text-xs";
+      }
+    }
+  });
+
+  if (section === 'all') {
+    if (sections.moving) sections.moving.classList.remove('hidden');
+    if (sections.ratings) sections.ratings.classList.remove('hidden');
+    if (sections.chart) sections.chart.classList.remove('hidden');
+  } else if (section === 'moving') {
+    if (sections.moving) sections.moving.classList.remove('hidden');
+    if (sections.ratings) sections.ratings.classList.add('hidden');
+    if (sections.chart) sections.chart.classList.add('hidden');
+  } else if (section === 'ratings') {
+    if (sections.moving) sections.moving.classList.add('hidden');
+    if (sections.ratings) sections.ratings.classList.remove('hidden');
+    if (sections.chart) sections.chart.classList.add('hidden');
+  } else if (section === 'chart') {
+    if (sections.moving) sections.moving.classList.add('hidden');
+    if (sections.ratings) sections.ratings.classList.add('hidden');
+    if (sections.chart) sections.chart.classList.remove('hidden');
+    if (state.activeStock) renderModalChart(state.activeStock);
+  }
+}
+
 async function openStockModal(ticker) {
   try {
     const res = await fetch(`/api/stock/${ticker}`);
@@ -862,6 +907,9 @@ async function openStockModal(ticker) {
     const s = data.stock;
     const div = data.dividend_details;
     state.activeStock = s;
+
+    // Reset view to 'all' intel
+    setModalSection('all');
 
     document.getElementById('mTicker').textContent = s.ticker;
     document.getElementById('mName').textContent = s.name;
@@ -885,6 +933,151 @@ async function openStockModal(ticker) {
     m1M.textContent = `${s.change_1m_pct >= 0 ? '+' : ''}${s.change_1m_pct}%`;
     m1M.className = `text-base font-extrabold font-mono ${s.change_1m_pct >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`;
 
+    // 1. Render Price Driver (Why It's Moving Today)
+    if (data.price_driver) {
+      const drv = data.price_driver;
+      document.getElementById('mDriverHeadline').textContent = drv.headline || `${s.ticker} Momentum Analysis`;
+      document.getElementById('mDriverSummary').textContent = drv.summary || 'Analyzing real-time order books and institutional flows...';
+
+      const sBadge = document.getElementById('mDriverSentimentBadge');
+      if (sBadge) {
+        sBadge.textContent = drv.sentiment || 'Momentum Analysis';
+        if (drv.badge_color === 'emerald') {
+          sBadge.className = 'px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800';
+        } else if (drv.badge_color === 'rose') {
+          sBadge.className = 'px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border border-rose-300 dark:border-rose-800';
+        } else if (drv.badge_color === 'amber') {
+          sBadge.className = 'px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-300 dark:border-amber-800';
+        } else {
+          sBadge.className = 'px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 border border-sky-300 dark:border-sky-800';
+        }
+      }
+
+      const factorsContainer = document.getElementById('mDriverFactors');
+      if (factorsContainer) {
+        factorsContainer.innerHTML = (drv.key_factors || []).map(f => `
+          <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+            ${f}
+          </span>
+        `).join('');
+      }
+    }
+
+    // 2. Render News List & Bulletins
+    const newsList = data.news || [];
+    const newsContainer = document.getElementById('mNewsList');
+    document.getElementById('mNewsCount').textContent = `${newsList.length} articles`;
+    if (newsContainer) {
+      if (newsList.length === 0) {
+        newsContainer.innerHTML = `<div class="p-4 text-center text-xs text-slate-400">No verified articles found for ${s.name}.</div>`;
+      } else {
+        newsContainer.innerHTML = newsList.map(n => `
+          <a href="${n.link}" target="_blank" rel="noopener noreferrer" class="block p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-100 dark:border-slate-800/80 transition group">
+            <div class="flex items-center justify-between text-[11px] mb-1">
+              <div class="flex items-center space-x-1.5 font-bold">
+                <span class="px-2 py-0.5 rounded bg-sky-50 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800">${n.publisher}</span>
+                <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono">${n.tag || 'Market'}</span>
+              </div>
+              <span class="text-slate-400 font-mono text-[10px]">${n.time_ago || 'Recent'}</span>
+            </div>
+            <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition leading-snug">
+              ${n.title}
+              <i data-lucide="external-link" class="inline w-3 h-3 ml-1 text-slate-400 group-hover:text-brand-500"></i>
+            </div>
+            ${n.snippet ? `<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 leading-relaxed">${n.snippet}</p>` : ''}
+          </a>
+        `).join('');
+      }
+    }
+
+    // 3. Render Famous Financial Institutions Ratings (HOLD, BUY, SELL)
+    if (data.analyst_ratings) {
+      const ar = data.analyst_ratings;
+      
+      const cBadge = document.getElementById('mConsensusBadge');
+      if (cBadge) {
+        cBadge.textContent = ar.consensus || 'BUY';
+        if (ar.consensus_color === 'emerald') {
+          cBadge.className = 'px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800';
+        } else if (ar.consensus_color === 'amber') {
+          cBadge.className = 'px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-300 dark:border-amber-800';
+        } else {
+          cBadge.className = 'px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border border-rose-300 dark:border-rose-800';
+        }
+      }
+
+      document.getElementById('mConsensusScore').textContent = ar.consensus_label || `${ar.consensus} (${ar.consensus_score} / 5.0)`;
+      document.getElementById('mTotalAnalystsText').textContent = `Based on ${ar.total_analysts || 24} Wall St & City equity research desks`;
+
+      document.getElementById('mTargetPrice').textContent = ar.mean_target_fmt || 'N/A';
+      const upsideVal = ar.implied_upside_pct || 0;
+      const isUpsidePositive = upsideVal >= 0;
+      document.getElementById('mTargetUpside').textContent = `${isUpsidePositive ? '+' : ''}${upsideVal.toFixed(1)}% Implied ${isUpsidePositive ? 'Upside' : 'Downside'}`;
+      
+      const upBadge = document.getElementById('mTargetUpsideBadge');
+      if (upBadge) {
+        upBadge.className = `inline-flex items-center space-x-1 px-2 py-0.5 rounded-lg text-xs font-extrabold font-mono mt-0.5 ${isUpsidePositive ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800' : 'bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800'}`;
+      }
+
+      document.getElementById('mBuyPct').textContent = `${ar.buy_pct}% Buy`;
+      document.getElementById('mHoldPct').textContent = `${ar.hold_pct}% Hold`;
+      document.getElementById('mSellPct').textContent = `${ar.sell_pct}% Sell`;
+
+      document.getElementById('mBarBuy').style.width = `${ar.buy_pct}%`;
+      document.getElementById('mBarHold').style.width = `${ar.hold_pct}%`;
+      document.getElementById('mBarSell').style.width = `${ar.sell_pct}%`;
+
+      document.getElementById('mTargetLow').textContent = ar.low_target_fmt || 'N/A';
+      document.getElementById('mTargetMean').textContent = ar.mean_target_fmt || 'N/A';
+      document.getElementById('mTargetHigh').textContent = ar.high_target_fmt || 'N/A';
+
+      // Feed of Institutional Cards (Goldman Sachs, JPMorgan, Morgan Stanley, Barclays, Citi, UBS, Jefferies)
+      const instContainer = document.getElementById('mInstitutionsList');
+      if (instContainer) {
+        const instList = ar.institutions || [];
+        instContainer.innerHTML = instList.map(inst => {
+          const rType = inst.rating_type || 'buy';
+          let ratingPillClass = 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800';
+          if (rType === 'hold') {
+            ratingPillClass = 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border-amber-300 dark:border-amber-800';
+          } else if (rType === 'sell') {
+            ratingPillClass = 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border-rose-300 dark:border-rose-800';
+          }
+
+          return `
+            <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800 shadow-xs">
+              <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+                <div class="flex items-center space-x-2">
+                  <div class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 font-bold text-xs">
+                    🏛️
+                  </div>
+                  <div>
+                    <span class="text-xs font-extrabold text-slate-900 dark:text-white">${inst.institution}</span>
+                    <span class="text-[10px] text-slate-400 block">${inst.date || 'Recent'}</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                  <span class="px-2 py-0.5 rounded-full text-[11px] font-extrabold uppercase border ${ratingPillClass}">
+                    ${inst.rating}
+                  </span>
+                  <div class="text-right">
+                    <span class="text-xs font-mono font-black text-slate-900 dark:text-white">${inst.target_price}</span>
+                    <span class="text-[10px] text-slate-400 block">${inst.action || 'Target'}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800/80 text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                "${inst.analyst_note}"
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    // 4. Render Chart & 52-Week & Dividend Stats
     document.getElementById('m52Low').textContent = `${s.currency_symbol || ''}${s.low_52_pence}`;
     document.getElementById('m52High').textContent = `${s.currency_symbol || ''}${s.high_52_pence}`;
     const range52 = s.high_52_pence - s.low_52_pence || 1;

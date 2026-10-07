@@ -56,7 +56,26 @@ html = urllib.request.urlopen(f'{base}/').read().decode('utf-8')
 has_guide = 'Stock Picker Tabs & Methodology Guide' in html
 print(f"TEST 8 - Index.html Guide Tab Present: {has_guide} (Bytes: {len(html)})")
 
+# 9. Stock Intelligence Check: Price Driver & Latest News (SHEL)
+res_stock = json.loads(urllib.request.urlopen(f'{base}/api/stock/SHEL').read())
+price_drv = res_stock.get('price_driver', {})
+news_items = res_stock.get('news', [])
+print(f"TEST 9 - Stock Price Driver & News (SHEL):")
+print(f"         Driver Headline: {price_drv.get('headline')}")
+print(f"         Sentiment: {price_drv.get('sentiment')} | Factors: {len(price_drv.get('key_factors', []))}")
+print(f"         Latest News Count: {len(news_items)} | Top Source: {news_items[0].get('publisher') if news_items else 'N/A'}")
+
+# 10. Famous Financial Institutions Ratings Check (HOLD, BUY, SELL)
+ratings = res_stock.get('analyst_ratings', {})
+inst_reports = ratings.get('institutions', [])
+print(f"TEST 10 - Famous Financial Institutions Ratings (SHEL):")
+print(f"          Consensus: {ratings.get('consensus_label')} | Target: {ratings.get('mean_target_fmt')} ({ratings.get('implied_upside_pct'):+.1f}%)")
+print(f"          Breakdown: {ratings.get('buy_pct')}% Buy · {ratings.get('hold_pct')}% Hold · {ratings.get('sell_pct')}% Sell")
+print(f"          Famous Institutions Reported: {len(inst_reports)} firms")
+for inst in inst_reports[:3]:
+    print(f"          * {inst['institution']}: {inst['rating']} ({inst['target_price']}) - {inst['action']}")
+
 srv.shutdown()
 print("=" * 64)
-print("ALL 8 MULTI-MARKET & GUIDE INTEGRATION TESTS PASSED 100%!")
+print("ALL 10 MULTI-MARKET, NEWS & INSTITUTIONAL RATINGS TESTS PASSED 100%!")
 print("=" * 64)

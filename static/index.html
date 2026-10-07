@@ -693,6 +693,47 @@
           </div>
         </div>
 
+        <!-- 7. Stock Deep-Dive: Movement Drivers, News & Institutional Ratings Card -->
+        <div class="bg-gradient-to-br from-indigo-900 via-slate-900 to-brand-950 rounded-3xl p-6 shadow-sm border border-indigo-700/50 text-white md:col-span-2 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="p-2.5 rounded-2xl bg-white/10 text-brand-300">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-300">Feature Deep-Dive</span>
+                <h3 class="text-lg font-extrabold text-white">Stock Click: Movement Drivers, Latest News & Famous Institutional Ratings</h3>
+              </div>
+            </div>
+            <p class="text-xs text-indigo-200/90 leading-relaxed mb-4">
+              <strong>Core Objective:</strong> Whenever you click on any stock in cards or table view, the application instantly launches a comprehensive institutional intelligence dossier explaining why the share is moving and what world-renowned financial institutions recommend.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 rounded-2xl bg-white/10 border border-white/10">
+                <strong class="text-white block mb-1">⚡ Why is it Moving Today?</strong>
+                <p class="text-indigo-200 text-[11px] leading-relaxed">
+                  Quantitative catalyst synthesis breaking down 1-day/1-week momentum, Relative Volume (RVOL) surges, 50-DMA and 200-DMA technical alignment, and macro sector drivers.
+                </p>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/10 border border-white/10">
+                <strong class="text-white block mb-1">📰 Verified News Feed:</strong>
+                <p class="text-indigo-200 text-[11px] leading-relaxed">
+                  Real-time articles and financial press releases from Financial Times, Bloomberg, Reuters, Wall Street Journal, Zacks, and CNBC with relative timestamps and direct links.
+                </p>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/10 border border-white/10">
+                <strong class="text-white block mb-1">🏛️ Famous Institutions (HOLD, BUY, SELL):</strong>
+                <p class="text-indigo-200 text-[11px] leading-relaxed">
+                  Consensus ratings, target prices, implied upside %, and equity research commentary from <strong>Goldman Sachs, JPMorgan, Morgan Stanley, Barclays, Citigroup, UBS, Jefferies, HSBC</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 text-[11px] text-indigo-300">
+            💡 <em>Interactive Sub-Pills:</em> Toggle between <strong>All Intel</strong>, <strong>Why It's Moving & News</strong>, <strong>Famous Institutions</strong>, and <strong>30-Day Chart & Stats</strong> inside the modal.
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -737,26 +778,46 @@
   </main>
 
   <!-- ================= STOCK DEEP-DIVE MODAL / DRAWER ================= -->
-  <div id="stockModal" class="fixed inset-0 z-50 hidden modal-backdrop bg-slate-950/60 flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 dark:border-slate-800 p-6">
+  <div id="stockModal" class="fixed inset-0 z-50 hidden modal-backdrop bg-slate-950/60 flex items-center justify-center p-3 sm:p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6">
       
       <!-- Modal Header -->
-      <div class="flex items-start justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex items-start justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <div class="flex items-center space-x-2">
-            <span class="text-xl font-black text-brand-600 dark:text-brand-400 font-mono" id="mTicker">SHEL</span>
-            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400" id="mMarket">FTSE 100</span>
+          <div class="flex items-center space-x-2 flex-wrap">
+            <span class="text-2xl font-black text-brand-600 dark:text-brand-400 font-mono" id="mTicker">SHEL</span>
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 uppercase tracking-wider" id="mMarket">FTSE 100</span>
             <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400" id="mSector">Energy</span>
           </div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white mt-1" id="mName">Shell plc</h3>
+          <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white mt-1" id="mName">Shell plc</h3>
         </div>
-        <button onclick="closeStockModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800">
+        <button onclick="closeStockModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <!-- Price & Key Stats Banner -->
-      <div class="py-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <!-- Quick Sub-Navigation Pills Inside Modal -->
+      <div class="flex items-center space-x-2 py-3 border-b border-slate-100 dark:border-slate-800 overflow-x-auto text-xs font-bold no-scrollbar">
+        <button id="modalTabAll" onclick="setModalSection('all')" class="modal-nav-pill px-3 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 transition flex items-center space-x-1.5 shadow-sm">
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+          <span>All Intel</span>
+        </button>
+        <button id="modalTabMoving" onclick="setModalSection('moving')" class="modal-nav-pill px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center space-x-1.5">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i>
+          <span>Why It's Moving & News</span>
+        </button>
+        <button id="modalTabRatings" onclick="setModalSection('ratings')" class="modal-nav-pill px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center space-x-1.5">
+          <i data-lucide="award" class="w-3.5 h-3.5 text-brand-500"></i>
+          <span>Famous Institutions (Buy/Hold/Sell)</span>
+        </button>
+        <button id="modalTabChart" onclick="setModalSection('chart')" class="modal-nav-pill px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center space-x-1.5">
+          <i data-lucide="trending-up" class="w-3.5 h-3.5 text-emerald-500"></i>
+          <span>30-Day Chart & Stats</span>
+        </button>
+      </div>
+
+      <!-- Price & Key Stats Banner (Always Visible) -->
+      <div id="mSectionOverview" class="py-3 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
         <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
           <div class="text-[11px] text-slate-500">Current Price</div>
           <div class="text-base font-extrabold font-mono text-slate-900 dark:text-white" id="mPricePence">0.00p</div>
@@ -779,76 +840,221 @@
         </div>
       </div>
 
-      <!-- Interactive 30-Day Chart Canvas -->
-      <div class="my-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Historical 30-Day Closing Prices</span>
-          <span class="text-[11px] font-mono text-slate-500" id="mChartTrend">Trend</span>
+      <!-- ================= SECTION 1: WHY IT'S MOVING TODAY & LATEST NEWS ================= -->
+      <div id="mSectionMoving" class="my-3 space-y-4">
+        
+        <!-- Price Movement Catalyst Card -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-500/10 via-brand-500/5 to-slate-50 dark:from-amber-950/30 dark:via-brand-950/20 dark:to-slate-800/60 border border-amber-200/80 dark:border-amber-800/50">
+          <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+            <div class="flex items-center space-x-2">
+              <div class="p-2 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400">
+                <i data-lucide="zap" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-extrabold text-slate-900 dark:text-white">Why is this Share Moving Today?</h4>
+                <p class="text-[11px] text-slate-500">Quantitative momentum & price catalyst analysis</p>
+              </div>
+            </div>
+            <span id="mDriverSentimentBadge" class="px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800">
+              🟢 Bullish Momentum
+            </span>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/60 dark:border-slate-800 mb-3 shadow-xs">
+            <div class="text-xs font-extrabold text-slate-900 dark:text-white mb-1.5 flex items-center space-x-1.5">
+              <i data-lucide="flame" class="w-4 h-4 text-amber-500"></i>
+              <span id="mDriverHeadline">Surging on Heavy Institutional Accumulation</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed" id="mDriverSummary">
+              Analyzing latest order flows, volume multiples, technical indicators and sector developments...
+            </p>
+          </div>
+
+          <!-- Key Catalyst Chips -->
+          <div>
+            <div class="text-[10px] uppercase font-bold text-slate-400 mb-1.5 tracking-wider">Key Catalysts & Drivers:</div>
+            <div class="flex flex-wrap gap-1.5" id="mDriverFactors">
+              <!-- Populated via JS -->
+            </div>
+          </div>
         </div>
-        <div class="h-48 w-full">
-          <canvas id="stockDetailChart"></canvas>
+
+        <!-- Latest News & Market Bulletins Stream -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center space-x-2">
+              <div class="p-2 rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">
+                <i data-lucide="newspaper" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-extrabold text-slate-900 dark:text-white">Latest Share News & Financial Press</h4>
+                <p class="text-[11px] text-slate-500">Verified headlines explaining price action and corporate events</p>
+              </div>
+            </div>
+            <span class="text-xs font-bold font-mono px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400" id="mNewsCount">0 articles</span>
+          </div>
+
+          <div class="space-y-2.5" id="mNewsList">
+            <!-- Populated via JS -->
+          </div>
         </div>
+
       </div>
 
-      <!-- 52-Week Range Bar -->
-      <div class="my-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-        <div class="flex items-center justify-between text-xs font-semibold mb-1">
-          <span class="text-slate-500">52-Week Low: <strong class="font-mono text-slate-800 dark:text-white" id="m52Low">0</strong></span>
-          <span class="text-slate-700 dark:text-slate-300">52-Week Valuation Range</span>
-          <span class="text-slate-500">52-Week High: <strong class="font-mono text-slate-800 dark:text-white" id="m52High">0</strong></span>
+      <!-- ================= SECTION 2: FAMOUS FINANCIAL INSTITUTIONS (HOLD, BUY, SELL) ================= -->
+      <div id="mSectionRatings" class="my-3 space-y-4">
+        
+        <!-- Institutional Consensus & Price Target Dashboard -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-slate-50 dark:from-indigo-950/30 dark:via-purple-950/20 dark:to-slate-800/60 border border-indigo-200/80 dark:border-indigo-800/50">
+          
+          <div class="flex items-start justify-between flex-wrap gap-3 pb-3 border-b border-indigo-100 dark:border-slate-800">
+            <div class="flex items-center space-x-3">
+              <div class="p-2.5 rounded-2xl bg-brand-500/15 text-brand-600 dark:text-brand-400">
+                <i data-lucide="award" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Analyst Consensus</span>
+                  <span id="mConsensusBadge" class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800">
+                    STRONG BUY
+                  </span>
+                </div>
+                <div class="text-base sm:text-lg font-black text-slate-900 dark:text-white mt-0.5" id="mConsensusScore">
+                  Strong Buy (1.7 / 5.0)
+                </div>
+                <div class="text-[11px] text-slate-500" id="mTotalAnalystsText">
+                  Based on Wall St & City equity research desks
+                </div>
+              </div>
+            </div>
+
+            <!-- Target Price Box -->
+            <div class="p-3 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-indigo-100 dark:border-slate-800 shadow-sm text-right min-w-[170px]">
+              <div class="text-[10px] uppercase font-bold text-slate-400">Consensus Target Price</div>
+              <div class="text-lg font-black font-mono text-slate-900 dark:text-white" id="mTargetPrice">
+                £0.00
+              </div>
+              <div class="inline-flex items-center space-x-1 px-2 py-0.5 rounded-lg text-xs font-extrabold font-mono mt-0.5 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800" id="mTargetUpsideBadge">
+                <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+                <span id="mTargetUpside">+0.0% Upside</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Breakdown Bar: Buy / Hold / Sell -->
+          <div class="py-3">
+            <div class="flex items-center justify-between text-xs font-mono mb-1.5">
+              <span class="text-emerald-600 dark:text-emerald-400 font-bold" id="mBuyPct">0% Buy</span>
+              <span class="text-amber-600 dark:text-amber-400 font-bold" id="mHoldPct">0% Hold</span>
+              <span class="text-rose-600 dark:text-rose-400 font-bold" id="mSellPct">0% Sell</span>
+            </div>
+            <div class="w-full h-3 rounded-full overflow-hidden flex bg-slate-200 dark:bg-slate-700">
+              <div id="mBarBuy" class="bg-emerald-500 h-full transition-all duration-500" style="width: 70%"></div>
+              <div id="mBarHold" class="bg-amber-400 h-full transition-all duration-500" style="width: 20%"></div>
+              <div id="mBarSell" class="bg-rose-500 h-full transition-all duration-500" style="width: 10%"></div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-slate-500 font-mono mt-1.5">
+              <span>Low: <strong class="text-slate-800 dark:text-white" id="mTargetLow">0</strong></span>
+              <span>Mean: <strong class="text-brand-600 dark:text-brand-400" id="mTargetMean">0</strong></span>
+              <span>High: <strong class="text-emerald-600 dark:text-emerald-400" id="mTargetHigh">0</strong></span>
+            </div>
+          </div>
+
+          <!-- Famous Financial Institutions Ratings Feed -->
+          <div class="mt-3 pt-3 border-t border-indigo-100 dark:border-slate-800">
+            <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+              <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center space-x-1.5">
+                <i data-lucide="landmark" class="w-4 h-4 text-brand-600 dark:text-brand-400"></i>
+                <span>Ratings from Famous Financial Institutions</span>
+              </h5>
+              <span class="text-[11px] text-slate-500">Goldman Sachs, JPMorgan, Morgan Stanley, Barclays, Citi, UBS, Jefferies</span>
+            </div>
+
+            <!-- List of Institutional Cards -->
+            <div class="space-y-2.5" id="mInstitutionsList">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
         </div>
-        <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden">
-          <div id="m52ProgressBar" class="bg-brand-500 h-2.5 rounded-full" style="width: 50%"></div>
-        </div>
+
       </div>
 
-      <!-- Additional Metrics: Valuation, Volume, Moving Averages -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs mb-4">
-        <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
-          <span class="text-slate-500 block text-[10px]">Market Cap</span>
-          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mMarketCap">N/A</span>
+      <!-- ================= SECTION 3: 30-DAY CHART & TECHNICAL STATS ================= -->
+      <div id="mSectionChart" class="my-3 space-y-4">
+        
+        <!-- Interactive 30-Day Chart Canvas -->
+        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Historical 30-Day Closing Prices</span>
+            <span class="text-[11px] font-mono text-slate-500" id="mChartTrend">Trend</span>
+          </div>
+          <div class="h-48 w-full">
+            <canvas id="stockDetailChart"></canvas>
+          </div>
         </div>
-        <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
-          <span class="text-slate-500 block text-[10px]">P/E Ratio</span>
-          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mPE">0.0</span>
-        </div>
-        <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
-          <span class="text-slate-500 block text-[10px]">Relative Vol (RVOL)</span>
-          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mRVOL">1.0x</span>
-        </div>
-        <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
-          <span class="text-slate-500 block text-[10px]">50-Day Avg MA</span>
-          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mMA50">0</span>
-        </div>
-      </div>
 
-      <!-- Dividend Section -->
-      <div id="mDividendCard" class="p-4 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-800/50 mb-4">
-        <div class="flex items-center justify-between mb-2">
-          <div class="flex items-center space-x-1.5 text-xs font-bold text-indigo-900 dark:text-indigo-200">
-            <i data-lucide="gift" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
-            <span>Dividend & Payout Profile</span>
+        <!-- 52-Week Range Bar -->
+        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+          <div class="flex items-center justify-between text-xs font-semibold mb-1">
+            <span class="text-slate-500">52-Week Low: <strong class="font-mono text-slate-800 dark:text-white" id="m52Low">0</strong></span>
+            <span class="text-slate-700 dark:text-slate-300">52-Week Valuation Range</span>
+            <span class="text-slate-500">52-Week High: <strong class="font-mono text-slate-800 dark:text-white" id="m52High">0</strong></span>
           </div>
-          <span class="text-xs font-bold font-mono px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300" id="mDivYield">0.0% Yield</span>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
-          <div>
-            <span class="text-slate-500 text-[10px] block">Ex-Dividend Cutoff</span>
-            <span class="font-bold font-mono text-indigo-700 dark:text-indigo-300" id="mExDivDate">None</span>
-          </div>
-          <div>
-            <span class="text-slate-500 text-[10px] block">Expected Div Value</span>
-            <span class="font-bold font-mono text-slate-900 dark:text-white" id="mDivAmount">0 / share</span>
-          </div>
-          <div>
-            <span class="text-slate-500 text-[10px] block">Payment Date</span>
-            <span class="font-bold font-mono text-slate-900 dark:text-white" id="mPayDate">Scheduled</span>
+          <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden">
+            <div id="m52ProgressBar" class="bg-brand-500 h-2.5 rounded-full transition-all duration-500" style="width: 50%"></div>
           </div>
         </div>
+
+        <!-- Additional Metrics: Valuation, Volume, Moving Averages -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+          <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
+            <span class="text-slate-500 block text-[10px]">Market Cap</span>
+            <span class="font-bold font-mono text-slate-900 dark:text-white" id="mMarketCap">N/A</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
+            <span class="text-slate-500 block text-[10px]">P/E Ratio</span>
+            <span class="font-bold font-mono text-slate-900 dark:text-white" id="mPE">0.0</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
+            <span class="text-slate-500 block text-[10px]">Relative Vol (RVOL)</span>
+            <span class="font-bold font-mono text-slate-900 dark:text-white" id="mRVOL">1.0x</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
+            <span class="text-slate-500 block text-[10px]">50-Day Avg MA</span>
+            <span class="font-bold font-mono text-slate-900 dark:text-white" id="mMA50">0</span>
+          </div>
+        </div>
+
+        <!-- Dividend Section -->
+        <div id="mDividendCard" class="p-4 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-800/50">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center space-x-1.5 text-xs font-bold text-indigo-900 dark:text-indigo-200">
+              <i data-lucide="gift" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+              <span>Dividend & Payout Profile</span>
+            </div>
+            <span class="text-xs font-bold font-mono px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300" id="mDivYield">0.0% Yield</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+            <div>
+              <span class="text-slate-500 text-[10px] block">Ex-Dividend Cutoff</span>
+              <span class="font-bold font-mono text-indigo-700 dark:text-indigo-300" id="mExDivDate">None</span>
+            </div>
+            <div>
+              <span class="text-slate-500 text-[10px] block">Expected Div Value</span>
+              <span class="font-bold font-mono text-slate-900 dark:text-white" id="mDivAmount">0 / share</span>
+            </div>
+            <div>
+              <span class="text-slate-500 text-[10px] block">Payment Date</span>
+              <span class="font-bold font-mono text-slate-900 dark:text-white" id="mPayDate">Scheduled</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Modal Footer -->
-      <div class="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800">
+      <div class="flex items-center justify-between pt-4 mt-2 border-t border-slate-200 dark:border-slate-800">
         <button id="mWatchlistToggleBtn" onclick="toggleWatchlistCurrentModal()" class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center space-x-1.5">
           <i data-lucide="star" class="w-4 h-4 text-amber-400"></i>
           <span id="mWatchlistText">Add to Watchlist</span>

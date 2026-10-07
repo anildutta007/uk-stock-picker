@@ -308,14 +308,21 @@ def get_dividends_payload(query):
 
 def get_single_stock_payload(ticker):
     stocks = CACHE_DATA.get("stocks", [])
-    found = next((s for s in stocks if s.get("ticker", "").upper() == ticker), None)
+    found = next((s for s in stocks if s.get("ticker", "").upper() == ticker.upper()), None)
     if not found:
         return None
     div_calendar = DIVIDEND_DATA.get("calendar", [])
-    div_item = next((d for d in div_calendar if d.get("ticker", "").upper() == ticker), None)
+    div_item = next((d for d in div_calendar if d.get("ticker", "").upper() == ticker.upper()), None)
+    
+    # Enrich with latest price driver explanation, news articles, and famous institutional ratings
+    intel = data_fetcher.fetch_stock_intelligence(found)
+    
     return {
         "stock": found,
-        "dividend_details": div_item
+        "dividend_details": div_item,
+        "price_driver": intel.get("price_driver", {}),
+        "news": intel.get("news", []),
+        "analyst_ratings": intel.get("analyst_ratings", {})
     }
 
 
