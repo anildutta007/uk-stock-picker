@@ -1,31 +1,27 @@
 /**
- * UK Stock Picker - Core Application Logic
- * Supports FTSE 100 & FTSE 250 markets, customizable % gainers/losers thresholds over 1D/1W/1M,
- * trading volume metrics, trending algorithms, and upcoming dividend calendars.
+ * UK & Global Stock Picker - Core Application Logic
+ * Supports multi-market universe: FTSE 100, FTSE 250, FTSE 350, NASDAQ 100, Dow Jones 30, and NIFTY 50.
+ * Dynamic tabs: Trending, Value Gainers, Value Decliners, Volume, Dividends, Guide & Methodology, and Watchlist.
  */
 
 // Application State
 const state = {
-  market: 'ftse100',          // 'ftse100' | 'ftse250' | 'all'
-  tab: 'trending',            // 'trending' | 'gainers' | 'losers' | 'volume' | 'dividends' | 'watchlist'
+  market: 'ftse100',          // 'ftse100' | 'ftse250' | 'ftse350' | 'nasdaq' | 'dow' | 'nifty' | 'all'
+  tab: 'trending',            // 'trending' | 'gainers' | 'losers' | 'volume' | 'dividends' | 'guide' | 'watchlist'
   period: '1d',               // '1d' | '1w' | '1m'
   viewMode: 'cards',          // 'cards' | 'table'
   search: '',
   sector: 'all',
-  // Gainers / Losers Thresholds (Requirements 2 & 3)
   minGainPct: 2.0,
   maxLossPct: -2.0,
-  // Volume Metric (Requirement 4)
   volumeMetric: 'volume',     // 'volume' | 'turnover' | 'rvol'
-  // Dividend Filters (Requirement 5)
   divTimeframe: 'all',
   divMinYield: 0.0,
-  // Data caches
   stocks: [],
   dividends: [],
   filteredStocks: [],
   filteredDividends: [],
-  watchlist: new Set(JSON.parse(localStorage.getItem('uk_stock_watchlist') || '["SHEL", "AZN", "BATS", "BA"]')),
+  watchlist: new Set(JSON.parse(localStorage.getItem('uk_stock_watchlist') || '["SHEL", "AZN", "AAPL", "NVDA", "RELIANCE"]')),
   activeStock: null,
   chartInstance: null,
   debounceTimer: null
@@ -38,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchMarketSummary();
   loadData();
 
-  // Periodically update summary
   setInterval(fetchMarketSummary, 30000);
 });
 
@@ -109,33 +104,50 @@ function updateCardWatchlistButtons() {
 // ================= MARKET & TAB SWITCHERS =================
 function setMarket(marketName) {
   state.market = marketName;
-  
-  // Highlight active button
-  ['ftse100', 'ftse250', 'all'].forEach(m => {
-    const btn = document.getElementById(`btnMarket${m.charAt(0).toUpperCase() + m.slice(1)}`);
+
+  // Sync mobile select
+  const mobSelect = document.getElementById('mobileMarketSelect');
+  if (mobSelect) mobSelect.value = marketName;
+
+  // Highlight desktop buttons
+  const marketBtnIds = {
+    ftse100: 'btnMarketFtse100',
+    ftse250: 'btnMarketFtse250',
+    ftse350: 'btnMarketFtse350',
+    nasdaq: 'btnMarketNasdaq',
+    dow: 'btnMarketDow',
+    nifty: 'btnMarketNifty',
+    all: 'btnMarketAll'
+  };
+
+  Object.keys(marketBtnIds).forEach(m => {
+    const btn = document.getElementById(marketBtnIds[m]);
     if (!btn) return;
     if (m === marketName) {
-      btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 shadow-sm bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700";
+      btn.className = "px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1 shadow-sm bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700 whitespace-nowrap";
     } else {
-      btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center space-x-1.5";
+      btn.className = "px-2.5 py-1.5 rounded-lg text-xs transition-all flex items-center space-x-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white whitespace-nowrap";
     }
   });
 
   fetchMarketSummary();
-  loadData();
+  if (state.tab !== 'guide') {
+    loadData();
+  }
 }
 
 function setTab(tabName) {
   state.tab = tabName;
 
   // Update tab button styles
-  const tabIds = ['tabTrending', 'tabGainers', 'tabLosers', 'tabVolume', 'tabDividends', 'tabWatchlist'];
+  const tabIds = ['tabTrending', 'tabGainers', 'tabLosers', 'tabVolume', 'tabDividends', 'tabGuide', 'tabWatchlist'];
   const tabMap = {
     trending: 'tabTrending',
     gainers: 'tabGainers',
     losers: 'tabLosers',
     volume: 'tabVolume',
     dividends: 'tabDividends',
+    guide: 'tabGuide',
     watchlist: 'tabWatchlist'
   };
 
@@ -143,11 +155,31 @@ function setTab(tabName) {
     const btn = document.getElementById(id);
     if (!btn) return;
     if (id === tabMap[tabName]) {
-      btn.className = "tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20";
+      btn.className = "tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20";
     } else {
-      btn.className = "tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all";
+      btn.className = "tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all";
     }
   });
+
+  // Guide view vs Standard views
+  const guideView = document.getElementById('guideView');
+  const controlsCard = document.getElementById('controlsCard');
+  const dataContainer = document.getElementById('dataContainer');
+  const exDivNotice = document.getElementById('exDivNoticeBanner');
+
+  if (tabName === 'guide') {
+    if (guideView) guideView.classList.remove('hidden');
+    if (controlsCard) controlsCard.classList.add('hidden');
+    if (dataContainer) dataContainer.classList.add('hidden');
+    if (exDivNotice) exDivNotice.classList.add('hidden');
+    lucide.createIcons();
+    return;
+  }
+
+  // Not guide tab
+  if (guideView) guideView.classList.add('hidden');
+  if (controlsCard) controlsCard.classList.remove('hidden');
+  if (dataContainer) dataContainer.classList.remove('hidden');
 
   // Toggle specific control rows
   const gainersBox = document.getElementById('gainersThresholdBox');
@@ -155,7 +187,6 @@ function setTab(tabName) {
   const volBox = document.getElementById('volumeMetricBox');
   const divBox = document.getElementById('dividendControlsBox');
   const timeframeBox = document.getElementById('timeframeSelectorBox');
-  const exDivNotice = document.getElementById('exDivNoticeBanner');
 
   if (gainersBox) gainersBox.classList.add('hidden');
   if (losersBox) losersBox.classList.add('hidden');
@@ -168,7 +199,7 @@ function setTab(tabName) {
   const subtitle = document.getElementById('tabHeaderSubtitle');
 
   if (tabName === 'trending') {
-    title.textContent = "Trending UK Stocks";
+    title.textContent = "Trending Stocks & Breakouts";
     subtitle.textContent = "Ranked by unusual relative trading volume, price momentum surges, and technical breakouts";
   } else if (tabName === 'gainers') {
     title.textContent = "Shares Value Increase (Gainers)";
@@ -180,7 +211,7 @@ function setTab(tabName) {
     if (losersBox) losersBox.classList.remove('hidden');
   } else if (tabName === 'volume') {
     title.textContent = "Highest Trading Volume & Liquidity";
-    subtitle.textContent = `Top traded UK stocks by shares, value turnover (£), and unusual volume surges`;
+    subtitle.textContent = `Top traded global shares by volume, value turnover, and unusual institutional activity`;
     if (volBox) volBox.classList.remove('hidden');
   } else if (tabName === 'dividends') {
     title.textContent = "Upcoming Dividends & Ex-Dividend Cutoff Dates";
@@ -208,7 +239,6 @@ function setPeriod(p) {
     }
   });
 
-  // Update subtitle text if in Gainers/Losers
   if (state.tab === 'gainers') {
     document.getElementById('tabHeaderSubtitle').textContent = `Filtered by customizable minimum gain % over ${state.period.toUpperCase()} period`;
   } else if (state.tab === 'losers') {
@@ -219,7 +249,6 @@ function setPeriod(p) {
 }
 
 // ================= THRESHOLD FILTER CONTROLS =================
-// Gainers
 function updateGainSlider(val) {
   state.minGainPct = parseFloat(val);
   document.getElementById('gainInput').value = parseFloat(val).toFixed(1);
@@ -240,7 +269,6 @@ function setGainPreset(pct) {
   loadData();
 }
 
-// Losers
 function updateLossSlider(val) {
   const num = -Math.abs(parseFloat(val));
   state.maxLossPct = num;
@@ -262,7 +290,6 @@ function setLossPreset(pct) {
   loadData();
 }
 
-// Volume Metric
 function setVolumeMetric(metric) {
   state.volumeMetric = metric;
   ['Shares', 'Turnover', 'Rvol'].forEach(m => {
@@ -277,7 +304,6 @@ function setVolumeMetric(metric) {
   loadData();
 }
 
-// Dividend Timeframe
 function setDivTimeframe(tf) {
   state.divTimeframe = tf;
   const map = { all: 'btnDivAll', '30d': 'btnDiv30', '60d': 'btnDiv60', '90d': 'btnDiv90' };
@@ -293,7 +319,6 @@ function setDivTimeframe(tf) {
   loadData();
 }
 
-// View Mode (Cards vs Table)
 function setViewMode(mode) {
   state.viewMode = mode;
   const btnCards = document.getElementById('viewModeCards');
@@ -315,7 +340,6 @@ function setViewMode(mode) {
   renderContent();
 }
 
-// Search debounce
 function debounceFilter() {
   clearTimeout(state.debounceTimer);
   state.debounceTimer = setTimeout(() => {
@@ -348,15 +372,21 @@ async function fetchMarketSummary() {
     if (!res.ok) return;
     const data = await res.json();
 
-    const mName = state.market === 'ftse100' ? 'FTSE 100 Overview:' : (state.market === 'ftse250' ? 'FTSE 250 Overview:' : 'UK 350 Universe:');
-    document.getElementById('summaryMarketName').textContent = mName;
+    const marketNames = {
+      ftse100: 'FTSE 100 Overview:',
+      ftse250: 'FTSE 250 Overview:',
+      ftse350: 'FTSE 350 Overview:',
+      nasdaq: 'NASDAQ 100 Overview:',
+      dow: 'Dow Jones 30 Overview:',
+      nifty: 'NIFTY 50 (India) Overview:',
+      all: 'Global Universe Overview:'
+    };
+    document.getElementById('summaryMarketName').textContent = marketNames[state.market] || 'Market Overview:';
 
-    // Day Avg
     const dayAvg = document.getElementById('summaryDayAvg');
     dayAvg.textContent = `${data.avg_change_1d_pct >= 0 ? '+' : ''}${data.avg_change_1d_pct}%`;
     dayAvg.className = `font-mono font-bold ${data.avg_change_1d_pct >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`;
 
-    // 1W & 1M Avg
     const wAvg = document.getElementById('summaryWeekAvg');
     wAvg.textContent = `${data.avg_change_1w_pct >= 0 ? '+' : ''}${data.avg_change_1w_pct}%`;
     wAvg.className = `font-mono font-bold ${data.avg_change_1w_pct >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`;
@@ -365,13 +395,12 @@ async function fetchMarketSummary() {
     mAvg.textContent = `${data.avg_change_1m_pct >= 0 ? '+' : ''}${data.avg_change_1m_pct}%`;
     mAvg.className = `font-mono font-bold ${data.avg_change_1m_pct >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`;
 
-    // Advancers / Decliners
     document.getElementById('summaryAdvancers').textContent = data.advancers || 0;
     document.getElementById('summaryDecliners').textContent = data.decliners || 0;
 
-    // Turnover & Yield
     const turnoverM = ((data.total_turnover_1d_gbp || 0) / 1000000).toFixed(1);
-    document.getElementById('summaryTurnover').textContent = `£${turnoverM}M`;
+    const sym = state.market === 'nifty' ? '₹' : (['nasdaq', 'dow'].includes(state.market) ? '$' : '£');
+    document.getElementById('summaryTurnover').textContent = `${sym}${turnoverM}M`;
     document.getElementById('summaryYield').textContent = `${data.avg_dividend_yield_pct || 0}%`;
 
   } catch (e) {
@@ -380,6 +409,8 @@ async function fetchMarketSummary() {
 }
 
 async function loadData() {
+  if (state.tab === 'guide') return;
+
   state.search = document.getElementById('searchInput')?.value.trim() || '';
   state.sector = document.getElementById('sectorSelect')?.value || 'all';
 
@@ -447,6 +478,8 @@ async function loadDividendCalendar() {
 
 // ================= RENDERING ENGINE =================
 function renderContent() {
+  if (state.tab === 'guide') return;
+
   const cardGrid = document.getElementById('cardGrid');
   const tableBody = document.getElementById('tableBody');
   const tableHeaderRow = document.getElementById('tableHeaderRow');
@@ -484,14 +517,13 @@ function renderStockCards(stocks) {
     const changePct = s[pctKey] || 0;
     const isUp = changePct >= 0;
     const isStarred = state.watchlist.has(s.ticker);
-    const colorClass = isUp ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400';
     const bgBadgeClass = isUp ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800' : 'bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800';
 
     const sparklineSvg = generateSparklineSvg(s.sparkline || [], isUp);
     const volFormatted = formatNumber(s[volKey]);
-    const turnoverFormatted = formatTurnover(s[turnoverKey]);
+    const turnoverFormatted = formatCurrencyTurnover(s[turnoverKey], s.currency);
+    const priceObj = formatPrice(s);
 
-    // Trending pill
     let trendingBadge = '';
     if (s.trending_reasons && s.trending_reasons.length > 0) {
       trendingBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">${s.trending_reasons[0]}</span>`;
@@ -503,7 +535,7 @@ function renderStockCards(stocks) {
         <!-- Header: Ticker, Name, Star -->
         <div>
           <div class="flex items-start justify-between">
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-1.5 flex-wrap">
               <span class="font-mono font-black text-base text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition">${s.ticker}</span>
               <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">${s.market}</span>
               ${trendingBadge}
@@ -520,8 +552,8 @@ function renderStockCards(stocks) {
         <!-- Middle: Price, Returns & Sparkline -->
         <div class="my-3 py-2 border-y border-slate-100 dark:border-slate-800 flex items-center justify-between">
           <div>
-            <div class="text-base font-extrabold font-mono text-slate-900 dark:text-white">${s.price_pence.toFixed(1)}p</div>
-            <div class="text-[11px] font-mono text-slate-400">£${s.price_gbp.toFixed(2)}</div>
+            <div class="text-base font-extrabold font-mono text-slate-900 dark:text-white">${priceObj.main}</div>
+            <div class="text-[11px] font-mono text-slate-400">${priceObj.sub}</div>
           </div>
 
           <!-- Sparkline -->
@@ -576,9 +608,8 @@ function renderStockCards(stocks) {
 function renderDividendCards(divList) {
   return divList.map(d => {
     const isStarred = state.watchlist.has(d.ticker);
-    const sparklineSvg = generateSparklineSvg(d.sparkline || [], true);
+    const priceObj = formatPrice(d);
     
-    // Status urgency color
     let urgencyClass = "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300";
     if (d.days_remaining <= 1) {
       urgencyClass = "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 font-bold animate-pulse";
@@ -588,12 +619,14 @@ function renderDividendCards(divList) {
       urgencyClass = "bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300";
     }
 
+    const divAmountLabel = d.currency === 'GBp' ? `${d.expected_dividend_pence}p` : `${d.currency_symbol || '$'}${d.expected_dividend_pence}`;
+
     return `
       <div onclick="openStockModal('${d.ticker}')" class="bg-white dark:bg-slate-900 rounded-2xl p-4 shadow-sm border border-slate-200 dark:border-slate-800 hover:border-indigo-500/50 hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between">
         
         <div>
           <div class="flex items-start justify-between">
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-1.5 flex-wrap">
               <span class="font-mono font-black text-base text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">${d.ticker}</span>
               <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">${d.market}</span>
             </div>
@@ -606,7 +639,7 @@ function renderDividendCards(divList) {
           <div class="text-[11px] text-slate-400 truncate">${d.sector}</div>
         </div>
 
-        <!-- EX-DIVIDEND CUTOFF BOX (KEY REQUIREMENT 5) -->
+        <!-- EX-DIVIDEND CUTOFF BOX -->
         <div class="my-3 p-3 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900/50">
           <div class="flex items-center justify-between mb-1.5">
             <span class="text-[10px] uppercase tracking-wider font-bold text-indigo-700 dark:text-indigo-300 flex items-center">
@@ -618,7 +651,6 @@ function renderDividendCards(divList) {
             </span>
           </div>
 
-          <!-- Highlight Date & Last Day to Buy -->
           <div class="flex items-baseline justify-between">
             <span class="text-base font-extrabold font-mono text-indigo-950 dark:text-indigo-100">${formatDatePretty(d.ex_dividend_date)}</span>
             <span class="text-[11px] font-mono font-bold text-slate-600 dark:text-slate-300">Buy by: ${formatDatePretty(d.last_buy_date)}</span>
@@ -632,8 +664,7 @@ function renderDividendCards(divList) {
         <div class="grid grid-cols-3 gap-2 py-2 px-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 text-xs mb-3">
           <div>
             <span class="text-[10px] text-slate-400 block">Expected Div</span>
-            <span class="font-bold font-mono text-slate-900 dark:text-white">${d.expected_dividend_pence}p</span>
-            <span class="text-[10px] text-slate-400 block font-mono">£${d.expected_dividend_gbp}</span>
+            <span class="font-bold font-mono text-slate-900 dark:text-white">${divAmountLabel}</span>
           </div>
           <div class="border-x border-slate-200/60 dark:border-slate-700/60 px-2 text-center">
             <span class="text-[10px] text-slate-400 block">Yield</span>
@@ -648,7 +679,7 @@ function renderDividendCards(divList) {
 
         <!-- Bottom Action: Quick Calculate -->
         <div class="flex items-center justify-between text-xs pt-1">
-          <div class="font-mono text-slate-500 text-[11px]">Price: ${d.price_pence}p</div>
+          <div class="font-mono text-slate-500 text-[11px]">Price: ${priceObj.main}</div>
           <button onclick="openCalcForStock('${d.ticker}', event)" class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-600 hover:text-white transition flex items-center space-x-1">
             <i data-lucide="calculator" class="w-3 h-3"></i>
             <span>Calculate Payout</span>
@@ -689,8 +720,8 @@ function renderStockTableRows(stocks) {
     const changePct = s[pctKey] || 0;
     const isUp = changePct >= 0;
     const isStarred = state.watchlist.has(s.ticker);
-    const colorClass = isUp ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400';
     const sparklineSvg = generateSparklineSvg(s.sparkline || [], isUp);
+    const priceObj = formatPrice(s);
 
     return `
       <tr onclick="openStockModal('${s.ticker}')" class="hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition">
@@ -702,8 +733,8 @@ function renderStockTableRows(stocks) {
           <div class="text-[11px] text-slate-500 truncate max-w-[140px] font-sans">${s.name}</div>
         </td>
         <td class="py-3 px-3">
-          <div class="font-bold text-slate-900 dark:text-white">${s.price_pence.toFixed(1)}p</div>
-          <div class="text-[10px] text-slate-400">£${s.price_gbp.toFixed(2)}</div>
+          <div class="font-bold text-slate-900 dark:text-white">${priceObj.main}</div>
+          <div class="text-[10px] text-slate-400">${priceObj.sub}</div>
         </td>
         <td class="py-3 px-3 text-right">
           <span class="px-2 py-0.5 rounded font-extrabold ${isUp ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300' : 'bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300'}">
@@ -726,7 +757,7 @@ function renderStockTableRows(stocks) {
           ${formatNumber(s[volKey])}
         </td>
         <td class="py-3 px-3 text-right text-slate-600 dark:text-slate-300 font-mono">
-          ${formatTurnover(s[turnoverKey])}
+          ${formatCurrencyTurnover(s[turnoverKey], s.currency)}
         </td>
         <td class="py-3 px-3 text-center">
           <span class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-bold">${s.rvol}x</span>
@@ -760,6 +791,9 @@ function getDividendTableHeaders() {
 
 function renderDividendTableRows(divList) {
   return divList.map(d => {
+    const priceObj = formatPrice(d);
+    const divAmountLabel = d.currency === 'GBp' ? `${d.expected_dividend_pence}p` : `${d.currency_symbol || '$'}${d.expected_dividend_pence}`;
+
     return `
       <tr onclick="openStockModal('${d.ticker}')" class="hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition">
         <td class="py-3 px-4">
@@ -767,10 +801,10 @@ function renderDividendTableRows(divList) {
           <span class="text-[9px] px-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">${d.market}</span>
           <div class="text-[11px] text-slate-500 truncate max-w-[140px] font-sans">${d.name}</div>
         </td>
-        <td class="py-3 px-3 font-mono font-bold">${d.price_pence}p</td>
+        <td class="py-3 px-3 font-mono font-bold">${priceObj.main}</td>
         <td class="py-3 px-3 font-mono font-black text-indigo-700 dark:text-indigo-300">${formatDatePretty(d.ex_dividend_date)}</td>
         <td class="py-3 px-3 font-mono font-bold text-slate-700 dark:text-slate-300">${formatDatePretty(d.last_buy_date)}</td>
-        <td class="py-3 px-3 text-right font-mono font-bold">${d.expected_dividend_pence}p</td>
+        <td class="py-3 px-3 text-right font-mono font-bold">${divAmountLabel}</td>
         <td class="py-3 px-3 text-right font-mono font-bold text-amber-600 dark:text-amber-400">${d.dividend_yield_pct}%</td>
         <td class="py-3 px-3 text-center font-mono text-slate-500">${formatDatePretty(d.payment_date || '-')}</td>
         <td class="py-3 px-3 text-center">
@@ -834,16 +868,15 @@ async function openStockModal(ticker) {
     document.getElementById('mMarket').textContent = s.market;
     document.getElementById('mSector').textContent = s.sector;
 
-    document.getElementById('mPricePence').textContent = `${s.price_pence.toFixed(1)}p`;
-    document.getElementById('mPriceGbp').textContent = `£${s.price_gbp.toFixed(2)}`;
+    const priceObj = formatPrice(s);
+    document.getElementById('mPricePence').textContent = priceObj.main;
+    document.getElementById('mPriceGbp').textContent = priceObj.sub;
 
-    // 1D Return
     const m1D = document.getElementById('m1DChange');
     m1D.textContent = `${s.change_1d_pct >= 0 ? '+' : ''}${s.change_1d_pct}%`;
     m1D.className = `text-base font-extrabold font-mono ${s.change_1d_pct >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`;
-    document.getElementById('m1DChangePence').textContent = `${s.change_1d_pence >= 0 ? '+' : ''}${s.change_1d_pence}p`;
+    document.getElementById('m1DChangePence').textContent = `${s.change_1d_pence >= 0 ? '+' : ''}${s.change_1d_pence}`;
 
-    // 1W & 1M Return
     const m1W = document.getElementById('m1WChange');
     m1W.textContent = `${s.change_1w_pct >= 0 ? '+' : ''}${s.change_1w_pct}%`;
     m1W.className = `text-base font-extrabold font-mono ${s.change_1w_pct >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`;
@@ -852,39 +885,34 @@ async function openStockModal(ticker) {
     m1M.textContent = `${s.change_1m_pct >= 0 ? '+' : ''}${s.change_1m_pct}%`;
     m1M.className = `text-base font-extrabold font-mono ${s.change_1m_pct >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`;
 
-    // 52W Range
-    document.getElementById('m52Low').textContent = `${s.low_52_pence}p`;
-    document.getElementById('m52High').textContent = `${s.high_52_pence}p`;
+    document.getElementById('m52Low').textContent = `${s.currency_symbol || ''}${s.low_52_pence}`;
+    document.getElementById('m52High').textContent = `${s.currency_symbol || ''}${s.high_52_pence}`;
     const range52 = s.high_52_pence - s.low_52_pence || 1;
     const progress52 = Math.min(Math.max(((s.price_pence - s.low_52_pence) / range52) * 100, 0), 100);
     document.getElementById('m52ProgressBar').style.width = `${progress52}%`;
 
-    // Valuation & MAs
-    document.getElementById('mMarketCap').textContent = s.market_cap_gbp ? `£${(s.market_cap_gbp / 1e9).toFixed(1)}B` : 'N/A';
+    const capSym = s.currency === 'INR' ? '₹' : (['USD'].includes(s.currency) ? '$' : '£');
+    document.getElementById('mMarketCap').textContent = s.market_cap_gbp ? `${capSym}${(s.market_cap_gbp / 1e9).toFixed(1)}B` : 'N/A';
     document.getElementById('mPE').textContent = s.pe_ratio ? `${s.pe_ratio}x` : 'N/A';
     document.getElementById('mRVOL').textContent = `${s.rvol}x`;
-    document.getElementById('mMA50').textContent = `${s.ma_50}p`;
+    document.getElementById('mMA50').textContent = `${s.currency_symbol || ''}${s.ma_50}`;
 
-    // Dividend Profile
     const divCard = document.getElementById('mDividendCard');
     if (s.dividend_yield_pct > 0 || div) {
       divCard.classList.remove('hidden');
       document.getElementById('mDivYield').textContent = `${s.dividend_yield_pct}% Yield`;
-      document.getElementById('mExDivDate').textContent = div ? formatDatePretty(div.ex_dividend_date) : (s.ex_dividend_date ? formatDatePretty(s.ex_dividend_date) : 'Announced in broker filings');
-      document.getElementById('mDivAmount').textContent = `${s.expected_dividend_pence}p / share (£${s.dividend_rate_gbp})`;
+      document.getElementById('mExDivDate').textContent = div ? formatDatePretty(div.ex_dividend_date) : (s.ex_dividend_date ? formatDatePretty(s.ex_dividend_date) : 'Announced');
+      const divPerShare = s.currency === 'GBp' ? `${s.expected_dividend_pence}p / share` : `${s.currency_symbol || '$'}${s.expected_dividend_pence} / share`;
+      document.getElementById('mDivAmount').textContent = divPerShare;
       document.getElementById('mPayDate').textContent = div && div.payment_date ? formatDatePretty(div.payment_date) : 'Scheduled';
     } else {
       divCard.classList.add('hidden');
     }
 
-    // Watchlist text
     const isStarred = state.watchlist.has(s.ticker);
     document.getElementById('mWatchlistText').textContent = isStarred ? 'Remove from Watchlist' : 'Add to Watchlist';
 
-    // Render 30-day Chart
     renderModalChart(s);
-
-    // Show modal
     document.getElementById('stockModal').classList.remove('hidden');
     lucide.createIcons();
   } catch (e) {
@@ -918,13 +946,14 @@ function renderModalChart(stock) {
 
   const strokeColor = isUp ? '#10b981' : '#f43f5e';
   const fillColor = isUp ? 'rgba(16, 185, 129, 0.12)' : 'rgba(244, 63, 94, 0.12)';
+  const curSymbol = stock.currency_symbol || (stock.currency === 'GBp' ? 'p' : '$');
 
   state.chartInstance = new Chart(ctx, {
     type: 'line',
     data: {
       labels: labels,
       datasets: [{
-        label: 'Close Price (p)',
+        label: `Close Price (${curSymbol})`,
         data: closes,
         borderColor: strokeColor,
         backgroundColor: fillColor,
@@ -944,21 +973,19 @@ function renderModalChart(stock) {
           mode: 'index',
           intersect: false,
           callbacks: {
-            label: (ctx) => ` Price: ${ctx.parsed.y.toFixed(1)}p`
+            label: (ctx) => ` Price: ${stock.currency === 'GBp' ? ctx.parsed.y.toFixed(1) + 'p' : curSymbol + ctx.parsed.y.toFixed(2)}`
           }
         }
       },
       scales: {
-        x: {
-          display: false
-        },
+        x: { display: false },
         y: {
           grid: {
             color: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'
           },
           ticks: {
             color: isDark ? '#94a3b8' : '#64748b',
-            callback: (v) => `${v}p`
+            callback: (v) => stock.currency === 'GBp' ? `${v}p` : `${curSymbol}${v}`
           }
         }
       }
@@ -995,7 +1022,6 @@ function populateCalculatorDropdown() {
   const currentVal = select.value;
   select.innerHTML = '';
 
-  // Use stocks from dividend calendar or all stocks with yield
   const candidates = state.filteredDividends.length > 0 ? state.filteredDividends : state.filteredStocks.filter(s => s.dividend_yield_pct > 0);
 
   candidates.forEach(c => {
@@ -1019,16 +1045,20 @@ function recalculateDividend() {
 
   if (!stock || investment <= 0) return;
 
-  const priceGbp = stock.price_gbp || (stock.price_pence / 100);
-  const shares = Math.floor(investment / priceGbp);
-  const divPerShareGbp = (stock.expected_dividend_pence || 0) / 100;
-  const upcomingCash = shares * divPerShareGbp;
+  const curSym = stock.currency_symbol || (stock.currency === 'GBp' ? '£' : (stock.currency === 'INR' ? '₹' : '$'));
+  document.getElementById('calcCurrencyPrefix').textContent = curSym;
+  document.getElementById('calcCurrencyHint').textContent = `in ${stock.currency || 'local'}`;
+
+  const priceMajor = stock.price_gbp || (stock.currency === 'GBp' ? stock.price_pence / 100 : stock.price_pence);
+  const shares = Math.floor(investment / priceMajor);
+  const divPerShare = stock.currency === 'GBp' ? (stock.expected_dividend_pence || 0) / 100 : (stock.expected_dividend_pence || 0);
+  const upcomingCash = shares * divPerShare;
   const annualIncome = investment * ((stock.dividend_yield_pct || 0) / 100);
 
   document.getElementById('calcSharesCount').textContent = `${formatNumber(shares)} shares`;
   document.getElementById('calcExDivCutoff').textContent = formatDatePretty(stock.ex_dividend_date || 'Upcoming');
-  document.getElementById('calcUpcomingPayout').textContent = `£${upcomingCash.toFixed(2)}`;
-  document.getElementById('calcAnnualIncome').textContent = `£${annualIncome.toFixed(2)} / yr`;
+  document.getElementById('calcUpcomingPayout').textContent = `${curSym}${upcomingCash.toFixed(2)}`;
+  document.getElementById('calcAnnualIncome').textContent = `${curSym}${annualIncome.toFixed(2)} / yr`;
 }
 
 // ================= LIVE REFRESH & CSV EXPORT =================
@@ -1058,7 +1088,27 @@ function exportCurrentView() {
   window.location.href = `/api/export?${params.toString()}`;
 }
 
-// ================= UTILITIES =================
+// ================= FORMATTING UTILITIES =================
+function formatPrice(stock) {
+  const cur = stock.currency || 'GBp';
+  if (cur === 'GBp') {
+    return {
+      main: `${stock.price_pence.toFixed(1)}p`,
+      sub: `£${stock.price_gbp.toFixed(2)}`
+    };
+  } else if (cur === 'INR') {
+    return {
+      main: `₹${stock.price_pence.toLocaleString('en-IN', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}`,
+      sub: `INR ₹${stock.price_pence.toFixed(1)}`
+    };
+  } else {
+    return {
+      main: `$${stock.price_pence.toFixed(2)}`,
+      sub: `USD $${stock.price_pence.toFixed(2)}`
+    };
+  }
+}
+
 function formatNumber(num) {
   if (!num && num !== 0) return '0';
   if (num >= 1e9) return (num / 1e9).toFixed(2) + 'B';
@@ -1067,12 +1117,17 @@ function formatNumber(num) {
   return num.toLocaleString();
 }
 
-function formatTurnover(num) {
-  if (!num) return '£0';
-  if (num >= 1e9) return '£' + (num / 1e9).toFixed(2) + 'B';
-  if (num >= 1e6) return '£' + (num / 1e6).toFixed(1) + 'M';
-  if (num >= 1e3) return '£' + (num / 1e3).toFixed(0) + 'k';
-  return '£' + Math.round(num).toLocaleString();
+function formatCurrencyTurnover(val, currency) {
+  const sym = currency === 'INR' ? '₹' : (currency === 'USD' ? '$' : '£');
+  if (!val) return `${sym}0`;
+  if (currency === 'INR') {
+    if (val >= 1e7) return `${sym}${(val / 1e7).toFixed(1)} Cr`;
+    if (val >= 1e5) return `${sym}${(val / 1e5).toFixed(1)} L`;
+  }
+  if (val >= 1e9) return `${sym}${(val / 1e9).toFixed(2)}B`;
+  if (val >= 1e6) return `${sym}${(val / 1e6).toFixed(1)}M`;
+  if (val >= 1e3) return `${sym}${(val / 1e3).toFixed(0)}k`;
+  return `${sym}${Math.round(val).toLocaleString()}`;
 }
 
 function formatDatePretty(iso) {

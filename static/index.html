@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UK Stock Picker | FTSE 100 & FTSE 250 Intelligence Hub</title>
-  <meta name="description" content="Advanced UK Stock Picker for FTSE 100 and FTSE 250 shares. Filter trending stocks, 1-day/1-week/1-month gainers and losers, trading volume, and upcoming dividend calendars with ex-dividend cutoff dates.">
+  <title>Global & UK Stock Picker | FTSE 100/250/350, NASDAQ, Dow Jones & NIFTY 50 Intelligence Hub</title>
+  <meta name="description" content="Advanced multi-market stock screening platform covering FTSE 100, FTSE 250, FTSE 350, NASDAQ 100, Dow Jones 30, and NIFTY 50. Filter trending momentum stocks, customizable 1D/1W/1M gainers and losers, trading volume turnover, and upcoming ex-dividend calendars.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,13 +61,13 @@
           Market Notice
         </span>
         <span class="text-[11px] sm:text-xs text-slate-700 dark:text-slate-300">
-          <strong>Educational & Research Simulator:</strong> Real-time LSE data from London Stock Exchange. Not financial advice. Always verify corporate actions with official broker filings.
+          <strong>Educational & Research Simulator:</strong> Real-time feeds across London Stock Exchange (LSE), US Wall Street (NASDAQ/NYSE), and India (NSE). Not financial advice.
         </span>
       </div>
       <div class="flex items-center space-x-4 text-[11px]">
         <span class="flex items-center space-x-1 text-slate-500 dark:text-slate-400">
           <span class="w-2 h-2 rounded-full bg-emerald-500 live-indicator inline-block"></span>
-          <span id="marketStatusText">LSE Feed Active</span>
+          <span id="marketStatusText">Multi-Exchange Feed Active</span>
         </span>
         <span class="text-slate-400">|</span>
         <span class="text-slate-500 dark:text-slate-400 font-mono" id="serverTimeBadge">Oct 2026</span>
@@ -78,49 +78,74 @@
   <!-- ================= MAIN HEADER & NAVIGATION ================= -->
   <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-30 border-b border-slate-200 dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
+      <div class="flex items-center justify-between h-16 gap-3">
         
         <!-- Logo & Title -->
-        <div class="flex items-center space-x-3">
+        <div class="flex items-center space-x-3 flex-shrink-0">
           <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-400 flex items-center justify-center shadow-lg shadow-brand-500/20 text-white font-black text-xl">
             <i data-lucide="trending-up" class="w-6 h-6"></i>
           </div>
           <div>
             <div class="flex items-center space-x-2">
-              <h1 class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">UK Stock Picker</h1>
+              <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">UK & Global Stock Picker</h1>
               <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-brand-100 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
-                PRO 2026
+                MULTI-MARKET
               </span>
             </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">FTSE 100 & FTSE 250 Performance, Momentum & Dividend Screener</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden md:block">FTSE 100/250/350 • NASDAQ 100 • Dow Jones 30 • NIFTY 50</p>
           </div>
         </div>
 
-        <!-- Market Selector (Requirement 6: FTSE 100 vs FTSE 250) -->
-        <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
-          <button id="btnMarketFtse100" onclick="setMarket('ftse100')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 shadow-sm bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700">
-            <span>🇬🇧 FTSE 100</span>
-            <span class="px-1.5 py-0.2 rounded text-[10px] bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 font-mono">100</span>
-          </button>
-          <button id="btnMarketFtse250" onclick="setMarket('ftse250')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center space-x-1.5">
-            <span>🏢 FTSE 250</span>
-            <span class="px-1.5 py-0.2 rounded text-[10px] bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono">250</span>
-          </button>
-          <button id="btnMarketAll" onclick="setMarket('all')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center space-x-1.5 hidden md:flex">
-            <span>🌐 All UK 350</span>
-            <span class="px-1.5 py-0.2 rounded text-[10px] bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono">350</span>
-          </button>
+        <!-- Multi-Market Selector (Dropdown for mobile, Pills for desktop) -->
+        <div class="flex items-center">
+          <!-- Mobile Market Dropdown -->
+          <div class="md:hidden">
+            <select id="mobileMarketSelect" onchange="setMarket(this.value)" class="py-1.5 px-2.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white">
+              <option value="ftse100">🇬🇧 FTSE 100</option>
+              <option value="ftse250">🏢 FTSE 250</option>
+              <option value="ftse350">🇬🇧 FTSE 350</option>
+              <option value="nasdaq">🇺🇸 NASDAQ 100</option>
+              <option value="dow">🇺🇸 Dow Jones 30</option>
+              <option value="nifty">🇮🇳 NIFTY 50</option>
+              <option value="all">🌐 All Global</option>
+            </select>
+          </div>
+
+          <!-- Desktop Market Pill Buttons -->
+          <div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold overflow-x-auto max-w-2xl">
+            <button id="btnMarketFtse100" onclick="setMarket('ftse100')" class="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1 shadow-sm bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700 whitespace-nowrap">
+              <span>🇬🇧 FTSE 100</span>
+            </button>
+            <button id="btnMarketFtse250" onclick="setMarket('ftse250')" class="px-2.5 py-1.5 rounded-lg text-xs transition-all flex items-center space-x-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white whitespace-nowrap">
+              <span>🏢 FTSE 250</span>
+            </button>
+            <button id="btnMarketFtse350" onclick="setMarket('ftse350')" class="px-2.5 py-1.5 rounded-lg text-xs transition-all flex items-center space-x-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white whitespace-nowrap">
+              <span>🇬🇧 FTSE 350</span>
+            </button>
+            <button id="btnMarketNasdaq" onclick="setMarket('nasdaq')" class="px-2.5 py-1.5 rounded-lg text-xs transition-all flex items-center space-x-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white whitespace-nowrap">
+              <span>🇺🇸 NASDAQ</span>
+            </button>
+            <button id="btnMarketDow" onclick="setMarket('dow')" class="px-2.5 py-1.5 rounded-lg text-xs transition-all flex items-center space-x-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white whitespace-nowrap">
+              <span>🇺🇸 DOW</span>
+            </button>
+            <button id="btnMarketNifty" onclick="setMarket('nifty')" class="px-2.5 py-1.5 rounded-lg text-xs transition-all flex items-center space-x-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white whitespace-nowrap">
+              <span>🇮🇳 NIFTY 50</span>
+            </button>
+            <button id="btnMarketAll" onclick="setMarket('all')" class="px-2.5 py-1.5 rounded-lg text-xs transition-all flex items-center space-x-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white whitespace-nowrap">
+              <span>🌐 Global</span>
+            </button>
+          </div>
         </div>
 
         <!-- Actions: Theme, Refresh, Export -->
-        <div class="flex items-center space-x-2">
+        <div class="flex items-center space-x-1.5 flex-shrink-0">
           <button onclick="refreshData()" id="refreshBtn" title="Refresh Live Market Data" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition flex items-center space-x-1 text-xs font-semibold">
             <i data-lucide="refresh-cw" id="refreshIcon" class="w-4 h-4"></i>
-            <span class="hidden lg:inline">Refresh</span>
+            <span class="hidden xl:inline">Refresh</span>
           </button>
           <button onclick="exportCurrentView()" title="Export Filtered List to CSV" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition flex items-center space-x-1 text-xs font-semibold">
             <i data-lucide="download" class="w-4 h-4"></i>
-            <span class="hidden lg:inline">Export CSV</span>
+            <span class="hidden xl:inline">CSV</span>
           </button>
           <button onclick="toggleDarkMode()" title="Toggle Dark/Light Mode" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition">
             <i data-lucide="moon" id="themeIcon" class="w-4 h-4"></i>
@@ -180,51 +205,57 @@
   <!-- ================= MAIN APPLICATION BODY ================= -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-    <!-- ================= 5 MAIN FEATURE NAVIGATION TABS ================= -->
+    <!-- ================= 7 MAIN FEATURE NAVIGATION TABS ================= -->
     <div class="bg-white dark:bg-slate-900 rounded-2xl p-2 shadow-sm border border-slate-200 dark:border-slate-800 mb-6">
-      <nav class="grid grid-cols-2 md:grid-cols-6 gap-2" aria-label="Tabs">
+      <nav class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-2" aria-label="Tabs">
         
         <!-- Tab 1: Trending Stocks -->
-        <button onclick="setTab('trending')" id="tabTrending" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20">
+        <button onclick="setTab('trending')" id="tabTrending" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20">
           <i data-lucide="flame" class="w-4 h-4 text-amber-300"></i>
-          <span>1. Trending Stocks</span>
+          <span>1. Trending</span>
         </button>
 
         <!-- Tab 2: Gainers -->
-        <button onclick="setTab('gainers')" id="tabGainers" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <button onclick="setTab('gainers')" id="tabGainers" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           <i data-lucide="trending-up" class="w-4 h-4 text-emerald-500"></i>
-          <span>2. Value Gainers</span>
+          <span>2. Gainers</span>
         </button>
 
         <!-- Tab 3: Decliners -->
-        <button onclick="setTab('losers')" id="tabLosers" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <button onclick="setTab('losers')" id="tabLosers" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           <i data-lucide="trending-down" class="w-4 h-4 text-rose-500"></i>
-          <span>3. Value Decliners</span>
+          <span>3. Decliners</span>
         </button>
 
         <!-- Tab 4: Highest Volume -->
-        <button onclick="setTab('volume')" id="tabVolume" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <button onclick="setTab('volume')" id="tabVolume" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           <i data-lucide="bar-chart-2" class="w-4 h-4 text-sky-500"></i>
-          <span>4. Highest Volume</span>
+          <span>4. Volume</span>
         </button>
 
         <!-- Tab 5: Upcoming Dividends -->
-        <button onclick="setTab('dividends')" id="tabDividends" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <button onclick="setTab('dividends')" id="tabDividends" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           <i data-lucide="calendar" class="w-4 h-4 text-indigo-500"></i>
-          <span>5. Ex-Div Calendar</span>
+          <span>5. Dividends</span>
         </button>
 
-        <!-- Tab 6: Watchlist -->
-        <button onclick="setTab('watchlist')" id="tabWatchlist" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <!-- Tab 6: Guide & Methodology (USER REQUEST) -->
+        <button onclick="setTab('guide')" id="tabGuide" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-all border border-purple-200 dark:border-purple-800">
+          <i data-lucide="book-open" class="w-4 h-4 text-purple-600 dark:text-purple-400"></i>
+          <span>6. 📖 Tab Guide</span>
+        </button>
+
+        <!-- Tab 7: Watchlist -->
+        <button onclick="setTab('watchlist')" id="tabWatchlist" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           <i data-lucide="star" class="w-4 h-4 text-amber-400"></i>
-          <span>⭐ My Watchlist (<span id="watchlistCount">0</span>)</span>
+          <span>Watchlist (<span id="watchlistCount">0</span>)</span>
         </button>
 
       </nav>
     </div>
 
     <!-- ================= DYNAMIC CONTROLS & THRESHOLD TOOLBAR ================= -->
-    <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-800 mb-6">
+    <div id="controlsCard" class="bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-800 mb-6">
       
       <!-- Sub-headline & Description -->
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200/70 dark:border-slate-800/70">
@@ -251,19 +282,17 @@
           <!-- Sector Selector -->
           <select id="sectorSelect" onchange="applyFilters()" class="py-1.5 px-3 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-700 dark:text-slate-300">
             <option value="all">All Sectors</option>
-            <option value="Financial Services">Financial Services</option>
-            <option value="Banks">Banks</option>
-            <option value="Insurance">Insurance</option>
+            <option value="Technology">Technology & AI</option>
+            <option value="Financial Services">Financial Services & Banking</option>
+            <option value="Health Care">Health Care & Pharmaceuticals</option>
             <option value="Energy">Energy & Oil/Gas</option>
-            <option value="Health Care">Health Care & Pharma</option>
             <option value="Consumer Staples">Consumer Staples</option>
             <option value="Consumer Discretionary">Consumer Discretionary</option>
-            <option value="Industrial Goods & Services">Industrials</option>
-            <option value="Technology">Technology</option>
-            <option value="Utilities">Utilities</option>
-            <option value="Basic Resources">Mining & Resources</option>
-            <option value="Real Estate">Real Estate & REITs</option>
-            <option value="Investment Trusts">Investment Trusts</option>
+            <option value="Industrials">Industrials & Defense</option>
+            <option value="Telecommunications">Telecommunications</option>
+            <option value="Basic Materials">Mining & Materials</option>
+            <option value="Utilities">Utilities & Power</option>
+            <option value="Real Estate">Real Estate</option>
           </select>
 
           <!-- View Mode (Cards vs Table) -->
@@ -350,13 +379,13 @@
             <span class="text-xs font-bold text-sky-600 dark:text-sky-400">Sort by:</span>
             <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-xl border border-slate-200 dark:border-slate-700">
               <button onclick="setVolumeMetric('volume')" id="btnVolShares" class="px-3 py-1 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-900 text-sky-600 dark:text-sky-400 shadow-sm border border-slate-200 dark:border-slate-700">
-                Shares Traded
+                Shares Volume
               </button>
               <button onclick="setVolumeMetric('turnover')" id="btnVolTurnover" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
-                Turnover (£ Value)
+                Cash Turnover
               </button>
               <button onclick="setVolumeMetric('rvol')" id="btnVolRvol" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
-                Relative Volume (RVOL)
+                Relative Vol (RVOL)
               </button>
             </div>
           </div>
@@ -377,10 +406,10 @@
               <span class="text-xs font-bold text-amber-600 dark:text-amber-400">Min Yield:</span>
               <select id="divMinYieldSelect" onchange="applyFilters()" class="py-1 px-2.5 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
                 <option value="0">All Yields</option>
+                <option value="2">Yield > 2.0%</option>
                 <option value="3">Yield > 3.0%</option>
                 <option value="4">Yield > 4.0%</option>
                 <option value="5">Yield > 5.0% (High)</option>
-                <option value="6">Yield > 6.0% (Super)</option>
               </select>
             </div>
 
@@ -403,12 +432,269 @@
           <i data-lucide="info" class="w-5 h-5"></i>
         </div>
         <div class="text-xs">
-          <h3 class="font-bold text-indigo-900 dark:text-indigo-200 text-sm">Understanding Ex-Dividend Cutoff Dates for UK Shares</h3>
+          <h3 class="font-bold text-indigo-900 dark:text-indigo-200 text-sm">Understanding Ex-Dividend Cutoff Dates for UK & Global Shares</h3>
           <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">
             The <strong>Ex-Dividend Date</strong> is the critical date by which you must own the share. You <strong>MUST buy shares on or before the last trading day prior to the ex-dividend date</strong> to qualify for the dividend payout. If you purchase on or after the ex-dividend date, the seller keeps the dividend!
           </p>
         </div>
       </div>
+    </div>
+
+    <!-- ================= DEDICATED GUIDE & METHODOLOGY TAB VIEW (USER REQUEST) ================= -->
+    <div id="guideView" class="hidden space-y-6">
+      
+      <!-- Guide Hero Banner -->
+      <div class="bg-gradient-to-r from-purple-900 via-indigo-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-800/40">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold bg-purple-500/30 text-purple-200 border border-purple-400/30 uppercase tracking-widest mb-3">
+              📖 Knowledge Base & Strategy Masterclass
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Stock Picker Tabs & Methodology Guide</h2>
+            <p class="text-sm text-purple-200/90 max-w-3xl mt-2 leading-relaxed">
+              A comprehensive breakdown of how each screening tab operates, how algorithms rank market movers, what every metric means, and how to use them across the UK (FTSE), US (NASDAQ / Dow Jones), and Indian (NIFTY) markets.
+            </p>
+          </div>
+          <div class="hidden lg:flex items-center justify-center w-24 h-24 rounded-2xl bg-white/10 backdrop-blur border border-white/20 text-purple-300">
+            <i data-lucide="compass" class="w-12 h-12"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Explanations Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- 1. Trending Stocks Card -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="p-2.5 rounded-2xl bg-amber-500/10 text-amber-500">
+                <i data-lucide="flame" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Tab 1</span>
+                <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Trending Stocks</h3>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              <strong>Core Objective:</strong> Spot early-stage breakouts, aggressive momentum surges, and institutional accumulation before the wider market catches on.
+            </p>
+            <div class="space-y-3 text-xs">
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                <strong class="text-slate-900 dark:text-white block mb-1">🧠 Multi-Factor Trending Algorithm (Score 0 - 100):</strong>
+                <ul class="space-y-1 text-slate-600 dark:text-slate-300 list-disc list-inside">
+                  <li><strong>Relative Volume Surge (up to 35 pts):</strong> Volume $> 1.5\times$ to $3.0\times$ normal 10-day averages signals heavyweight institutional buyers ("Smart Money").</li>
+                  <li><strong>Price Velocity (up to 35 pts):</strong> Aggressive upward momentum over 1-day and 1-week periods.</li>
+                  <li><strong>52-Week High Proximity (up to 15 pts):</strong> Trading within 3% of 52-week highs indicates breakout strength with zero overhead resistance.</li>
+                  <li><strong>Moving Average Alignment (up to 15 pts):</strong> Bullish trend confirmation above both 50 DMA and 200 DMA.</li>
+                </ul>
+              </div>
+
+              <div class="p-3 rounded-xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-800/40">
+                <strong class="text-amber-900 dark:text-amber-200 block mb-1">🏷️ Badge Legend:</strong>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200">🔥 Vol Surge 2.5x</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200">🚀 52W High Breakout</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200">⚡ +6.4% 1W Run</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-sky-200">✨ Bullish Trend</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+            💡 <em>Best for:</em> Growth investors, momentum swing traders, and breakout runners.
+          </div>
+        </div>
+
+        <!-- 2. Value Gainers Card -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="p-2.5 rounded-2xl bg-emerald-500/10 text-emerald-500">
+                <i data-lucide="trending-up" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Tab 2</span>
+                <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Value Gainers (% Increase)</h3>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              <strong>Core Objective:</strong> Screen top performing shares that have gained value over your choice of 1 Day, 1 Week, or 1 Month, with full user customization.
+            </p>
+            <div class="space-y-3 text-xs">
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                <strong class="text-slate-900 dark:text-white block mb-1">⏱️ Timeframe Analysis:</strong>
+                <ul class="space-y-1 text-slate-600 dark:text-slate-300 list-disc list-inside">
+                  <li><strong>1 Day (1D):</strong> Pinpoints immediate market catalysts, earnings surprises, or broker upgrades today.</li>
+                  <li><strong>1 Week (1W):</strong> 5-day cumulative return. Filters out 1-day noise to identify weekly leadership.</li>
+                  <li><strong>1 Month (1M):</strong> ~21-day intermediate swing. Reveals sustainable macro and sector rotation trends.</li>
+                </ul>
+              </div>
+
+              <div class="p-3 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/40">
+                <strong class="text-emerald-900 dark:text-emerald-200 block mb-1">🎛️ Customizable % Gain Threshold:</strong>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Use the quick preset pills (`>0%`, `+2%`, `+5%`, `+10%`) or drag the interactive slider and type an exact custom percentage (e.g. `+3.5%` or `+7.2%`) to filter only shares matching your target criteria.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+            💡 <em>Pro Tip:</em> Look for shares showing consistent positive gains across both 1W and 1M with high trading volume.
+          </div>
+        </div>
+
+        <!-- 3. Value Decliners Card -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="p-2.5 rounded-2xl bg-rose-500/10 text-rose-500">
+                <i data-lucide="trending-down" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">Tab 3</span>
+                <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Value Decliners (Dip Finder)</h3>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              <strong>Core Objective:</strong> Identify oversold pullbacks, market corrections, and temporary discounts for contrarian value investing.
+            </p>
+            <div class="space-y-3 text-xs">
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                <strong class="text-slate-900 dark:text-white block mb-1">📉 Contrarian Value Investing:</strong>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Market sell-offs frequently punish high-quality companies indiscriminately due to broad index volatility. The Dip Finder highlights stocks experiencing short-term pullbacks ($\le -2\%$, $\le -5\%$, or custom e.g. $-4.0\%$).
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-200/60 dark:border-rose-800/40">
+                <strong class="text-rose-900 dark:text-rose-200 block mb-1">🛡️ Quality & Margin of Safety Checks:</strong>
+                <ul class="space-y-1 text-slate-600 dark:text-slate-300 list-disc list-inside">
+                  <li><strong>Distance to 52-Week Low:</strong> Stocks trading within 5% of their 52-week low often find strong institutional support.</li>
+                  <li><strong>Valuation Multiples:</strong> Check the P/E ratio and dividend yield — a falling price pushes dividend yield higher, creating a cash-flow buffer.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+            💡 <em>Quote:</em> "Whether we're talking about socks or stocks, I like buying quality merchandise when it is marked down." — Warren Buffett
+          </div>
+        </div>
+
+        <!-- 4. Highest Volume & Liquidity Card -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="p-2.5 rounded-2xl bg-sky-500/10 text-sky-500">
+                <i data-lucide="bar-chart-2" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400">Tab 4</span>
+                <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Highest Trading Volume & Liquidity</h3>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              <strong>Core Objective:</strong> Track market liquidity and follow where the largest institutional capital flows are taking place.
+            </p>
+            <div class="space-y-3 text-xs">
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                <strong class="text-slate-900 dark:text-white block mb-1">💰 The 3 Volume Dimensions:</strong>
+                <ul class="space-y-1.5 text-slate-600 dark:text-slate-300">
+                  <li><strong>1. Shares Traded (Volume):</strong> Raw count of shares exchanged over 1D, 1W, or 1M.</li>
+                  <li><strong>2. Cash Turnover (£ / $ / ₹):</strong> Calculated as $\text{Volume} \times \text{Price}$. This is the <em>true institutional footprint</em>. A 5M share trade in £36 Shell is £180M of capital, far more impactful than 10M shares in a 50p penny stock.</li>
+                  <li><strong>3. Relative Volume (RVOL):</strong> The ratio of current volume to the 10-day average. $\text{RVOL} \ge 2.0\times$ means twice the normal volume is flooding in.</li>
+                </ul>
+              </div>
+
+              <div class="p-3 rounded-xl bg-sky-50/60 dark:bg-sky-950/30 border border-sky-200/60 dark:border-sky-800/40">
+                <strong class="text-sky-900 dark:text-sky-200 block mb-1">🔍 Why Volume Precedes Price:</strong>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Heavy volume on up days indicates institutional accumulation; heavy volume on down days flags institutional distribution.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+            💡 <em>Best for:</em> Liquidity screening, identifying high-conviction institutional block orders, and avoid illiquid traps.
+          </div>
+        </div>
+
+        <!-- 5. Upcoming Dividends Card -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="p-2.5 rounded-2xl bg-indigo-500/10 text-indigo-500">
+                <i data-lucide="calendar" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Tab 5</span>
+                <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Upcoming Dividends & Ex-Div Cutoffs</h3>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              <strong>Core Objective:</strong> Track scheduled corporate dividend payouts, calculate cash income, and never miss the mandatory purchase deadline.
+            </p>
+            <div class="space-y-3 text-xs">
+              <div class="p-3 rounded-xl bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-200/60 dark:border-indigo-800/40">
+                <strong class="text-indigo-900 dark:text-indigo-200 block mb-1">⚠️ The Golden Rule of Ex-Dividend Dates:</strong>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                  To receive a dividend, you <strong>MUST own the shares BEFORE the Ex-Dividend Date</strong> (by prior market close). If you buy on or after the Ex-Dividend date, the shares trade "ex" (without) dividend, and the previous shareholder receives the payout.
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                <strong class="text-slate-900 dark:text-white block mb-1">📅 Dividend Timeline Steps:</strong>
+                <div class="grid grid-cols-4 gap-1 text-center text-[10px] font-mono mt-1">
+                  <div class="p-1 rounded bg-slate-200 dark:bg-slate-700">1. Declaration</div>
+                  <div class="p-1 rounded bg-indigo-200 dark:bg-indigo-900 text-indigo-900 dark:text-indigo-200 font-bold">2. Ex-Div Cutoff</div>
+                  <div class="p-1 rounded bg-slate-200 dark:bg-slate-700">3. Record Date</div>
+                  <div class="p-1 rounded bg-emerald-200 dark:bg-emerald-900 text-emerald-900 dark:text-emerald-200 font-bold">4. Pay Date (£)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+            💡 <em>Tool:</em> Click <strong>"Calculate Payout"</strong> on any row or use the <strong>Income Calculator</strong> to simulate cash payouts on your portfolio capital.
+          </div>
+        </div>
+
+        <!-- 6. Markets & Indices Overview Card -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="p-2.5 rounded-2xl bg-purple-500/10 text-purple-500">
+                <i data-lucide="globe" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">Global Coverage</span>
+                <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Supported Markets & Indices</h3>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              Switch seamlessly between major exchanges across the United Kingdom, United States, and India.
+            </p>
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                <strong class="text-slate-900 dark:text-white">🇬🇧 FTSE 100, FTSE 250 & FTSE 350 (UK - LSE):</strong>
+                <p class="text-slate-500 text-[11px] mt-0.5">Top 100 multinationals (Shell, AstraZeneca, HSBC, Unilever) and 250 domestic mid-cap growth stalwarts.</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                <strong class="text-slate-900 dark:text-white">🇺🇸 NASDAQ 100 & Dow Jones 30 (US - Wall Street):</strong>
+                <p class="text-slate-500 text-[11px] mt-0.5">Leading global tech giants (Apple, Microsoft, NVIDIA, Amazon, Alphabet, Meta, Broadcom) and historic mega-cap stalwarts (JPMorgan, Caterpillar, UnitedHealth, Boeing).</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                <strong class="text-slate-900 dark:text-white">🇮🇳 NIFTY 50 (India - NSE):</strong>
+                <p class="text-slate-500 text-[11px] mt-0.5">Top 50 enterprises powering India's economy (Reliance, TCS, HDFC Bank, Infosys, Bharti Airtel, Larsen & Toubro, Tata Motors, ITC).</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+            💡 <em>Currency Display:</em> Automatically adapts to <strong>Pence / Pounds (£)</strong>, <strong>US Dollars ($)</strong>, or <strong>Indian Rupees (₹)</strong> based on your selected market.
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
     <!-- ================= MAIN CONTENT DATA CONTAINER ================= -->
@@ -440,7 +726,7 @@
         </div>
         <h3 class="text-base font-bold text-slate-900 dark:text-white">No matching shares found</h3>
         <p class="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto mt-1">
-          Try relaxing your % threshold filters, selecting a different timeframe, or clearing your search query.
+          Try relaxing your % threshold filters, selecting a different market or timeframe, or clearing your search query.
         </p>
         <button onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-xl text-xs font-bold bg-brand-600 text-white hover:bg-brand-700 transition">
           Reset All Filters
@@ -496,7 +782,7 @@
       <!-- Interactive 30-Day Chart Canvas -->
       <div class="my-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Historical 30-Day Closing Prices (p)</span>
+          <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Historical 30-Day Closing Prices</span>
           <span class="text-[11px] font-mono text-slate-500" id="mChartTrend">Trend</span>
         </div>
         <div class="h-48 w-full">
@@ -507,9 +793,9 @@
       <!-- 52-Week Range Bar -->
       <div class="my-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
         <div class="flex items-center justify-between text-xs font-semibold mb-1">
-          <span class="text-slate-500">52-Week Low: <strong class="font-mono text-slate-800 dark:text-white" id="m52Low">0p</strong></span>
+          <span class="text-slate-500">52-Week Low: <strong class="font-mono text-slate-800 dark:text-white" id="m52Low">0</strong></span>
           <span class="text-slate-700 dark:text-slate-300">52-Week Valuation Range</span>
-          <span class="text-slate-500">52-Week High: <strong class="font-mono text-slate-800 dark:text-white" id="m52High">0p</strong></span>
+          <span class="text-slate-500">52-Week High: <strong class="font-mono text-slate-800 dark:text-white" id="m52High">0</strong></span>
         </div>
         <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden">
           <div id="m52ProgressBar" class="bg-brand-500 h-2.5 rounded-full" style="width: 50%"></div>
@@ -520,7 +806,7 @@
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs mb-4">
         <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
           <span class="text-slate-500 block text-[10px]">Market Cap</span>
-          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mMarketCap">£0B</span>
+          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mMarketCap">N/A</span>
         </div>
         <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
           <span class="text-slate-500 block text-[10px]">P/E Ratio</span>
@@ -532,7 +818,7 @@
         </div>
         <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
           <span class="text-slate-500 block text-[10px]">50-Day Avg MA</span>
-          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mMA50">0p</span>
+          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mMA50">0</span>
         </div>
       </div>
 
@@ -552,7 +838,7 @@
           </div>
           <div>
             <span class="text-slate-500 text-[10px] block">Expected Div Value</span>
-            <span class="font-bold font-mono text-slate-900 dark:text-white" id="mDivAmount">0p / share</span>
+            <span class="font-bold font-mono text-slate-900 dark:text-white" id="mDivAmount">0 / share</span>
           </div>
           <div>
             <span class="text-slate-500 text-[10px] block">Payment Date</span>
@@ -585,7 +871,7 @@
             <i data-lucide="calculator" class="w-5 h-5"></i>
           </div>
           <div>
-            <h3 class="text-base font-extrabold text-slate-900 dark:text-white">UK Dividend Income Calculator</h3>
+            <h3 class="text-base font-extrabold text-slate-900 dark:text-white">Dividend Income Calculator</h3>
             <p class="text-xs text-slate-500">Estimate your cash dividend payout before the ex-div cutoff</p>
           </div>
         </div>
@@ -597,20 +883,20 @@
       <div class="py-4 space-y-4 text-xs">
         <!-- Stock Selector -->
         <div>
-          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Select UK Dividend Share:</label>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Select Dividend Share:</label>
           <select id="calcStockSelect" onchange="recalculateDividend()" class="w-full py-2 px-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-semibold">
             <!-- Populated via JS -->
           </select>
         </div>
 
-        <!-- Investment Amount (£) -->
+        <!-- Investment Amount -->
         <div>
           <div class="flex items-center justify-between mb-1">
-            <label class="font-bold text-slate-700 dark:text-slate-300">Investment Capital (£ GBP):</label>
-            <span class="text-slate-400 font-mono">e.g. £1,000 - £50,000</span>
+            <label class="font-bold text-slate-700 dark:text-slate-300">Investment Capital (in local currency):</label>
+            <span class="text-slate-400 font-mono" id="calcCurrencyHint">e.g. 5,000</span>
           </div>
           <div class="relative">
-            <span class="absolute left-3 top-2 text-slate-400 font-bold">£</span>
+            <span class="absolute left-3 top-2 text-slate-400 font-bold" id="calcCurrencyPrefix">£</span>
             <input type="number" id="calcInvestmentInput" value="5000" min="100" step="100" oninput="recalculateDividend()" class="w-full pl-7 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono font-bold text-slate-900 dark:text-white">
           </div>
         </div>

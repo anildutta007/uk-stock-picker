@@ -1,0 +1,242 @@
+[
+  {
+    "ticker": "AAPL",
+    "symbol": "AAPL",
+    "name": "Apple Inc.",
+    "sector": "Technology",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "AMZN",
+    "symbol": "AMZN",
+    "name": "Amazon.com Inc.",
+    "sector": "Consumer Discretionary",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "AXP",
+    "symbol": "AXP",
+    "name": "American Express Co.",
+    "sector": "Financial Services",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "BA",
+    "symbol": "BA",
+    "name": "Boeing Co.",
+    "sector": "Industrials",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "CAT",
+    "symbol": "CAT",
+    "name": "Caterpillar Inc.",
+    "sector": "Industrials",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "CRM",
+    "symbol": "CRM",
+    "name": "Salesforce Inc.",
+    "sector": "Technology",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "CSCO",
+    "symbol": "CSCO",
+    "name": "Cisco Systems Inc.",
+    "sector": "Technology",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "CVX",
+    "symbol": "CVX",
+    "name": "Chevron Corp.",
+    "sector": "Energy",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "DIS",
+    "symbol": "DIS",
+    "name": "Walt Disney Co.",
+    "sector": "Communication Services",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "DOW",
+    "symbol": "DOW",
+    "name": "Dow Inc.",
+    "sector": "Basic Materials",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "GS",
+    "symbol": "GS",
+    "name": "Goldman Sachs Group Inc.",
+    "sector": "Financial Services",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "HD",
+    "symbol": "HD",
+    "name": "Home Depot Inc.",
+    "sector": "Consumer Discretionary",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "HON",
+    "symbol": "HON",
+    "name": "Honeywell International Inc.",
+    "sector": "Industrials",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "IBM",
+    "symbol": "IBM",
+    "name": "International Business Machines Corp.",
+    "sector": "Technology",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "INTC",
+    "symbol": "INTC",
+    "name": "Intel Corp.",
+    "sector": "Technology",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "JNJ",
+    "symbol": "JNJ",
+    "name": "Johnson & Johnson",
+    "sector": "Health Care",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "JPM",
+    "symbol": "JPM",
+    "name": "JPMorgan Chase & Co.",
+    "sector": "Financial Services",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "KO",
+    "symbol": "KO",
+    "name": "Coca-Cola Co.",
+    "sector": "Consumer Staples",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MCD",
+    "symbol": "MCD",
+    "name": "McDonald's Corp.",
+    "sector": "Consumer Discretionary",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MMM",
+    "symbol": "MMM",
+    "name": "3M Co.",
+    "sector": "Industrials",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MRK",
+    "symbol": "MRK",
+    "name": "Merck & Co. Inc.",
+    "sector": "Health Care",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MSFT",
+    "symbol": "MSFT",
+    "name": "Microsoft Corp.",
+    "sector": "Technology",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "NKE",
+    "symbol": "NKE",
+    "name": "Nike Inc.",
+    "sector": "Consumer Discretionary",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "NVDA",
+    "symbol": "NVDA",
+    "name": "NVIDIA Corp.",
+    "sector": "Technology",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "PG",
+    "symbol": "PG",
+    "name": "Procter & Gamble Co.",
+    "sector": "Consumer Staples",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "SHW",
+    "symbol": "SHW",
+    "name": "Sherwin-Williams Co.",
+    "sector": "Basic Materials",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "TRV",
+    "symbol": "TRV",
+    "name": "Travelers Companies Inc.",
+    "sector": "Financial Services",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "UNH",
+    "symbol": "UNH",
+    "name": "UnitedHealth Group Inc.",
+    "sector": "Health Care",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "V",
+    "symbol": "V",
+    "name": "Visa Inc.",
+    "sector": "Financial Services",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  },
+  {
+    "ticker": "WMT",
+    "symbol": "WMT",
+    "name": "Walmart Inc.",
+    "sector": "Consumer Staples",
+    "market": "Dow Jones 30",
+    "currency": "USD"
+  }
+]

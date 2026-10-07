@@ -97,10 +97,32 @@ def background_refresh():
 
 # ================= DATA EXTRACTION LOGIC (CORE HANDLERS) =================
 
+def filter_by_market(items, market_filter):
+    mf = (market_filter or "all").lower()
+    if mf == "ftse100":
+        return [s for s in items if s.get("market") == "FTSE 100"]
+    elif mf == "ftse250":
+        return [s for s in items if s.get("market") == "FTSE 250"]
+    elif mf == "ftse350":
+        return [s for s in items if s.get("market") in ["FTSE 100", "FTSE 250"]]
+    elif mf == "nasdaq":
+        return [s for s in items if s.get("market") == "NASDAQ 100"]
+    elif mf == "dow":
+        return [s for s in items if s.get("market") == "Dow Jones 30"]
+    elif mf in ["nifty", "india"]:
+        return [s for s in items if "NIFTY" in s.get("market", "") or s.get("currency") == "INR"]
+    return items
+
+
 def get_status_payload():
     stocks = CACHE_DATA.get("stocks", [])
     f100_count = sum(1 for s in stocks if s.get("market") == "FTSE 100")
     f250_count = sum(1 for s in stocks if s.get("market") == "FTSE 250")
+    f350_count = sum(1 for s in stocks if s.get("market") in ["FTSE 100", "FTSE 250"])
+    nasdaq_count = sum(1 for s in stocks if s.get("market") == "NASDAQ 100")
+    dow_count = sum(1 for s in stocks if s.get("market") == "Dow Jones 30")
+    nifty_count = sum(1 for s in stocks if "NIFTY" in s.get("market", ""))
+
     return {
         "status": "online",
         "is_refreshing": IS_REFRESHING,
@@ -108,6 +130,10 @@ def get_status_payload():
         "total_stocks": len(stocks),
         "ftse100_count": f100_count,
         "ftse250_count": f250_count,
+        "ftse350_count": f350_count,
+        "nasdaq_count": nasdaq_count,
+        "dow_count": dow_count,
+        "nifty_count": nifty_count,
         "dividend_count": len(DIVIDEND_DATA.get("calendar", [])),
         "server_time": datetime.now().isoformat()
     }
@@ -116,12 +142,7 @@ def get_status_payload():
 def get_market_summary_payload(query):
     stocks = CACHE_DATA.get("stocks", [])
     market_filter = query.get("market", ["all"])[0].lower()
-
-    filtered = stocks
-    if market_filter == "ftse100":
-        filtered = [s for s in stocks if s.get("market") == "FTSE 100"]
-    elif market_filter == "ftse250":
-        filtered = [s for s in stocks if s.get("market") == "FTSE 250"]
+    filtered = filter_by_market(stocks, market_filter)
 
     if not filtered:
         return {}
@@ -184,10 +205,7 @@ def get_stocks_payload(query):
     stocks = CACHE_DATA.get("stocks", [])
 
     market = query.get("market", ["all"])[0].lower()
-    if market == "ftse100":
-        stocks = [s for s in stocks if s.get("market") == "FTSE 100"]
-    elif market == "ftse250":
-        stocks = [s for s in stocks if s.get("market") == "FTSE 250"]
+    stocks = filter_by_market(stocks, market)
 
     search = query.get("search", [""])[0].strip().lower()
     if search:
@@ -250,10 +268,7 @@ def get_dividends_payload(query):
     calendar = DIVIDEND_DATA.get("calendar", [])
 
     market = query.get("market", ["all"])[0].lower()
-    if market == "ftse100":
-        calendar = [d for d in calendar if d.get("market") == "FTSE 100"]
-    elif market == "ftse250":
-        calendar = [d for d in calendar if d.get("market") == "FTSE 250"]
+    calendar = filter_by_market(calendar, market)
 
     search = query.get("search", [""])[0].strip().lower()
     if search:
@@ -310,10 +325,7 @@ def get_export_csv_bytes(query):
     tab = query.get("tab", ["all"])[0].lower()
     period = query.get("period", ["1d"])[0].lower()
 
-    if market == "ftse100":
-        stocks = [s for s in stocks if s.get("market") == "FTSE 100"]
-    elif market == "ftse250":
-        stocks = [s for s in stocks if s.get("market") == "FTSE 250"]
+    stocks = filter_by_market(stocks, market)
 
     pct_key = f"change_{period}_pct"
     vol_key = f"volume_{period}"

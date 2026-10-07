@@ -1,0 +1,402 @@
+[
+  {
+    "ticker": "AAPL",
+    "symbol": "AAPL",
+    "name": "Apple Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MSFT",
+    "symbol": "MSFT",
+    "name": "Microsoft Corp.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "NVDA",
+    "symbol": "NVDA",
+    "name": "NVIDIA Corp.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "AMZN",
+    "symbol": "AMZN",
+    "name": "Amazon.com Inc.",
+    "sector": "Consumer Discretionary",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "GOOGL",
+    "symbol": "GOOGL",
+    "name": "Alphabet Inc. (Class A)",
+    "sector": "Communication Services",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "GOOG",
+    "symbol": "GOOG",
+    "name": "Alphabet Inc. (Class C)",
+    "sector": "Communication Services",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "META",
+    "symbol": "META",
+    "name": "Meta Platforms Inc.",
+    "sector": "Communication Services",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "TSLA",
+    "symbol": "TSLA",
+    "name": "Tesla Inc.",
+    "sector": "Consumer Discretionary",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "AVGO",
+    "symbol": "AVGO",
+    "name": "Broadcom Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "COST",
+    "symbol": "COST",
+    "name": "Costco Wholesale Corp.",
+    "sector": "Consumer Staples",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "PEP",
+    "symbol": "PEP",
+    "name": "PepsiCo Inc.",
+    "sector": "Consumer Staples",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "NFLX",
+    "symbol": "NFLX",
+    "name": "Netflix Inc.",
+    "sector": "Communication Services",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "AMD",
+    "symbol": "AMD",
+    "name": "Advanced Micro Devices Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "ADBE",
+    "symbol": "ADBE",
+    "name": "Adobe Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "QCOM",
+    "symbol": "QCOM",
+    "name": "Qualcomm Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "TMUS",
+    "symbol": "TMUS",
+    "name": "T-Mobile US Inc.",
+    "sector": "Communication Services",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "INTC",
+    "symbol": "INTC",
+    "name": "Intel Corp.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "CSCO",
+    "symbol": "CSCO",
+    "name": "Cisco Systems Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "AMAT",
+    "symbol": "AMAT",
+    "name": "Applied Materials Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "INTU",
+    "symbol": "INTU",
+    "name": "Intuit Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "TXN",
+    "symbol": "TXN",
+    "name": "Texas Instruments Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "ISRG",
+    "symbol": "ISRG",
+    "name": "Intuitive Surgical Inc.",
+    "sector": "Health Care",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "CMCSA",
+    "symbol": "CMCSA",
+    "name": "Comcast Corp.",
+    "sector": "Communication Services",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "AMGN",
+    "symbol": "AMGN",
+    "name": "Amgen Inc.",
+    "sector": "Health Care",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "BKNG",
+    "symbol": "BKNG",
+    "name": "Booking Holdings Inc.",
+    "sector": "Consumer Discretionary",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "VRTX",
+    "symbol": "VRTX",
+    "name": "Vertex Pharmaceuticals Inc.",
+    "sector": "Health Care",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "SBUX",
+    "symbol": "SBUX",
+    "name": "Starbucks Corp.",
+    "sector": "Consumer Discretionary",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "PANW",
+    "symbol": "PANW",
+    "name": "Palo Alto Networks Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MU",
+    "symbol": "MU",
+    "name": "Micron Technology Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "ADP",
+    "symbol": "ADP",
+    "name": "Automatic Data Processing Inc.",
+    "sector": "Industrials",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "GILD",
+    "symbol": "GILD",
+    "name": "Gilead Sciences Inc.",
+    "sector": "Health Care",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "LRCX",
+    "symbol": "LRCX",
+    "name": "Lam Research Corp.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MDLZ",
+    "symbol": "MDLZ",
+    "name": "Mondelez International Inc.",
+    "sector": "Consumer Staples",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "REGN",
+    "symbol": "REGN",
+    "name": "Regeneron Pharmaceuticals Inc.",
+    "sector": "Health Care",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "ADI",
+    "symbol": "ADI",
+    "name": "Analog Devices Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "KLAC",
+    "symbol": "KLAC",
+    "name": "KLA Corp.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "PYPL",
+    "symbol": "PYPL",
+    "name": "PayPal Holdings Inc.",
+    "sector": "Financial Services",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "SNPS",
+    "symbol": "SNPS",
+    "name": "Synopsys Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "CDNS",
+    "symbol": "CDNS",
+    "name": "Cadence Design Systems Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "CRWD",
+    "symbol": "CRWD",
+    "name": "CrowdStrike Holdings Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MAR",
+    "symbol": "MAR",
+    "name": "Marriott International Inc.",
+    "sector": "Consumer Discretionary",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "ORLY",
+    "symbol": "ORLY",
+    "name": "O'Reilly Automotive Inc.",
+    "sector": "Consumer Discretionary",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "FTNT",
+    "symbol": "FTNT",
+    "name": "Fortinet Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "LULU",
+    "symbol": "LULU",
+    "name": "Lululemon Athletica Inc.",
+    "sector": "Consumer Discretionary",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MNST",
+    "symbol": "MNST",
+    "name": "Monster Beverage Corp.",
+    "sector": "Consumer Staples",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MRVL",
+    "symbol": "MRVL",
+    "name": "Marvell Technology Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "WDAY",
+    "symbol": "WDAY",
+    "name": "Workday Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "TEAM",
+    "symbol": "TEAM",
+    "name": "Atlassian Corp.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "MDB",
+    "symbol": "MDB",
+    "name": "MongoDB Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  },
+  {
+    "ticker": "DDOG",
+    "symbol": "DDOG",
+    "name": "Datadog Inc.",
+    "sector": "Technology",
+    "market": "NASDAQ 100",
+    "currency": "USD"
+  }
+]
