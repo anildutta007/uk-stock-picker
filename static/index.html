@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK Stock Picker | FTSE 100 & FTSE 250 Intelligence Hub</title>
+  <meta name="description" content="Advanced UK Stock Picker for FTSE 100 and FTSE 250 shares. Filter trending stocks, 1-day/1-week/1-month gainers and losers, trading volume, and upcoming dividend calendars with ex-dividend cutoff dates.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+              950: '#082f49',
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Chart.js for deep-dive charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-200 font-sans selection:bg-brand-500 selection:text-white">
+
+  <!-- ================= TOP NOTICE BAR ================= -->
+  <aside class="bg-amber-500/10 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 text-xs py-2 px-4 border-b border-amber-300/40 dark:border-amber-800/40">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center space-x-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-500/30 uppercase tracking-wider">
+          <i data-lucide="shield-alert" class="w-3 h-3 mr-1 inline"></i>
+          Market Notice
+        </span>
+        <span class="text-[11px] sm:text-xs text-slate-700 dark:text-slate-300">
+          <strong>Educational & Research Simulator:</strong> Real-time LSE data from London Stock Exchange. Not financial advice. Always verify corporate actions with official broker filings.
+        </span>
+      </div>
+      <div class="flex items-center space-x-4 text-[11px]">
+        <span class="flex items-center space-x-1 text-slate-500 dark:text-slate-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 live-indicator inline-block"></span>
+          <span id="marketStatusText">LSE Feed Active</span>
+        </span>
+        <span class="text-slate-400">|</span>
+        <span class="text-slate-500 dark:text-slate-400 font-mono" id="serverTimeBadge">Oct 2026</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN HEADER & NAVIGATION ================= -->
+  <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-30 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo & Title -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-400 flex items-center justify-center shadow-lg shadow-brand-500/20 text-white font-black text-xl">
+            <i data-lucide="trending-up" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">UK Stock Picker</h1>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-brand-100 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+                PRO 2026
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">FTSE 100 & FTSE 250 Performance, Momentum & Dividend Screener</p>
+          </div>
+        </div>
+
+        <!-- Market Selector (Requirement 6: FTSE 100 vs FTSE 250) -->
+        <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
+          <button id="btnMarketFtse100" onclick="setMarket('ftse100')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 shadow-sm bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700">
+            <span>🇬🇧 FTSE 100</span>
+            <span class="px-1.5 py-0.2 rounded text-[10px] bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 font-mono">100</span>
+          </button>
+          <button id="btnMarketFtse250" onclick="setMarket('ftse250')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center space-x-1.5">
+            <span>🏢 FTSE 250</span>
+            <span class="px-1.5 py-0.2 rounded text-[10px] bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono">250</span>
+          </button>
+          <button id="btnMarketAll" onclick="setMarket('all')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center space-x-1.5 hidden md:flex">
+            <span>🌐 All UK 350</span>
+            <span class="px-1.5 py-0.2 rounded text-[10px] bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono">350</span>
+          </button>
+        </div>
+
+        <!-- Actions: Theme, Refresh, Export -->
+        <div class="flex items-center space-x-2">
+          <button onclick="refreshData()" id="refreshBtn" title="Refresh Live Market Data" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition flex items-center space-x-1 text-xs font-semibold">
+            <i data-lucide="refresh-cw" id="refreshIcon" class="w-4 h-4"></i>
+            <span class="hidden lg:inline">Refresh</span>
+          </button>
+          <button onclick="exportCurrentView()" title="Export Filtered List to CSV" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition flex items-center space-x-1 text-xs font-semibold">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span class="hidden lg:inline">Export CSV</span>
+          </button>
+          <button onclick="toggleDarkMode()" title="Toggle Dark/Light Mode" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition">
+            <i data-lucide="moon" id="themeIcon" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= MARKET SUMMARY TICKER TAPE ================= -->
+    <div class="bg-slate-100/70 dark:bg-slate-900/50 border-t border-slate-200/60 dark:border-slate-800/60 py-2 px-4 text-xs overflow-x-auto">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 min-w-max text-slate-600 dark:text-slate-300">
+        <div class="flex items-center space-x-3">
+          <span class="font-bold text-slate-700 dark:text-slate-200" id="summaryMarketName">FTSE 100 Overview:</span>
+          <span class="flex items-center space-x-1">
+            <span class="text-slate-500">Day Avg:</span>
+            <span class="font-mono font-bold" id="summaryDayAvg">+0.00%</span>
+          </span>
+          <span class="text-slate-300 dark:text-slate-700">•</span>
+          <span class="flex items-center space-x-1">
+            <span class="text-slate-500">1W Avg:</span>
+            <span class="font-mono font-bold" id="summaryWeekAvg">+0.00%</span>
+          </span>
+          <span class="text-slate-300 dark:text-slate-700">•</span>
+          <span class="flex items-center space-x-1">
+            <span class="text-slate-500">1M Avg:</span>
+            <span class="font-mono font-bold" id="summaryMonthAvg">+0.00%</span>
+          </span>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-2">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400">
+              <i data-lucide="arrow-up" class="w-3 h-3 mr-0.5"></i>
+              <span id="summaryAdvancers">0</span> Up
+            </span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-400">
+              <i data-lucide="arrow-down" class="w-3 h-3 mr-0.5"></i>
+              <span id="summaryDecliners">0</span> Down
+            </span>
+          </div>
+          <span class="text-slate-300 dark:text-slate-700">•</span>
+          <span class="flex items-center space-x-1 font-mono">
+            <span class="text-slate-500">Day Turnover:</span>
+            <span class="font-bold text-slate-900 dark:text-white" id="summaryTurnover">£0.0M</span>
+          </span>
+          <span class="text-slate-300 dark:text-slate-700">•</span>
+          <span class="flex items-center space-x-1 font-mono">
+            <span class="text-slate-500">Avg Yield:</span>
+            <span class="font-bold text-amber-600 dark:text-amber-400" id="summaryYield">0.0%</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN APPLICATION BODY ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- ================= 5 MAIN FEATURE NAVIGATION TABS ================= -->
+    <div class="bg-white dark:bg-slate-900 rounded-2xl p-2 shadow-sm border border-slate-200 dark:border-slate-800 mb-6">
+      <nav class="grid grid-cols-2 md:grid-cols-6 gap-2" aria-label="Tabs">
+        
+        <!-- Tab 1: Trending Stocks -->
+        <button onclick="setTab('trending')" id="tabTrending" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20">
+          <i data-lucide="flame" class="w-4 h-4 text-amber-300"></i>
+          <span>1. Trending Stocks</span>
+        </button>
+
+        <!-- Tab 2: Gainers -->
+        <button onclick="setTab('gainers')" id="tabGainers" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+          <i data-lucide="trending-up" class="w-4 h-4 text-emerald-500"></i>
+          <span>2. Value Gainers</span>
+        </button>
+
+        <!-- Tab 3: Decliners -->
+        <button onclick="setTab('losers')" id="tabLosers" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+          <i data-lucide="trending-down" class="w-4 h-4 text-rose-500"></i>
+          <span>3. Value Decliners</span>
+        </button>
+
+        <!-- Tab 4: Highest Volume -->
+        <button onclick="setTab('volume')" id="tabVolume" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+          <i data-lucide="bar-chart-2" class="w-4 h-4 text-sky-500"></i>
+          <span>4. Highest Volume</span>
+        </button>
+
+        <!-- Tab 5: Upcoming Dividends -->
+        <button onclick="setTab('dividends')" id="tabDividends" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+          <i data-lucide="calendar" class="w-4 h-4 text-indigo-500"></i>
+          <span>5. Ex-Div Calendar</span>
+        </button>
+
+        <!-- Tab 6: Watchlist -->
+        <button onclick="setTab('watchlist')" id="tabWatchlist" class="tab-button flex items-center justify-center space-x-2 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+          <i data-lucide="star" class="w-4 h-4 text-amber-400"></i>
+          <span>⭐ My Watchlist (<span id="watchlistCount">0</span>)</span>
+        </button>
+
+      </nav>
+    </div>
+
+    <!-- ================= DYNAMIC CONTROLS & THRESHOLD TOOLBAR ================= -->
+    <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-800 mb-6">
+      
+      <!-- Sub-headline & Description -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200/70 dark:border-slate-800/70">
+        <div>
+          <div class="flex items-center space-x-2">
+            <h2 class="text-base font-bold text-slate-900 dark:text-white" id="tabHeaderTitle">Trending UK Stocks</h2>
+            <span class="text-xs px-2.5 py-0.5 rounded-full font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300" id="resultCountBadge">
+              Loading...
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="tabHeaderSubtitle">
+            Ranked by momentum, high relative trading volume, and institutional activity
+          </p>
+        </div>
+
+        <!-- Search & Sector Filter -->
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Instant Search -->
+          <div class="relative min-w-[200px]">
+            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-2.5 text-slate-400"></i>
+            <input type="text" id="searchInput" oninput="debounceFilter()" placeholder="Search ticker or company..." class="w-full pl-9 pr-3 py-1.5 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-900 dark:text-white placeholder-slate-400">
+          </div>
+
+          <!-- Sector Selector -->
+          <select id="sectorSelect" onchange="applyFilters()" class="py-1.5 px-3 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-700 dark:text-slate-300">
+            <option value="all">All Sectors</option>
+            <option value="Financial Services">Financial Services</option>
+            <option value="Banks">Banks</option>
+            <option value="Insurance">Insurance</option>
+            <option value="Energy">Energy & Oil/Gas</option>
+            <option value="Health Care">Health Care & Pharma</option>
+            <option value="Consumer Staples">Consumer Staples</option>
+            <option value="Consumer Discretionary">Consumer Discretionary</option>
+            <option value="Industrial Goods & Services">Industrials</option>
+            <option value="Technology">Technology</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Basic Resources">Mining & Resources</option>
+            <option value="Real Estate">Real Estate & REITs</option>
+            <option value="Investment Trusts">Investment Trusts</option>
+          </select>
+
+          <!-- View Mode (Cards vs Table) -->
+          <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
+            <button onclick="setViewMode('cards')" id="viewModeCards" title="Card View" class="p-1.5 rounded text-xs text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-900 shadow-sm">
+              <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+            </button>
+            <button onclick="setViewMode('table')" id="viewModeTable" title="Table View" class="p-1.5 rounded text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white">
+              <i data-lucide="table" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= PERIOD & THRESHOLD CONTROLS (TABS 2, 3, 4, 5) ================= -->
+      <div class="pt-4" id="periodControlsRow">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          
+          <!-- Period Selector: 1 Day, 1 Week, 1 Month -->
+          <div class="flex items-center space-x-2" id="timeframeSelectorBox">
+            <span class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center space-x-1">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400"></i>
+              <span>Timeframe:</span>
+            </span>
+            <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-xl border border-slate-200 dark:border-slate-700">
+              <button onclick="setPeriod('1d')" id="btnPeriod1d" class="px-3 py-1 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm border border-slate-200 dark:border-slate-700">
+                1 Day (1D)
+              </button>
+              <button onclick="setPeriod('1w')" id="btnPeriod1w" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+                1 Week (1W)
+              </button>
+              <button onclick="setPeriod('1m')" id="btnPeriod1m" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+                1 Month (1M)
+              </button>
+            </div>
+          </div>
+
+          <!-- GAINERS CUSTOM THRESHOLD CONTROL (Requirement 2) -->
+          <div id="gainersThresholdBox" class="hidden flex-1 max-w-xl flex flex-col sm:flex-row sm:items-center gap-3">
+            <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center space-x-1 whitespace-nowrap">
+              <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
+              <span>Min Gain (%):</span>
+            </span>
+            <div class="flex items-center space-x-2 flex-1">
+              <input type="range" id="gainSlider" min="0" max="30" step="0.5" value="2" oninput="updateGainSlider(this.value)" class="w-full accent-emerald-600 cursor-pointer">
+              <div class="flex items-center space-x-1">
+                <input type="number" id="gainInput" min="0" max="100" step="0.5" value="2.0" oninput="updateGainInput(this.value)" class="w-16 px-2 py-1 text-xs font-mono font-bold rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 text-center">
+                <span class="text-xs font-bold text-emerald-600">%</span>
+              </div>
+            </div>
+            <!-- Quick Preset Pills -->
+            <div class="flex items-center space-x-1">
+              <button onclick="setGainPreset(0)" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-500 hover:text-white transition">All (>0%)</button>
+              <button onclick="setGainPreset(2)" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-500 hover:text-white transition">+2%</button>
+              <button onclick="setGainPreset(5)" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-500 hover:text-white transition">+5%</button>
+              <button onclick="setGainPreset(10)" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-500 hover:text-white transition">+10%</button>
+            </div>
+          </div>
+
+          <!-- DECLINERS CUSTOM THRESHOLD CONTROL (Requirement 3) -->
+          <div id="losersThresholdBox" class="hidden flex-1 max-w-xl flex flex-col sm:flex-row sm:items-center gap-3">
+            <span class="text-xs font-bold text-rose-600 dark:text-rose-400 flex items-center space-x-1 whitespace-nowrap">
+              <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
+              <span>Max Loss (%):</span>
+            </span>
+            <div class="flex items-center space-x-2 flex-1">
+              <input type="range" id="lossSlider" min="0" max="30" step="0.5" value="2" oninput="updateLossSlider(this.value)" class="w-full accent-rose-600 cursor-pointer">
+              <div class="flex items-center space-x-1">
+                <input type="number" id="lossInput" min="0" max="100" step="0.5" value="-2.0" oninput="updateLossInput(this.value)" class="w-16 px-2 py-1 text-xs font-mono font-bold rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800 text-center">
+                <span class="text-xs font-bold text-rose-600">%</span>
+              </div>
+            </div>
+            <!-- Quick Preset Pills -->
+            <div class="flex items-center space-x-1">
+              <button onclick="setLossPreset(0)" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-rose-500 hover:text-white transition">All (&lt;0%)</button>
+              <button onclick="setLossPreset(-2)" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-rose-500 hover:text-white transition">-2%</button>
+              <button onclick="setLossPreset(-5)" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-rose-500 hover:text-white transition">-5%</button>
+              <button onclick="setLossPreset(-10)" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-rose-500 hover:text-white transition">-10%</button>
+            </div>
+          </div>
+
+          <!-- VOLUME METRIC CONTROLS (Requirement 4) -->
+          <div id="volumeMetricBox" class="hidden flex items-center space-x-2">
+            <span class="text-xs font-bold text-sky-600 dark:text-sky-400">Sort by:</span>
+            <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-xl border border-slate-200 dark:border-slate-700">
+              <button onclick="setVolumeMetric('volume')" id="btnVolShares" class="px-3 py-1 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-900 text-sky-600 dark:text-sky-400 shadow-sm border border-slate-200 dark:border-slate-700">
+                Shares Traded
+              </button>
+              <button onclick="setVolumeMetric('turnover')" id="btnVolTurnover" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+                Turnover (£ Value)
+              </button>
+              <button onclick="setVolumeMetric('rvol')" id="btnVolRvol" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+                Relative Volume (RVOL)
+              </button>
+            </div>
+          </div>
+
+          <!-- DIVIDEND TIMEFRAME & YIELD FILTERS (Requirement 5) -->
+          <div id="dividendControlsBox" class="hidden flex-1 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Cutoff Window:</span>
+              <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-xl border border-slate-200 dark:border-slate-700">
+                <button onclick="setDivTimeframe('all')" id="btnDivAll" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm">All Upcoming</button>
+                <button onclick="setDivTimeframe('30d')" id="btnDiv30" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400">Next 30 Days</button>
+                <button onclick="setDivTimeframe('60d')" id="btnDiv60" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400">Next 60 Days</button>
+                <button onclick="setDivTimeframe('90d')" id="btnDiv90" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400">Next 90 Days</button>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold text-amber-600 dark:text-amber-400">Min Yield:</span>
+              <select id="divMinYieldSelect" onchange="applyFilters()" class="py-1 px-2.5 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                <option value="0">All Yields</option>
+                <option value="3">Yield > 3.0%</option>
+                <option value="4">Yield > 4.0%</option>
+                <option value="5">Yield > 5.0% (High)</option>
+                <option value="6">Yield > 6.0% (Super)</option>
+              </select>
+            </div>
+
+            <!-- Launch Dividend Calculator Button -->
+            <button onclick="openDividendCalculatorModal()" class="px-3 py-1 rounded-xl text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm flex items-center space-x-1.5 transition">
+              <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+              <span>Income Calculator</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================= EX-DIVIDEND NOTICE CALLOUT (FOR DIVIDEND TAB) ================= -->
+    <div id="exDivNoticeBanner" class="hidden mb-6 bg-gradient-to-r from-indigo-500/10 via-brand-500/10 to-purple-500/10 dark:from-indigo-950/50 dark:via-brand-950/50 dark:to-purple-950/50 border border-indigo-200 dark:border-indigo-800/60 rounded-2xl p-4">
+      <div class="flex items-start space-x-3">
+        <div class="p-2 rounded-xl bg-indigo-600 text-white flex-shrink-0 mt-0.5">
+          <i data-lucide="info" class="w-5 h-5"></i>
+        </div>
+        <div class="text-xs">
+          <h3 class="font-bold text-indigo-900 dark:text-indigo-200 text-sm">Understanding Ex-Dividend Cutoff Dates for UK Shares</h3>
+          <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">
+            The <strong>Ex-Dividend Date</strong> is the critical date by which you must own the share. You <strong>MUST buy shares on or before the last trading day prior to the ex-dividend date</strong> to qualify for the dividend payout. If you purchase on or after the ex-dividend date, the seller keeps the dividend!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= MAIN CONTENT DATA CONTAINER ================= -->
+    <div id="dataContainer">
+      <!-- Dynamic View: Card Grid or Table -->
+      <div id="cardGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rendered via JavaScript -->
+      </div>
+
+      <div id="tableView" class="hidden bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead class="bg-slate-100/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700 sticky-header font-bold uppercase tracking-wider text-[11px]">
+              <tr id="tableHeaderRow">
+                <!-- Dynamic headers rendered via JavaScript -->
+              </tr>
+            </thead>
+            <tbody id="tableBody" class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-800 dark:text-slate-200 font-mono">
+              <!-- Dynamic rows rendered via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden text-center py-16 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto text-slate-400 mb-4">
+          <i data-lucide="search-x" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">No matching shares found</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto mt-1">
+          Try relaxing your % threshold filters, selecting a different timeframe, or clearing your search query.
+        </p>
+        <button onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-xl text-xs font-bold bg-brand-600 text-white hover:bg-brand-700 transition">
+          Reset All Filters
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= STOCK DEEP-DIVE MODAL / DRAWER ================= -->
+  <div id="stockModal" class="fixed inset-0 z-50 hidden modal-backdrop bg-slate-950/60 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 dark:border-slate-800 p-6">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="text-xl font-black text-brand-600 dark:text-brand-400 font-mono" id="mTicker">SHEL</span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400" id="mMarket">FTSE 100</span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400" id="mSector">Energy</span>
+          </div>
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white mt-1" id="mName">Shell plc</h3>
+        </div>
+        <button onclick="closeStockModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Price & Key Stats Banner -->
+      <div class="py-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+          <div class="text-[11px] text-slate-500">Current Price</div>
+          <div class="text-base font-extrabold font-mono text-slate-900 dark:text-white" id="mPricePence">0.00p</div>
+          <div class="text-xs font-mono text-slate-500" id="mPriceGbp">£0.00</div>
+        </div>
+        <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+          <div class="text-[11px] text-slate-500">1D Return</div>
+          <div class="text-base font-extrabold font-mono" id="m1DChange">+0.00%</div>
+          <div class="text-xs font-mono text-slate-500" id="m1DChangePence">0.0p</div>
+        </div>
+        <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+          <div class="text-[11px] text-slate-500">1W Return</div>
+          <div class="text-base font-extrabold font-mono" id="m1WChange">+0.00%</div>
+          <div class="text-xs text-slate-500">5-day return</div>
+        </div>
+        <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+          <div class="text-[11px] text-slate-500">1M Return</div>
+          <div class="text-base font-extrabold font-mono" id="m1MChange">+0.00%</div>
+          <div class="text-xs text-slate-500">21-day return</div>
+        </div>
+      </div>
+
+      <!-- Interactive 30-Day Chart Canvas -->
+      <div class="my-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Historical 30-Day Closing Prices (p)</span>
+          <span class="text-[11px] font-mono text-slate-500" id="mChartTrend">Trend</span>
+        </div>
+        <div class="h-48 w-full">
+          <canvas id="stockDetailChart"></canvas>
+        </div>
+      </div>
+
+      <!-- 52-Week Range Bar -->
+      <div class="my-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+        <div class="flex items-center justify-between text-xs font-semibold mb-1">
+          <span class="text-slate-500">52-Week Low: <strong class="font-mono text-slate-800 dark:text-white" id="m52Low">0p</strong></span>
+          <span class="text-slate-700 dark:text-slate-300">52-Week Valuation Range</span>
+          <span class="text-slate-500">52-Week High: <strong class="font-mono text-slate-800 dark:text-white" id="m52High">0p</strong></span>
+        </div>
+        <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden">
+          <div id="m52ProgressBar" class="bg-brand-500 h-2.5 rounded-full" style="width: 50%"></div>
+        </div>
+      </div>
+
+      <!-- Additional Metrics: Valuation, Volume, Moving Averages -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs mb-4">
+        <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
+          <span class="text-slate-500 block text-[10px]">Market Cap</span>
+          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mMarketCap">£0B</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
+          <span class="text-slate-500 block text-[10px]">P/E Ratio</span>
+          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mPE">0.0</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
+          <span class="text-slate-500 block text-[10px]">Relative Vol (RVOL)</span>
+          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mRVOL">1.0x</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-100/60 dark:bg-slate-800/60">
+          <span class="text-slate-500 block text-[10px]">50-Day Avg MA</span>
+          <span class="font-bold font-mono text-slate-900 dark:text-white" id="mMA50">0p</span>
+        </div>
+      </div>
+
+      <!-- Dividend Section -->
+      <div id="mDividendCard" class="p-4 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-800/50 mb-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center space-x-1.5 text-xs font-bold text-indigo-900 dark:text-indigo-200">
+            <i data-lucide="gift" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+            <span>Dividend & Payout Profile</span>
+          </div>
+          <span class="text-xs font-bold font-mono px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300" id="mDivYield">0.0% Yield</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+          <div>
+            <span class="text-slate-500 text-[10px] block">Ex-Dividend Cutoff</span>
+            <span class="font-bold font-mono text-indigo-700 dark:text-indigo-300" id="mExDivDate">None</span>
+          </div>
+          <div>
+            <span class="text-slate-500 text-[10px] block">Expected Div Value</span>
+            <span class="font-bold font-mono text-slate-900 dark:text-white" id="mDivAmount">0p / share</span>
+          </div>
+          <div>
+            <span class="text-slate-500 text-[10px] block">Payment Date</span>
+            <span class="font-bold font-mono text-slate-900 dark:text-white" id="mPayDate">Scheduled</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800">
+        <button id="mWatchlistToggleBtn" onclick="toggleWatchlistCurrentModal()" class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center space-x-1.5">
+          <i data-lucide="star" class="w-4 h-4 text-amber-400"></i>
+          <span id="mWatchlistText">Add to Watchlist</span>
+        </button>
+        <button onclick="closeStockModal()" class="px-5 py-2 rounded-xl text-xs font-bold bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100 transition">
+          Close Window
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= INTERACTIVE DIVIDEND INCOME CALCULATOR MODAL ================= -->
+  <div id="calculatorModal" class="fixed inset-0 z-50 hidden modal-backdrop bg-slate-950/60 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full shadow-2xl border border-slate-200 dark:border-slate-800 p-6">
+      
+      <div class="flex items-start justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center space-x-2">
+          <div class="p-2 rounded-xl bg-indigo-600 text-white">
+            <i data-lucide="calculator" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-extrabold text-slate-900 dark:text-white">UK Dividend Income Calculator</h3>
+            <p class="text-xs text-slate-500">Estimate your cash dividend payout before the ex-div cutoff</p>
+          </div>
+        </div>
+        <button onclick="closeDividendCalculatorModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="py-4 space-y-4 text-xs">
+        <!-- Stock Selector -->
+        <div>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Select UK Dividend Share:</label>
+          <select id="calcStockSelect" onchange="recalculateDividend()" class="w-full py-2 px-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-semibold">
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <!-- Investment Amount (£) -->
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="font-bold text-slate-700 dark:text-slate-300">Investment Capital (£ GBP):</label>
+            <span class="text-slate-400 font-mono">e.g. £1,000 - £50,000</span>
+          </div>
+          <div class="relative">
+            <span class="absolute left-3 top-2 text-slate-400 font-bold">£</span>
+            <input type="number" id="calcInvestmentInput" value="5000" min="100" step="100" oninput="recalculateDividend()" class="w-full pl-7 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono font-bold text-slate-900 dark:text-white">
+          </div>
+        </div>
+
+        <!-- Result Projection Box -->
+        <div class="p-4 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-brand-500/10 to-purple-500/10 dark:from-indigo-950/40 dark:via-brand-950/40 dark:to-purple-950/40 border border-indigo-200 dark:border-indigo-800/50 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-slate-600 dark:text-slate-300">Shares Acquired:</span>
+            <span class="font-mono font-bold text-slate-900 dark:text-white" id="calcSharesCount">0 shares</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-600 dark:text-slate-300">Upcoming Ex-Dividend Cutoff:</span>
+            <span class="font-mono font-bold text-indigo-600 dark:text-indigo-400" id="calcExDivCutoff">-</span>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-indigo-200/60 dark:border-indigo-800/60">
+            <span class="font-bold text-slate-900 dark:text-white">Estimated Upcoming Cash Payout:</span>
+            <span class="font-mono font-extrabold text-base text-emerald-600 dark:text-emerald-400" id="calcUpcomingPayout">£0.00</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-600 dark:text-slate-300">Projected Full Year Dividend Income:</span>
+            <span class="font-mono font-bold text-brand-600 dark:text-brand-400" id="calcAnnualIncome">£0.00 / yr</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-end">
+        <button onclick="closeDividendCalculatorModal()" class="px-5 py-2 rounded-xl text-xs font-bold bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100 transition">
+          Done
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

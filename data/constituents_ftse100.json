@@ -1,0 +1,702 @@
+[
+  {
+    "ticker": "III",
+    "symbol": "III.L",
+    "name": "3i",
+    "sector": "Financial services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "ABDN",
+    "symbol": "ABDN.L",
+    "name": "Aberdeen Group",
+    "sector": "Financial Services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "ADM",
+    "symbol": "ADM.L",
+    "name": "Admiral Group",
+    "sector": "Insurance",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "AAF",
+    "symbol": "AAF.L",
+    "name": "Airtel Africa",
+    "sector": "Telecommunications services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "ALW",
+    "symbol": "ALW.L",
+    "name": "Alliance Witan",
+    "sector": "Investment Trusts",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "AAL",
+    "symbol": "AAL.L",
+    "name": "Anglo American plc",
+    "sector": "Mining",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "ANTO",
+    "symbol": "ANTO.L",
+    "name": "Antofagasta plc",
+    "sector": "Mining",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "ABF",
+    "symbol": "ABF.L",
+    "name": "Associated British Foods",
+    "sector": "Food & tobacco",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "AZN",
+    "symbol": "AZN.L",
+    "name": "AstraZeneca",
+    "sector": "Pharmaceuticals & biotechnology",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "AUTO",
+    "symbol": "AUTO.L",
+    "name": "Autotrader Group",
+    "sector": "Media",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "AV",
+    "symbol": "AV.L",
+    "name": "Aviva",
+    "sector": "Life insurance",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BAB",
+    "symbol": "BAB.L",
+    "name": "Babcock International",
+    "sector": "Aerospace & defence",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BA",
+    "symbol": "BA.L",
+    "name": "BAE Systems",
+    "sector": "Aerospace & defence",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BBY",
+    "symbol": "BBY.L",
+    "name": "Balfour Beatty",
+    "sector": "Construction & Materials",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BARC",
+    "symbol": "BARC.L",
+    "name": "Barclays",
+    "sector": "Banks",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BTRW",
+    "symbol": "BTRW.L",
+    "name": "Barratt Redrow",
+    "sector": "Household goods & home construction",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BP",
+    "symbol": "BP.L",
+    "name": "BP",
+    "sector": "Oil & gas producers",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BATS",
+    "symbol": "BATS.L",
+    "name": "British American Tobacco",
+    "sector": "Tobacco",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BLND",
+    "symbol": "BLND.L",
+    "name": "British Land",
+    "sector": "Real estate",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BT-A",
+    "symbol": "BT-A.L",
+    "name": "BT Group",
+    "sector": "Telecommunications services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BNZL",
+    "symbol": "BNZL.L",
+    "name": "Bunzl",
+    "sector": "Support services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BRBY",
+    "symbol": "BRBY.L",
+    "name": "Burberry Group",
+    "sector": "Personal goods",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "CNA",
+    "symbol": "CNA.L",
+    "name": "Centrica",
+    "sector": "Multiline utilities",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "CCEP",
+    "symbol": "CCEP.L",
+    "name": "Coca-Cola Europacific Partners",
+    "sector": "Beverages",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "CCH",
+    "symbol": "CCH.L",
+    "name": "Coca-Cola HBC",
+    "sector": "Beverages",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "CPG",
+    "symbol": "CPG.L",
+    "name": "Compass Group",
+    "sector": "Support services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "CCC",
+    "symbol": "CCC.L",
+    "name": "Computacenter",
+    "sector": "Software & Computer Services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "CTEC",
+    "symbol": "CTEC.L",
+    "name": "Convatec",
+    "sector": "Health care equipment & supplies",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "CRDA",
+    "symbol": "CRDA.L",
+    "name": "Croda International",
+    "sector": "Chemicals",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "DCC",
+    "symbol": "DCC.L",
+    "name": "DCC Energy",
+    "sector": "Support services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "DGE",
+    "symbol": "DGE.L",
+    "name": "Diageo",
+    "sector": "Beverages",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "DPLM",
+    "symbol": "DPLM.L",
+    "name": "Diploma",
+    "sector": "Industrial Support services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "EZJ",
+    "symbol": "EZJ.L",
+    "name": "EasyJet",
+    "sector": "Travel and Leisure",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "EDV",
+    "symbol": "EDV.L",
+    "name": "Endeavour Mining",
+    "sector": "Mining",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "EXPN",
+    "symbol": "EXPN.L",
+    "name": "Experian",
+    "sector": "Support services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "FCIT",
+    "symbol": "FCIT.L",
+    "name": "F & C Investment Trust",
+    "sector": "Collective investments",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "FRES",
+    "symbol": "FRES.L",
+    "name": "Fresnillo plc",
+    "sector": "Mining",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "GAW",
+    "symbol": "GAW.L",
+    "name": "Games Workshop",
+    "sector": "Leisure Goods",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "GLEN",
+    "symbol": "GLEN.L",
+    "name": "Glencore",
+    "sector": "Mining",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "GSK",
+    "symbol": "GSK.L",
+    "name": "GSK plc",
+    "sector": "Pharmaceuticals & biotechnology",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "HLN",
+    "symbol": "HLN.L",
+    "name": "Haleon",
+    "sector": "Pharmaceuticals & biotechnology",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "HLMA",
+    "symbol": "HLMA.L",
+    "name": "Halma plc",
+    "sector": "Electronic equipment & parts",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "HSX",
+    "symbol": "HSX.L",
+    "name": "Hiscox",
+    "sector": "Non-life Insurance",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "HWDN",
+    "symbol": "HWDN.L",
+    "name": "Howdens Joinery",
+    "sector": "Homebuilding & construction supplies",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "HSBA",
+    "symbol": "HSBA.L",
+    "name": "HSBC",
+    "sector": "Banks",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "ICG",
+    "symbol": "ICG.L",
+    "name": "ICG",
+    "sector": "Financial services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "IGG",
+    "symbol": "IGG.L",
+    "name": "IG Group",
+    "sector": "Financial services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "IHG",
+    "symbol": "IHG.L",
+    "name": "IHG Hotels & Resorts",
+    "sector": "Travel & leisure",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "IMI",
+    "symbol": "IMI.L",
+    "name": "IMI",
+    "sector": "Industrial engineering",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "IMB",
+    "symbol": "IMB.L",
+    "name": "Imperial Brands",
+    "sector": "Tobacco",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "INF",
+    "symbol": "INF.L",
+    "name": "Informa",
+    "sector": "Media",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "IAG",
+    "symbol": "IAG.L",
+    "name": "International Airlines Group",
+    "sector": "Travel & leisure",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "ITRK",
+    "symbol": "ITRK.L",
+    "name": "Intertek",
+    "sector": "Support services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "INVP",
+    "symbol": "INVP.L",
+    "name": "Investec",
+    "sector": "Financial Services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "ITH",
+    "symbol": "ITH.L",
+    "name": "Ithaca Energy",
+    "sector": "Oil & Gas Producers",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "JD",
+    "symbol": "JD.L",
+    "name": "JD Sports",
+    "sector": "General retailers",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BGEO",
+    "symbol": "BGEO.L",
+    "name": "Lion Finance Group",
+    "sector": "Banking Services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "KGF",
+    "symbol": "KGF.L",
+    "name": "Kingfisher plc",
+    "sector": "Retailers",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "LAND",
+    "symbol": "LAND.L",
+    "name": "Land Securities",
+    "sector": "Real estate investment trusts",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "LGEN",
+    "symbol": "LGEN.L",
+    "name": "Legal & General",
+    "sector": "Life insurance",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "LLOY",
+    "symbol": "LLOY.L",
+    "name": "Lloyds Banking Group",
+    "sector": "Banks",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "LMP",
+    "symbol": "LMP.L",
+    "name": "LondonMetric Property",
+    "sector": "Real Estate Investment Trusts",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "LSEG",
+    "symbol": "LSEG.L",
+    "name": "London Stock Exchange Group",
+    "sector": "Financial services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "MNG",
+    "symbol": "MNG.L",
+    "name": "M&G",
+    "sector": "Financial services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "MKS",
+    "symbol": "MKS.L",
+    "name": "Marks & Spencer",
+    "sector": "Food & drug retailing",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "MRO",
+    "symbol": "MRO.L",
+    "name": "Melrose Industries",
+    "sector": "Aerospace & defence",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "MTLN",
+    "symbol": "MTLN.L",
+    "name": "Metlen Energy & Metals",
+    "sector": "Multiline utilities",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "NG",
+    "symbol": "NG.L",
+    "name": "National Grid plc",
+    "sector": "Multiline utilities",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "NWG",
+    "symbol": "NWG.L",
+    "name": "NatWest Group",
+    "sector": "Banks",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "NXT",
+    "symbol": "NXT.L",
+    "name": "Next plc",
+    "sector": "General retailers",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "PSON",
+    "symbol": "PSON.L",
+    "name": "Pearson plc",
+    "sector": "Media",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "PSH",
+    "symbol": "PSH.L",
+    "name": "Pershing Square Holdings",
+    "sector": "Financial services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "PCT",
+    "symbol": "PCT.L",
+    "name": "Polar Capital Technology Trust",
+    "sector": "Investment trusts",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "PRU",
+    "symbol": "PRU.L",
+    "name": "Prudential plc",
+    "sector": "Life insurance",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "RKT",
+    "symbol": "RKT.L",
+    "name": "Reckitt",
+    "sector": "Household goods & home construction",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "REL",
+    "symbol": "REL.L",
+    "name": "RELX",
+    "sector": "Media",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "RTO",
+    "symbol": "RTO.L",
+    "name": "Rentokil Initial",
+    "sector": "Support services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "RIO",
+    "symbol": "RIO.L",
+    "name": "Rio Tinto",
+    "sector": "Mining",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "RR",
+    "symbol": "RR.L",
+    "name": "Rolls-Royce Holdings",
+    "sector": "Aerospace & defence",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SGE",
+    "symbol": "SGE.L",
+    "name": "Sage Group",
+    "sector": "Software & computer services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SBRY",
+    "symbol": "SBRY.L",
+    "name": "Sainsbury's",
+    "sector": "Food & drug retailing",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SMT",
+    "symbol": "SMT.L",
+    "name": "Scottish Mortgage Investment Trust",
+    "sector": "Collective investments",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SGRO",
+    "symbol": "SGRO.L",
+    "name": "Segro",
+    "sector": "Real estate investment trusts",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SVT",
+    "symbol": "SVT.L",
+    "name": "Severn Trent",
+    "sector": "Multiline utilities",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SHEL",
+    "symbol": "SHEL.L",
+    "name": "Shell plc",
+    "sector": "Oil & gas producers",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SMIN",
+    "symbol": "SMIN.L",
+    "name": "Smiths Group",
+    "sector": "General industrials",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SN",
+    "symbol": "SN.L",
+    "name": "Smith & Nephew",
+    "sector": "Health care equipment & supplies",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SPX",
+    "symbol": "SPX.L",
+    "name": "Spirax Group",
+    "sector": "Industrial engineering",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SSE",
+    "symbol": "SSE.L",
+    "name": "SSE plc",
+    "sector": "Electrical utilities & independent power producers",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "STAN",
+    "symbol": "STAN.L",
+    "name": "Standard Chartered",
+    "sector": "Banks",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "SDLF",
+    "symbol": "SDLF.L",
+    "name": "Standard Life",
+    "sector": "Life insurance",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "STJ",
+    "symbol": "STJ.L",
+    "name": "St. James's Place",
+    "sector": "Financial services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "TSCO",
+    "symbol": "TSCO.L",
+    "name": "Tesco",
+    "sector": "Food & drug retailing",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "BBOX",
+    "symbol": "BBOX.L",
+    "name": "Tritax Big Box REIT",
+    "sector": "Real Estate Investment Trusts",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "ULVR",
+    "symbol": "ULVR.L",
+    "name": "Unilever",
+    "sector": "Personal goods",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "UU",
+    "symbol": "UU.L",
+    "name": "United Utilities",
+    "sector": "Multiline utilities",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "VOD",
+    "symbol": "VOD.L",
+    "name": "Vodafone Group",
+    "sector": "Mobile telecommunications",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "WEIR",
+    "symbol": "WEIR.L",
+    "name": "Weir",
+    "sector": "Industrial goods and services",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "WTB",
+    "symbol": "WTB.L",
+    "name": "Whitbread",
+    "sector": "Retail hospitality",
+    "market": "FTSE 100"
+  },
+  {
+    "ticker": "WPP",
+    "symbol": "WPP.L",
+    "name": "WPP",
+    "sector": "Media",
+    "market": "FTSE 100"
+  }
+]
