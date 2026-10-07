@@ -81,6 +81,157 @@ CONFIRMED_DIVIDENDS = {
     "COALINDIA": {"ex_div": "2026-11-19", "pay_date": "2026-12-10", "type": "Interim", "rate": 15.5},
 }
 
+# The 16 Premier Indian Market Indices across 3 Tiers
+INDIAN_INDICES_METADATA = [
+    # 1. Headline Benchmark Indices
+    {
+        "id": "nifty50",
+        "name": "NIFTY 50 (NSE)",
+        "short_name": "NIFTY 50",
+        "category": "Headline Benchmark",
+        "category_badge": "Flagship Benchmark",
+        "exchange": "NSE",
+        "description": "The most heavily traded and tracked benchmark index in India. It tracks the 50 largest, most liquid blue-chip companies listed on the National Stock Exchange (NSE) across key sectors (representing roughly 60% of NSE's free-float market capitalisation)."
+    },
+    {
+        "id": "sensex",
+        "name": "BSE SENSEX (S&P BSE SENSEX)",
+        "short_name": "BSE SENSEX",
+        "category": "Headline Benchmark",
+        "category_badge": "Flagship Benchmark",
+        "exchange": "BSE",
+        "description": "India's oldest stock market index (launched in 1986). It comprises 30 large, established, and financially sound companies listed on the Bombay Stock Exchange (BSE), weighted by free-float market capitalisation."
+    },
+    # 2. Broad Market & Market-Cap Indices
+    {
+        "id": "niftynext50",
+        "name": "NIFTY Next 50",
+        "short_name": "Next 50",
+        "category": "Broad Market & Cap",
+        "category_badge": "Large-Cap Pipeline",
+        "exchange": "NSE",
+        "description": "Tracks companies ranked 51–100 by market cap; often viewed as the growth pipeline for future NIFTY 50 constituents."
+    },
+    {
+        "id": "nifty100",
+        "name": "NIFTY 100 / BSE 100",
+        "short_name": "NIFTY 100",
+        "category": "Broad Market & Cap",
+        "category_badge": "Top 100 Large-Cap",
+        "exchange": "NSE / BSE",
+        "description": "Combines NIFTY 50 and NIFTY Next 50, capturing the top 100 premier large-cap corporations across Indian equities."
+    },
+    {
+        "id": "midcap",
+        "name": "NIFTY Midcap 100 / 150",
+        "short_name": "Midcap 100",
+        "category": "Broad Market & Cap",
+        "category_badge": "Mid-Cap Growth",
+        "exchange": "NSE",
+        "description": "Measures companies ranked 101–250 by market cap, capturing high-growth mid-sized champions powering manufacturing, consumer, and financial expansion."
+    },
+    {
+        "id": "smallcap",
+        "name": "NIFTY Smallcap 100 / 250",
+        "short_name": "Smallcap 100",
+        "category": "Broad Market & Cap",
+        "category_badge": "Small-Cap Alpha",
+        "exchange": "NSE",
+        "description": "Tracks smaller emerging high-beta companies (ranked 251–500 on the NSE) with significant secular expansion potential."
+    },
+    {
+        "id": "nifty500",
+        "name": "NIFTY 500 / BSE 500",
+        "short_name": "NIFTY 500",
+        "category": "Broad Market & Cap",
+        "category_badge": "Comprehensive Market",
+        "exchange": "NSE / BSE",
+        "description": "Covers the top 500 listed companies, capturing around 90–95% of total Indian equity market capitalisation for an all-encompassing macro market view."
+    },
+    # 3. Key Sectoral Indices
+    {
+        "id": "bank",
+        "name": "NIFTY Bank (Bank Nifty)",
+        "short_name": "Bank Nifty",
+        "category": "Key Sectoral",
+        "category_badge": "Banking Leaders",
+        "exchange": "NSE",
+        "description": "The most actively traded derivative index after NIFTY 50. Tracks the 12 most liquid banking stocks across both private and public sector lenders."
+    },
+    {
+        "id": "it",
+        "name": "NIFTY IT",
+        "short_name": "NIFTY IT",
+        "category": "Key Sectoral",
+        "category_badge": "Software & Tech",
+        "exchange": "NSE",
+        "description": "Tracks major global software services exporters such as TCS, Infosys, HCLTech, Wipro, and Tech Mahindra."
+    },
+    {
+        "id": "auto",
+        "name": "NIFTY Auto",
+        "short_name": "NIFTY Auto",
+        "category": "Key Sectoral",
+        "category_badge": "Automotive",
+        "exchange": "NSE",
+        "description": "Measures two-wheeler, commercial vehicle, passenger car, and auto-ancillary manufacturers driving Indian mobility."
+    },
+    {
+        "id": "pharma",
+        "name": "NIFTY Pharma & Healthcare",
+        "short_name": "NIFTY Pharma",
+        "category": "Key Sectoral",
+        "category_badge": "Pharma & Hospitals",
+        "exchange": "NSE",
+        "description": "Reflects generic pharmaceutical manufacturers, active pharmaceutical ingredient (API) makers, and leading hospital healthcare networks."
+    },
+    {
+        "id": "fmcg",
+        "name": "NIFTY FMCG",
+        "short_name": "NIFTY FMCG",
+        "category": "Key Sectoral",
+        "category_badge": "Consumer Staples",
+        "exchange": "NSE",
+        "description": "Tracks leading fast-moving consumer goods giants like Hindustan Unilever, ITC, Nestlé India, Britannia, and Tata Consumer."
+    },
+    {
+        "id": "metal",
+        "name": "NIFTY Metal",
+        "short_name": "NIFTY Metal",
+        "category": "Key Sectoral",
+        "category_badge": "Metals & Mining",
+        "exchange": "NSE",
+        "description": "Measures cyclical commodity producers across steel, aluminium, zinc, and mining like Tata Steel, JSW Steel, and Hindalco."
+    },
+    {
+        "id": "energy",
+        "name": "NIFTY Energy",
+        "short_name": "NIFTY Energy",
+        "category": "Key Sectoral",
+        "category_badge": "Oil, Gas & Power",
+        "exchange": "NSE",
+        "description": "Covers petroleum refining, upstream exploration, power generation, and renewable utilities like Reliance, NTPC, ONGC, and Power Grid."
+    },
+    {
+        "id": "realty",
+        "name": "NIFTY Realty",
+        "short_name": "NIFTY Realty",
+        "category": "Key Sectoral",
+        "category_badge": "Real Estate",
+        "exchange": "NSE",
+        "description": "Tracks premier residential and commercial real estate developers like DLF, Lodha (Macrotech), Godrej Properties, and Oberoi Realty."
+    },
+    {
+        "id": "pse",
+        "name": "NIFTY PSE (Public Sector Enterprises)",
+        "short_name": "NIFTY PSE",
+        "category": "Key Sectoral",
+        "category_badge": "Public Sector / PSU",
+        "exchange": "NSE",
+        "description": "Measures state-owned Navratna and Maharatna public sector enterprises powering national energy, defense, infrastructure, and financial networks."
+    }
+]
+
 
 def get_yahoo_session_and_crumb():
     session = requests.Session()
@@ -375,7 +526,8 @@ def compute_metrics_and_score(q, chart_info, const_info):
         "dividend_type": div_type,
         "trending_score": trending_score,
         "trending_reasons": trending_reasons,
-        "sparkline": sparkline
+        "sparkline": sparkline,
+        "indices": const_info.get("indices", [])
     }
 
 

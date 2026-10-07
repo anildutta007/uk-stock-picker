@@ -254,13 +254,104 @@ def get_stocks_payload(query):
         reverse = (sort_order == "desc")
         stocks = sorted(stocks, key=lambda s: s.get(sort_by, 0) or 0, reverse=reverse)
 
+    # Indian Index Filter support
+    index_filter = query.get("index", ["all"])[0].strip().lower()
+    if index_filter and index_filter != "all":
+        stocks = [s for s in stocks if index_filter in [idx.lower() for idx in s.get("indices", [])]]
+
     limit = int(query.get("limit", [150])[0])
     return {
         "market": market,
         "tab": tab,
         "period": period,
+        "index": index_filter,
         "count": len(stocks),
         "stocks": stocks[:limit]
+    }
+
+
+def get_india_indices_payload():
+    stocks = CACHE_DATA.get("stocks", [])
+    india_stocks = [s for s in stocks if "NIFTY" in s.get("market", "") or s.get("currency") == "INR"]
+
+    indices_list = []
+    for meta in getattr(data_fetcher, "INDIAN_INDICES_METADATA", []):
+        idx_id = meta["id"]
+        constituents = [s for s in india_stocks if idx_id in [i.lower() for i in s.get("indices", [])]]
+        if not constituents and idx_id == "nifty500":
+            constituents = india_stocks
+        elif not constituents and idx_id == "nifty50":
+            constituents = [s for s in india_stocks if "NIFTY 50" in s.get("market", "")][:50]
+
+        count = len(constituents)
+        if count > 0:
+            avg_1d = round(sum(s.get("change_1d_pct", 0) for s in constituents) / count, 2)
+            avg_1w = round(sum(s.get("change_1w_pct", 0) for s in constituents) / count, 2)
+            avg_1m = round(sum(s.get("change_1m_pct", 0) for s in constituents) / count, 2)
+            adv = sum(1 for s in constituents if s.get("change_1d_pct", 0) > 0)
+            dec = sum(1 for s in constituents if s.get("change_1d_pct", 0) < 0)
+            unc = count - adv - dec
+            turnover_inr = sum(s.get("turnover_1d_gbp", 0) for s in constituents)
+            sorted_gain = sorted(constituents, key=lambda x: x.get("change_1d_pct", 0), reverse=True)
+            top_gainer = {"ticker": sorted_gain[0]["ticker"], "name": sorted_gain[0]["name"], "change_1d_pct": sorted_gain[0]["change_1d_pct"], "price_pence": sorted_gain[0]["price_pence"]} if sorted_gain else None
+            top_loser = {"ticker": sorted_gain[-1]["ticker"], "name": sorted_gain[-1]["name"], "change_1d_pct": sorted_gain[-1]["change_1d_pct"], "price_pence": sorted_gain[-1]["price_pence"]} if sorted_gain else None
+            sorted_vol = sorted(constituents, key=lambda x: x.get("volume_1d", 0), reverse=True)
+            most_active = {"ticker": sorted_vol[0]["ticker"], "name": sorted_vol[0]["name"], "volume_1d": sorted_vol[0]["volume_1d"]} if sorted_vol else None
+        else:
+            avg_1d = avg_1w = avg_1m = 0.0
+            adv = dec = unc = 0
+            turnover_inr = 0
+            top_gainer = top_loser = most_active = None
+
+        cat_type = "headline" if "Headline" in meta.get("category", "") else ("broad" if "Broad" in meta.get("category", "") else "sectoral")
+
+        indices_list.append({
+            "id": meta["id"],
+            "name": meta["name"],
+            "short_name": meta["short_name"],
+            "category": meta["category"],
+            "category_label": meta["category"],
+            "category_badge": meta["category_badge"],
+            "category_type": cat_type,
+            "exchange": meta["exchange"],
+            "description": meta["description"],
+            "count": count,
+            "stock_count": count,
+            "avg_change_1d_pct": avg_1d,
+            "avg_1d_pct": avg_1d,
+            "avg_change_1w_pct": avg_1w,
+            "avg_1w_pct": avg_1w,
+            "avg_change_1m_pct": avg_1m,
+            "avg_1m_pct": avg_1m,
+            "advancers": adv,
+            "decliners": dec,
+            "unchanged": unc,
+            "turnover_inr": turnover_inr,
+            "total_turnover_inr": turnover_inr,
+            "top_gainer": top_gainer,
+            "top_loser": top_loser,
+            "most_active": most_active
+        })
+
+    total_count = len(india_stocks)
+    adv_tot = sum(1 for s in india_stocks if s.get("change_1d_pct", 0) > 0)
+    dec_tot = sum(1 for s in india_stocks if s.get("change_1d_pct", 0) < 0)
+    avg_1d_tot = round(sum(s.get("change_1d_pct", 0) for s in india_stocks) / total_count, 2) if total_count else 0.0
+    tot_to_inr = sum(s.get("turnover_1d_gbp", 0) for s in india_stocks)
+
+    return {
+        "status": "online",
+        "market": "Indian Market (NSE/BSE)",
+        "indices_count": len(indices_list),
+        "total_indian_stocks": total_count,
+        "summary": {
+            "total_stocks": total_count,
+            "advancers": adv_tot,
+            "decliners": dec_tot,
+            "avg_1d_pct": avg_1d_tot,
+            "total_turnover_inr": tot_to_inr
+        },
+        "indices": indices_list
     }
 
 
@@ -449,6 +540,19 @@ def app(environ, start_response):
         start_response("200 OK", headers)
         return [body]
 
+    if path == "/api/india/indices":
+        body = json.dumps(get_india_indices_payload(), ensure_ascii=False).encode("utf-8")
+        headers = [("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(body)))] + cors_headers
+        start_response("200 OK", headers)
+        return [body]
+
+    if path == "/api/india/stocks":
+        query["market"] = ["india"]
+        body = json.dumps(get_stocks_payload(query), ensure_ascii=False).encode("utf-8")
+        headers = [("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(body)))] + cors_headers
+        start_response("200 OK", headers)
+        return [body]
+
     if path.startswith("/api/stock/"):
         ticker = path.replace("/api/stock/", "").strip().upper()
         stock_data = get_single_stock_payload(ticker)
@@ -523,6 +627,13 @@ class StockPickerRequestHandler(BaseHTTPRequestHandler):
             return
         if path == "/api/dividends":
             self.send_json_response(get_dividends_payload(query))
+            return
+        if path == "/api/india/indices":
+            self.send_json_response(get_india_indices_payload())
+            return
+        if path == "/api/india/stocks":
+            query["market"] = ["india"]
+            self.send_json_response(get_stocks_payload(query))
             return
         if path.startswith("/api/stock/"):
             ticker = path.replace("/api/stock/", "").strip().upper()

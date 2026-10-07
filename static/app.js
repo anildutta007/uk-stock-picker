@@ -7,7 +7,7 @@
 // Application State
 const state = {
   market: 'ftse100',          // 'ftse100' | 'ftse250' | 'ftse350' | 'nasdaq' | 'dow' | 'nifty' | 'all'
-  tab: 'trending',            // 'trending' | 'gainers' | 'losers' | 'volume' | 'dividends' | 'guide' | 'watchlist'
+  tab: 'trending',            // 'trending' | 'gainers' | 'losers' | 'volume' | 'dividends' | 'india' | 'guide' | 'watchlist'
   period: '1d',               // '1d' | '1w' | '1m'
   viewMode: 'cards',          // 'cards' | 'table'
   search: '',
@@ -21,6 +21,17 @@ const state = {
   dividends: [],
   filteredStocks: [],
   filteredDividends: [],
+  // Indian Market Hub (16 Indices) State
+  indiaIndex: 'nifty50',
+  indiaCategory: 'all',
+  indiaSubTab: 'trending',
+  indiaPeriod: '1d',
+  indiaMinGainPct: 2.0,
+  indiaMaxLossPct: -2.0,
+  indiaSearch: '',
+  indiaViewMode: 'cards',
+  indiaIndices: [],
+  indiaStocks: [],
   watchlist: new Set(JSON.parse(localStorage.getItem('uk_stock_watchlist') || '["SHEL", "AZN", "AAPL", "NVDA", "RELIANCE"]')),
   activeStock: null,
   chartInstance: null,
@@ -140,13 +151,14 @@ function setTab(tabName) {
   state.tab = tabName;
 
   // Update tab button styles
-  const tabIds = ['tabTrending', 'tabGainers', 'tabLosers', 'tabVolume', 'tabDividends', 'tabGuide', 'tabWatchlist'];
+  const tabIds = ['tabTrending', 'tabGainers', 'tabLosers', 'tabVolume', 'tabDividends', 'tabIndia', 'tabGuide', 'tabWatchlist'];
   const tabMap = {
     trending: 'tabTrending',
     gainers: 'tabGainers',
     losers: 'tabLosers',
     volume: 'tabVolume',
     dividends: 'tabDividends',
+    india: 'tabIndia',
     guide: 'tabGuide',
     watchlist: 'tabWatchlist'
   };
@@ -155,17 +167,40 @@ function setTab(tabName) {
     const btn = document.getElementById(id);
     if (!btn) return;
     if (id === tabMap[tabName]) {
-      btn.className = "tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20";
+      if (id === 'tabIndia') {
+        btn.className = "tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-bold transition-all bg-amber-600 text-white shadow-md shadow-amber-500/20";
+      } else {
+        btn.className = "tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20";
+      }
     } else {
-      btn.className = "tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all";
+      if (id === 'tabIndia') {
+        btn.className = "tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-semibold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-all border border-amber-200 dark:border-amber-800";
+      } else {
+        btn.className = "tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all";
+      }
     }
   });
 
-  // Guide view vs Standard views
+  // Views references
+  const indiaView = document.getElementById('indiaView');
   const guideView = document.getElementById('guideView');
   const controlsCard = document.getElementById('controlsCard');
   const dataContainer = document.getElementById('dataContainer');
   const exDivNotice = document.getElementById('exDivNoticeBanner');
+
+  if (tabName === 'india') {
+    if (indiaView) indiaView.classList.remove('hidden');
+    if (guideView) guideView.classList.add('hidden');
+    if (controlsCard) controlsCard.classList.add('hidden');
+    if (dataContainer) dataContainer.classList.add('hidden');
+    if (exDivNotice) exDivNotice.classList.add('hidden');
+    loadIndiaIndices();
+    lucide.createIcons();
+    return;
+  }
+
+  // Not india tab
+  if (indiaView) indiaView.classList.add('hidden');
 
   if (tabName === 'guide') {
     if (guideView) guideView.classList.remove('hidden');
@@ -1335,4 +1370,531 @@ function formatDatePretty(iso) {
   } catch (e) {
     return iso;
   }
+}
+
+// ================= INDIAN MARKET HUB LOGIC (16 INDICES - USER REQUEST) =================
+
+async function loadIndiaIndices() {
+  try {
+    const res = await fetch('/api/india/indices');
+    if (!res.ok) throw new Error("Failed to load India indices");
+    const data = await res.json();
+
+    state.indiaIndices = data.indices || [];
+
+    // Overall summary header
+    const summary = data.summary || {};
+    const totStocks = document.getElementById('indiaTotalStocks');
+    if (totStocks) totStocks.textContent = summary.total_stocks || 113;
+
+    const advDec = document.getElementById('indiaAdvDec');
+    if (advDec) advDec.textContent = `${summary.advancers || 0} / ${summary.decliners || 0}`;
+    
+    const dayAvg = document.getElementById('indiaDayAvg');
+    if (dayAvg) {
+      const avg1d = summary.avg_1d_pct || 0;
+      dayAvg.textContent = `${avg1d >= 0 ? '+' : ''}${avg1d.toFixed(2)}%`;
+      dayAvg.className = `text-base font-extrabold font-mono ${avg1d >= 0 ? 'text-emerald-300' : 'text-rose-300'}`;
+    }
+
+    const totTo = document.getElementById('indiaTotalTurnover');
+    if (totTo) {
+      const turnoverCr = summary.total_turnover_inr ? (summary.total_turnover_inr / 1e7).toFixed(1) : '0';
+      totTo.textContent = `₹${turnoverCr} Cr`;
+    }
+
+    renderIndiaIndicesGrid();
+    renderActiveIndiaIndexBanner();
+    await loadIndiaStocks();
+  } catch (err) {
+    console.error("Error loading India indices:", err);
+  }
+}
+
+function setIndiaCategory(cat) {
+  state.indiaCategory = cat;
+  const cats = ['all', 'headline', 'broad', 'sectoral'];
+  cats.forEach(c => {
+    const btn = document.getElementById(`catBtn-${c}`);
+    if (!btn) return;
+    if (c === cat) {
+      btn.className = "px-3 py-1.5 rounded-xl text-xs font-bold transition-all bg-amber-600 text-white shadow-sm";
+    } else {
+      btn.className = "px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all border border-slate-200 dark:border-slate-700";
+    }
+  });
+  renderIndiaIndicesGrid();
+}
+
+function selectIndiaIndex(idxId) {
+  state.indiaIndex = idxId;
+  renderIndiaIndicesGrid();
+  renderActiveIndiaIndexBanner();
+  loadIndiaStocks();
+}
+
+function renderIndiaIndicesGrid() {
+  const container = document.getElementById('indiaIndicesGrid');
+  if (!container) return;
+
+  const filtered = state.indiaIndices.filter(idx => {
+    if (state.indiaCategory === 'all') return true;
+    return idx.category_type === state.indiaCategory;
+  });
+
+  container.innerHTML = filtered.map(idx => {
+    const isActive = idx.id === state.indiaIndex;
+    const isUp = (idx.avg_1d_pct || 0) >= 0;
+    const returnColor = isUp ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200/60 dark:border-emerald-800/40' : 'text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border-rose-200/60 dark:border-rose-800/40';
+    const turnoverCr = idx.total_turnover_inr ? (idx.total_turnover_inr / 1e7).toFixed(1) : '0';
+
+    const activeRing = isActive
+      ? 'border-amber-500 ring-2 ring-amber-500/40 bg-amber-50/50 dark:bg-amber-950/25 shadow-md'
+      : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-amber-400/50 hover:shadow-sm';
+
+    return `
+      <div onclick="selectIndiaIndex('${idx.id}')" class="rounded-2xl p-4 border transition-all cursor-pointer flex flex-col justify-between ${activeRing}">
+        <div>
+          <div class="flex items-center justify-between gap-1 mb-1.5">
+            <div class="flex items-center space-x-1 flex-wrap">
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">${idx.exchange}</span>
+              <span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300">${idx.category_label}</span>
+            </div>
+            ${isActive ? '<span class="text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500 text-white">ACTIVE</span>' : ''}
+          </div>
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white leading-snug line-clamp-1" title="${idx.name}">${idx.name}</h4>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 mt-1 leading-normal">${idx.description}</p>
+        </div>
+
+        <div class="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800/80">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 font-mono">${idx.stock_count} stocks</span>
+            <span class="text-xs font-mono font-black px-2 py-0.5 rounded-lg border ${returnColor}">
+              ${isUp ? '+' : ''}${(idx.avg_1d_pct || 0).toFixed(2)}%
+            </span>
+          </div>
+          <div class="flex items-center justify-between text-[10px] text-slate-400 font-mono">
+            <span>Adv/Dec: <strong class="text-slate-700 dark:text-slate-300">${idx.advancers || 0}/${idx.decliners || 0}</strong></span>
+            <span>Turnover: <strong class="text-slate-700 dark:text-slate-300">₹${turnoverCr} Cr</strong></span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderActiveIndiaIndexBanner() {
+  const active = state.indiaIndices.find(i => i.id === state.indiaIndex);
+  if (!active) return;
+
+  const nameEl = document.getElementById('aiName');
+  if (nameEl) nameEl.textContent = active.name;
+
+  const catEl = document.getElementById('aiCategory');
+  if (catEl) catEl.textContent = active.category_label || 'Benchmark';
+
+  const exchEl = document.getElementById('aiExchange');
+  if (exchEl) exchEl.textContent = active.exchange || 'NSE';
+
+  const idEl = document.getElementById('aiId');
+  if (idEl) idEl.textContent = `Index: ${active.id}`;
+
+  const descEl = document.getElementById('aiDescription');
+  if (descEl) descEl.textContent = active.description || '';
+
+  const ret1d = document.getElementById('aiReturn1D');
+  if (ret1d) {
+    const isUp = (active.avg_1d_pct || 0) >= 0;
+    ret1d.textContent = `${isUp ? '+' : ''}${(active.avg_1d_pct || 0).toFixed(2)}%`;
+    ret1d.className = `text-sm font-extrabold font-mono px-2.5 py-1 rounded-xl ${isUp ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40' : 'text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40'}`;
+  }
+
+  const countEl = document.getElementById('aiCount');
+  if (countEl) countEl.textContent = active.stock_count || 0;
+
+  const advDecEl = document.getElementById('aiAdvDec');
+  if (advDecEl) advDecEl.textContent = `${active.advancers || 0} / ${active.decliners || 0}`;
+
+  const ret1w = document.getElementById('aiReturn1W');
+  if (ret1w) {
+    const isUpW = (active.avg_1w_pct || 0) >= 0;
+    ret1w.textContent = `${isUpW ? '+' : ''}${(active.avg_1w_pct || 0).toFixed(2)}%`;
+    ret1w.className = `text-sm font-black font-mono ${isUpW ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`;
+  }
+
+  const ret1m = document.getElementById('aiReturn1M');
+  if (ret1m) {
+    const isUpM = (active.avg_1m_pct || 0) >= 0;
+    ret1m.textContent = `${isUpM ? '+' : ''}${(active.avg_1m_pct || 0).toFixed(2)}%`;
+    ret1m.className = `text-sm font-black font-mono ${isUpM ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`;
+  }
+
+  // Leaders
+  const tg = document.getElementById('aiTopGainer');
+  if (tg) {
+    if (active.top_gainer) {
+      tg.textContent = `${active.top_gainer.ticker} (+${(active.top_gainer.change_1d_pct || 0).toFixed(2)}%)`;
+      tg.setAttribute('data-ticker', active.top_gainer.ticker);
+    } else {
+      tg.textContent = 'None';
+      tg.removeAttribute('data-ticker');
+    }
+  }
+
+  const tl = document.getElementById('aiTopLoser');
+  if (tl) {
+    if (active.top_loser) {
+      tl.textContent = `${active.top_loser.ticker} (${(active.top_loser.change_1d_pct || 0).toFixed(2)}%)`;
+      tl.setAttribute('data-ticker', active.top_loser.ticker);
+    } else {
+      tl.textContent = 'None';
+      tl.removeAttribute('data-ticker');
+    }
+  }
+
+  const ma = document.getElementById('aiMostActive');
+  if (ma) {
+    if (active.most_active) {
+      const toCr = active.most_active.turnover_1d_gbp ? (active.most_active.turnover_1d_gbp / 1e7).toFixed(1) : '0';
+      ma.textContent = `${active.most_active.ticker} (₹${toCr} Cr)`;
+      ma.setAttribute('data-ticker', active.most_active.ticker);
+    } else {
+      ma.textContent = 'None';
+      ma.removeAttribute('data-ticker');
+    }
+  }
+}
+
+function openStockModalFromText(el) {
+  const ticker = el.getAttribute('data-ticker');
+  if (ticker) openStockModal(ticker);
+}
+
+function setIndiaSubTab(subTab) {
+  state.indiaSubTab = subTab;
+  const subTabs = ['trending', 'gainers', 'losers', 'volume', 'dividends'];
+  subTabs.forEach(st => {
+    const btn = document.getElementById(`indiaSub${st.charAt(0).toUpperCase() + st.slice(1)}`);
+    if (!btn) return;
+    if (st === subTab) {
+      btn.className = "px-3 py-1.5 rounded-xl bg-amber-600 text-white shadow-sm flex items-center space-x-1 whitespace-nowrap font-bold";
+    } else {
+      btn.className = "px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center space-x-1 whitespace-nowrap font-bold";
+    }
+  });
+
+  const gainBox = document.getElementById('indiaGainersBox');
+  const lossBox = document.getElementById('indiaLosersBox');
+  const timeBox = document.getElementById('indiaTimeframeBox');
+
+  if (gainBox) gainBox.classList.toggle('hidden', subTab !== 'gainers');
+  if (lossBox) lossBox.classList.toggle('hidden', subTab !== 'losers');
+  if (timeBox) timeBox.classList.toggle('hidden', subTab === 'dividends');
+
+  loadIndiaStocks();
+}
+
+function setIndiaPeriod(p) {
+  state.indiaPeriod = p;
+  ['1d', '1w', '1m'].forEach(period => {
+    const btn = document.getElementById(`btnIndiaPeriod${period}`);
+    if (!btn) return;
+    if (period === p) {
+      btn.className = "px-2.5 py-1 rounded-lg font-bold bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-sm";
+    } else {
+      btn.className = "px-2.5 py-1 rounded-lg font-semibold text-slate-600 dark:text-slate-400";
+    }
+  });
+  loadIndiaStocks();
+}
+
+function updateIndiaGainSlider(val) {
+  state.indiaMinGainPct = parseFloat(val) || 0;
+  const inp = document.getElementById('indiaGainInput');
+  if (inp) inp.value = state.indiaMinGainPct.toFixed(1);
+  debounceIndiaFilter();
+}
+
+function updateIndiaGainInput(val) {
+  state.indiaMinGainPct = parseFloat(val) || 0;
+  const slider = document.getElementById('indiaGainSlider');
+  if (slider) slider.value = Math.min(state.indiaMinGainPct, 30);
+  debounceIndiaFilter();
+}
+
+function setIndiaGainPreset(pct) {
+  state.indiaMinGainPct = pct;
+  const slider = document.getElementById('indiaGainSlider');
+  if (slider) slider.value = Math.min(pct, 30);
+  const inp = document.getElementById('indiaGainInput');
+  if (inp) inp.value = pct.toFixed(1);
+  loadIndiaStocks();
+}
+
+function updateIndiaLossSlider(val) {
+  const num = -Math.abs(parseFloat(val) || 0);
+  state.indiaMaxLossPct = num;
+  const inp = document.getElementById('indiaLossInput');
+  if (inp) inp.value = num.toFixed(1);
+  debounceIndiaFilter();
+}
+
+function updateIndiaLossInput(val) {
+  const num = -Math.abs(parseFloat(val) || 0);
+  state.indiaMaxLossPct = num;
+  const slider = document.getElementById('indiaLossSlider');
+  if (slider) slider.value = Math.min(Math.abs(num), 30);
+  debounceIndiaFilter();
+}
+
+function setIndiaLossPreset(pct) {
+  state.indiaMaxLossPct = pct;
+  const slider = document.getElementById('indiaLossSlider');
+  if (slider) slider.value = Math.min(Math.abs(pct), 30);
+  const inp = document.getElementById('indiaLossInput');
+  if (inp) inp.value = pct.toFixed(1);
+  loadIndiaStocks();
+}
+
+function debounceIndiaFilter() {
+  clearTimeout(state.debounceTimer);
+  state.debounceTimer = setTimeout(() => {
+    loadIndiaStocks();
+  }, 250);
+}
+
+function setIndiaViewMode(mode) {
+  state.indiaViewMode = mode;
+  const btnCards = document.getElementById('indiaViewCards');
+  const btnTable = document.getElementById('indiaViewTable');
+  const cardGrid = document.getElementById('indiaCardGrid');
+  const tableView = document.getElementById('indiaTableView');
+
+  if (mode === 'cards') {
+    if (btnCards) btnCards.className = "p-1 rounded text-xs text-amber-600 dark:text-amber-400 bg-white dark:bg-slate-900 shadow-sm";
+    if (btnTable) btnTable.className = "p-1 rounded text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white";
+    if (cardGrid) cardGrid.classList.remove('hidden');
+    if (tableView) tableView.classList.add('hidden');
+  } else {
+    if (btnCards) btnCards.className = "p-1 rounded text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white";
+    if (btnTable) btnTable.className = "p-1 rounded text-xs text-amber-600 dark:text-amber-400 bg-white dark:bg-slate-900 shadow-sm";
+    if (cardGrid) cardGrid.classList.add('hidden');
+    if (tableView) tableView.classList.remove('hidden');
+  }
+  renderIndiaStocksContent();
+}
+
+async function loadIndiaStocks() {
+  try {
+    state.indiaSearch = document.getElementById('indiaSearchInput')?.value.trim() || '';
+
+    const params = new URLSearchParams({
+      market: 'india',
+      index: state.indiaIndex,
+      tab: state.indiaSubTab === 'dividends' ? 'all' : state.indiaSubTab,
+      period: state.indiaPeriod,
+      search: state.indiaSearch,
+      min_gain_pct: state.indiaMinGainPct,
+      max_loss_pct: state.indiaMaxLossPct,
+      volume_metric: 'volume',
+      limit: 150
+    });
+
+    const res = await fetch(`/api/india/stocks?${params.toString()}`);
+    if (!res.ok) throw new Error("Failed to load India stocks");
+    const data = await res.json();
+
+    let items = data.stocks || [];
+    if (state.indiaSubTab === 'dividends') {
+      items = items.filter(s => (s.dividend_yield_pct || 0) > 0);
+      items.sort((a, b) => (b.dividend_yield_pct || 0) - (a.dividend_yield_pct || 0));
+    }
+
+    state.indiaStocks = items;
+
+    const active = state.indiaIndices.find(i => i.id === state.indiaIndex);
+    const indexName = active ? active.name : state.indiaIndex.toUpperCase();
+    const badge = document.getElementById('indiaConstituentBadge');
+    if (badge) {
+      badge.textContent = `Showing ${items.length} stocks in ${indexName}`;
+    }
+
+    renderIndiaStocksContent();
+  } catch (err) {
+    console.error("Error loading India stocks:", err);
+  }
+}
+
+function renderIndiaStocksContent() {
+  const cardGrid = document.getElementById('indiaCardGrid');
+  const tableBody = document.getElementById('indiaTableBody');
+  const emptyState = document.getElementById('indiaEmptyState');
+  const items = state.indiaStocks;
+
+  if (items.length === 0) {
+    if (emptyState) emptyState.classList.remove('hidden');
+    if (cardGrid) cardGrid.innerHTML = '';
+    if (tableBody) tableBody.innerHTML = '';
+    return;
+  }
+  if (emptyState) emptyState.classList.add('hidden');
+
+  if (state.indiaViewMode === 'cards') {
+    if (cardGrid) cardGrid.innerHTML = renderIndiaStockCards(items);
+  } else {
+    if (tableBody) tableBody.innerHTML = renderIndiaStockTableRows(items);
+  }
+
+  lucide.createIcons();
+}
+
+function renderIndiaStockCards(stocks) {
+  const p = state.indiaPeriod;
+  const pctKey = `change_${p}_pct`;
+  const volKey = `volume_${p}`;
+  const turnoverKey = `turnover_${p}_gbp`;
+
+  return stocks.map(s => {
+    const changePct = s[pctKey] || 0;
+    const isUp = changePct >= 0;
+    const isStarred = state.watchlist.has(s.ticker);
+    const bgBadgeClass = isUp ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800' : 'bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800';
+
+    const sparklineSvg = generateSparklineSvg(s.sparkline || [], isUp);
+    const volFormatted = formatNumber(s[volKey]);
+    const turnoverFormatted = formatCurrencyTurnover(s[turnoverKey], 'INR');
+    const priceFormatted = `₹${(s.price_pence || 0).toLocaleString('en-IN', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}`;
+
+    const indicesBadges = (s.indices || []).slice(0, 3).map(idx => 
+      `<span class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200/50">${idx.toUpperCase()}</span>`
+    ).join(' ');
+
+    let ratingBadge = '';
+    if (s.analyst_ratings) {
+      const consensus = s.analyst_ratings.consensus_label || 'BUY';
+      const color = consensus.includes('BUY') ? 'text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40' : (consensus.includes('SELL') ? 'text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40' : 'text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40');
+      ratingBadge = `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${color}">${consensus}</span>`;
+    }
+
+    return `
+      <div onclick="openStockModal('${s.ticker}')" class="bg-white dark:bg-slate-900 rounded-2xl p-4 shadow-sm border border-slate-200 dark:border-slate-800 hover:border-amber-500/50 hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between">
+        
+        <!-- Header -->
+        <div>
+          <div class="flex items-start justify-between">
+            <div class="flex items-center space-x-1.5 flex-wrap">
+              <span class="font-mono font-black text-base text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition">${s.ticker}</span>
+              <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">NSE/BSE</span>
+              ${ratingBadge}
+            </div>
+            <button onclick="toggleWatchlist('${s.ticker}', event)" data-ticker="${s.ticker}" class="watchlist-btn p-1 rounded-lg text-slate-400 hover:text-amber-400 transition">
+              <i data-lucide="star" class="w-4 h-4 ${isStarred ? 'fill-amber-400 text-amber-400' : 'text-slate-400'}"></i>
+            </button>
+          </div>
+
+          <div class="text-xs font-semibold text-slate-600 dark:text-slate-300 truncate mt-0.5" title="${s.name}">${s.name}</div>
+          <div class="flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500 mt-1">
+            <span class="truncate">${s.sector}</span>
+            <div class="flex items-center space-x-1">${indicesBadges}</div>
+          </div>
+        </div>
+
+        <!-- Price & Sparkline -->
+        <div class="my-3 py-2 border-y border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <div>
+            <div class="text-base font-extrabold font-mono text-slate-900 dark:text-white">${priceFormatted}</div>
+            <div class="text-[11px] font-mono text-slate-400">P/E: ${s.pe_ratio || '-'} • 52W: ₹${s.low_52w_pence || 0} - ₹${s.high_52w_pence || 0}</div>
+          </div>
+
+          <div class="w-24 h-8 flex items-center justify-center">
+            ${sparklineSvg}
+          </div>
+
+          <div class="text-right">
+            <div class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-extrabold font-mono border ${bgBadgeClass}">
+              <i data-lucide="${isUp ? 'arrow-up' : 'arrow-down'}" class="w-3.5 h-3.5 mr-0.5"></i>
+              <span>${isUp ? '+' : ''}${changePct.toFixed(2)}%</span>
+            </div>
+            <div class="text-[10px] text-slate-400 font-mono mt-0.5">${p.toUpperCase()} return</div>
+          </div>
+        </div>
+
+        <!-- 1D | 1W | 1M Multi-Period Strip -->
+        <div class="grid grid-cols-3 gap-1 py-1 px-2 rounded-xl bg-slate-50 dark:bg-slate-800/40 text-[11px] font-mono text-center mb-3">
+          <div>
+            <span class="text-[9px] block text-slate-400 uppercase">1 Day</span>
+            <span class="font-bold ${s.change_1d_pct >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}">${s.change_1d_pct >= 0 ? '+' : ''}${s.change_1d_pct.toFixed(1)}%</span>
+          </div>
+          <div class="border-x border-slate-200/60 dark:border-slate-700/60">
+            <span class="text-[9px] block text-slate-400 uppercase">1 Week</span>
+            <span class="font-bold ${s.change_1w_pct >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}">${s.change_1w_pct >= 0 ? '+' : ''}${s.change_1w_pct.toFixed(1)}%</span>
+          </div>
+          <div>
+            <span class="text-[9px] block text-slate-400 uppercase">1 Month</span>
+            <span class="font-bold ${s.change_1m_pct >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}">${s.change_1m_pct >= 0 ? '+' : ''}${s.change_1m_pct.toFixed(1)}%</span>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="flex items-center justify-between text-[11px] text-slate-500 pt-1">
+          <div class="flex items-center space-x-1 font-mono">
+            <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-slate-400"></i>
+            <span>${volFormatted} (${turnoverFormatted})</span>
+          </div>
+          <div class="flex items-center space-x-1.5 font-mono">
+            ${s.dividend_yield_pct > 0 ? `<span class="px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 font-bold font-mono">Div ${s.dividend_yield_pct}%</span>` : ''}
+            <span class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold">${s.rvol}x</span>
+          </div>
+        </div>
+
+      </div>
+    `;
+  }).join('');
+}
+
+function renderIndiaStockTableRows(stocks) {
+  const p = state.indiaPeriod;
+  const turnoverKey = `turnover_${p}_gbp`;
+
+  return stocks.map(s => {
+    const priceFormatted = `₹${(s.price_pence || 0).toLocaleString('en-IN', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}`;
+    const turnoverFormatted = formatCurrencyTurnover(s[turnoverKey], 'INR');
+
+    const indicesBadges = (s.indices || []).slice(0, 3).map(idx => 
+      `<span class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300">${idx.toUpperCase()}</span>`
+    ).join(' ');
+
+    const consensus = s.analyst_ratings ? s.analyst_ratings.consensus_label : 'BUY';
+    const topInst = s.analyst_ratings && s.analyst_ratings.institutions && s.analyst_ratings.institutions[0] ? s.analyst_ratings.institutions[0].institution : 'Goldman Sachs';
+
+    return `
+      <tr onclick="openStockModal('${s.ticker}')" class="hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition">
+        <td class="py-3 px-3">
+          <div class="flex items-center space-x-1.5">
+            <span class="font-bold text-slate-900 dark:text-white">${s.ticker}</span>
+            <span class="text-[9px] px-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">NSE</span>
+          </div>
+          <div class="text-[11px] text-slate-500 truncate max-w-[150px] font-sans">${s.name}</div>
+        </td>
+        <td class="py-3 px-3 font-mono font-bold text-slate-900 dark:text-white">${priceFormatted}</td>
+        <td class="py-3 px-3 font-mono font-bold ${s.change_1d_pct >= 0 ? 'text-emerald-600' : 'text-rose-600'}">
+          ${s.change_1d_pct >= 0 ? '+' : ''}${s.change_1d_pct.toFixed(2)}%
+        </td>
+        <td class="py-3 px-3 font-mono font-bold ${s.change_1w_pct >= 0 ? 'text-emerald-600' : 'text-rose-600'}">
+          ${s.change_1w_pct >= 0 ? '+' : ''}${s.change_1w_pct.toFixed(1)}%
+        </td>
+        <td class="py-3 px-3 font-mono font-bold ${s.change_1m_pct >= 0 ? 'text-emerald-600' : 'text-rose-600'}">
+          ${s.change_1m_pct >= 0 ? '+' : ''}${s.change_1m_pct.toFixed(1)}%
+        </td>
+        <td class="py-3 px-3 font-mono text-slate-700 dark:text-slate-300 font-bold">${turnoverFormatted}</td>
+        <td class="py-3 px-3 font-sans">
+          <div class="flex items-center space-x-1">${indicesBadges}</div>
+        </td>
+        <td class="py-3 px-3 font-sans">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300">${consensus}</span>
+          <span class="text-[10px] text-slate-400 block mt-0.5">${topInst}</span>
+        </td>
+      </tr>
+    `;
+  }).join('');
 }

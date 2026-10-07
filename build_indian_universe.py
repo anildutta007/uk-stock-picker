@@ -1,0 +1,602 @@
+import json
+import os
+
+# Build comprehensive Indian Market Constituents with all 16 Indices
+# Categories:
+# 1. Headline Benchmark: NIFTY 50, BSE SENSEX
+# 2. Broad Market & Market-Cap: NIFTY Next 50, NIFTY 100, NIFTY Midcap 100/150, NIFTY Smallcap 100/250, NIFTY 500
+# 3. Key Sectoral: NIFTY Bank, NIFTY IT, NIFTY Auto, NIFTY Pharma, NIFTY FMCG, NIFTY Metal, NIFTY Energy, NIFTY Realty, NIFTY PSE
+
+stocks = [
+    # --- Headline Blue-Chips & Benchmark Leaders ---
+    {
+        "ticker": "RELIANCE", "symbol": "RELIANCE.NS", "name": "Reliance Industries Ltd.",
+        "sector": "Energy & Conglomerate", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "energy"]
+    },
+    {
+        "ticker": "TCS", "symbol": "TCS.NS", "name": "Tata Consultancy Services Ltd.",
+        "sector": "Information Technology", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "it"]
+    },
+    {
+        "ticker": "HDFCBANK", "symbol": "HDFCBANK.NS", "name": "HDFC Bank Ltd.",
+        "sector": "Financial Services", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "bank"]
+    },
+    {
+        "ticker": "INFY", "symbol": "INFY.NS", "name": "Infosys Ltd.",
+        "sector": "Information Technology", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "it"]
+    },
+    {
+        "ticker": "ICICIBANK", "symbol": "ICICIBANK.NS", "name": "ICICI Bank Ltd.",
+        "sector": "Financial Services", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "bank"]
+    },
+    {
+        "ticker": "BHARTIARTL", "symbol": "BHARTIARTL.NS", "name": "Bharti Airtel Ltd.",
+        "sector": "Telecommunications", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "SBIN", "symbol": "SBIN.NS", "name": "State Bank of India",
+        "sector": "Financial Services", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "bank", "pse"]
+    },
+    {
+        "ticker": "ITC", "symbol": "ITC.NS", "name": "ITC Ltd.",
+        "sector": "Consumer Goods & FMCG", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "LT", "symbol": "LT.NS", "name": "Larsen & Toubro Ltd.",
+        "sector": "Industrials & Infrastructure", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "HINDUNILVR", "symbol": "HINDUNILVR.NS", "name": "Hindustan Unilever Ltd.",
+        "sector": "Consumer Goods & FMCG", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "KOTAKBANK", "symbol": "KOTAKBANK.NS", "name": "Kotak Mahindra Bank Ltd.",
+        "sector": "Financial Services", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "bank"]
+    },
+    {
+        "ticker": "AXISBANK", "symbol": "AXISBANK.NS", "name": "Axis Bank Ltd.",
+        "sector": "Financial Services", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "bank"]
+    },
+    {
+        "ticker": "TITAN", "symbol": "TITAN.NS", "name": "Titan Company Ltd.",
+        "sector": "Consumer Discretionary", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "BAJFINANCE", "symbol": "BAJFINANCE.NS", "name": "Bajaj Finance Ltd.",
+        "sector": "Financial Services", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "ASIANPAINT", "symbol": "ASIANPAINT.NS", "name": "Asian Paints Ltd.",
+        "sector": "Consumer Discretionary", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "MARUTI", "symbol": "MARUTI.NS", "name": "Maruti Suzuki India Ltd.",
+        "sector": "Automobile", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "auto"]
+    },
+    {
+        "ticker": "SUNPHARMA", "symbol": "SUNPHARMA.NS", "name": "Sun Pharmaceutical Industries Ltd.",
+        "sector": "Healthcare & Pharmaceuticals", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "pharma"]
+    },
+    {
+        "ticker": "TATASTEEL", "symbol": "TATASTEEL.NS", "name": "Tata Steel Ltd.",
+        "sector": "Metals & Mining", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "metal"]
+    },
+    {
+        "ticker": "TATAMOTORS", "symbol": "TATAMOTORS.NS", "name": "Tata Motors Ltd.",
+        "sector": "Automobile", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "auto"]
+    },
+    {
+        "ticker": "NTPC", "symbol": "NTPC.NS", "name": "NTPC Ltd.",
+        "sector": "Energy & Utilities", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "energy", "pse"]
+    },
+    {
+        "ticker": "POWERGRID", "symbol": "POWERGRID.NS", "name": "Power Grid Corporation of India Ltd.",
+        "sector": "Energy & Utilities", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "energy", "pse"]
+    },
+    {
+        "ticker": "ULTRACEMCO", "symbol": "ULTRACEMCO.NS", "name": "UltraTech Cement Ltd.",
+        "sector": "Materials & Cement", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "MM", "symbol": "M&M.NS", "name": "Mahindra & Mahindra Ltd.",
+        "sector": "Automobile", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "auto"]
+    },
+    {
+        "ticker": "NESTLEIND", "symbol": "NESTLEIND.NS", "name": "Nestle India Ltd.",
+        "sector": "Consumer Goods & FMCG", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "TECHM", "symbol": "TECHM.NS", "name": "Tech Mahindra Ltd.",
+        "sector": "Information Technology", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "it"]
+    },
+    {
+        "ticker": "HCLTECH", "symbol": "HCLTECH.NS", "name": "HCL Technologies Ltd.",
+        "sector": "Information Technology", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "it"]
+    },
+    {
+        "ticker": "JSWSTEEL", "symbol": "JSWSTEEL.NS", "name": "JSW Steel Ltd.",
+        "sector": "Metals & Mining", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "metal"]
+    },
+    {
+        "ticker": "INDUSINDBK", "symbol": "INDUSINDBK.NS", "name": "IndusInd Bank Ltd.",
+        "sector": "Financial Services", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "bank"]
+    },
+    {
+        "ticker": "BAJAJFINSV", "symbol": "BAJAJFINSV.NS", "name": "Bajaj Finserv Ltd.",
+        "sector": "Financial Services", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "TRENT", "symbol": "TRENT.NS", "name": "Trent Ltd.",
+        "sector": "Consumer Discretionary & Retail", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "sensex", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "ADANIENT", "symbol": "ADANIENT.NS", "name": "Adani Enterprises Ltd.",
+        "sector": "Metals & Conglomerate", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "ADANIPORTS", "symbol": "ADANIPORTS.NS", "name": "Adani Ports and SEZ Ltd.",
+        "sector": "Industrials & Logistics", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "COALINDIA", "symbol": "COALINDIA.NS", "name": "Coal India Ltd.",
+        "sector": "Energy & Mining", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "metal", "energy", "pse"]
+    },
+    {
+        "ticker": "CIPLA", "symbol": "CIPLA.NS", "name": "Cipla Ltd.",
+        "sector": "Healthcare & Pharmaceuticals", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "pharma"]
+    },
+    {
+        "ticker": "ONGC", "symbol": "ONGC.NS", "name": "Oil & Natural Gas Corporation Ltd.",
+        "sector": "Energy & Exploration", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "energy", "pse"]
+    },
+    {
+        "ticker": "GRASIM", "symbol": "GRASIM.NS", "name": "Grasim Industries Ltd.",
+        "sector": "Materials & Diversified", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "SBILIFE", "symbol": "SBILIFE.NS", "name": "SBI Life Insurance Co. Ltd.",
+        "sector": "Financial Services", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "HDFCLIFE", "symbol": "HDFCLIFE.NS", "name": "HDFC Life Insurance Co. Ltd.",
+        "sector": "Financial Services", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "DRREDDY", "symbol": "DRREDDY.NS", "name": "Dr. Reddy's Laboratories Ltd.",
+        "sector": "Healthcare & Pharmaceuticals", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "pharma"]
+    },
+    {
+        "ticker": "BRITANNIA", "symbol": "BRITANNIA.NS", "name": "Britannia Industries Ltd.",
+        "sector": "Consumer Goods & FMCG", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "TATACONSUM", "symbol": "TATACONSUM.NS", "name": "Tata Consumer Products Ltd.",
+        "sector": "Consumer Goods & FMCG", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "EICHERMOT", "symbol": "EICHERMOT.NS", "name": "Eicher Motors Ltd.",
+        "sector": "Automobile", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "auto"]
+    },
+    {
+        "ticker": "BPCL", "symbol": "BPCL.NS", "name": "Bharat Petroleum Corporation Ltd.",
+        "sector": "Energy & Refining", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "energy", "pse"]
+    },
+    {
+        "ticker": "HEROMOTOCO", "symbol": "HEROMOTOCO.NS", "name": "Hero MotoCorp Ltd.",
+        "sector": "Automobile", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "auto"]
+    },
+    {
+        "ticker": "DIVISLAB", "symbol": "DIVISLAB.NS", "name": "Divi's Laboratories Ltd.",
+        "sector": "Healthcare & Pharmaceuticals", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "pharma"]
+    },
+    {
+        "ticker": "APOLLOHOSP", "symbol": "APOLLOHOSP.NS", "name": "Apollo Hospitals Enterprise Ltd.",
+        "sector": "Healthcare & Hospitals", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "pharma"]
+    },
+    {
+        "ticker": "BAJAJAUTO", "symbol": "BAJAJ-AUTO.NS", "name": "Bajaj Auto Ltd.",
+        "sector": "Automobile", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "auto"]
+    },
+    {
+        "ticker": "HINDALCO", "symbol": "HINDALCO.NS", "name": "Hindalco Industries Ltd.",
+        "sector": "Metals & Mining", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "metal"]
+    },
+    {
+        "ticker": "SHREECEM", "symbol": "SHREECEM.NS", "name": "Shree Cement Ltd.",
+        "sector": "Materials & Cement", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "WIPRO", "symbol": "WIPRO.NS", "name": "Wipro Ltd.",
+        "sector": "Information Technology", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "it"]
+    },
+    {
+        "ticker": "LTIM", "symbol": "LTIM.NS", "name": "LTIMindtree Ltd.",
+        "sector": "Information Technology", "market": "NIFTY 50 (India)", "currency": "INR",
+        "indices": ["nifty50", "nifty100", "nifty500", "it"]
+    },
+
+    # --- NIFTY Next 50 & Large-Cap Growth Pipeline ---
+    {
+        "ticker": "BEL", "symbol": "BEL.NS", "name": "Bharat Electronics Ltd.",
+        "sector": "Aerospace & Defense", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "pse"]
+    },
+    {
+        "ticker": "HAL", "symbol": "HAL.NS", "name": "Hindustan Aeronautics Ltd.",
+        "sector": "Aerospace & Defense", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "pse"]
+    },
+    {
+        "ticker": "VEDL", "symbol": "VEDL.NS", "name": "Vedanta Ltd.",
+        "sector": "Metals & Natural Resources", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "metal"]
+    },
+    {
+        "ticker": "DLF", "symbol": "DLF.NS", "name": "DLF Ltd.",
+        "sector": "Real Estate", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "realty"]
+    },
+    {
+        "ticker": "SIEMENS", "symbol": "SIEMENS.NS", "name": "Siemens India Ltd.",
+        "sector": "Capital Goods & Engineering", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "IOC", "symbol": "IOC.NS", "name": "Indian Oil Corporation Ltd.",
+        "sector": "Energy & Refining", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "energy", "pse"]
+    },
+    {
+        "ticker": "ZOMATO", "symbol": "ZOMATO.NS", "name": "Zomato Ltd.",
+        "sector": "Consumer Tech & Quick Commerce", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "JIOFIN", "symbol": "JIOFIN.NS", "name": "Jio Financial Services Ltd.",
+        "sector": "Financial Services", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "TATAPOWER", "symbol": "TATAPOWER.NS", "name": "Tata Power Company Ltd.",
+        "sector": "Energy & Utilities", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "energy"]
+    },
+    {
+        "ticker": "AMBUJACEM", "symbol": "AMBUJACEM.NS", "name": "Ambuja Cements Ltd.",
+        "sector": "Materials & Cement", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "GAIL", "symbol": "GAIL.NS", "name": "GAIL (India) Ltd.",
+        "sector": "Energy & Gas Utilities", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "energy", "pse"]
+    },
+    {
+        "ticker": "RECLTD", "symbol": "RECLTD.NS", "name": "REC Ltd.",
+        "sector": "Financial Services & Infra Financing", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "pse"]
+    },
+    {
+        "ticker": "PFC", "symbol": "PFC.NS", "name": "Power Finance Corporation Ltd.",
+        "sector": "Financial Services & Infra Financing", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "pse"]
+    },
+    {
+        "ticker": "GODREJCP", "symbol": "GODREJCP.NS", "name": "Godrej Consumer Products Ltd.",
+        "sector": "Consumer Goods & FMCG", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "TVSMOTOR", "symbol": "TVSMOTOR.NS", "name": "TVS Motor Company Ltd.",
+        "sector": "Automobile", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "auto"]
+    },
+    {
+        "ticker": "HAVELLS", "symbol": "HAVELLS.NS", "name": "Havells India Ltd.",
+        "sector": "Consumer Electricals", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500"]
+    },
+    {
+        "ticker": "DABUR", "symbol": "DABUR.NS", "name": "Dabur India Ltd.",
+        "sector": "Consumer Goods & FMCG", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "MARICO", "symbol": "MARICO.NS", "name": "Marico Ltd.",
+        "sector": "Consumer Goods & FMCG", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "VBL", "symbol": "VBL.NS", "name": "Varun Beverages Ltd.",
+        "sector": "Consumer Goods & FMCG", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "COLPAL", "symbol": "COLPAL.NS", "name": "Colgate-Palmolive (India) Ltd.",
+        "sector": "Consumer Goods & FMCG", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "fmcg"]
+    },
+    {
+        "ticker": "BANKBARODA", "symbol": "BANKBARODA.NS", "name": "Bank of Baroda",
+        "sector": "Financial Services", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "bank", "pse"]
+    },
+    {
+        "ticker": "PNB", "symbol": "PNB.NS", "name": "Punjab National Bank",
+        "sector": "Financial Services", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "bank", "pse"]
+    },
+    {
+        "ticker": "BHARATFORG", "symbol": "BHARATFORG.NS", "name": "Bharat Forge Ltd.",
+        "sector": "Automobile & Industrials", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "auto"]
+    },
+    {
+        "ticker": "JINDALSTEL", "symbol": "JINDALSTEL.NS", "name": "Jindal Steel & Power Ltd.",
+        "sector": "Metals & Mining", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "metal"]
+    },
+    {
+        "ticker": "ADANIGREEN", "symbol": "ADANIGREEN.NS", "name": "Adani Green Energy Ltd.",
+        "sector": "Energy & Renewables", "market": "NIFTY Next 50", "currency": "INR",
+        "indices": ["niftynext50", "nifty100", "nifty500", "energy"]
+    },
+
+    # --- NIFTY Midcap 100 / 150 Key Leaders ---
+    {
+        "ticker": "PERSISTENT", "symbol": "PERSISTENT.NS", "name": "Persistent Systems Ltd.",
+        "sector": "Information Technology", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "it"]
+    },
+    {
+        "ticker": "COFORGE", "symbol": "COFORGE.NS", "name": "Coforge Ltd.",
+        "sector": "Information Technology", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "it"]
+    },
+    {
+        "ticker": "MPHASIS", "symbol": "MPHASIS.NS", "name": "Mphasis Ltd.",
+        "sector": "Information Technology", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "it"]
+    },
+    {
+        "ticker": "DIXON", "symbol": "DIXON.NS", "name": "Dixon Technologies (India) Ltd.",
+        "sector": "Consumer Electronics & EMS", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500"]
+    },
+    {
+        "ticker": "SUZLON", "symbol": "SUZLON.NS", "name": "Suzlon Energy Ltd.",
+        "sector": "Energy & Wind Power", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "energy"]
+    },
+    {
+        "ticker": "POLYCAB", "symbol": "POLYCAB.NS", "name": "Polycab India Ltd.",
+        "sector": "Industrials & Cables", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500"]
+    },
+    {
+        "ticker": "FEDERALBNK", "symbol": "FEDERALBNK.NS", "name": "The Federal Bank Ltd.",
+        "sector": "Financial Services", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "bank"]
+    },
+    {
+        "ticker": "IDFCFIRSTB", "symbol": "IDFCFIRSTB.NS", "name": "IDFC FIRST Bank Ltd.",
+        "sector": "Financial Services", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "bank"]
+    },
+    {
+        "ticker": "AUBANK", "symbol": "AUBANK.NS", "name": "AU Small Finance Bank Ltd.",
+        "sector": "Financial Services", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "bank"]
+    },
+    {
+        "ticker": "BANDHANBNK", "symbol": "BANDHANBNK.NS", "name": "Bandhan Bank Ltd.",
+        "sector": "Financial Services", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "bank"]
+    },
+    {
+        "ticker": "ASHOKLEY", "symbol": "ASHOKLEY.NS", "name": "Ashok Leyland Ltd.",
+        "sector": "Automobile & Commercial Vehicles", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "auto"]
+    },
+    {
+        "ticker": "ESCORTS", "symbol": "ESCORTS.NS", "name": "Escorts Kubota Ltd.",
+        "sector": "Automobile & Agri Machinery", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "auto"]
+    },
+    {
+        "ticker": "LUPIN", "symbol": "LUPIN.NS", "name": "Lupin Ltd.",
+        "sector": "Healthcare & Pharmaceuticals", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "pharma"]
+    },
+    {
+        "ticker": "AUROPHARMA", "symbol": "AUROPHARMA.NS", "name": "Aurobindo Pharma Ltd.",
+        "sector": "Healthcare & Pharmaceuticals", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "pharma"]
+    },
+    {
+        "ticker": "TORNTPHARM", "symbol": "TORNTPHARM.NS", "name": "Torrent Pharmaceuticals Ltd.",
+        "sector": "Healthcare & Pharmaceuticals", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "pharma"]
+    },
+    {
+        "ticker": "ZYDUSLIFE", "symbol": "ZYDUSLIFE.NS", "name": "Zydus Lifesciences Ltd.",
+        "sector": "Healthcare & Pharmaceuticals", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "pharma"]
+    },
+    {
+        "ticker": "MANKIND", "symbol": "MANKIND.NS", "name": "Mankind Pharma Ltd.",
+        "sector": "Healthcare & Pharmaceuticals", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "pharma"]
+    },
+    {
+        "ticker": "NMDC", "symbol": "NMDC.NS", "name": "NMDC Ltd.",
+        "sector": "Metals & Mining", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "metal", "pse"]
+    },
+    {
+        "ticker": "SAIL", "symbol": "SAIL.NS", "name": "Steel Authority of India Ltd.",
+        "sector": "Metals & Mining", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "metal", "pse"]
+    },
+    {
+        "ticker": "NATIONALUM", "symbol": "NATIONALUM.NS", "name": "National Aluminium Co. Ltd.",
+        "sector": "Metals & Mining", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "metal", "pse"]
+    },
+    {
+        "ticker": "LODHA", "symbol": "LODHA.NS", "name": "Macrotech Developers (Lodha) Ltd.",
+        "sector": "Real Estate", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "realty"]
+    },
+    {
+        "ticker": "GODREJPROP", "symbol": "GODREJPROP.NS", "name": "Godrej Properties Ltd.",
+        "sector": "Real Estate", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "realty"]
+    },
+    {
+        "ticker": "OBEROIRLTY", "symbol": "OBEROIRLTY.NS", "name": "Oberoi Realty Ltd.",
+        "sector": "Real Estate", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "realty"]
+    },
+    {
+        "ticker": "PRESTIGE", "symbol": "PRESTIGE.NS", "name": "Prestige Estates Projects Ltd.",
+        "sector": "Real Estate", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "realty"]
+    },
+    {
+        "ticker": "PHOENIXLTD", "symbol": "PHOENIXLTD.NS", "name": "The Phoenix Mills Ltd.",
+        "sector": "Real Estate & Retail Malls", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "realty"]
+    },
+    {
+        "ticker": "BRIGADE", "symbol": "BRIGADE.NS", "name": "Brigade Enterprises Ltd.",
+        "sector": "Real Estate", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500", "realty"]
+    },
+    {
+        "ticker": "VOLTAS", "symbol": "VOLTAS.NS", "name": "Voltas Ltd.",
+        "sector": "Consumer Durables", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500"]
+    },
+    {
+        "ticker": "CUMMINSIND", "symbol": "CUMMINSIND.NS", "name": "Cummins India Ltd.",
+        "sector": "Capital Goods & Power Solutions", "market": "NIFTY Midcap 100", "currency": "INR",
+        "indices": ["midcap", "nifty500"]
+    },
+
+    # --- NIFTY Smallcap 100 / 250 Key Stars ---
+    {
+        "ticker": "ANGELONE", "symbol": "ANGELONE.NS", "name": "Angel One Ltd.",
+        "sector": "Financial Tech & Broking", "market": "NIFTY Smallcap 100", "currency": "INR",
+        "indices": ["smallcap", "nifty500"]
+    },
+    {
+        "ticker": "CDSL", "symbol": "CDSL.NS", "name": "Central Depository Services (India) Ltd.",
+        "sector": "Financial Infrastructure", "market": "NIFTY Smallcap 100", "currency": "INR",
+        "indices": ["smallcap", "nifty500"]
+    },
+    {
+        "ticker": "MAZDOCK", "symbol": "MAZDOCK.NS", "name": "Mazagon Dock Shipbuilders Ltd.",
+        "sector": "Defense & Shipbuilding", "market": "NIFTY Smallcap 100", "currency": "INR",
+        "indices": ["smallcap", "nifty500", "pse"]
+    },
+    {
+        "ticker": "BSOFT", "symbol": "BSOFT.NS", "name": "Birlasoft Ltd.",
+        "sector": "Information Technology", "market": "NIFTY Smallcap 100", "currency": "INR",
+        "indices": ["smallcap", "nifty500", "it"]
+    },
+    {
+        "ticker": "KAYNES", "symbol": "KAYNES.NS", "name": "Kaynes Technology India Ltd.",
+        "sector": "Electronics & IoT EMS", "market": "NIFTY Smallcap 100", "currency": "INR",
+        "indices": ["smallcap", "nifty500"]
+    },
+    {
+        "ticker": "ZENTEC", "symbol": "ZENTEC.NS", "name": "Zen Technologies Ltd.",
+        "sector": "Defense Simulation & Drones", "market": "NIFTY Smallcap 100", "currency": "INR",
+        "indices": ["smallcap", "nifty500"]
+    },
+    {
+        "ticker": "BSELTD", "symbol": "BSE.NS", "name": "BSE Ltd.",
+        "sector": "Financial Exchange", "market": "NIFTY Smallcap 100", "currency": "INR",
+        "indices": ["smallcap", "nifty500"]
+    },
+    {
+        "ticker": "CAMS", "symbol": "CAMS.NS", "name": "Computer Age Management Services Ltd.",
+        "sector": "Financial Infrastructure & Registrar", "market": "NIFTY Smallcap 100", "currency": "INR",
+        "indices": ["smallcap", "nifty500"]
+    },
+    {
+        "ticker": "SONACOMS", "symbol": "SONACOMS.NS", "name": "Sona BLW Precision Forgings Ltd.",
+        "sector": "Automobile EV Drivetrain", "market": "NIFTY Smallcap 100", "currency": "INR",
+        "indices": ["smallcap", "nifty500", "auto"]
+    }
+]
+
+print(f"Total Indian constituents defined: {len(stocks)}")
+
+# Validate each of the 16 indices
+indices_count = {}
+for s in stocks:
+    for idx in s.get("indices", []):
+        indices_count[idx] = indices_count.get(idx, 0) + 1
+
+print("Constituent counts across all 16 indices:")
+for idx, cnt in sorted(indices_count.items()):
+    print(f"  * {idx}: {cnt} stocks")
+
+# Save to data/constituents_nifty.json
+target_path = os.path.join("data", "constituents_nifty.json")
+with open(target_path, "w", encoding="utf-8") as f:
+    json.dump(stocks, f, indent=2)
+
+print(f"Successfully saved {len(stocks)} constituents to {target_path}")

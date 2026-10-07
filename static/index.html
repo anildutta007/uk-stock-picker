@@ -205,48 +205,55 @@
   <!-- ================= MAIN APPLICATION BODY ================= -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-    <!-- ================= 7 MAIN FEATURE NAVIGATION TABS ================= -->
+    <!-- ================= 8 MAIN FEATURE NAVIGATION TABS ================= -->
     <div class="bg-white dark:bg-slate-900 rounded-2xl p-2 shadow-sm border border-slate-200 dark:border-slate-800 mb-6">
-      <nav class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-2" aria-label="Tabs">
+      <nav class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2" aria-label="Tabs">
         
         <!-- Tab 1: Trending Stocks -->
-        <button onclick="setTab('trending')" id="tabTrending" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20">
+        <button onclick="setTab('trending')" id="tabTrending" class="tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20">
           <i data-lucide="flame" class="w-4 h-4 text-amber-300"></i>
           <span>1. Trending</span>
         </button>
 
         <!-- Tab 2: Gainers -->
-        <button onclick="setTab('gainers')" id="tabGainers" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <button onclick="setTab('gainers')" id="tabGainers" class="tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           <i data-lucide="trending-up" class="w-4 h-4 text-emerald-500"></i>
           <span>2. Gainers</span>
         </button>
 
         <!-- Tab 3: Decliners -->
-        <button onclick="setTab('losers')" id="tabLosers" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <button onclick="setTab('losers')" id="tabLosers" class="tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           <i data-lucide="trending-down" class="w-4 h-4 text-rose-500"></i>
           <span>3. Decliners</span>
         </button>
 
         <!-- Tab 4: Highest Volume -->
-        <button onclick="setTab('volume')" id="tabVolume" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <button onclick="setTab('volume')" id="tabVolume" class="tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           <i data-lucide="bar-chart-2" class="w-4 h-4 text-sky-500"></i>
           <span>4. Volume</span>
         </button>
 
         <!-- Tab 5: Upcoming Dividends -->
-        <button onclick="setTab('dividends')" id="tabDividends" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <button onclick="setTab('dividends')" id="tabDividends" class="tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           <i data-lucide="calendar" class="w-4 h-4 text-indigo-500"></i>
           <span>5. Dividends</span>
         </button>
 
-        <!-- Tab 6: Guide & Methodology (USER REQUEST) -->
-        <button onclick="setTab('guide')" id="tabGuide" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-all border border-purple-200 dark:border-purple-800">
-          <i data-lucide="book-open" class="w-4 h-4 text-purple-600 dark:text-purple-400"></i>
-          <span>6. 📖 Tab Guide</span>
+        <!-- Tab 6: Indian Market Hub (16 Indices) (USER REQUEST) -->
+        <button onclick="setTab('india')" id="tabIndia" class="tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-semibold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-all border border-amber-200 dark:border-amber-800">
+          <span class="text-sm">🇮🇳</span>
+          <span class="font-bold">Indian Market</span>
+          <span class="ml-0.5 text-[10px] font-black px-1.5 py-0.5 rounded-full bg-amber-200 dark:bg-amber-900 text-amber-800 dark:text-amber-200">16</span>
         </button>
 
-        <!-- Tab 7: Watchlist -->
-        <button onclick="setTab('watchlist')" id="tabWatchlist" class="tab-button flex items-center justify-center space-x-1.5 px-3 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <!-- Tab 7: Guide & Methodology (USER REQUEST) -->
+        <button onclick="setTab('guide')" id="tabGuide" class="tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-semibold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-all border border-purple-200 dark:border-purple-800">
+          <i data-lucide="book-open" class="w-4 h-4 text-purple-600 dark:text-purple-400"></i>
+          <span>7. 📖 Guide</span>
+        </button>
+
+        <!-- Tab 8: Watchlist -->
+        <button onclick="setTab('watchlist')" id="tabWatchlist" class="tab-button flex items-center justify-center space-x-1.5 px-2.5 py-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           <i data-lucide="star" class="w-4 h-4 text-amber-400"></i>
           <span>Watchlist (<span id="watchlistCount">0</span>)</span>
         </button>
@@ -734,6 +741,289 @@
           </div>
         </div>
 
+      </div>
+
+    <!-- ================= DEDICATED INDIAN MARKET HUB (16 INDICES - USER REQUEST) ================= -->
+    <div id="indiaView" class="hidden space-y-6">
+      
+      <!-- Indian Market Hero Header & Real-time Pulse -->
+      <div class="bg-gradient-to-r from-orange-600 via-amber-600 to-emerald-700 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 opacity-10 text-white pointer-events-none">
+          <i data-lucide="compass" class="w-72 h-72"></i>
+        </div>
+        <div class="relative z-10">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+              <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-extrabold bg-white/20 backdrop-blur border border-white/30 uppercase tracking-widest mb-3">
+                <span>🇮🇳 NSE & BSE Live Intelligence</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
+                <span>16 Premier Indices</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white flex items-center gap-2">
+                <span>Indian Market Intelligence Hub</span>
+                <span class="text-sm font-bold px-2.5 py-0.5 rounded-lg bg-white/20 text-white border border-white/20">NSE • BSE</span>
+              </h2>
+              <p class="text-xs sm:text-sm text-white/90 max-w-3xl mt-2 leading-relaxed">
+                Institutional screening across <strong>Headline Benchmarks</strong> (NIFTY 50, BSE SENSEX), <strong>Market-Cap Tiers</strong> (Next 50, Midcap 100/150, Smallcap 100/250, NIFTY/BSE 500), and <strong>Core Sectoral Leaders</strong> (Bank Nifty, IT, Auto, Pharma, FMCG, Metal, Energy, Realty, PSE).
+              </p>
+            </div>
+            
+            <!-- Overall India Live Summary Pills -->
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-3 text-white text-xs min-w-fit">
+              <div>
+                <span class="text-white/70 block text-[10px] uppercase font-bold tracking-wider">Tracked Stocks</span>
+                <span class="text-base font-extrabold font-mono" id="indiaTotalStocks">113</span>
+              </div>
+              <div>
+                <span class="text-white/70 block text-[10px] uppercase font-bold tracking-wider">Advancers / Dec</span>
+                <span class="text-base font-extrabold font-mono" id="indiaAdvDec">-- / --</span>
+              </div>
+              <div>
+                <span class="text-white/70 block text-[10px] uppercase font-bold tracking-wider">1D Day Avg</span>
+                <span class="text-base font-extrabold font-mono" id="indiaDayAvg">+0.00%</span>
+              </div>
+              <div>
+                <span class="text-white/70 block text-[10px] uppercase font-bold tracking-wider">Total Turnover</span>
+                <span class="text-base font-extrabold font-mono" id="indiaTotalTurnover">₹0 Cr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Index Tier Category Filter Navigation -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl p-3 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center space-x-2 text-xs font-bold text-slate-700 dark:text-slate-300">
+          <i data-lucide="layers" class="w-4 h-4 text-amber-500"></i>
+          <span>Filter 16 Indices by Category:</span>
+        </div>
+        <div class="flex items-center space-x-1.5 flex-wrap gap-1.5" id="indiaCategoryPills">
+          <button onclick="setIndiaCategory('all')" id="catBtn-all" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all bg-amber-600 text-white shadow-sm">
+            All 16 Indices (16)
+          </button>
+          <button onclick="setIndiaCategory('headline')" id="catBtn-headline" class="px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all border border-slate-200 dark:border-slate-700">
+            🏆 1. Headline Benchmarks (2)
+          </button>
+          <button onclick="setIndiaCategory('broad')" id="catBtn-broad" class="px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all border border-slate-200 dark:border-slate-700">
+            📈 2. Broad Market & Cap (5)
+          </button>
+          <button onclick="setIndiaCategory('sectoral')" id="catBtn-sectoral" class="px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all border border-slate-200 dark:border-slate-700">
+            🏭 3. Key Sectoral Indices (9)
+          </button>
+        </div>
+      </div>
+
+      <!-- 16-Index Grid Selector Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5" id="indiaIndicesGrid">
+        <!-- Rendered dynamically by app.js: loadIndiaIndices() -->
+      </div>
+
+      <!-- Active Selected Index Deep-Dive Spotlight & User Explanation -->
+      <div id="indiaActiveIndexCard" class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm border-2 border-amber-500/40 dark:border-amber-500/30">
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <div class="flex items-center space-x-2 flex-wrap gap-1">
+              <span class="text-xs font-black uppercase tracking-wider px-2.5 py-0.5 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800" id="aiCategory">
+                Headline Benchmark
+              </span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300" id="aiExchange">
+                NSE
+              </span>
+              <span class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400" id="aiId">
+                Index: nifty50
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1.5 flex items-center gap-2">
+              <span id="aiName">NIFTY 50 (NSE)</span>
+              <span class="text-sm font-extrabold font-mono px-2.5 py-1 rounded-xl text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40" id="aiReturn1D">+0.00%</span>
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 max-w-4xl leading-relaxed" id="aiDescription">
+              The flagship barometer of overall economic and market health in India. Tracks the 50 largest, most liquid blue-chip companies listed on the NSE across key sectors (representing roughly 60% of NSE's free-float market capitalisation).
+            </p>
+          </div>
+
+          <!-- Active Index Quick Metrics Bar -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2.5 min-w-fit">
+            <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 text-center">
+              <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider block">Constituents</span>
+              <span class="text-sm font-black font-mono text-slate-900 dark:text-white" id="aiCount">50</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 text-center">
+              <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider block">Adv / Dec</span>
+              <span class="text-sm font-black font-mono text-slate-900 dark:text-white" id="aiAdvDec">-- / --</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 text-center">
+              <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider block">1W Return</span>
+              <span class="text-sm font-black font-mono" id="aiReturn1W">+0.00%</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 text-center">
+              <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider block">1M Return</span>
+              <span class="text-sm font-black font-mono" id="aiReturn1M">+0.00%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leaders Strip (Top Gainer, Top Loser, Most Active in Index) -->
+        <div class="pt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div class="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/40 flex items-center justify-between">
+            <span class="text-emerald-700 dark:text-emerald-300 font-bold flex items-center gap-1">
+              <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+              <span>Top Gainer:</span>
+            </span>
+            <span class="font-mono font-extrabold text-emerald-800 dark:text-emerald-200 cursor-pointer hover:underline" id="aiTopGainer">
+              --
+            </span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200/60 dark:border-rose-800/40 flex items-center justify-between">
+            <span class="text-rose-700 dark:text-rose-300 font-bold flex items-center gap-1">
+              <i data-lucide="trending-down" class="w-3.5 h-3.5"></i>
+              <span>Top Loser:</span>
+            </span>
+            <span class="font-mono font-extrabold text-rose-800 dark:text-rose-200 cursor-pointer hover:underline" id="aiTopLoser">
+              --
+            </span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200/60 dark:border-sky-800/40 flex items-center justify-between">
+            <span class="text-sky-700 dark:text-sky-300 font-bold flex items-center gap-1">
+              <i data-lucide="activity" class="w-3.5 h-3.5"></i>
+              <span>Most Active:</span>
+            </span>
+            <span class="font-mono font-extrabold text-sky-800 dark:text-sky-200 cursor-pointer hover:underline" id="aiMostActive">
+              --
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Index Constituents Screener Toolbar -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl p-4 shadow-sm border border-slate-200 dark:border-slate-800 space-y-3">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-slate-200/70 dark:border-slate-800/70">
+          <!-- Screener Sub-tabs -->
+          <div class="flex items-center space-x-1.5 overflow-x-auto text-xs font-bold no-scrollbar">
+            <button onclick="setIndiaSubTab('trending')" id="indiaSubTrending" class="px-3 py-1.5 rounded-xl bg-amber-600 text-white shadow-sm flex items-center space-x-1 whitespace-nowrap">
+              <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-200"></i>
+              <span>1. Trending</span>
+            </button>
+            <button onclick="setIndiaSubTab('gainers')" id="indiaSubGainers" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center space-x-1 whitespace-nowrap">
+              <i data-lucide="trending-up" class="w-3.5 h-3.5 text-emerald-500"></i>
+              <span>2. Gainers</span>
+            </button>
+            <button onclick="setIndiaSubTab('losers')" id="indiaSubLosers" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center space-x-1 whitespace-nowrap">
+              <i data-lucide="trending-down" class="w-3.5 h-3.5 text-rose-500"></i>
+              <span>3. Decliners</span>
+            </button>
+            <button onclick="setIndiaSubTab('volume')" id="indiaSubVolume" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center space-x-1 whitespace-nowrap">
+              <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-sky-500"></i>
+              <span>4. Volume / Turnover</span>
+            </button>
+            <button onclick="setIndiaSubTab('dividends')" id="indiaSubDividends" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center space-x-1 whitespace-nowrap">
+              <i data-lucide="calendar" class="w-3.5 h-3.5 text-indigo-500"></i>
+              <span>5. Dividends</span>
+            </button>
+          </div>
+
+          <!-- Search & View Toggle -->
+          <div class="flex items-center space-x-2">
+            <div class="relative min-w-[180px]">
+              <i data-lucide="search" class="w-3.5 h-3.5 absolute left-2.5 top-2 text-slate-400"></i>
+              <input type="text" id="indiaSearchInput" oninput="debounceIndiaFilter()" placeholder="Search Indian stock or sector..." class="w-full pl-8 pr-3 py-1.5 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-900 dark:text-white placeholder-slate-400">
+            </div>
+            <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
+              <button onclick="setIndiaViewMode('cards')" id="indiaViewCards" class="p-1 rounded text-xs text-amber-600 dark:text-amber-400 bg-white dark:bg-slate-900 shadow-sm">
+                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+              </button>
+              <button onclick="setIndiaViewMode('table')" id="indiaViewTable" class="p-1 rounded text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white">
+                <i data-lucide="table" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Period and Custom Threshold Controls Row for India Sub-tabs -->
+        <div class="flex flex-wrap items-center justify-between gap-3 text-xs" id="indiaControlsRow">
+          <!-- Timeframe: 1D, 1W, 1M -->
+          <div class="flex items-center space-x-2" id="indiaTimeframeBox">
+            <span class="font-bold text-slate-600 dark:text-slate-400">Timeframe:</span>
+            <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-xl border border-slate-200 dark:border-slate-700">
+              <button onclick="setIndiaPeriod('1d')" id="btnIndiaPeriod1d" class="px-2.5 py-1 rounded-lg font-bold bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-sm">1 Day</button>
+              <button onclick="setIndiaPeriod('1w')" id="btnIndiaPeriod1w" class="px-2.5 py-1 rounded-lg font-semibold text-slate-600 dark:text-slate-400">1 Week</button>
+              <button onclick="setIndiaPeriod('1m')" id="btnIndiaPeriod1m" class="px-2.5 py-1 rounded-lg font-semibold text-slate-600 dark:text-slate-400">1 Month</button>
+            </div>
+          </div>
+
+          <!-- Gain Threshold (shown when Gainers is active) -->
+          <div id="indiaGainersBox" class="hidden flex-1 flex flex-wrap items-center gap-3">
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-emerald-600 dark:text-emerald-400">Min Gain:</span>
+              <input type="range" id="indiaGainSlider" min="0" max="30" step="0.5" value="2.0" oninput="updateIndiaGainSlider(this.value)" class="w-24 sm:w-36 accent-emerald-600 cursor-pointer">
+              <input type="number" id="indiaGainInput" min="0" max="100" step="0.1" value="2.0" oninput="updateIndiaGainInput(this.value)" class="w-14 px-1.5 py-0.5 font-mono text-center font-bold text-emerald-600 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+              <span>%</span>
+            </div>
+            <div class="flex items-center space-x-1">
+              <button onclick="setIndiaGainPreset(0)" class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[11px] font-semibold">> 0%</button>
+              <button onclick="setIndiaGainPreset(2)" class="px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[11px] font-bold">+2%</button>
+              <button onclick="setIndiaGainPreset(5)" class="px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[11px] font-bold">+5%</button>
+            </div>
+          </div>
+
+          <!-- Loss Threshold (shown when Decliners is active) -->
+          <div id="indiaLosersBox" class="hidden flex-1 flex flex-wrap items-center gap-3">
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-rose-600 dark:text-rose-400">Max Drop:</span>
+              <input type="range" id="indiaLossSlider" min="0" max="30" step="0.5" value="2.0" oninput="updateIndiaLossSlider(this.value)" class="w-24 sm:w-36 accent-rose-600 cursor-pointer">
+              <input type="number" id="indiaLossInput" min="-100" max="0" step="0.1" value="-2.0" oninput="updateIndiaLossInput(this.value)" class="w-14 px-1.5 py-0.5 font-mono text-center font-bold text-rose-600 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+              <span>%</span>
+            </div>
+            <div class="flex items-center space-x-1">
+              <button onclick="setIndiaLossPreset(-1)" class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[11px] font-semibold">-1%</button>
+              <button onclick="setIndiaLossPreset(-2)" class="px-2 py-0.5 rounded-md bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 text-[11px] font-bold">-2%</button>
+              <button onclick="setIndiaLossPreset(-5)" class="px-2 py-0.5 rounded-md bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 text-[11px] font-bold">-5%</button>
+            </div>
+          </div>
+
+          <!-- Active Constituents Count badge -->
+          <div class="text-xs font-bold text-slate-500" id="indiaConstituentBadge">
+            Showing constituents...
+          </div>
+        </div>
+      </div>
+
+      <!-- Indian Stock Cards & Table Grid Display -->
+      <div id="indiaStockContainer">
+        <div id="indiaCardGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Rendered via JavaScript -->
+        </div>
+
+        <div id="indiaTableView" class="hidden bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead class="bg-slate-100/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700 sticky-header font-bold uppercase tracking-wider text-[11px]">
+                <tr>
+                  <th class="py-3 px-3">Ticker / Company</th>
+                  <th class="py-3 px-3">Price (₹ INR)</th>
+                  <th class="py-3 px-3">1D %</th>
+                  <th class="py-3 px-3">1W %</th>
+                  <th class="py-3 px-3">1M %</th>
+                  <th class="py-3 px-3">Turnover (₹ Cr)</th>
+                  <th class="py-3 px-3">Indices Tracked</th>
+                  <th class="py-3 px-3">Institutions & Action</th>
+                </tr>
+              </thead>
+              <tbody id="indiaTableBody" class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-800 dark:text-slate-200 font-mono">
+                <!-- Rendered via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Empty state for India -->
+        <div id="indiaEmptyState" class="hidden text-center py-12 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto text-slate-400 mb-3">
+            <i data-lucide="search-x" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white">No Indian shares matching this threshold</h3>
+          <p class="text-xs text-slate-500 mt-1">Try adjusting the % threshold or selecting another index.</p>
+        </div>
       </div>
 
     </div>
