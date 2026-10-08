@@ -15,6 +15,7 @@ const state = {
   minGainPct: 2.0,
   maxLossPct: -2.0,
   volumeMetric: 'volume',     // 'volume' | 'turnover' | 'rvol'
+  trendingFilter: 'top20',    // 'top20' | 'high_vol' | 'breakouts' | 'all_qualifying'
   divTimeframe: 'all',
   divMinYield: 0.0,
   stocks: [],
@@ -217,12 +218,14 @@ function setTab(tabName) {
   if (dataContainer) dataContainer.classList.remove('hidden');
 
   // Toggle specific control rows
+  const trendingBox = document.getElementById('trendingThresholdBox');
   const gainersBox = document.getElementById('gainersThresholdBox');
   const losersBox = document.getElementById('losersThresholdBox');
   const volBox = document.getElementById('volumeMetricBox');
   const divBox = document.getElementById('dividendControlsBox');
   const timeframeBox = document.getElementById('timeframeSelectorBox');
 
+  if (trendingBox) trendingBox.classList.add('hidden');
   if (gainersBox) gainersBox.classList.add('hidden');
   if (losersBox) losersBox.classList.add('hidden');
   if (volBox) volBox.classList.add('hidden');
@@ -235,7 +238,8 @@ function setTab(tabName) {
 
   if (tabName === 'trending') {
     title.textContent = "Trending Stocks & Breakouts";
-    subtitle.textContent = "Ranked by unusual relative trading volume, price momentum surges, and technical breakouts";
+    subtitle.textContent = "Selective screening: ranked by unusual relative volume (RVOL), momentum breakouts, and technical trends";
+    if (trendingBox) trendingBox.classList.remove('hidden');
   } else if (tabName === 'gainers') {
     title.textContent = "Shares Value Increase (Gainers)";
     subtitle.textContent = `Filtered by customizable minimum gain % over ${state.period.toUpperCase()} period`;
@@ -279,6 +283,28 @@ function setPeriod(p) {
   } else if (state.tab === 'losers') {
     document.getElementById('tabHeaderSubtitle').textContent = `Filtered by customizable drop % over ${state.period.toUpperCase()} period`;
   }
+
+  loadData();
+}
+
+function setTrendingFilter(filterType) {
+  state.trendingFilter = filterType;
+  const btnMap = {
+    top20: 'btnTrendTop20',
+    high_vol: 'btnTrendVol',
+    breakouts: 'btnTrendBreakouts',
+    all_qualifying: 'btnTrendAllQual'
+  };
+
+  Object.keys(btnMap).forEach(key => {
+    const btn = document.getElementById(btnMap[key]);
+    if (!btn) return;
+    if (key === filterType) {
+      btn.className = "px-2.5 py-1 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-sm border border-slate-200 dark:border-slate-700 whitespace-nowrap";
+    } else {
+      btn.className = "px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition whitespace-nowrap";
+    }
+  });
 
   loadData();
 }
@@ -458,6 +484,14 @@ async function loadData() {
 
 async function loadStocksData() {
   try {
+    const isTrending = state.tab === 'trending';
+    let limitVal = 150;
+    if (isTrending) {
+      if (state.trendingFilter === 'all_qualifying') limitVal = 60;
+      else if (state.trendingFilter === 'top20') limitVal = 20;
+      else limitVal = 30;
+    }
+
     const params = new URLSearchParams({
       market: state.market,
       tab: state.tab === 'watchlist' ? 'all' : state.tab,
@@ -467,7 +501,8 @@ async function loadStocksData() {
       min_gain_pct: state.minGainPct,
       max_loss_pct: state.maxLossPct,
       volume_metric: state.volumeMetric,
-      limit: 150
+      trending_filter: state.trendingFilter || 'top20',
+      limit: limitVal
     });
 
     const res = await fetch(`/api/stocks?${params.toString()}`);
@@ -480,7 +515,15 @@ async function loadStocksData() {
     }
 
     state.filteredStocks = items;
-    document.getElementById('resultCountBadge').textContent = `${items.length} shares`;
+
+    const countBadge = document.getElementById('resultCountBadge');
+    if (countBadge) {
+      if (isTrending && json.total_market_count) {
+        countBadge.textContent = `Top ${items.length} Trending of ${json.total_market_count}`;
+      } else {
+        countBadge.textContent = `${items.length} shares`;
+      }
+    }
 
     renderContent();
   } catch (err) {
@@ -560,7 +603,10 @@ function renderStockCards(stocks) {
     const priceObj = formatPrice(s);
 
     let trendingBadge = '';
-    if (s.trending_reasons && s.trending_reasons.length > 0) {
+    if (state.tab === 'trending' && s.dynamic_trending_score !== undefined) {
+      const score = Math.round(s.dynamic_trending_score);
+      trendingBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-700">🔥 ${score} Score</span>`;
+    } else if (s.trending_reasons && s.trending_reasons.length > 0) {
       trendingBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">${s.trending_reasons[0]}</span>`;
     }
 
@@ -764,6 +810,7 @@ function renderStockTableRows(stocks) {
           <div class="flex items-center space-x-2">
             <span class="font-bold text-slate-900 dark:text-white">${s.ticker}</span>
             <span class="text-[9px] px-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">${s.market}</span>
+            ${state.tab === 'trending' && s.dynamic_trending_score !== undefined ? `<span class="text-[9px] px-1.5 py-0.2 rounded font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200">🔥 ${Math.round(s.dynamic_trending_score)}</span>` : ''}
           </div>
           <div class="text-[11px] text-slate-500 truncate max-w-[140px] font-sans">${s.name}</div>
         </td>
@@ -1688,6 +1735,9 @@ async function loadIndiaStocks() {
   try {
     state.indiaSearch = document.getElementById('indiaSearchInput')?.value.trim() || '';
 
+    const isTrending = state.indiaSubTab === 'trending';
+    const indiaLimit = isTrending ? 20 : 150;
+
     const params = new URLSearchParams({
       market: 'india',
       index: state.indiaIndex,
@@ -1697,7 +1747,8 @@ async function loadIndiaStocks() {
       min_gain_pct: state.indiaMinGainPct,
       max_loss_pct: state.indiaMaxLossPct,
       volume_metric: 'volume',
-      limit: 150
+      trending_filter: 'top20',
+      limit: indiaLimit
     });
 
     const res = await fetch(`/api/india/stocks?${params.toString()}`);
@@ -1716,7 +1767,11 @@ async function loadIndiaStocks() {
     const indexName = active ? active.name : state.indiaIndex.toUpperCase();
     const badge = document.getElementById('indiaConstituentBadge');
     if (badge) {
-      badge.textContent = `Showing ${items.length} stocks in ${indexName}`;
+      if (isTrending && data.total_market_count) {
+        badge.textContent = `Showing Top ${items.length} Trending of ${data.total_market_count} in ${indexName}`;
+      } else {
+        badge.textContent = `Showing ${items.length} stocks in ${indexName}`;
+      }
     }
 
     renderIndiaStocksContent();
@@ -1770,7 +1825,9 @@ function renderIndiaStockCards(stocks) {
     ).join(' ');
 
     let ratingBadge = '';
-    if (s.analyst_ratings) {
+    if (state.indiaSubTab === 'trending' && s.dynamic_trending_score !== undefined) {
+      ratingBadge = `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-700">🔥 ${Math.round(s.dynamic_trending_score)} Score</span>`;
+    } else if (s.analyst_ratings) {
       const consensus = s.analyst_ratings.consensus_label || 'BUY';
       const color = consensus.includes('BUY') ? 'text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40' : (consensus.includes('SELL') ? 'text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40' : 'text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40');
       ratingBadge = `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${color}">${consensus}</span>`;
@@ -1873,6 +1930,7 @@ function renderIndiaStockTableRows(stocks) {
           <div class="flex items-center space-x-1.5">
             <span class="font-bold text-slate-900 dark:text-white">${s.ticker}</span>
             <span class="text-[9px] px-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">NSE</span>
+            ${state.indiaSubTab === 'trending' && s.dynamic_trending_score !== undefined ? `<span class="text-[9px] px-1.5 py-0.2 rounded font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200">🔥 ${Math.round(s.dynamic_trending_score)}</span>` : ''}
           </div>
           <div class="text-[11px] text-slate-500 truncate max-w-[150px] font-sans">${s.name}</div>
         </td>

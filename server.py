@@ -201,11 +201,40 @@ def get_market_summary_payload(query):
     }
 
 
+def compute_dynamic_trending_score(s, period):
+    pct_key = f"change_{period}_pct"
+    chg = s.get(pct_key, 0) or 0
+    rvol = s.get("rvol", 1.0) or 1.0
+    base_score = s.get("trending_score", 10.0) or 10.0
+
+    # Period-specific price momentum weighting
+    if period == "1d":
+        chg_weight = 25 if chg >= 3.0 else (15 if chg >= 1.5 else (0 if chg >= 0 else -15))
+    elif period == "1w":
+        chg_weight = 30 if chg >= 5.0 else (18 if chg >= 2.5 else (0 if chg >= 0 else -20))
+    else:  # 1m
+        chg_weight = 35 if chg >= 8.0 else (20 if chg >= 4.0 else (0 if chg >= 0 else -25))
+
+    vol_weight = 35 if rvol >= 2.0 else (22 if rvol >= 1.4 else (12 if rvol >= 1.15 else 0))
+    breakout_weight = 15 if s.get("high_52_diff_pct", -10) >= -4.0 else 0
+    dma_weight = 15 if s.get("above_50ma") and s.get("above_200ma") else (8 if s.get("above_50ma") else 0)
+
+    total = max(5.0, min(100.0, base_score * 0.25 + chg_weight + vol_weight + breakout_weight + dma_weight))
+    return round(total, 1)
+
+
 def get_stocks_payload(query):
     stocks = CACHE_DATA.get("stocks", [])
 
     market = query.get("market", ["all"])[0].lower()
     stocks = filter_by_market(stocks, market)
+
+    # Indian Index Filter support
+    index_filter = query.get("index", ["all"])[0].strip().lower()
+    if index_filter and index_filter != "all":
+        stocks = [s for s in stocks if index_filter in [idx.lower() for idx in s.get("indices", [])]]
+
+    total_market_count = len(stocks)
 
     search = query.get("search", [""])[0].strip().lower()
     if search:
@@ -228,7 +257,41 @@ def get_stocks_payload(query):
     turnover_key = f"turnover_{period}_gbp"
 
     if tab == "trending":
-        stocks = sorted(stocks, key=lambda s: s.get("trending_score", 0), reverse=True)
+        trending_filter = query.get("trending_filter", ["top20"])[0].lower()
+        trending_candidates = []
+        for s in stocks:
+            sc = compute_dynamic_trending_score(s, period)
+            p_chg = s.get(pct_key, 0) or 0
+            rvol = s.get("rvol", 1.0) or 1.0
+
+            # Selective qualification criteria
+            if trending_filter == "high_vol":
+                passes = rvol >= 1.4 and (sc >= 35 or p_chg > -1.0)
+            elif trending_filter == "breakouts":
+                min_breakout = 2.0 if period == "1d" else (3.5 if period == "1w" else 5.0)
+                passes = p_chg >= min_breakout
+            elif trending_filter == "all_qualifying":
+                passes = sc >= 35 and (p_chg > 0 or rvol >= 1.2)
+            elif trending_filter == "all":
+                passes = True
+            else:  # default curated top20
+                passes = sc >= 35 and (p_chg > 0 or rvol >= 1.2)
+
+            if passes:
+                s_copy = dict(s)
+                s_copy["dynamic_trending_score"] = sc
+                trending_candidates.append(s_copy)
+
+        trending_candidates.sort(key=lambda s: s.get("dynamic_trending_score", 0), reverse=True)
+
+        if trending_filter == "top20":
+            stocks = trending_candidates[:20]
+        elif trending_filter == "all_qualifying":
+            stocks = trending_candidates[:60]
+        elif trending_filter == "all":
+            stocks = trending_candidates
+        else:
+            stocks = trending_candidates[:30]
     elif tab == "gainers":
         min_gain = float(query.get("min_gain_pct", [0.0])[0])
         stocks = [s for s in stocks if s.get(pct_key, 0) >= min_gain]
@@ -250,14 +313,9 @@ def get_stocks_payload(query):
 
     sort_by = query.get("sort_by", [""])[0]
     sort_order = query.get("sort_order", ["desc"])[0].lower()
-    if sort_by and tab not in ["gainers", "losers"] or query.get("force_sort", ["false"])[0] == "true":
+    if sort_by and tab not in ["gainers", "losers", "trending"] or query.get("force_sort", ["false"])[0] == "true":
         reverse = (sort_order == "desc")
         stocks = sorted(stocks, key=lambda s: s.get(sort_by, 0) or 0, reverse=reverse)
-
-    # Indian Index Filter support
-    index_filter = query.get("index", ["all"])[0].strip().lower()
-    if index_filter and index_filter != "all":
-        stocks = [s for s in stocks if index_filter in [idx.lower() for idx in s.get("indices", [])]]
 
     limit = int(query.get("limit", [150])[0])
     return {
@@ -265,6 +323,7 @@ def get_stocks_payload(query):
         "tab": tab,
         "period": period,
         "index": index_filter,
+        "total_market_count": total_market_count,
         "count": len(stocks),
         "stocks": stocks[:limit]
     }

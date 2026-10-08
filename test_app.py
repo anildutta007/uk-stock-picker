@@ -28,13 +28,16 @@ try:
     print(f"         NASDAQ: {res['nasdaq_count']} | DOW 30: {res['dow_count']} | NIFTY 50: {res['nifty_count']}")
     print(f"         Upcoming Dividends: {res['dividend_count']}")
 
-    # 2. FTSE 350 Check
+    # 2. FTSE 350 Check (Selective Trending)
     res_f350 = json.loads(urllib.request.urlopen(f'{base}/api/stocks?market=ftse350&tab=trending').read())
-    print(f"TEST 2 - FTSE 350 (Combined): Loaded {res_f350['count']} UK stocks. Top: {res_f350['stocks'][0]['ticker']}")
+    print(f"TEST 2 - FTSE 350 (Combined): Loaded {res_f350['count']} of {res_f350.get('total_market_count')} UK stocks. Top: {res_f350['stocks'][0]['ticker']}")
+    assert res_f350['count'] <= 20, f"Expected curated top 20, got {res_f350['count']}"
+    assert 'dynamic_trending_score' in res_f350['stocks'][0]
 
-    # 3. NASDAQ 100 Check
+    # 3. NASDAQ 100 Check (Selective Trending)
     res_nasdaq = json.loads(urllib.request.urlopen(f'{base}/api/stocks?market=nasdaq&tab=trending').read())
-    print(f"TEST 3 - NASDAQ 100: Loaded {res_nasdaq['count']} US Tech stocks. Top: {res_nasdaq['stocks'][0]['ticker']} ({res_nasdaq['stocks'][0]['name']}) - Price: ${res_nasdaq['stocks'][0]['price_pence']}")
+    print(f"TEST 3 - NASDAQ 100: Loaded {res_nasdaq['count']} of {res_nasdaq.get('total_market_count')} US Tech stocks. Top: {res_nasdaq['stocks'][0]['ticker']} ({res_nasdaq['stocks'][0]['name']}) - Price: ${res_nasdaq['stocks'][0]['price_pence']}")
+    assert res_nasdaq['count'] <= 20, f"Expected curated <= 20, got {res_nasdaq['count']}"
 
     # 4. Dow Jones 30 Check
     res_dow = json.loads(urllib.request.urlopen(f'{base}/api/stocks?market=dow&tab=volume&period=1d').read())

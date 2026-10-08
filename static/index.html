@@ -337,6 +337,28 @@
             </div>
           </div>
 
+          <!-- TRENDING SELECTIVITY CONTROLS (USER REQUEST) -->
+          <div id="trendingThresholdBox" class="flex-1 max-w-xl flex items-center space-x-2">
+            <span class="text-xs font-bold text-amber-600 dark:text-amber-400 flex items-center space-x-1 whitespace-nowrap">
+              <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-500"></i>
+              <span>Selectivity:</span>
+            </span>
+            <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-xl border border-slate-200 dark:border-slate-700 overflow-x-auto text-xs">
+              <button onclick="setTrendingFilter('top20')" id="btnTrendTop20" class="px-2.5 py-1 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-sm border border-slate-200 dark:border-slate-700 whitespace-nowrap">
+                🔥 Top 20 Leaders
+              </button>
+              <button onclick="setTrendingFilter('high_vol')" id="btnTrendVol" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition whitespace-nowrap">
+                ⚡ Volume Surges (≥1.4x)
+              </button>
+              <button onclick="setTrendingFilter('breakouts')" id="btnTrendBreakouts" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition whitespace-nowrap">
+                🚀 Price Breakouts
+              </button>
+              <button onclick="setTrendingFilter('all_qualifying')" id="btnTrendAllQual" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition whitespace-nowrap">
+                🌟 All Qualifying
+              </button>
+            </div>
+          </div>
+
           <!-- GAINERS CUSTOM THRESHOLD CONTROL (Requirement 2) -->
           <div id="gainersThresholdBox" class="hidden flex-1 max-w-xl flex flex-col sm:flex-row sm:items-center gap-3">
             <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center space-x-1 whitespace-nowrap">
