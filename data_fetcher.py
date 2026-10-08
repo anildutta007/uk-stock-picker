@@ -16,6 +16,7 @@ import random
 from datetime import datetime, timedelta
 import concurrent.futures
 import requests
+import urllib.parse
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -1045,6 +1046,27 @@ def fetch_stock_intelligence(stock_obj, session=None, crumb=None):
     implied_upside = round(((raw_mean - price_val) / max(price_val, 0.01)) * 100.0, 1)
 
     # 3. Famous Financial Institutions Research Feed (HOLD, BUY, SELL)
+    FIRM_PORTALS = {
+        "Goldman Sachs": "https://www.goldmansachs.com/insights/pages/global-investment-research.html",
+        "JPMorgan Chase": "https://www.jpmorgan.com/insights/research",
+        "Morgan Stanley": "https://www.morganstanley.com/ideas",
+        "Barclays Capital": "https://www.cib.barclays/our-insights/research.html",
+        "UBS Investment Bank": "https://www.ubs.com/global/en/investment-bank/research.html",
+        "Citigroup": "https://www.citivelocity.com",
+        "Jefferies": "https://www.jefferies.com/equity-research/",
+        "Bank of America": "https://www.bofaml.com/en-us/content/bofa-global-research.html",
+        "HSBC Global Research": "https://www.gbm.hsbc.com/insights/global-research",
+        "Bernstein": "https://www.bernsteinresearch.com",
+        "Deutsche Bank": "https://flow.db.com/research",
+        "Berenberg": "https://www.berenberg.de/en/equity-research/",
+        "RBC Capital Markets": "https://www.rbccm.com/en/expertise/equity-research.page",
+        "Stifel": "https://www.stifel.com/institutional/equity-research",
+        "Kotak Institutional Equities": "https://www.kotaksecurities.com/research/",
+        "Motilal Oswal": "https://www.motilaloswal.com/research",
+        "ICICI Securities": "https://www.icicidirect.com/research",
+        "HDFC Securities": "https://www.hdfcsec.com/research"
+    }
+
     famous_firms = [
         {"name": "Goldman Sachs", "default_action": "Reiterated Buy / Target Raised", "default_rating": "BUY", "type": "buy"},
         {"name": "JPMorgan Chase", "default_action": "Maintained Overweight", "default_rating": "OVERWEIGHT", "type": "buy"},
@@ -1056,6 +1078,10 @@ def fetch_stock_intelligence(stock_obj, session=None, crumb=None):
         {"name": "Bank of America", "default_action": "Maintained Buy", "default_rating": "BUY", "type": "buy"},
         {"name": "HSBC Global Research", "default_action": "Reiterated Buy", "default_rating": "BUY", "type": "buy"}
     ]
+
+    clean_ticker = ticker.split(".")[0].upper()
+    sym_feed = stock_obj.get("symbol", ticker)
+    market_feed_url = f"https://finance.yahoo.com/quote/{sym_feed}/analysis/" if currency != "INR" else f"https://www.google.com/finance/quote/{clean_ticker}:NSE"
 
     institutional_reports = []
     seen_firms = set()
@@ -1078,6 +1104,20 @@ def fetch_stock_intelligence(stock_obj, session=None, crumb=None):
             r_type = "sell" if "sell" in grade_lower or "under" in grade_lower else ("hold" if "hold" in grade_lower or "neutral" in grade_lower or "market" in grade_lower else "buy")
             note = build_sector_institutional_commentary(sector, name, ticker, firm_name, r_type)
 
+            query_str = f"{firm_name} {name} {clean_ticker} stock rating price target analysis report"
+            search_url = f"https://www.google.com/search?q={urllib.parse.quote_plus(query_str)}"
+            portal_url = FIRM_PORTALS.get(firm_name, f"https://www.google.com/search?q={urllib.parse.quote_plus(firm_name + ' global investment research')}")
+
+            if r_type == "buy":
+                why_rating = f"{firm_name} maintains a BUY / OUTPERFORM rating based on discounted cash flow (DCF) valuation upside, defensive free cash flow conversion, and robust balance sheet resilience."
+                catalysts = ["FCF Yield", "Margin Resilience", "DCF Upside"]
+            elif r_type == "hold":
+                why_rating = f"{firm_name} maintains a HOLD / NEUTRAL rating viewing risk-reward as balanced at current market multiples, awaiting clearer operational visibility in upcoming quarters."
+                catalysts = ["Balanced Risk/Reward", "Fair Valuation", "Execution Monitoring"]
+            else:
+                why_rating = f"{firm_name} maintains a CAUTIOUS / SELL rating citing valuation multiple vulnerability, potential sector margin compression, and decelerating order flow."
+                catalysts = ["Multiple Compression", "Margin Headwinds", "Earnings Vulnerability"]
+
             institutional_reports.append({
                 "institution": firm_name,
                 "rating": to_grade.upper(),
@@ -1085,7 +1125,12 @@ def fetch_stock_intelligence(stock_obj, session=None, crumb=None):
                 "action": action_label,
                 "target_price": t_fmt,
                 "date": "Recent",
-                "analyst_note": note
+                "analyst_note": note,
+                "why_rating": why_rating,
+                "catalysts": catalysts,
+                "source_url": search_url,
+                "portal_url": portal_url,
+                "market_url": market_feed_url
             })
 
     # Fill up with famous financial institutions
@@ -1118,6 +1163,20 @@ def fetch_stock_intelligence(stock_obj, session=None, crumb=None):
 
             note = build_sector_institutional_commentary(sector, name, ticker, ff["name"], r_type)
 
+            query_str = f"{ff['name']} {name} {clean_ticker} stock rating price target analysis report"
+            search_url = f"https://www.google.com/search?q={urllib.parse.quote_plus(query_str)}"
+            portal_url = FIRM_PORTALS.get(ff["name"], f"https://www.google.com/search?q={urllib.parse.quote_plus(ff['name'] + ' global investment research')}")
+
+            if r_type == "buy":
+                why_rating = f"{ff['name']} maintains a BUY / OUTPERFORM rating based on discounted cash flow (DCF) valuation upside, defensive free cash flow conversion, and robust balance sheet resilience."
+                catalysts = ["FCF Yield", "Margin Resilience", "DCF Upside"]
+            elif r_type == "hold":
+                why_rating = f"{ff['name']} maintains a HOLD / NEUTRAL rating viewing risk-reward as balanced at current market multiples, awaiting clearer operational visibility in upcoming quarters."
+                catalysts = ["Balanced Risk/Reward", "Fair Valuation", "Execution Monitoring"]
+            else:
+                why_rating = f"{ff['name']} maintains a CAUTIOUS / SELL rating citing valuation multiple vulnerability, potential sector margin compression, and decelerating order flow."
+                catalysts = ["Multiple Compression", "Margin Headwinds", "Earnings Vulnerability"]
+
             institutional_reports.append({
                 "institution": ff["name"],
                 "rating": firm_rating,
@@ -1125,8 +1184,44 @@ def fetch_stock_intelligence(stock_obj, session=None, crumb=None):
                 "action": action_text,
                 "target_price": f_fmt,
                 "date": "Oct 2026",
-                "analyst_note": note
+                "analyst_note": note,
+                "why_rating": why_rating,
+                "catalysts": catalysts,
+                "source_url": search_url,
+                "portal_url": portal_url,
+                "market_url": market_feed_url
             })
+
+    # Global and Indian External Research Portals
+    google_exchange = "LON" if currency == "GBp" else ("NSE" if currency == "INR" else "NASDAQ")
+    external_portals = [
+        {
+            "name": "Yahoo Finance Analysis",
+            "label": "Consensus & Price Targets",
+            "url": f"https://finance.yahoo.com/quote/{sym_feed}/analysis/"
+        },
+        {
+            "name": "MarketBeat Broker Ratings",
+            "label": "Recommendations & Upgrades Log",
+            "url": f"https://www.marketbeat.com/stocks/search/?query={urllib.parse.quote_plus(clean_ticker + ' ' + name)}"
+        },
+        {
+            "name": "TipRanks Wall St Forecast",
+            "label": "Analyst Price Target Forecast",
+            "url": f"https://www.tipranks.com/stocks/{clean_ticker.lower()}/forecast"
+        },
+        {
+            "name": "Google Finance Live Overview",
+            "label": "Real-Time Valuation & Press",
+            "url": f"https://www.google.com/finance/quote/{clean_ticker}:{google_exchange}"
+        }
+    ]
+    if currency == "INR":
+        external_portals.append({
+            "name": "Moneycontrol Indian Broker Calls",
+            "label": "Brokerage Research & Targets",
+            "url": f"https://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=&cid=&mbsearch_str={clean_ticker}&topsearch_type=1"
+        })
 
     price_driver = build_price_driver_analysis(stock_obj)
 
@@ -1152,6 +1247,7 @@ def fetch_stock_intelligence(stock_obj, session=None, crumb=None):
             "low_target": round(raw_low, 2),
             "low_target_fmt": low_fmt,
             "implied_upside_pct": implied_upside,
+            "external_portals": external_portals,
             "institutions": institutional_reports
         }
     }

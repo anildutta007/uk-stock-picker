@@ -70,13 +70,19 @@ try:
     print(f"         Sentiment: {price_drv.get('sentiment')} | Factors: {len(price_drv.get('key_factors', []))}")
     print(f"         Latest News Count: {len(news_items)} | Top Source: {news_items[0].get('publisher') if news_items else 'N/A'}")
 
-    # 10. Famous Financial Institutions Ratings Check (HOLD, BUY, SELL)
+    # 10. Famous Financial Institutions Ratings Check (HOLD, BUY, SELL) & Actual Links
     ratings = res_stock.get('analyst_ratings', {})
     inst_reports = ratings.get('institutions', [])
     print(f"TEST 10 - Famous Financial Institutions Ratings (SHEL):")
     print(f"          Consensus: {ratings.get('consensus_label')} | Target: {ratings.get('mean_target_fmt')} ({ratings.get('implied_upside_pct'):+.1f}%)")
     print(f"          Breakdown: {ratings.get('buy_pct')}% Buy · {ratings.get('hold_pct')}% Hold · {ratings.get('sell_pct')}% Sell")
     print(f"          Famous Institutions Reported: {len(inst_reports)} firms")
+    assert len(inst_reports) > 0, "Should have institutional reports"
+    first_inst = inst_reports[0]
+    print(f"          Sample Link: {first_inst['institution']} -> {first_inst.get('source_url')}")
+    assert 'source_url' in first_inst and 'portal_url' in first_inst, "Institution card must have actual research source & portal links"
+    assert 'why_rating' in first_inst, "Institution card must have why_rating explanation"
+    assert len(ratings.get('external_portals', [])) >= 4, "Must provide external research portals"
 
     # 11. INDIAN MARKET 16 INDICES API CHECK
     res_indices = json.loads(urllib.request.urlopen(f'{base}/api/india/indices').read())

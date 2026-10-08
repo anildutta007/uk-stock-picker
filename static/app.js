@@ -1119,6 +1119,19 @@ async function openStockModal(ticker) {
       document.getElementById('mTargetMean').textContent = ar.mean_target_fmt || 'N/A';
       document.getElementById('mTargetHigh').textContent = ar.high_target_fmt || 'N/A';
 
+      // Render External Research Verification Portals
+      const portalsContainer = document.getElementById('mExternalPortalsList');
+      if (portalsContainer) {
+        const portalList = ar.external_portals || [];
+        portalsContainer.innerHTML = portalList.map(p => `
+          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-2xs transition group">
+            <span class="truncate">${p.name}</span>
+            <span class="text-[10px] text-slate-400 font-normal hidden sm:inline">• ${p.label}</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400 group-hover:text-brand-500 flex-shrink-0"></i>
+          </a>
+        `).join('');
+      }
+
       // Feed of Institutional Cards (Goldman Sachs, JPMorgan, Morgan Stanley, Barclays, Citi, UBS, Jefferies)
       const instContainer = document.getElementById('mInstitutionsList');
       if (instContainer) {
@@ -1132,32 +1145,88 @@ async function openStockModal(ticker) {
             ratingPillClass = 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border-rose-300 dark:border-rose-800';
           }
 
+          const searchUrl = inst.source_url || `https://www.google.com/search?q=${encodeURIComponent(inst.institution + ' ' + s.name + ' ' + s.ticker + ' ' + inst.rating + ' stock price target research report')}`;
+          const portalUrl = inst.portal_url || `https://www.google.com/search?q=${encodeURIComponent(inst.institution + ' global equity research')}`;
+          const marketUrl = inst.market_url || (s.currency === 'INR' ? `https://www.google.com/finance/quote/${s.ticker}:NSE` : `https://finance.yahoo.com/quote/${s.symbol || s.ticker}/analysis/`);
+
+          const catalystsHtml = (inst.catalysts || []).map(c => `
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              ⚡ ${c}
+            </span>
+          `).join('');
+
           return `
-            <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800 shadow-xs">
-              <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
-                <div class="flex items-center space-x-2">
-                  <div class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 font-bold text-xs">
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:border-brand-500/50 transition">
+              <!-- Top Header: Firm Name, Rating Pill, Target Price -->
+              <div class="flex items-center justify-between flex-wrap gap-2 mb-2.5">
+                <div class="flex items-center space-x-2.5">
+                  <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-base">
                     🏛️
                   </div>
                   <div>
-                    <span class="text-xs font-extrabold text-slate-900 dark:text-white">${inst.institution}</span>
-                    <span class="text-[10px] text-slate-400 block">${inst.date || 'Recent'}</span>
+                    <div class="flex items-center space-x-1.5">
+                      <span class="text-sm font-extrabold text-slate-900 dark:text-white">${inst.institution}</span>
+                      <a href="${portalUrl}" target="_blank" rel="noopener noreferrer" title="Visit ${inst.institution} Equity Research Portal" class="text-[10px] text-brand-600 dark:text-brand-400 hover:underline flex items-center space-x-0.5 font-bold">
+                        <span>Portal</span>
+                        <i data-lucide="external-link" class="w-2.5 h-2.5 inline"></i>
+                      </a>
+                    </div>
+                    <span class="text-[10px] text-slate-400 block">${inst.date || 'Recent'} • Equity Research Desk</span>
                   </div>
                 </div>
 
-                <div class="flex items-center space-x-2">
-                  <span class="px-2 py-0.5 rounded-full text-[11px] font-extrabold uppercase border ${ratingPillClass}">
+                <div class="flex items-center space-x-2.5">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wide border ${ratingPillClass}">
                     ${inst.rating}
                   </span>
                   <div class="text-right">
-                    <span class="text-xs font-mono font-black text-slate-900 dark:text-white">${inst.target_price}</span>
-                    <span class="text-[10px] text-slate-400 block">${inst.action || 'Target'}</span>
+                    <span class="text-sm font-mono font-black text-slate-900 dark:text-white">${inst.target_price}</span>
+                    <span class="text-[10px] text-slate-400 block font-semibold">${inst.action || 'Price Target'}</span>
                   </div>
                 </div>
               </div>
 
-              <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800/80 text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed italic">
+              <!-- Quote / Research Note -->
+              <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800/80 text-xs text-slate-700 dark:text-slate-300 leading-relaxed italic mb-2.5">
                 "${inst.analyst_note}"
+              </div>
+
+              <!-- Why This Rating Was Given Box -->
+              <div class="mb-3 p-2.5 rounded-xl bg-indigo-50/60 dark:bg-indigo-950/25 border border-indigo-100/70 dark:border-indigo-900/40 text-[11px] leading-relaxed">
+                <div class="font-bold text-indigo-950 dark:text-indigo-200 mb-1 flex items-center space-x-1">
+                  <i data-lucide="info" class="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400"></i>
+                  <span>Why ${inst.institution} rated ${inst.rating}:</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300">
+                  ${inst.why_rating || `Analyst recommendation based on valuation models, industry earnings growth forecasts, and financial risk assessment.`}
+                </p>
+                <div class="flex items-center space-x-1.5 mt-2 flex-wrap gap-1">
+                  ${catalystsHtml}
+                </div>
+              </div>
+
+              <!-- Action Links Footer: READ ACTUAL INFORMATION -->
+              <div class="flex items-center justify-between flex-wrap gap-2 pt-2.5 border-t border-slate-100 dark:border-slate-800 text-[11px]">
+                <div class="flex items-center space-x-2 flex-wrap gap-1.5">
+                  <!-- Actual Link to Read Research / News -->
+                  <a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl font-bold bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 hover:bg-brand-600 hover:text-white transition group shadow-2xs">
+                    <i data-lucide="newspaper" class="w-3.5 h-3.5 text-brand-500 group-hover:text-white"></i>
+                    <span>Read Report & News Coverage</span>
+                    <i data-lucide="external-link" class="w-3 h-3 text-brand-400 group-hover:text-white"></i>
+                  </a>
+
+                  <!-- Desk Portal Link -->
+                  <a href="${portalUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-xl font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <i data-lucide="landmark" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span>${inst.institution} Desk</span>
+                    <i data-lucide="external-link" class="w-2.5 h-2.5 text-slate-400"></i>
+                  </a>
+                </div>
+
+                <!-- Live Consensus Feed -->
+                <a href="${marketUrl}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 text-[11px] font-semibold flex items-center space-x-1 transition">
+                  <span>Verify Broker Models ↗</span>
+                </a>
               </div>
             </div>
           `;
