@@ -472,6 +472,12 @@ async function fetchMarketSummary() {
 async function loadData() {
   if (state.tab === 'guide') return;
 
+  if (state.tab === 'india') {
+    await loadIndiaIndices();
+    await loadIndiaStocks();
+    return;
+  }
+
   state.search = document.getElementById('searchInput')?.value.trim() || '';
   state.sector = document.getElementById('sectorSelect')?.value || 'all';
 
@@ -1338,19 +1344,50 @@ function recalculateDividend() {
 
 // ================= LIVE REFRESH & CSV EXPORT =================
 async function refreshData() {
-  const icon = document.getElementById('refreshIcon');
-  if (icon) icon.classList.add('animate-spin');
+  const btn = document.getElementById('refreshBtn');
+  const wrapper = document.getElementById('refreshIconWrapper');
+  const directIcon = document.getElementById('refreshIcon');
+  const btnText = document.getElementById('refreshBtnText');
+
+  if (btn) btn.disabled = true;
+  if (wrapper) wrapper.classList.add('animate-spin');
+  if (btnText) btnText.textContent = 'Updating...';
+
   try {
-    const res = await fetch('/api/refresh', { method: 'POST' });
-    if (res.ok) {
-      setTimeout(async () => {
-        await fetchMarketSummary();
-        await loadData();
-        if (icon) icon.classList.remove('animate-spin');
-      }, 3500);
+    // 1. Trigger background live data refresh
+    try {
+      await fetch('/api/refresh', { method: 'POST' });
+    } catch (postErr) {
+      console.warn("Refresh POST failed (likely offline/serverless), continuing with live data reload:", postErr);
     }
-  } catch (e) {
-    if (icon) icon.classList.remove('animate-spin');
+
+    // 2. Allow server thread a moment to initialize
+    await new Promise(r => setTimeout(r, 1200));
+
+    // 3. Poll /api/status up to 4 times (max ~3.5s) to wait for refresh completion
+    for (let i = 0; i < 4; i++) {
+      try {
+        const sRes = await fetch('/api/status');
+        if (sRes.ok) {
+          const sData = await sRes.json();
+          if (!sData.is_refreshing) break;
+        }
+      } catch (_) {}
+      await new Promise(r => setTimeout(r, 800));
+    }
+
+    // 4. Reload market summary and current view data
+    await fetchMarketSummary();
+    await loadData();
+  } catch (err) {
+    console.error("Error refreshing data:", err);
+  } finally {
+    // 5. GUARANTEED STOP: Always remove animation and re-enable button
+    if (wrapper) wrapper.classList.remove('animate-spin');
+    if (directIcon) directIcon.classList.remove('animate-spin');
+    document.querySelectorAll('#refreshBtn .animate-spin').forEach(el => el.classList.remove('animate-spin'));
+    if (btnText) btnText.textContent = 'Refresh';
+    if (btn) btn.disabled = false;
   }
 }
 

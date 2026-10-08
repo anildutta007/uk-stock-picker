@@ -640,20 +640,23 @@ def refresh_market_data():
 
     dividend_calendar = build_dividend_calendar(processed_stocks)
 
-    os.makedirs(DATA_DIR, exist_ok=True)
-    with open(CACHE_FILE, "w", encoding="utf-8") as f:
-        json.dump({
-            "updated_at": datetime.now().isoformat(),
-            "count": len(processed_stocks),
-            "stocks": processed_stocks
-        }, f, indent=2)
+    try:
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(CACHE_FILE, "w", encoding="utf-8") as f:
+            json.dump({
+                "updated_at": datetime.now().isoformat(),
+                "count": len(processed_stocks),
+                "stocks": processed_stocks
+            }, f, indent=2)
 
-    with open(DIVIDENDS_FILE, "w", encoding="utf-8") as f:
-        json.dump({
-            "updated_at": datetime.now().isoformat(),
-            "count": len(dividend_calendar),
-            "calendar": dividend_calendar
-        }, f, indent=2)
+        with open(DIVIDENDS_FILE, "w", encoding="utf-8") as f:
+            json.dump({
+                "updated_at": datetime.now().isoformat(),
+                "count": len(dividend_calendar),
+                "calendar": dividend_calendar
+            }, f, indent=2)
+    except Exception as e:
+        print(f"[WARN] Failed to write cache to disk: {e}")
 
     elapsed = round(time.time() - start_time, 2)
     print(f"[SUCCESS] Multi-market data refreshed: {len(processed_stocks)} stocks & {len(dividend_calendar)} dividends in {elapsed}s.")

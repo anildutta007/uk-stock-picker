@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-07T22:43:47.508407",
-  "count": 312,
+  "updated_at": "2026-10-08T07:49:46.412759",
+  "count": 310,
   "calendar": [
     {
       "ticker": "JPM",
@@ -17,7 +17,7 @@
       "payment_date": "2026-10-31",
       "expected_dividend_pence": 1.25,
       "expected_dividend_gbp": 1.25,
-      "dividend_yield_pct": 1.99,
+      "dividend_yield_pct": 2.0,
       "dividend_type": "Quarterly",
       "days_remaining": -1,
       "status_badge": "\u26a1 Imminent: Buy in -1 days",
@@ -59,11 +59,12 @@
       "payment_date": "2026-11-13",
       "expected_dividend_pence": 23.6,
       "expected_dividend_gbp": 0.236,
-      "dividend_yield_pct": 5.53,
+      "dividend_yield_pct": 5.7,
       "dividend_type": "Final",
       "days_remaining": 1,
       "status_badge": "\ud83d\udea8 Buy TODAY (Last Chance!)",
       "sparkline": [
+        293.8,
         285.9,
         285.5,
         276.2,
@@ -82,8 +83,7 @@
         317.7,
         318.2,
         308.9,
-        309.2,
-        300.1
+        309.2
       ]
     },
     {
@@ -106,6 +106,7 @@
       "days_remaining": 1,
       "status_badge": "\ud83d\udea8 Buy TODAY (Last Chance!)",
       "sparkline": [
+        290.3,
         288.4,
         288.5,
         287.9,
@@ -124,7 +125,6 @@
         327.9,
         328.3,
         325.2,
-        329.1,
         329.1
       ]
     },
@@ -143,11 +143,12 @@
       "payment_date": "2026-11-02",
       "expected_dividend_pence": 15.0,
       "expected_dividend_gbp": 0.15,
-      "dividend_yield_pct": 3.94,
+      "dividend_yield_pct": 3.9,
       "dividend_type": "Interim",
       "days_remaining": 1,
       "status_badge": "\ud83d\udea8 Buy TODAY (Last Chance!)",
       "sparkline": [
+        369.5,
         369.5,
         367.1,
         386.2,
@@ -166,8 +167,7 @@
         382.9,
         372.7,
         372.4,
-        380.3,
-        385.0
+        380.3
       ]
     },
     {
@@ -185,11 +185,12 @@
       "payment_date": "2026-12-03",
       "expected_dividend_pence": 62.8,
       "expected_dividend_gbp": 0.628,
-      "dividend_yield_pct": 2.83,
+      "dividend_yield_pct": 2.81,
       "dividend_type": "Final",
       "days_remaining": 8,
       "status_badge": "\ud83d\udcc5 This Month (8 days)",
       "sparkline": [
+        1598.0,
         1602.5,
         1603.0,
         1643.0,
@@ -208,8 +209,7 @@
         1598.0,
         1601.5,
         1575.5,
-        1603.5,
-        1611.0
+        1603.5
       ]
     },
     {
@@ -227,11 +227,12 @@
       "payment_date": "2026-11-20",
       "expected_dividend_pence": 4.8,
       "expected_dividend_gbp": 0.048,
-      "dividend_yield_pct": 2.88,
+      "dividend_yield_pct": 2.9,
       "dividend_type": "Interim",
       "days_remaining": 8,
       "status_badge": "\ud83d\udcc5 This Month (8 days)",
       "sparkline": [
+        735.5,
         733.0,
         743.5,
         736.5,
@@ -250,8 +251,7 @@
         749.0,
         752.5,
         753.0,
-        759.5,
-        754.5
+        759.5
       ]
     },
     {
@@ -269,11 +269,12 @@
       "payment_date": "2026-11-23",
       "expected_dividend_pence": 30.2,
       "expected_dividend_gbp": 0.302,
-      "dividend_yield_pct": 1.64,
+      "dividend_yield_pct": 1.69,
       "dividend_type": "Final",
       "days_remaining": 8,
       "status_badge": "\ud83d\udcc5 This Month (8 days)",
       "sparkline": [
+        2531.0,
         2523.0,
         2547.0,
         2506.0,
@@ -292,8 +293,7 @@
         2782.0,
         2816.0,
         2841.0,
-        2847.0,
-        2762.0
+        2847.0
       ]
     },
     {
@@ -311,11 +311,12 @@
       "payment_date": "2026-11-13",
       "expected_dividend_pence": 46.0,
       "expected_dividend_gbp": 0.46,
-      "dividend_yield_pct": 2.31,
+      "dividend_yield_pct": 2.38,
       "dividend_type": "Interim",
       "days_remaining": 8,
       "status_badge": "\ud83d\udcc5 This Month (8 days)",
       "sparkline": [
+        7005.0,
         6835.0,
         6855.0,
         6720.0,
@@ -334,8 +335,7 @@
         7175.0,
         7240.0,
         7275.0,
-        7360.0,
-        7140.0
+        7360.0
       ]
     },
     {
@@ -353,11 +353,12 @@
       "payment_date": "2026-11-06",
       "expected_dividend_pence": 20.0,
       "expected_dividend_gbp": 0.2,
-      "dividend_yield_pct": 4.84,
+      "dividend_yield_pct": 4.91,
       "dividend_type": "Interim",
       "days_remaining": 8,
       "status_badge": "\ud83d\udcc5 This Month (8 days)",
       "sparkline": [
+        1114.0,
         1101.5,
         1107.0,
         1084.5,
@@ -376,8 +377,7 @@
         1248.0,
         1237.5,
         1212.5,
-        1240.0,
-        1222.0
+        1240.0
       ]
     },
     {
@@ -388,20 +388,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 2080.3,
-      "price_gbp": 2080.3,
+      "price_pence": 2105.4,
+      "price_gbp": 2105.4,
       "ex_dividend_date": "2026-10-16",
       "last_buy_date": "2026-10-15",
       "payment_date": "2026-11-05",
       "expected_dividend_pence": 10.0,
       "expected_dividend_gbp": 10.0,
-      "dividend_yield_pct": 3.1,
+      "dividend_yield_pct": 3.12,
       "dividend_type": "Interim",
       "days_remaining": 9,
       "status_badge": "\ud83d\udcc5 This Month (9 days)",
       "sparkline": [
-        2208.0,
-        2204.1,
         2200.8,
         2200.8,
         2251.0,
@@ -419,7 +417,9 @@
         2075.0,
         2075.0,
         2114.4,
-        2100.0
+        2100.0,
+        2080.3,
+        2105.1
       ]
     },
     {
@@ -437,7 +437,7 @@
       "payment_date": "2026-11-15",
       "expected_dividend_pence": 1.006,
       "expected_dividend_gbp": 1.006,
-      "dividend_yield_pct": 2.93,
+      "dividend_yield_pct": 2.95,
       "dividend_type": "Quarterly",
       "days_remaining": 10,
       "status_badge": "\ud83d\udcc5 This Month (10 days)",
@@ -484,6 +484,7 @@
       "days_remaining": 12,
       "status_badge": "\ud83d\udcc5 This Month (12 days)",
       "sparkline": [
+        4972.0,
         4978.0,
         4942.0,
         4992.0,
@@ -502,7 +503,6 @@
         4972.0,
         5030.0,
         5050.0,
-        5160.0,
         5160.0
       ]
     },
@@ -521,11 +521,12 @@
       "payment_date": "2026-11-13",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 2.66,
+      "dividend_yield_pct": 2.69,
       "dividend_type": "Interim",
       "days_remaining": 12,
       "status_badge": "\ud83d\udcc5 This Month (12 days)",
       "sparkline": [
+        312.6,
         306.4,
         304.6,
         300.6,
@@ -544,8 +545,7 @@
         301.0,
         307.0,
         305.0,
-        308.6,
-        304.6
+        308.6
       ]
     },
     {
@@ -563,11 +563,12 @@
       "payment_date": "2026-11-13",
       "expected_dividend_pence": 12.0,
       "expected_dividend_gbp": 0.12,
-      "dividend_yield_pct": 4.44,
+      "dividend_yield_pct": 4.42,
       "dividend_type": "Interim",
       "days_remaining": 12,
       "status_badge": "\ud83d\udcc5 This Month (12 days)",
       "sparkline": [
+        274.6,
         277.8,
         272.6,
         280.0,
@@ -586,8 +587,7 @@
         276.2,
         269.2,
         273.0,
-        267.6,
-        268.8
+        267.6
       ]
     },
     {
@@ -605,11 +605,12 @@
       "payment_date": "2026-11-13",
       "expected_dividend_pence": 0.4,
       "expected_dividend_gbp": 0.004,
-      "dividend_yield_pct": 70.0,
+      "dividend_yield_pct": 71.0,
       "dividend_type": "Interim",
       "days_remaining": 12,
       "status_badge": "\ud83d\udcc5 This Month (12 days)",
       "sparkline": [
+        67.45,
         67.6,
         66.85,
         67.55,
@@ -628,8 +629,7 @@
         63.65,
         64.3,
         62.85,
-        62.85,
-        62.0
+        62.85
       ]
     },
     {
@@ -647,11 +647,12 @@
       "payment_date": "2026-11-13",
       "expected_dividend_pence": 64.0,
       "expected_dividend_gbp": 0.64,
-      "dividend_yield_pct": 3.97,
+      "dividend_yield_pct": 3.91,
       "dividend_type": "Interim",
       "days_remaining": 12,
       "status_badge": "\ud83d\udcc5 This Month (12 days)",
       "sparkline": [
+        1535.0,
         1498.0,
         1531.0,
         1544.0,
@@ -670,8 +671,7 @@
         1571.0,
         1580.0,
         1579.0,
-        1620.0,
-        1646.0
+        1620.0
       ]
     },
     {
@@ -689,11 +689,12 @@
       "payment_date": "2026-11-13",
       "expected_dividend_pence": 6.0,
       "expected_dividend_gbp": 0.06,
-      "dividend_yield_pct": 7.65,
+      "dividend_yield_pct": 7.71,
       "dividend_type": "Interim",
       "days_remaining": 12,
       "status_badge": "\ud83d\udcc5 This Month (12 days)",
       "sparkline": [
+        82.1,
         82.2,
         80.85,
         81.4,
@@ -712,8 +713,7 @@
         81.05,
         81.4,
         80.35,
-        80.75,
-        80.15
+        80.75
       ]
     },
     {
@@ -731,11 +731,12 @@
       "payment_date": "2026-11-16",
       "expected_dividend_pence": 22.0,
       "expected_dividend_gbp": 0.22,
-      "dividend_yield_pct": 2.53,
+      "dividend_yield_pct": 2.59,
       "dividend_type": "Interim",
       "days_remaining": 13,
       "status_badge": "\ud83d\udcc5 This Month (13 days)",
       "sparkline": [
+        886.4,
         874.4,
         889.4,
         903.4,
@@ -754,8 +755,7 @@
         860.4,
         857.6,
         861.8,
-        887.2,
-        866.6
+        887.2
       ]
     },
     {
@@ -773,11 +773,12 @@
       "payment_date": "2026-11-16",
       "expected_dividend_pence": 7.0,
       "expected_dividend_gbp": 0.07,
-      "dividend_yield_pct": 3.84,
+      "dividend_yield_pct": 3.86,
       "dividend_type": "Interim",
       "days_remaining": 13,
       "status_badge": "\ud83d\udcc5 This Month (13 days)",
       "sparkline": [
+        171.5,
         168.2,
         169.3,
         171.0,
@@ -796,8 +797,7 @@
         181.1,
         181.4,
         186.4,
-        187.6,
-        186.6
+        187.6
       ]
     },
     {
@@ -808,20 +808,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1865.4,
-      "price_gbp": 1865.4,
+      "price_pence": 1856.6,
+      "price_gbp": 1856.6,
       "ex_dividend_date": "2026-10-20",
       "last_buy_date": "2026-10-19",
       "payment_date": "2026-11-16",
       "expected_dividend_pence": 44.0,
       "expected_dividend_gbp": 44.0,
-      "dividend_yield_pct": 2.32,
+      "dividend_yield_pct": 2.36,
       "dividend_type": "Interim",
       "days_remaining": 13,
       "status_badge": "\ud83d\udcc5 This Month (13 days)",
       "sparkline": [
-        1945.0,
-        1942.3,
         1927.0,
         1927.0,
         1938.1,
@@ -839,7 +837,9 @@
         1836.0,
         1836.0,
         1838.4,
-        1895.2
+        1895.2,
+        1865.4,
+        1856.7
       ]
     },
     {
@@ -857,11 +857,12 @@
       "payment_date": "2026-11-16",
       "expected_dividend_pence": 82.0,
       "expected_dividend_gbp": 0.82,
-      "dividend_yield_pct": 4.57,
+      "dividend_yield_pct": 4.59,
       "dividend_type": "Interim",
       "days_remaining": 14,
       "status_badge": "\ud83d\udcc5 This Month (14 days)",
       "sparkline": [
+        1877.0,
         1841.0,
         1836.0,
         1796.0,
@@ -880,8 +881,7 @@
         1767.0,
         1778.0,
         1764.0,
-        1795.0,
-        1786.0
+        1795.0
       ]
     },
     {
@@ -904,6 +904,7 @@
       "days_remaining": 14,
       "status_badge": "\ud83d\udcc5 This Month (14 days)",
       "sparkline": [
+        175.2,
         173.0,
         171.6,
         168.6,
@@ -922,8 +923,7 @@
         175.0,
         176.6,
         179.4,
-        180.6,
-        180.2
+        180.6
       ]
     },
     {
@@ -941,11 +941,12 @@
       "payment_date": "2026-11-16",
       "expected_dividend_pence": 4.0,
       "expected_dividend_gbp": 0.04,
-      "dividend_yield_pct": 3.13,
+      "dividend_yield_pct": 3.16,
       "dividend_type": "Interim",
       "days_remaining": 14,
       "status_badge": "\ud83d\udcc5 This Month (14 days)",
       "sparkline": [
+        139.2,
         137.7,
         138.1,
         136.3,
@@ -964,8 +965,7 @@
         134.3,
         135.8,
         135.4,
-        137.5,
-        136.1
+        137.5
       ]
     },
     {
@@ -983,7 +983,7 @@
       "payment_date": "2026-11-16",
       "expected_dividend_pence": 1.64,
       "expected_dividend_gbp": 1.64,
-      "dividend_yield_pct": 4.74,
+      "dividend_yield_pct": 4.77,
       "dividend_type": "Quarterly",
       "days_remaining": 14,
       "status_badge": "\ud83d\udcc5 This Month (14 days)",
@@ -1018,8 +1018,8 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 440.0,
-      "price_gbp": 440.0,
+      "price_pence": 438.7,
+      "price_gbp": 438.7,
       "ex_dividend_date": "2026-10-21",
       "last_buy_date": "2026-10-20",
       "payment_date": "2026-11-16",
@@ -1030,8 +1030,6 @@
       "days_remaining": 14,
       "status_badge": "\ud83d\udcc5 This Month (14 days)",
       "sparkline": [
-        414.0,
-        416.55,
         419.0,
         419.0,
         409.8,
@@ -1049,7 +1047,9 @@
         418.35,
         418.35,
         416.0,
-        431.9
+        431.9,
+        440.0,
+        438.65
       ]
     },
     {
@@ -1067,11 +1067,12 @@
       "payment_date": "2026-12-02",
       "expected_dividend_pence": 12.4,
       "expected_dividend_gbp": 0.124,
-      "dividend_yield_pct": 1.96,
+      "dividend_yield_pct": 1.99,
       "dividend_type": "Interim",
       "days_remaining": 15,
       "status_badge": "\ud83d\udcc5 This Month (15 days)",
       "sparkline": [
+        1898.5,
         1923.5,
         1898.0,
         1940.0,
@@ -1090,8 +1091,7 @@
         1943.0,
         1921.0,
         1934.0,
-        1855.0,
-        1826.0
+        1855.0
       ]
     },
     {
@@ -1107,13 +1107,14 @@
       "ex_dividend_date": "2026-10-22",
       "last_buy_date": "2026-10-21",
       "payment_date": "2026-11-16",
-      "expected_dividend_pence": 144.0,
-      "expected_dividend_gbp": 1.44,
-      "dividend_yield_pct": 3.42,
+      "expected_dividend_pence": 143.0,
+      "expected_dividend_gbp": 1.43,
+      "dividend_yield_pct": 3.49,
       "dividend_type": "Interim",
       "days_remaining": 15,
       "status_badge": "\ud83d\udcc5 This Month (15 days)",
       "sparkline": [
+        4670.0,
         4506.0,
         4593.0,
         4492.0,
@@ -1132,8 +1133,7 @@
         4244.0,
         4250.0,
         4250.0,
-        4208.0,
-        4104.0
+        4208.0
       ]
     },
     {
@@ -1156,6 +1156,7 @@
       "days_remaining": 15,
       "status_badge": "\ud83d\udcc5 This Month (15 days)",
       "sparkline": [
+        17570.0,
         17330.0,
         17650.0,
         17600.0,
@@ -1174,8 +1175,7 @@
         16870.0,
         17190.0,
         16970.0,
-        16560.0,
-        16540.0
+        16560.0
       ]
     },
     {
@@ -1193,11 +1193,12 @@
       "payment_date": "2026-11-16",
       "expected_dividend_pence": 22.0,
       "expected_dividend_gbp": 0.22,
-      "dividend_yield_pct": 2.23,
+      "dividend_yield_pct": 2.2,
       "dividend_type": "Interim",
       "days_remaining": 15,
       "status_badge": "\ud83d\udcc5 This Month (15 days)",
       "sparkline": [
+        983.6,
         979.8,
         958.0,
         1008.5,
@@ -1216,8 +1217,7 @@
         979.2,
         983.4,
         1002.0,
-        1005.0,
-        1022.0
+        1005.0
       ]
     },
     {
@@ -1282,8 +1282,6 @@
       "days_remaining": 15,
       "status_badge": "\ud83d\udcc5 This Month (15 days)",
       "sparkline": [
-        1229.8,
-        1207.0,
         1206.1,
         1206.1,
         1253.7,
@@ -1301,7 +1299,9 @@
         1243.1,
         1243.1,
         1201.9,
-        1204.4
+        1204.4,
+        1185.0,
+        1193.8
       ]
     },
     {
@@ -1319,11 +1319,12 @@
       "payment_date": "2026-11-17",
       "expected_dividend_pence": 11.0,
       "expected_dividend_gbp": 0.11,
-      "dividend_yield_pct": 5.12,
+      "dividend_yield_pct": 5.04,
       "dividend_type": "Interim",
       "days_remaining": 16,
       "status_badge": "\ud83d\udcc5 This Month (16 days)",
       "sparkline": [
+        207.0,
         207.2,
         206.8,
         208.2,
@@ -1342,8 +1343,7 @@
         211.6,
         213.4,
         212.4,
-        222.6,
-        226.0
+        222.6
       ]
     },
     {
@@ -1361,11 +1361,12 @@
       "payment_date": "2026-11-17",
       "expected_dividend_pence": 27.0,
       "expected_dividend_gbp": 0.27,
-      "dividend_yield_pct": 6.08,
+      "dividend_yield_pct": 6.04,
       "dividend_type": "Interim",
       "days_remaining": 16,
       "status_badge": "\ud83d\udcc5 This Month (16 days)",
       "sparkline": [
+        474.0,
         469.0,
         472.0,
         467.0,
@@ -1384,8 +1385,7 @@
         464.0,
         456.0,
         444.0,
-        445.5,
-        449.0
+        445.5
       ]
     },
     {
@@ -1403,11 +1403,12 @@
       "payment_date": "2026-11-17",
       "expected_dividend_pence": 69.0,
       "expected_dividend_gbp": 0.69,
-      "dividend_yield_pct": 3.37,
+      "dividend_yield_pct": 3.32,
       "dividend_type": "Interim",
       "days_remaining": 16,
       "status_badge": "\ud83d\udcc5 This Month (16 days)",
       "sparkline": [
+        1790.0,
         1752.0,
         1731.0,
         1742.0,
@@ -1426,8 +1427,7 @@
         1988.0,
         2026.0,
         2016.0,
-        2050.0,
-        2078.0
+        2050.0
       ]
     },
     {
@@ -1445,7 +1445,7 @@
       "payment_date": "2026-11-17",
       "expected_dividend_pence": 2.92,
       "expected_dividend_gbp": 2.92,
-      "dividend_yield_pct": 81.0,
+      "dividend_yield_pct": 82.0,
       "dividend_type": "Quarterly",
       "days_remaining": 16,
       "status_badge": "\ud83d\udcc5 This Month (16 days)",
@@ -1487,11 +1487,12 @@
       "payment_date": "2026-11-20",
       "expected_dividend_pence": 7.0,
       "expected_dividend_gbp": 0.07,
-      "dividend_yield_pct": 2.19,
+      "dividend_yield_pct": 2.13,
       "dividend_type": "Interim",
       "days_remaining": 19,
       "status_badge": "\ud83d\udcc5 This Month (19 days)",
       "sparkline": [
+        334.8,
         336.2,
         333.8,
         342.2,
@@ -1510,8 +1511,7 @@
         327.8,
         328.3,
         330.8,
-        334.0,
-        342.4
+        334.0
       ]
     },
     {
@@ -1529,11 +1529,12 @@
       "payment_date": "2026-11-20",
       "expected_dividend_pence": 21.0,
       "expected_dividend_gbp": 0.21,
-      "dividend_yield_pct": 6.59,
+      "dividend_yield_pct": 6.69,
       "dividend_type": "Interim",
       "days_remaining": 19,
       "status_badge": "\ud83d\udcc5 This Month (19 days)",
       "sparkline": [
+        345.0,
         332.2,
         332.4,
         332.0,
@@ -1552,8 +1553,7 @@
         310.7,
         313.5,
         313.6,
-        312.4,
-        308.0
+        312.4
       ]
     },
     {
@@ -1571,11 +1571,12 @@
       "payment_date": "2026-11-20",
       "expected_dividend_pence": 69.0,
       "expected_dividend_gbp": 0.69,
-      "dividend_yield_pct": 2.68,
+      "dividend_yield_pct": 2.65,
       "dividend_type": "Interim",
       "days_remaining": 19,
       "status_badge": "\ud83d\udcc5 This Month (19 days)",
       "sparkline": [
+        2515.0,
         2494.0,
         2475.0,
         2603.0,
@@ -1594,8 +1595,7 @@
         2510.0,
         2528.0,
         2536.0,
-        2571.0,
-        2599.0
+        2571.0
       ]
     },
     {
@@ -1613,11 +1613,12 @@
       "payment_date": "2026-11-20",
       "expected_dividend_pence": 47.0,
       "expected_dividend_gbp": 0.47,
-      "dividend_yield_pct": 5.71,
+      "dividend_yield_pct": 5.73,
       "dividend_type": "Interim",
       "days_remaining": 19,
       "status_badge": "\ud83d\udcc5 This Month (19 days)",
       "sparkline": [
+        812.5,
         807.5,
         821.5,
         811.5,
@@ -1636,8 +1637,7 @@
         798.0,
         797.5,
         800.5,
-        820.0,
-        817.0
+        820.0
       ]
     },
     {
@@ -1655,11 +1655,12 @@
       "payment_date": "2026-11-20",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 5.06,
+      "dividend_yield_pct": 5.13,
       "dividend_type": "Interim",
       "days_remaining": 19,
       "status_badge": "\ud83d\udcc5 This Month (19 days)",
       "sparkline": [
+        168.0,
         166.1,
         165.9,
         164.7,
@@ -1678,8 +1679,7 @@
         162.6,
         163.0,
         162.8,
-        166.1,
-        163.9
+        166.1
       ]
     },
     {
@@ -1697,11 +1697,12 @@
       "payment_date": "2026-11-20",
       "expected_dividend_pence": 11.0,
       "expected_dividend_gbp": 0.11,
-      "dividend_yield_pct": 2.74,
+      "dividend_yield_pct": 2.8,
       "dividend_type": "Interim",
       "days_remaining": 19,
       "status_badge": "\ud83d\udcc5 This Month (19 days)",
       "sparkline": [
+        406.0,
         396.5,
         400.0,
         388.5,
@@ -1720,8 +1721,7 @@
         389.5,
         383.0,
         394.5,
-        386.5,
-        377.5
+        386.5
       ]
     },
     {
@@ -1739,11 +1739,12 @@
       "payment_date": "2026-11-20",
       "expected_dividend_pence": 12.0,
       "expected_dividend_gbp": 0.12,
-      "dividend_yield_pct": 3.24,
+      "dividend_yield_pct": 3.22,
       "dividend_type": "Interim",
       "days_remaining": 19,
       "status_badge": "\ud83d\udcc5 This Month (19 days)",
       "sparkline": [
+        377.5,
         371.5,
         372.0,
         364.5,
@@ -1762,8 +1763,7 @@
         365.5,
         362.0,
         364.5,
-        364.5,
-        367.0
+        364.5
       ]
     },
     {
@@ -1781,11 +1781,12 @@
       "payment_date": "2026-11-20",
       "expected_dividend_pence": 17.0,
       "expected_dividend_gbp": 0.17,
-      "dividend_yield_pct": 2.64,
+      "dividend_yield_pct": 2.62,
       "dividend_type": "Interim",
       "days_remaining": 19,
       "status_badge": "\ud83d\udcc5 This Month (19 days)",
       "sparkline": [
+        622.5,
         620.5,
         620.5,
         633.0,
@@ -1804,8 +1805,7 @@
         634.5,
         638.5,
         638.5,
-        635.5,
-        641.5
+        635.5
       ]
     },
     {
@@ -1858,8 +1858,8 @@
       "market": "NIFTY Smallcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 3356.0,
-      "price_gbp": 3356.0,
+      "price_pence": 3332.1,
+      "price_gbp": 3332.1,
       "ex_dividend_date": "2026-10-26",
       "last_buy_date": "2026-10-23",
       "payment_date": "2026-11-20",
@@ -1870,8 +1870,6 @@
       "days_remaining": 19,
       "status_badge": "\ud83d\udcc5 This Month (19 days)",
       "sparkline": [
-        3289.8,
-        3306.0,
         3384.0,
         3384.0,
         3310.0,
@@ -1889,7 +1887,9 @@
         3046.0,
         3046.0,
         3179.6,
-        3305.0
+        3305.0,
+        3356.0,
+        3332.3
       ]
     },
     {
@@ -1907,11 +1907,12 @@
       "payment_date": "2026-11-23",
       "expected_dividend_pence": 23.0,
       "expected_dividend_gbp": 0.23,
-      "dividend_yield_pct": 6.91,
+      "dividend_yield_pct": 6.96,
       "dividend_type": "Interim",
       "days_remaining": 20,
       "status_badge": "\ud83d\udcc5 This Month (20 days)",
       "sparkline": [
+        347.0,
         346.0,
         354.5,
         355.0,
@@ -1930,8 +1931,7 @@
         340.5,
         338.5,
         334.5,
-        332.5,
-        330.0
+        332.5
       ]
     },
     {
@@ -1949,11 +1949,12 @@
       "payment_date": "2026-11-23",
       "expected_dividend_pence": 5.0,
       "expected_dividend_gbp": 0.05,
-      "dividend_yield_pct": 3.52,
+      "dividend_yield_pct": 3.49,
       "dividend_type": "Interim",
       "days_remaining": 20,
       "status_badge": "\ud83d\udcc5 This Month (20 days)",
       "sparkline": [
+        134.6,
         134.5,
         133.0,
         134.5,
@@ -1972,8 +1973,7 @@
         136.0,
         136.9,
         136.0,
-        136.3,
-        137.4
+        136.3
       ]
     },
     {
@@ -1991,11 +1991,12 @@
       "payment_date": "2026-11-23",
       "expected_dividend_pence": 36.0,
       "expected_dividend_gbp": 0.36,
-      "dividend_yield_pct": 7.27,
+      "dividend_yield_pct": 7.4,
       "dividend_type": "Interim",
       "days_remaining": 20,
       "status_badge": "\ud83d\udcc5 This Month (20 days)",
       "sparkline": [
+        509.5,
         512.0,
         513.0,
         508.0,
@@ -2014,8 +2015,7 @@
         493.2,
         493.6,
         491.2,
-        494.0,
-        485.4
+        494.0
       ]
     },
     {
@@ -2033,11 +2033,12 @@
       "payment_date": "2026-11-23",
       "expected_dividend_pence": 24.0,
       "expected_dividend_gbp": 0.24,
-      "dividend_yield_pct": 5.29,
+      "dividend_yield_pct": 5.2,
       "dividend_type": "Interim",
       "days_remaining": 20,
       "status_badge": "\ud83d\udcc5 This Month (20 days)",
       "sparkline": [
+        370.0,
         370.2,
         369.6,
         363.6,
@@ -2056,8 +2057,7 @@
         456.8,
         451.2,
         444.2,
-        446.0,
-        454.2
+        446.0
       ]
     },
     {
@@ -2075,11 +2075,12 @@
       "payment_date": "2026-11-23",
       "expected_dividend_pence": 27.0,
       "expected_dividend_gbp": 0.27,
-      "dividend_yield_pct": 9.68,
+      "dividend_yield_pct": 9.67,
       "dividend_type": "Interim",
       "days_remaining": 21,
       "status_badge": "\ud83d\udcc5 This Month (21 days)",
       "sparkline": [
+        280.6,
         283.8,
         285.2,
         282.4,
@@ -2098,8 +2099,7 @@
         276.0,
         275.4,
         281.4,
-        274.2,
-        274.6
+        274.2
       ]
     },
     {
@@ -2122,6 +2122,7 @@
       "days_remaining": 21,
       "status_badge": "\ud83d\udcc5 This Month (21 days)",
       "sparkline": [
+        5100.0,
         5060.0,
         5020.0,
         5090.0,
@@ -2140,8 +2141,7 @@
         5030.0,
         5000.0,
         4955.0,
-        4980.0,
-        4970.0
+        4980.0
       ]
     },
     {
@@ -2159,7 +2159,7 @@
       "payment_date": "2026-11-23",
       "expected_dividend_pence": 5.92,
       "expected_dividend_gbp": 5.92,
-      "dividend_yield_pct": 4.71,
+      "dividend_yield_pct": 4.78,
       "dividend_type": "Quarterly",
       "days_remaining": 21,
       "status_badge": "\ud83d\udcc5 This Month (21 days)",
@@ -2194,20 +2194,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 992.0,
-      "price_gbp": 992.0,
+      "price_pence": 1001.35,
+      "price_gbp": 1001.35,
       "ex_dividend_date": "2026-10-28",
       "last_buy_date": "2026-10-27",
       "payment_date": "2026-11-20",
       "expected_dividend_pence": 21.0,
       "expected_dividend_gbp": 21.0,
-      "dividend_yield_pct": 4.93,
+      "dividend_yield_pct": 5.04,
       "dividend_type": "Interim",
       "days_remaining": 21,
       "status_badge": "\ud83d\udcc5 This Month (21 days)",
       "sparkline": [
-        1035.0,
-        1036.5,
         1037.7,
         1037.7,
         1077.0,
@@ -2225,7 +2223,9 @@
         1035.0,
         1035.0,
         1020.5,
-        1013.85
+        1013.85,
+        992.0,
+        1001.0
       ]
     },
     {
@@ -2236,8 +2236,8 @@
       "market": "NIFTY Midcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1736.0,
-      "price_gbp": 1736.0,
+      "price_pence": 1699.1,
+      "price_gbp": 1699.1,
       "ex_dividend_date": "2026-10-28",
       "last_buy_date": "2026-10-27",
       "payment_date": "2026-11-23",
@@ -2248,9 +2248,6 @@
       "days_remaining": 21,
       "status_badge": "\ud83d\udcc5 This Month (21 days)",
       "sparkline": [
-        1833.8,
-        1800.0,
-        1792.0,
         1741.1,
         1741.1,
         1668.5,
@@ -2266,8 +2263,11 @@
         1762.9,
         1765.7,
         1754.6,
+        1754.6,
         1751.2,
-        1751.8
+        1751.8,
+        1736.0,
+        1699.1
       ]
     },
     {
@@ -2285,11 +2285,12 @@
       "payment_date": "2026-12-04",
       "expected_dividend_pence": 3.8,
       "expected_dividend_gbp": 0.038,
-      "dividend_yield_pct": 1.56,
+      "dividend_yield_pct": 1.6,
       "dividend_type": "Interim",
       "days_remaining": 22,
       "status_badge": "\ud83d\udcc5 This Month (22 days)",
       "sparkline": [
+        857.5,
         840.0,
         859.5,
         847.0,
@@ -2308,8 +2309,7 @@
         920.0,
         937.5,
         911.0,
-        900.0,
-        874.5
+        900.0
       ]
     },
     {
@@ -2332,6 +2332,7 @@
       "days_remaining": 22,
       "status_badge": "\ud83d\udcc5 This Month (22 days)",
       "sparkline": [
+        79.64,
         79.06,
         78.1,
         76.56,
@@ -2350,8 +2351,7 @@
         80.86,
         79.72,
         79.7,
-        80.34,
-        83.5
+        80.34
       ]
     },
     {
@@ -2369,11 +2369,12 @@
       "payment_date": "2026-11-23",
       "expected_dividend_pence": 10.0,
       "expected_dividend_gbp": 0.1,
-      "dividend_yield_pct": 2.77,
+      "dividend_yield_pct": 2.74,
       "dividend_type": "Interim",
       "days_remaining": 22,
       "status_badge": "\ud83d\udcc5 This Month (22 days)",
       "sparkline": [
+        300.6,
         294.4,
         296.2,
         290.4,
@@ -2392,8 +2393,7 @@
         336.8,
         331.6,
         333.0,
-        346.8,
-        365.4
+        346.8
       ]
     },
     {
@@ -2416,6 +2416,7 @@
       "days_remaining": 22,
       "status_badge": "\ud83d\udcc5 This Month (22 days)",
       "sparkline": [
+        175.0,
         176.0,
         176.4,
         176.0,
@@ -2429,7 +2430,6 @@
         178.0,
         187.0,
         186.6,
-        187.0,
         187.0,
         187.0,
         187.0,
@@ -2453,11 +2453,12 @@
       "payment_date": "2026-11-24",
       "expected_dividend_pence": 21.0,
       "expected_dividend_gbp": 0.21,
-      "dividend_yield_pct": 4.84,
+      "dividend_yield_pct": 4.98,
       "dividend_type": "Interim",
       "days_remaining": 23,
       "status_badge": "\ud83d\udcc5 This Month (23 days)",
       "sparkline": [
+        501.4,
         503.0,
         502.2,
         501.8,
@@ -2476,8 +2477,7 @@
         411.0,
         413.4,
         424.1,
-        425.7,
-        413.3
+        425.7
       ]
     },
     {
@@ -2495,11 +2495,12 @@
       "payment_date": "2026-11-24",
       "expected_dividend_pence": 1.0,
       "expected_dividend_gbp": 0.01,
-      "dividend_yield_pct": 59.0,
+      "dividend_yield_pct": 58.0,
       "dividend_type": "Interim",
       "days_remaining": 23,
       "status_badge": "\ud83d\udcc5 This Month (23 days)",
       "sparkline": [
+        178.6,
         178.5,
         181.3,
         180.1,
@@ -2518,8 +2519,7 @@
         177.0,
         176.4,
         174.5,
-        177.5,
-        178.0
+        177.5
       ]
     },
     {
@@ -2537,11 +2537,12 @@
       "payment_date": "2026-11-24",
       "expected_dividend_pence": 100.0,
       "expected_dividend_gbp": 1.0,
-      "dividend_yield_pct": 6.61,
+      "dividend_yield_pct": 6.53,
       "dividend_type": "Interim",
       "days_remaining": 23,
       "status_badge": "\ud83d\udcc5 This Month (23 days)",
       "sparkline": [
+        1640.0,
         1638.0,
         1626.0,
         1614.0,
@@ -2560,8 +2561,7 @@
         1534.0,
         1536.0,
         1518.0,
-        1512.0,
-        1532.0
+        1512.0
       ]
     },
     {
@@ -2585,6 +2585,7 @@
       "status_badge": "\ud83d\udcc5 This Month (23 days)",
       "sparkline": [
         280.0,
+        280.0,
         282.0,
         281.0,
         282.0,
@@ -2602,8 +2603,7 @@
         280.0,
         282.0,
         287.0,
-        291.0,
-        293.0
+        291.0
       ]
     },
     {
@@ -2621,7 +2621,7 @@
       "payment_date": "2026-11-24",
       "expected_dividend_pence": 3.12,
       "expected_dividend_gbp": 3.12,
-      "dividend_yield_pct": 1.91,
+      "dividend_yield_pct": 1.92,
       "dividend_type": "Quarterly",
       "days_remaining": 23,
       "status_badge": "\ud83d\udcc5 This Month (23 days)",
@@ -2656,20 +2656,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 702.75,
-      "price_gbp": 702.75,
+      "price_pence": 693.25,
+      "price_gbp": 693.25,
       "ex_dividend_date": "2026-10-30",
       "last_buy_date": "2026-10-29",
       "payment_date": "2026-11-24",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 13.0,
-      "dividend_yield_pct": 1.83,
+      "dividend_yield_pct": 1.85,
       "dividend_type": "Interim",
       "days_remaining": 23,
       "status_badge": "\ud83d\udcc5 This Month (23 days)",
       "sparkline": [
-        687.1,
-        693.8,
         708.25,
         708.25,
         716.55,
@@ -2687,7 +2685,9 @@
         721.2,
         721.2,
         704.8,
-        711.45
+        711.45,
+        702.75,
+        693.25
       ]
     },
     {
@@ -2705,11 +2705,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 239.0,
       "expected_dividend_gbp": 2.39,
-      "dividend_yield_pct": 2.0,
+      "dividend_yield_pct": 1.96,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        11650.0,
         11758.0,
         11708.0,
         12154.0,
@@ -2728,8 +2729,7 @@
         12032.0,
         11870.0,
         11764.0,
-        11958.0,
-        12180.0
+        11958.0
       ]
     },
     {
@@ -2747,11 +2747,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 0.13,
-      "dividend_yield_pct": 1.95,
+      "dividend_yield_pct": 1.94,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        668.2,
         668.8,
         667.2,
         666.8,
@@ -2770,8 +2771,7 @@
         677.2,
         680.6,
         677.0,
-        678.2,
-        679.6
+        678.2
       ]
     },
     {
@@ -2789,11 +2789,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 0.13,
-      "dividend_yield_pct": 7.25,
+      "dividend_yield_pct": 7.31,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        179.5,
         177.8,
         178.0,
         176.3,
@@ -2812,8 +2813,7 @@
         171.3,
         171.6,
         170.8,
-        173.9,
-        172.4
+        173.9
       ]
     },
     {
@@ -2831,11 +2831,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 16.0,
       "expected_dividend_gbp": 0.16,
-      "dividend_yield_pct": 2.56,
+      "dividend_yield_pct": 2.5,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        610.0,
         622.0,
         621.0,
         624.0,
@@ -2854,8 +2855,7 @@
         639.0,
         637.0,
         639.0,
-        634.0,
-        647.0
+        634.0
       ]
     },
     {
@@ -2878,6 +2878,7 @@
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        946.0,
         943.5,
         940.0,
         939.0,
@@ -2896,50 +2897,7 @@
         909.5,
         910.5,
         910.5,
-        910.0,
-        910.5
-      ]
-    },
-    {
-      "ticker": "GNS",
-      "symbol": "GNS.L",
-      "name": "Genus",
-      "sector": "Pharmaceuticals & Biotechnology",
-      "market": "FTSE 250",
-      "currency": "GBp",
-      "currency_symbol": "\u00a3",
-      "price_pence": 2208.0,
-      "price_gbp": 22.08,
-      "ex_dividend_date": "2026-11-02",
-      "last_buy_date": "2026-10-30",
-      "payment_date": "2026-11-27",
-      "expected_dividend_pence": 33.0,
-      "expected_dividend_gbp": 0.33,
-      "dividend_yield_pct": 1.56,
-      "dividend_type": "Interim",
-      "days_remaining": 26,
-      "status_badge": "\ud83d\udcc5 This Month (26 days)",
-      "sparkline": [
-        2160.0,
-        2162.0,
-        2134.0,
-        2150.0,
-        2150.0,
-        2134.0,
-        2092.0,
-        2120.0,
-        2132.0,
-        2112.0,
-        2074.0,
-        2092.0,
-        2132.0,
-        2186.0,
-        2142.0,
-        2150.0,
-        2144.0,
-        2126.0,
-        2114.0,
-        2208.0
+        910.0
       ]
     },
     {
@@ -2957,11 +2915,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 81.0,
       "expected_dividend_gbp": 0.81,
-      "dividend_yield_pct": 2.48,
+      "dividend_yield_pct": 2.53,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        2964.0,
         2956.0,
         2992.0,
         2956.0,
@@ -2980,8 +2939,7 @@
         3344.0,
         3328.0,
         3280.0,
-        3258.0,
-        3194.0
+        3258.0
       ]
     },
     {
@@ -2999,11 +2957,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 39.0,
       "expected_dividend_gbp": 0.39,
-      "dividend_yield_pct": 2.71,
+      "dividend_yield_pct": 2.75,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        1534.0,
         1534.0,
         1530.0,
         1526.0,
@@ -3022,8 +2981,7 @@
         1448.0,
         1454.0,
         1438.0,
-        1440.0,
-        1420.0
+        1440.0
       ]
     },
     {
@@ -3041,11 +2999,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 7.0,
       "expected_dividend_gbp": 0.07,
-      "dividend_yield_pct": 8.13,
+      "dividend_yield_pct": 8.18,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        92.1,
         92.0,
         91.4,
         91.75,
@@ -3064,8 +3023,7 @@
         89.55,
         90.35,
         89.55,
-        89.75,
-        89.25
+        89.75
       ]
     },
     {
@@ -3083,11 +3041,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 6.0,
       "expected_dividend_gbp": 0.06,
-      "dividend_yield_pct": 6.3,
+      "dividend_yield_pct": 6.34,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        93.05,
         91.8,
         92.55,
         91.45,
@@ -3106,8 +3065,7 @@
         86.1,
         86.7,
         88.35,
-        88.8,
-        88.2
+        88.8
       ]
     },
     {
@@ -3125,11 +3083,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 30.0,
       "expected_dividend_gbp": 0.3,
-      "dividend_yield_pct": 1.65,
+      "dividend_yield_pct": 1.66,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        1869.0,
         1838.0,
         1857.0,
         1859.0,
@@ -3148,8 +3107,7 @@
         1856.0,
         1866.0,
         1835.0,
-        1833.0,
-        1825.0
+        1833.0
       ]
     },
     {
@@ -3167,11 +3125,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 50.0,
       "expected_dividend_gbp": 0.5,
-      "dividend_yield_pct": 5.93,
+      "dividend_yield_pct": 5.88,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        805.0,
         787.0,
         795.0,
         806.0,
@@ -3190,8 +3149,7 @@
         797.0,
         812.0,
         825.0,
-        843.0,
-        850.0
+        843.0
       ]
     },
     {
@@ -3209,11 +3167,12 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 27.0,
       "expected_dividend_gbp": 0.27,
-      "dividend_yield_pct": 6.14,
+      "dividend_yield_pct": 6.18,
       "dividend_type": "Interim",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
       "sparkline": [
+        415.5,
         411.5,
         419.5,
         418.5,
@@ -3232,8 +3191,7 @@
         453.5,
         447.0,
         440.0,
-        439.5,
-        437.0
+        439.5
       ]
     },
     {
@@ -3251,7 +3209,7 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 1.4,
       "expected_dividend_gbp": 1.4,
-      "dividend_yield_pct": 4.97,
+      "dividend_yield_pct": 5.04,
       "dividend_type": "Quarterly",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
@@ -3293,7 +3251,7 @@
       "payment_date": "2026-11-27",
       "expected_dividend_pence": 3.4,
       "expected_dividend_gbp": 3.4,
-      "dividend_yield_pct": 2.4,
+      "dividend_yield_pct": 2.38,
       "dividend_type": "Quarterly",
       "days_remaining": 26,
       "status_badge": "\ud83d\udcc5 This Month (26 days)",
@@ -3335,11 +3293,12 @@
       "payment_date": "2026-11-30",
       "expected_dividend_pence": 69.0,
       "expected_dividend_gbp": 0.69,
-      "dividend_yield_pct": 2.78,
+      "dividend_yield_pct": 2.79,
       "dividend_type": "Interim",
       "days_remaining": 27,
       "status_badge": "\ud83d\udcc5 This Month (27 days)",
       "sparkline": [
+        2385.0,
         2364.0,
         2362.0,
         2312.0,
@@ -3358,8 +3317,7 @@
         2473.0,
         2447.0,
         2466.0,
-        2472.0,
-        2459.0
+        2472.0
       ]
     },
     {
@@ -3377,11 +3335,12 @@
       "payment_date": "2026-11-30",
       "expected_dividend_pence": 4.0,
       "expected_dividend_gbp": 0.04,
-      "dividend_yield_pct": 4.79,
+      "dividend_yield_pct": 5.0,
       "dividend_type": "Interim",
       "days_remaining": 27,
       "status_badge": "\ud83d\udcc5 This Month (27 days)",
       "sparkline": [
+        87.0,
         86.0,
         87.1,
         86.5,
@@ -3400,8 +3359,7 @@
         74.3,
         73.6,
         72.9,
-        73.1,
-        70.0
+        73.1
       ]
     },
     {
@@ -3419,11 +3377,12 @@
       "payment_date": "2026-11-30",
       "expected_dividend_pence": 11.0,
       "expected_dividend_gbp": 0.11,
-      "dividend_yield_pct": 2.55,
+      "dividend_yield_pct": 2.53,
       "dividend_type": "Interim",
       "days_remaining": 27,
       "status_badge": "\ud83d\udcc5 This Month (27 days)",
       "sparkline": [
+        436.0,
         439.0,
         436.0,
         428.0,
@@ -3442,8 +3401,7 @@
         425.0,
         425.0,
         425.0,
-        421.0,
-        424.0
+        421.0
       ]
     },
     {
@@ -3461,11 +3419,12 @@
       "payment_date": "2026-11-30",
       "expected_dividend_pence": 29.0,
       "expected_dividend_gbp": 0.29,
-      "dividend_yield_pct": 6.48,
+      "dividend_yield_pct": 8.11,
       "dividend_type": "Interim",
       "days_remaining": 28,
       "status_badge": "\ud83d\udcc5 This Month (28 days)",
       "sparkline": [
+        447.2,
         447.2,
         449.4,
         444.2,
@@ -3484,8 +3443,7 @@
         443.6,
         458.8,
         448.6,
-        452.0,
-        361.2
+        452.0
       ]
     },
     {
@@ -3508,6 +3466,7 @@
       "days_remaining": 28,
       "status_badge": "\ud83d\udcc5 This Month (28 days)",
       "sparkline": [
+        246.0,
         246.5,
         246.0,
         246.0,
@@ -3524,7 +3483,6 @@
         245.5,
         246.5,
         247.5,
-        247.0,
         247.0,
         247.0,
         247.0
@@ -3545,11 +3503,12 @@
       "payment_date": "2026-11-30",
       "expected_dividend_pence": 97.0,
       "expected_dividend_gbp": 0.97,
-      "dividend_yield_pct": 3.8,
+      "dividend_yield_pct": 3.92,
       "dividend_type": "Interim",
       "days_remaining": 29,
       "status_badge": "\ud83d\udcc5 This Month (29 days)",
       "sparkline": [
+        2320.0,
         2348.0,
         2347.0,
         2327.0,
@@ -3568,8 +3527,7 @@
         2388.0,
         2440.0,
         2426.0,
-        2551.0,
-        2472.0
+        2551.0
       ]
     },
     {
@@ -3587,11 +3545,12 @@
       "payment_date": "2026-12-11",
       "expected_dividend_pence": 12.1,
       "expected_dividend_gbp": 0.121,
-      "dividend_yield_pct": 7.8,
+      "dividend_yield_pct": 7.62,
       "dividend_type": "Final",
       "days_remaining": 29,
       "status_badge": "\ud83d\udcc5 This Month (29 days)",
       "sparkline": [
+        212.6,
         214.8,
         212.2,
         209.0,
@@ -3610,8 +3569,7 @@
         213.0,
         217.6,
         214.0,
-        216.6,
-        221.8
+        216.6
       ]
     },
     {
@@ -3634,6 +3592,7 @@
       "days_remaining": 29,
       "status_badge": "\ud83d\udcc5 This Month (29 days)",
       "sparkline": [
+        574.0,
         557.0,
         568.0,
         568.0,
@@ -3652,8 +3611,7 @@
         706.0,
         709.0,
         693.0,
-        694.0,
-        685.0
+        694.0
       ]
     },
     {
@@ -3671,11 +3629,12 @@
       "payment_date": "2026-11-30",
       "expected_dividend_pence": 60.0,
       "expected_dividend_gbp": 0.6,
-      "dividend_yield_pct": 6.4,
+      "dividend_yield_pct": 6.41,
       "dividend_type": "Interim",
       "days_remaining": 29,
       "status_badge": "\ud83d\udcc5 This Month (29 days)",
       "sparkline": [
+        1010.0,
         998.0,
         969.0,
         935.0,
@@ -3694,8 +3653,7 @@
         911.0,
         917.0,
         930.0,
-        930.0,
-        929.0
+        930.0
       ]
     },
     {
@@ -3706,8 +3664,8 @@
       "market": "NIFTY Smallcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1580.2,
-      "price_gbp": 1580.2,
+      "price_pence": 1508.0,
+      "price_gbp": 1508.0,
       "ex_dividend_date": "2026-11-05",
       "last_buy_date": "2026-11-04",
       "payment_date": "2026-11-30",
@@ -3718,8 +3676,6 @@
       "days_remaining": 29,
       "status_badge": "\ud83d\udcc5 This Month (29 days)",
       "sparkline": [
-        1762.3,
-        1749.9,
         1722.6,
         1722.6,
         1638.9,
@@ -3737,7 +3693,9 @@
         1576.1,
         1576.1,
         1599.5,
-        1614.3
+        1614.3,
+        1580.2,
+        1508.1
       ]
     },
     {
@@ -3755,11 +3713,12 @@
       "payment_date": "2026-12-01",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 1.63,
+      "dividend_yield_pct": 1.67,
       "dividend_type": "Interim",
       "days_remaining": 30,
       "status_badge": "\ud83d\udcc5 This Month (30 days)",
       "sparkline": [
+        481.3,
         473.9,
         476.0,
         467.0,
@@ -3778,8 +3737,7 @@
         465.5,
         470.0,
         475.1,
-        461.0,
-        450.0
+        461.0
       ]
     },
     {
@@ -3797,11 +3755,12 @@
       "payment_date": "2026-12-01",
       "expected_dividend_pence": 30.0,
       "expected_dividend_gbp": 0.3,
-      "dividend_yield_pct": 3.88,
+      "dividend_yield_pct": 3.9,
       "dividend_type": "Interim",
       "days_remaining": 30,
       "status_badge": "\ud83d\udcc5 This Month (30 days)",
       "sparkline": [
+        812.0,
         807.0,
         812.5,
         791.5,
@@ -3820,8 +3779,7 @@
         804.5,
         812.0,
         809.0,
-        780.0,
-        776.0
+        780.0
       ]
     },
     {
@@ -3839,11 +3797,12 @@
       "payment_date": "2026-12-01",
       "expected_dividend_pence": 65.0,
       "expected_dividend_gbp": 0.65,
-      "dividend_yield_pct": 9.37,
+      "dividend_yield_pct": 9.29,
       "dividend_type": "Interim",
       "days_remaining": 30,
       "status_badge": "\ud83d\udcc5 This Month (30 days)",
       "sparkline": [
+        7.24,
         7.28,
         7.16,
         7.16,
@@ -3862,8 +3821,7 @@
         6.94,
         6.94,
         7.04,
-        6.94,
-        7.0
+        6.94
       ]
     },
     {
@@ -3965,11 +3923,12 @@
       "payment_date": "2026-12-04",
       "expected_dividend_pence": 216.0,
       "expected_dividend_gbp": 2.16,
-      "dividend_yield_pct": 4.35,
+      "dividend_yield_pct": 4.24,
       "dividend_type": "Interim",
       "days_remaining": 33,
       "status_badge": "\u23f3 Next 60 Days (33 days)",
       "sparkline": [
+        4988.0,
         5058.0,
         5000.0,
         5120.0,
@@ -3988,8 +3947,7 @@
         4907.0,
         4925.0,
         4889.0,
-        4977.0,
-        5106.0
+        4977.0
       ]
     },
     {
@@ -4007,11 +3965,12 @@
       "payment_date": "2026-12-04",
       "expected_dividend_pence": 18.0,
       "expected_dividend_gbp": 0.18,
-      "dividend_yield_pct": 1.73,
+      "dividend_yield_pct": 1.75,
       "dividend_type": "Interim",
       "days_remaining": 33,
       "status_badge": "\u23f3 Next 60 Days (33 days)",
       "sparkline": [
+        1119.0,
         1121.0,
         1127.0,
         1124.5,
@@ -4030,8 +3989,7 @@
         1041.0,
         1043.5,
         1039.0,
-        1038.5,
-        1027.0
+        1038.5
       ]
     },
     {
@@ -4054,6 +4012,7 @@
       "days_remaining": 33,
       "status_badge": "\u23f3 Next 60 Days (33 days)",
       "sparkline": [
+        158.0,
         159.2,
         161.4,
         160.4,
@@ -4072,7 +4031,6 @@
         168.4,
         169.2,
         166.4,
-        171.0,
         171.0
       ]
     },
@@ -4096,6 +4054,7 @@
       "days_remaining": 33,
       "status_badge": "\u23f3 Next 60 Days (33 days)",
       "sparkline": [
+        209.2,
         208.8,
         209.0,
         209.0,
@@ -4114,8 +4073,7 @@
         210.0,
         210.0,
         210.0,
-        210.0,
-        210.4
+        210.0
       ]
     },
     {
@@ -4138,6 +4096,7 @@
       "days_remaining": 33,
       "status_badge": "\u23f3 Next 60 Days (33 days)",
       "sparkline": [
+        186.1,
         184.8,
         184.2,
         183.5,
@@ -4156,8 +4115,7 @@
         175.1,
         174.9,
         175.6,
-        175.5,
-        175.3
+        175.5
       ]
     },
     {
@@ -4175,11 +4133,12 @@
       "payment_date": "2026-12-04",
       "expected_dividend_pence": 12.0,
       "expected_dividend_gbp": 0.12,
-      "dividend_yield_pct": 2.01,
+      "dividend_yield_pct": 2.04,
       "dividend_type": "Interim",
       "days_remaining": 33,
       "status_badge": "\u23f3 Next 60 Days (33 days)",
       "sparkline": [
+        585.5,
         572.5,
         587.5,
         577.5,
@@ -4198,8 +4157,7 @@
         584.5,
         585.0,
         579.0,
-        572.5,
-        563.5
+        572.5
       ]
     },
     {
@@ -4217,11 +4175,12 @@
       "payment_date": "2026-12-04",
       "expected_dividend_pence": 38.0,
       "expected_dividend_gbp": 0.38,
-      "dividend_yield_pct": 8.38,
+      "dividend_yield_pct": 8.53,
       "dividend_type": "Interim",
       "days_remaining": 33,
       "status_badge": "\u23f3 Next 60 Days (33 days)",
       "sparkline": [
+        488.2,
         475.6,
         471.4,
         473.2,
@@ -4240,8 +4199,7 @@
         455.8,
         461.0,
         453.8,
-        450.0,
-        442.2
+        450.0
       ]
     },
     {
@@ -4259,7 +4217,7 @@
       "payment_date": "2026-12-10",
       "expected_dividend_pence": 1.67,
       "expected_dividend_gbp": 1.67,
-      "dividend_yield_pct": 3.05,
+      "dividend_yield_pct": 3.07,
       "dividend_type": "Quarterly",
       "days_remaining": 33,
       "status_badge": "\u23f3 Next 60 Days (33 days)",
@@ -4294,20 +4252,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 175.64,
-      "price_gbp": 175.64,
+      "price_pence": 172.55,
+      "price_gbp": 172.55,
       "ex_dividend_date": "2026-11-09",
       "last_buy_date": "2026-11-06",
       "payment_date": "2026-12-04",
       "expected_dividend_pence": 4.0,
       "expected_dividend_gbp": 4.0,
-      "dividend_yield_pct": 2.24,
+      "dividend_yield_pct": 2.28,
       "dividend_type": "Interim",
       "days_remaining": 33,
       "status_badge": "\u23f3 Next 60 Days (33 days)",
       "sparkline": [
-        188.75,
-        186.78,
         183.0,
         183.0,
         183.65,
@@ -4325,7 +4281,9 @@
         178.0,
         178.0,
         178.14,
-        178.69
+        178.69,
+        175.64,
+        172.52
       ]
     },
     {
@@ -4343,11 +4301,12 @@
       "payment_date": "2026-12-07",
       "expected_dividend_pence": 72.0,
       "expected_dividend_gbp": 0.72,
-      "dividend_yield_pct": 3.52,
+      "dividend_yield_pct": 3.6,
       "dividend_type": "Interim",
       "days_remaining": 34,
       "status_badge": "\u23f3 Next 60 Days (34 days)",
       "sparkline": [
+        2036.0,
         1985.0,
         1981.0,
         1951.0,
@@ -4366,8 +4325,7 @@
         2094.0,
         2104.0,
         2038.0,
-        2044.0,
-        2000.0
+        2044.0
       ]
     },
     {
@@ -4385,11 +4343,12 @@
       "payment_date": "2026-12-07",
       "expected_dividend_pence": 26.0,
       "expected_dividend_gbp": 0.26,
-      "dividend_yield_pct": 7.1,
+      "dividend_yield_pct": 7.26,
       "dividend_type": "Interim",
       "days_remaining": 34,
       "status_badge": "\u23f3 Next 60 Days (34 days)",
       "sparkline": [
+        355.6,
         362.2,
         360.0,
         350.0,
@@ -4408,8 +4367,7 @@
         358.0,
         357.0,
         356.4,
-        367.8,
-        359.6
+        367.8
       ]
     },
     {
@@ -4427,11 +4385,12 @@
       "payment_date": "2026-12-07",
       "expected_dividend_pence": 39.0,
       "expected_dividend_gbp": 0.39,
-      "dividend_yield_pct": 2.12,
+      "dividend_yield_pct": 2.14,
       "dividend_type": "Interim",
       "days_remaining": 35,
       "status_badge": "\u23f3 Next 60 Days (35 days)",
       "sparkline": [
+        1845.0,
         1850.0,
         1873.0,
         1882.0,
@@ -4450,8 +4409,7 @@
         1848.0,
         1861.0,
         1851.0,
-        1850.0,
-        1834.0
+        1850.0
       ]
     },
     {
@@ -4469,11 +4427,12 @@
       "payment_date": "2026-12-07",
       "expected_dividend_pence": 5.0,
       "expected_dividend_gbp": 0.05,
-      "dividend_yield_pct": 7.46,
+      "dividend_yield_pct": 7.6,
       "dividend_type": "Interim",
       "days_remaining": 35,
       "status_badge": "\u23f3 Next 60 Days (35 days)",
       "sparkline": [
+        70.0,
         69.35,
         70.45,
         70.3,
@@ -4492,8 +4451,7 @@
         66.5,
         66.75,
         66.4,
-        67.05,
-        65.75
+        67.05
       ]
     },
     {
@@ -4511,11 +4469,12 @@
       "payment_date": "2026-12-07",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 1.71,
+      "dividend_yield_pct": 1.7,
       "dividend_type": "Interim",
       "days_remaining": 35,
       "status_badge": "\u23f3 Next 60 Days (35 days)",
       "sparkline": [
+        484.4,
         484.2,
         484.2,
         484.2,
@@ -4534,8 +4493,7 @@
         488.4,
         488.0,
         488.6,
-        488.4,
-        490.2
+        488.4
       ]
     },
     {
@@ -4553,11 +4511,12 @@
       "payment_date": "2026-12-18",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 4.47,
+      "dividend_yield_pct": 4.46,
       "dividend_type": "Quarterly",
       "days_remaining": 36,
       "status_badge": "\u23f3 Next 60 Days (36 days)",
       "sparkline": [
+        557.1,
         565.1,
         564.6,
         571.2,
@@ -4576,8 +4535,7 @@
         557.1,
         557.8,
         563.2,
-        560.9,
-        562.0
+        560.9
       ]
     },
     {
@@ -4595,11 +4553,12 @@
       "payment_date": "2027-01-04",
       "expected_dividend_pence": 19.8,
       "expected_dividend_gbp": 0.198,
-      "dividend_yield_pct": 2.78,
+      "dividend_yield_pct": 2.8,
       "dividend_type": "Interim",
       "days_remaining": 36,
       "status_badge": "\u23f3 Next 60 Days (36 days)",
       "sparkline": [
+        2630.0,
         2572.0,
         2566.0,
         2582.0,
@@ -4618,8 +4577,7 @@
         2582.0,
         2614.0,
         2622.0,
-        2668.0,
-        2650.0
+        2668.0
       ]
     },
     {
@@ -4642,6 +4600,7 @@
       "days_remaining": 36,
       "status_badge": "\u23f3 Next 60 Days (36 days)",
       "sparkline": [
+        3504.0,
         3533.0,
         3551.0,
         3582.0,
@@ -4660,8 +4619,7 @@
         3589.0,
         3596.5,
         3631.5,
-        3651.0,
-        3648.0
+        3651.0
       ]
     },
     {
@@ -4672,20 +4630,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 265.7,
-      "price_gbp": 265.7,
+      "price_pence": 255.05,
+      "price_gbp": 255.05,
       "ex_dividend_date": "2026-11-12",
       "last_buy_date": "2026-11-11",
       "payment_date": "2026-12-04",
       "expected_dividend_pence": 6.25,
       "expected_dividend_gbp": 6.25,
-      "dividend_yield_pct": 6.0,
+      "dividend_yield_pct": 6.02,
       "dividend_type": "Interim",
       "days_remaining": 36,
       "status_badge": "\u23f3 Next 60 Days (36 days)",
       "sparkline": [
-        260.8,
-        259.3,
         259.85,
         259.85,
         258.0,
@@ -4703,7 +4659,9 @@
         255.9,
         255.9,
         268.9,
-        266.7
+        266.7,
+        265.7,
+        255.05
       ]
     },
     {
@@ -4721,11 +4679,12 @@
       "payment_date": "2026-12-08",
       "expected_dividend_pence": 9.0,
       "expected_dividend_gbp": 0.09,
-      "dividend_yield_pct": 3.14,
+      "dividend_yield_pct": 3.15,
       "dividend_type": "Interim",
       "days_remaining": 37,
       "status_badge": "\u23f3 Next 60 Days (37 days)",
       "sparkline": [
+        335.4,
         331.2,
         327.7,
         330.7,
@@ -4744,8 +4703,7 @@
         296.1,
         299.4,
         299.2,
-        299.0,
-        297.9
+        299.0
       ]
     },
     {
@@ -4763,11 +4721,12 @@
       "payment_date": "2026-12-08",
       "expected_dividend_pence": 11.0,
       "expected_dividend_gbp": 0.11,
-      "dividend_yield_pct": 2.37,
+      "dividend_yield_pct": 2.33,
       "dividend_type": "Interim",
       "days_remaining": 37,
       "status_badge": "\u23f3 Next 60 Days (37 days)",
       "sparkline": [
+        467.2,
         464.1,
         477.5,
         493.6,
@@ -4786,8 +4745,7 @@
         450.3,
         452.5,
         443.5,
-        453.5,
-        461.5
+        453.5
       ]
     },
     {
@@ -4810,6 +4768,7 @@
       "days_remaining": 37,
       "status_badge": "\u23f3 Next 60 Days (37 days)",
       "sparkline": [
+        248.8,
         248.6,
         248.2,
         252.8,
@@ -4828,8 +4787,7 @@
         253.2,
         251.8,
         252.0,
-        249.8,
-        248.8
+        249.8
       ]
     },
     {
@@ -4847,11 +4805,12 @@
       "payment_date": "2026-12-11",
       "expected_dividend_pence": 21.0,
       "expected_dividend_gbp": 0.21,
-      "dividend_yield_pct": 2.24,
+      "dividend_yield_pct": 2.34,
       "dividend_type": "Interim",
       "days_remaining": 40,
       "status_badge": "\u23f3 Next 60 Days (40 days)",
       "sparkline": [
+        997.8,
         980.0,
         978.8,
         976.8,
@@ -4870,8 +4829,7 @@
         921.0,
         918.0,
         919.0,
-        924.2,
-        881.0
+        924.2
       ]
     },
     {
@@ -4889,11 +4847,12 @@
       "payment_date": "2026-12-11",
       "expected_dividend_pence": 11.0,
       "expected_dividend_gbp": 0.11,
-      "dividend_yield_pct": 5.5,
+      "dividend_yield_pct": 5.49,
       "dividend_type": "Interim",
       "days_remaining": 40,
       "status_badge": "\u23f3 Next 60 Days (40 days)",
       "sparkline": [
+        182.0,
         180.2,
         180.8,
         176.6,
@@ -4912,8 +4871,7 @@
         199.2,
         197.8,
         198.4,
-        200.0,
-        200.5
+        200.0
       ]
     },
     {
@@ -4936,6 +4894,7 @@
       "days_remaining": 40,
       "status_badge": "\u23f3 Next 60 Days (40 days)",
       "sparkline": [
+        375.0,
         372.5,
         371.0,
         376.0,
@@ -4954,8 +4913,7 @@
         374.5,
         367.5,
         366.5,
-        369.0,
-        371.5
+        369.0
       ]
     },
     {
@@ -4973,7 +4931,7 @@
       "payment_date": "2026-12-10",
       "expected_dividend_pence": 1.63,
       "expected_dividend_gbp": 1.63,
-      "dividend_yield_pct": 3.43,
+      "dividend_yield_pct": 3.47,
       "dividend_type": "Quarterly",
       "days_remaining": 40,
       "status_badge": "\u23f3 Next 60 Days (40 days)",
@@ -5050,20 +5008,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1781.0,
-      "price_gbp": 1781.0,
+      "price_pence": 1764.9,
+      "price_gbp": 1764.9,
       "ex_dividend_date": "2026-11-16",
       "last_buy_date": "2026-11-13",
       "payment_date": "2026-12-11",
       "expected_dividend_pence": 16.0,
       "expected_dividend_gbp": 16.0,
-      "dividend_yield_pct": 89.0,
+      "dividend_yield_pct": 90.0,
       "dividend_type": "Interim",
       "days_remaining": 40,
       "status_badge": "\u23f3 Next 60 Days (40 days)",
       "sparkline": [
-        1864.9,
-        1861.0,
         1840.0,
         1840.0,
         1835.0,
@@ -5081,7 +5037,9 @@
         1801.0,
         1801.0,
         1779.7,
-        1804.1
+        1804.1,
+        1781.0,
+        1765.7
       ]
     },
     {
@@ -5099,7 +5057,7 @@
       "payment_date": "2026-12-14",
       "expected_dividend_pence": 1.32,
       "expected_dividend_gbp": 1.32,
-      "dividend_yield_pct": 6.12,
+      "dividend_yield_pct": 6.3,
       "dividend_type": "Quarterly",
       "days_remaining": 41,
       "status_badge": "\u23f3 Next 60 Days (41 days)",
@@ -5141,7 +5099,7 @@
       "payment_date": "2026-12-08",
       "expected_dividend_pence": 1.24,
       "expected_dividend_gbp": 1.24,
-      "dividend_yield_pct": 2.1,
+      "dividend_yield_pct": 2.07,
       "dividend_type": "Quarterly",
       "days_remaining": 41,
       "status_badge": "\u23f3 Next 60 Days (41 days)",
@@ -5176,20 +5134,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1207.7,
-      "price_gbp": 1207.7,
+      "price_pence": 1179.1,
+      "price_gbp": 1179.1,
       "ex_dividend_date": "2026-11-17",
       "last_buy_date": "2026-11-16",
       "payment_date": "2026-12-14",
       "expected_dividend_pence": 6.0,
       "expected_dividend_gbp": 6.0,
-      "dividend_yield_pct": 49.0,
+      "dividend_yield_pct": 50.0,
       "dividend_type": "Interim",
       "days_remaining": 41,
       "status_badge": "\u23f3 Next 60 Days (41 days)",
       "sparkline": [
-        1279.0,
-        1274.0,
         1257.5,
         1257.5,
         1235.3,
@@ -5207,7 +5163,9 @@
         1167.7,
         1167.7,
         1186.4,
-        1218.0
+        1218.0,
+        1207.7,
+        1179.5
       ]
     },
     {
@@ -5230,6 +5188,7 @@
       "days_remaining": 42,
       "status_badge": "\u23f3 Next 60 Days (42 days)",
       "sparkline": [
+        15000.0,
         14915.0,
         14685.0,
         14655.0,
@@ -5248,8 +5207,7 @@
         14480.0,
         14365.0,
         14180.0,
-        14595.0,
-        14575.0
+        14595.0
       ]
     },
     {
@@ -5267,11 +5225,12 @@
       "payment_date": "2026-12-14",
       "expected_dividend_pence": 5.0,
       "expected_dividend_gbp": 0.05,
-      "dividend_yield_pct": 69.0,
+      "dividend_yield_pct": 70.0,
       "dividend_type": "Interim",
       "days_remaining": 42,
       "status_badge": "\u23f3 Next 60 Days (42 days)",
       "sparkline": [
+        620.0,
         605.0,
         615.0,
         588.0,
@@ -5290,8 +5249,7 @@
         657.0,
         684.0,
         677.0,
-        699.0,
-        687.0
+        699.0
       ]
     },
     {
@@ -5309,7 +5267,7 @@
       "payment_date": "2026-12-14",
       "expected_dividend_pence": 6.08,
       "expected_dividend_gbp": 6.08,
-      "dividend_yield_pct": 2.05,
+      "dividend_yield_pct": 2.1,
       "dividend_type": "Quarterly",
       "days_remaining": 42,
       "status_badge": "\u23f3 Next 60 Days (42 days)",
@@ -5351,7 +5309,7 @@
       "payment_date": "2026-12-14",
       "expected_dividend_pence": 9.32,
       "expected_dividend_gbp": 9.32,
-      "dividend_yield_pct": 3.25,
+      "dividend_yield_pct": 3.26,
       "dividend_type": "Quarterly",
       "days_remaining": 42,
       "status_badge": "\u23f3 Next 60 Days (42 days)",
@@ -5386,19 +5344,18 @@
       "market": "NIFTY Midcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1109.4,
-      "price_gbp": 1109.4,
+      "price_pence": 1086.8,
+      "price_gbp": 1086.8,
       "ex_dividend_date": "2026-11-18",
       "last_buy_date": "2026-11-17",
       "payment_date": "2026-12-14",
       "expected_dividend_pence": 4.25,
       "expected_dividend_gbp": 4.25,
-      "dividend_yield_pct": 37.0,
+      "dividend_yield_pct": 38.0,
       "dividend_type": "Interim",
       "days_remaining": 42,
       "status_badge": "\u23f3 Next 60 Days (42 days)",
       "sparkline": [
-        1166.0,
         1163.4,
         1116.9,
         1116.9,
@@ -5417,7 +5374,8 @@
         1105.6,
         1105.6,
         1132.5,
-        1135.6
+        1135.6,
+        1086.6
       ]
     },
     {
@@ -5435,11 +5393,12 @@
       "payment_date": "2026-12-29",
       "expected_dividend_pence": 10.0,
       "expected_dividend_gbp": 0.1,
-      "dividend_yield_pct": 3.78,
+      "dividend_yield_pct": 3.95,
       "dividend_type": "Quarterly",
       "days_remaining": 43,
       "status_badge": "\u23f3 Next 60 Days (43 days)",
       "sparkline": [
+        1549.2,
         1529.0,
         1552.6,
         1536.8,
@@ -5458,8 +5417,7 @@
         1437.0,
         1442.2,
         1459.0,
-        1472.2,
-        1408.0
+        1472.2
       ]
     },
     {
@@ -5482,6 +5440,7 @@
       "days_remaining": 43,
       "status_badge": "\u23f3 Next 60 Days (43 days)",
       "sparkline": [
+        2443.0,
         2488.0,
         2490.0,
         2553.0,
@@ -5500,8 +5459,7 @@
         2424.0,
         2443.0,
         2450.0,
-        2467.0,
-        2488.0
+        2467.0
       ]
     },
     {
@@ -5519,11 +5477,12 @@
       "payment_date": "2026-12-10",
       "expected_dividend_pence": 37.5,
       "expected_dividend_gbp": 0.375,
-      "dividend_yield_pct": 3.61,
+      "dividend_yield_pct": 3.57,
       "dividend_type": "Quarterly",
       "days_remaining": 43,
       "status_badge": "\u23f3 Next 60 Days (43 days)",
       "sparkline": [
+        4621.0,
         4559.0,
         4551.5,
         4697.0,
@@ -5542,8 +5501,7 @@
         4494.0,
         4483.5,
         4500.5,
-        4569.0,
-        4623.0
+        4569.0
       ]
     },
     {
@@ -5561,11 +5519,12 @@
       "payment_date": "2026-12-14",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 0.13,
-      "dividend_yield_pct": 4.41,
+      "dividend_yield_pct": 4.39,
       "dividend_type": "Interim",
       "days_remaining": 43,
       "status_badge": "\u23f3 Next 60 Days (43 days)",
       "sparkline": [
+        304.0,
         302.5,
         301.5,
         301.0,
@@ -5584,8 +5543,7 @@
         295.5,
         293.5,
         294.5,
-        299.0,
-        301.0
+        299.0
       ]
     },
     {
@@ -5680,20 +5638,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 253.05,
-      "price_gbp": 253.05,
+      "price_pence": 246.7,
+      "price_gbp": 246.7,
       "ex_dividend_date": "2026-11-19",
       "last_buy_date": "2026-11-18",
       "payment_date": "2026-12-14",
       "expected_dividend_pence": 9.0,
       "expected_dividend_gbp": 9.0,
-      "dividend_yield_pct": 3.5,
+      "dividend_yield_pct": 3.56,
       "dividend_type": "Interim",
       "days_remaining": 43,
       "status_badge": "\u23f3 Next 60 Days (43 days)",
       "sparkline": [
-        265.85,
-        271.75,
         269.1,
         269.1,
         262.8,
@@ -5711,7 +5667,9 @@
         254.55,
         254.55,
         257.0,
-        257.2
+        257.2,
+        253.05,
+        246.7
       ]
     },
     {
@@ -5734,8 +5692,6 @@
       "days_remaining": 43,
       "status_badge": "\u23f3 Next 60 Days (43 days)",
       "sparkline": [
-        431.0,
-        432.0,
         426.4,
         426.4,
         419.25,
@@ -5753,7 +5709,9 @@
         420.4,
         420.4,
         425.1,
-        411.65
+        411.65,
+        414.5,
+        406.25
       ]
     },
     {
@@ -5771,11 +5729,12 @@
       "payment_date": "2026-12-15",
       "expected_dividend_pence": 24.0,
       "expected_dividend_gbp": 0.24,
-      "dividend_yield_pct": 2.42,
+      "dividend_yield_pct": 2.47,
       "dividend_type": "Interim",
       "days_remaining": 44,
       "status_badge": "\u23f3 Next 60 Days (44 days)",
       "sparkline": [
+        1010.0,
         1010.0,
         1020.0,
         1008.0,
@@ -5794,8 +5753,7 @@
         987.0,
         982.0,
         970.0,
-        973.0,
-        953.0
+        973.0
       ]
     },
     {
@@ -5818,6 +5776,7 @@
       "days_remaining": 47,
       "status_badge": "\u23f3 Next 60 Days (47 days)",
       "sparkline": [
+        2926.0,
         2912.0,
         2930.0,
         2916.0,
@@ -5836,8 +5795,7 @@
         3074.0,
         3118.0,
         3102.0,
-        3114.0,
-        3058.0
+        3114.0
       ]
     },
     {
@@ -5848,20 +5806,18 @@
       "market": "NIFTY Midcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1056.8,
-      "price_gbp": 1056.8,
+      "price_pence": 1039.2,
+      "price_gbp": 1039.2,
       "ex_dividend_date": "2026-11-23",
       "last_buy_date": "2026-11-20",
       "payment_date": "2026-12-18",
       "expected_dividend_pence": 4.0,
       "expected_dividend_gbp": 4.0,
-      "dividend_yield_pct": 37.0,
+      "dividend_yield_pct": 38.0,
       "dividend_type": "Interim",
       "days_remaining": 47,
       "status_badge": "\u23f3 Next 60 Days (47 days)",
       "sparkline": [
-        1143.8,
-        1158.5,
         1165.0,
         1165.0,
         1137.0,
@@ -5879,7 +5835,9 @@
         1053.2,
         1053.2,
         1061.3,
-        1067.9
+        1067.9,
+        1056.8,
+        1039.3
       ]
     },
     {
@@ -5890,20 +5848,18 @@
       "market": "NIFTY Smallcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 302.0,
-      "price_gbp": 302.0,
+      "price_pence": 295.6,
+      "price_gbp": 295.6,
       "ex_dividend_date": "2026-11-23",
       "last_buy_date": "2026-11-20",
       "payment_date": "2026-12-18",
       "expected_dividend_pence": 5.05,
       "expected_dividend_gbp": 5.05,
-      "dividend_yield_pct": 1.71,
+      "dividend_yield_pct": 1.67,
       "dividend_type": "Interim",
       "days_remaining": 47,
       "status_badge": "\u23f3 Next 60 Days (47 days)",
       "sparkline": [
-        299.05,
-        297.3,
         305.0,
         305.0,
         297.5,
@@ -5921,7 +5877,9 @@
         276.8,
         276.8,
         285.2,
-        295.0
+        295.0,
+        302.0,
+        295.35
       ]
     },
     {
@@ -5939,11 +5897,12 @@
       "payment_date": "2027-02-05",
       "expected_dividend_pence": 4.5,
       "expected_dividend_gbp": 0.045,
-      "dividend_yield_pct": 3.18,
+      "dividend_yield_pct": 3.11,
       "dividend_type": "Interim",
       "days_remaining": 50,
       "status_badge": "\u23f3 Next 60 Days (50 days)",
       "sparkline": [
+        126.8,
         128.65,
         128.75,
         130.35,
@@ -5962,8 +5921,7 @@
         124.1,
         126.8,
         127.2,
-        125.1,
-        127.75
+        125.1
       ]
     },
     {
@@ -5981,7 +5939,7 @@
       "payment_date": "2026-12-15",
       "expected_dividend_pence": 0.485,
       "expected_dividend_gbp": 0.485,
-      "dividend_yield_pct": 2.46,
+      "dividend_yield_pct": 2.47,
       "dividend_type": "Quarterly",
       "days_remaining": 52,
       "status_badge": "\u23f3 Next 60 Days (52 days)",
@@ -6023,11 +5981,12 @@
       "payment_date": "2026-12-25",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 4.26,
+      "dividend_yield_pct": 4.19,
       "dividend_type": "Interim",
       "days_remaining": 54,
       "status_badge": "\u23f3 Next 60 Days (54 days)",
       "sparkline": [
+        197.85,
         200.0,
         201.5,
         204.7,
@@ -6046,8 +6005,7 @@
         190.85,
         196.3,
         199.0,
-        195.25,
-        198.45
+        195.25
       ]
     },
     {
@@ -6065,7 +6023,7 @@
       "payment_date": "2026-12-15",
       "expected_dividend_pence": 1.77,
       "expected_dividend_gbp": 1.77,
-      "dividend_yield_pct": 3.32,
+      "dividend_yield_pct": 3.34,
       "dividend_type": "Quarterly",
       "days_remaining": 54,
       "status_badge": "\u23f3 Next 60 Days (54 days)",
@@ -6100,8 +6058,8 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1242.5,
-      "price_gbp": 1242.5,
+      "price_pence": 1248.7,
+      "price_gbp": 1248.7,
       "ex_dividend_date": "2026-12-01",
       "last_buy_date": "2026-11-30",
       "payment_date": "2026-12-28",
@@ -6112,8 +6070,6 @@
       "days_remaining": 55,
       "status_badge": "\u23f3 Next 60 Days (55 days)",
       "sparkline": [
-        1238.5,
-        1246.0,
         1246.0,
         1246.0,
         1222.9,
@@ -6131,7 +6087,9 @@
         1217.1,
         1217.1,
         1222.2,
-        1248.0
+        1248.0,
+        1242.5,
+        1248.7
       ]
     },
     {
@@ -6149,7 +6107,7 @@
       "payment_date": "2026-12-28",
       "expected_dividend_pence": 20.0,
       "expected_dividend_gbp": 20.0,
-      "dividend_yield_pct": 2.23,
+      "dividend_yield_pct": 2.25,
       "dividend_type": "Quarterly",
       "days_remaining": 56,
       "status_badge": "\u23f3 Next 60 Days (56 days)",
@@ -6191,11 +6149,12 @@
       "payment_date": "2027-01-15",
       "expected_dividend_pence": 1.2,
       "expected_dividend_gbp": 0.012,
-      "dividend_yield_pct": 3.79,
+      "dividend_yield_pct": 3.92,
       "dividend_type": "Special/Interim",
       "days_remaining": 57,
       "status_badge": "\u23f3 Next 60 Days (57 days)",
       "sparkline": [
+        109.65,
         109.1,
         111.15,
         109.35,
@@ -6214,8 +6173,7 @@
         102.1,
         104.0,
         104.0,
-        105.7,
-        102.3
+        105.7
       ]
     },
     {
@@ -6226,8 +6184,8 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 963.85,
-      "price_gbp": 963.85,
+      "price_pence": 957.0,
+      "price_gbp": 957.0,
       "ex_dividend_date": "2026-12-03",
       "last_buy_date": "2026-12-02",
       "payment_date": "2026-12-28",
@@ -6238,8 +6196,6 @@
       "days_remaining": 57,
       "status_badge": "\u23f3 Next 60 Days (57 days)",
       "sparkline": [
-        1039.3,
-        1043.5,
         1034.5,
         1034.5,
         1009.2,
@@ -6257,7 +6213,9 @@
         948.3,
         948.3,
         970.0,
-        963.1
+        963.1,
+        963.85,
+        957.0
       ]
     },
     {
@@ -6359,11 +6317,12 @@
       "payment_date": "2027-01-04",
       "expected_dividend_pence": 30.0,
       "expected_dividend_gbp": 0.3,
-      "dividend_yield_pct": 2.92,
+      "dividend_yield_pct": 2.9,
       "dividend_type": "Interim",
       "days_remaining": 63,
       "status_badge": "\ud83d\udcc6 Q1 2027 (63 days)",
       "sparkline": [
+        1025.5,
         1025.5,
         1008.5,
         1048.5,
@@ -6382,8 +6341,7 @@
         982.4,
         989.0,
         1004.5,
-        1011.5,
-        1019.0
+        1011.5
       ]
     },
     {
@@ -6401,11 +6359,12 @@
       "payment_date": "2027-01-20",
       "expected_dividend_pence": 8.5,
       "expected_dividend_gbp": 0.085,
-      "dividend_yield_pct": 5.24,
+      "dividend_yield_pct": 5.39,
       "dividend_type": "Interim",
       "days_remaining": 64,
       "status_badge": "\ud83d\udcc6 Q1 2027 (64 days)",
       "sparkline": [
+        688.0,
         682.4,
         697.8,
         682.8,
@@ -6424,8 +6383,7 @@
         651.4,
         662.8,
         663.4,
-        668.4,
-        649.8
+        668.4
       ]
     },
     {
@@ -6443,11 +6401,12 @@
       "payment_date": "2027-01-04",
       "expected_dividend_pence": 11.0,
       "expected_dividend_gbp": 0.11,
-      "dividend_yield_pct": 2.45,
+      "dividend_yield_pct": 2.43,
       "dividend_type": "Interim",
       "days_remaining": 64,
       "status_badge": "\ud83d\udcc6 Q1 2027 (64 days)",
       "sparkline": [
+        467.8,
         472.8,
         472.4,
         482.0,
@@ -6466,8 +6425,7 @@
         481.0,
         476.0,
         475.4,
-        449.8,
-        453.0
+        449.8
       ]
     },
     {
@@ -6520,8 +6478,8 @@
       "market": "NIFTY Smallcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 278.05,
-      "price_gbp": 278.05,
+      "price_pence": 273.7,
+      "price_gbp": 273.7,
       "ex_dividend_date": "2026-12-10",
       "last_buy_date": "2026-12-09",
       "payment_date": "2027-01-04",
@@ -6532,7 +6490,6 @@
       "days_remaining": 64,
       "status_badge": "\ud83d\udcc6 Q1 2027 (64 days)",
       "sparkline": [
-        281.65,
         277.2,
         275.8,
         281.65,
@@ -6551,7 +6508,8 @@
         271.7,
         269.75,
         276.0,
-        279.45
+        279.45,
+        273.7
       ]
     },
     {
@@ -6569,11 +6527,12 @@
       "payment_date": "2027-01-08",
       "expected_dividend_pence": 12.0,
       "expected_dividend_gbp": 0.12,
-      "dividend_yield_pct": 83.0,
+      "dividend_yield_pct": 85.0,
       "dividend_type": "Interim",
       "days_remaining": 68,
       "status_badge": "\ud83d\udcc6 Q1 2027 (68 days)",
       "sparkline": [
+        1445.8,
         1430.0,
         1454.6,
         1423.8,
@@ -6592,8 +6551,7 @@
         1471.8,
         1477.2,
         1478.0,
-        1438.2,
-        1404.4
+        1438.2
       ]
     },
     {
@@ -6611,11 +6569,12 @@
       "payment_date": "2027-01-08",
       "expected_dividend_pence": 2.0,
       "expected_dividend_gbp": 0.02,
-      "dividend_yield_pct": 94.0,
+      "dividend_yield_pct": 95.0,
       "dividend_type": "Interim",
       "days_remaining": 68,
       "status_badge": "\ud83d\udcc6 Q1 2027 (68 days)",
       "sparkline": [
+        154.8,
         155.6,
         155.8,
         157.2,
@@ -6634,8 +6593,7 @@
         155.6,
         155.0,
         156.4,
-        158.8,
-        158.0
+        158.8
       ]
     },
     {
@@ -6646,20 +6604,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 4377.0,
-      "price_gbp": 4377.0,
+      "price_pence": 4425.0,
+      "price_gbp": 4425.0,
       "ex_dividend_date": "2026-12-14",
       "last_buy_date": "2026-12-11",
       "payment_date": "2027-01-08",
       "expected_dividend_pence": 15.0,
       "expected_dividend_gbp": 15.0,
-      "dividend_yield_pct": 33.0,
+      "dividend_yield_pct": 34.0,
       "dividend_type": "Interim",
       "days_remaining": 68,
       "status_badge": "\ud83d\udcc6 Q1 2027 (68 days)",
       "sparkline": [
-        5005.0,
-        5021.0,
         5009.5,
         5009.5,
         4856.0,
@@ -6677,7 +6633,9 @@
         4515.7,
         4515.7,
         4580.0,
-        4550.0
+        4550.0,
+        4377.0,
+        4425.0
       ]
     },
     {
@@ -6688,21 +6646,18 @@
       "market": "NIFTY Midcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 554.2,
-      "price_gbp": 554.2,
+      "price_pence": 542.95,
+      "price_gbp": 542.95,
       "ex_dividend_date": "2026-12-14",
       "last_buy_date": "2026-12-11",
       "payment_date": "2027-01-08",
       "expected_dividend_pence": 2.0,
       "expected_dividend_gbp": 2.0,
-      "dividend_yield_pct": 35.0,
+      "dividend_yield_pct": 36.0,
       "dividend_type": "Interim",
       "days_remaining": 68,
       "status_badge": "\ud83d\udcc6 Q1 2027 (68 days)",
       "sparkline": [
-        687.0,
-        662.9,
-        651.15,
         638.65,
         638.65,
         612.25,
@@ -6718,8 +6673,11 @@
         563.05,
         575.25,
         569.55,
+        569.55,
         571.6,
-        569.1
+        569.1,
+        554.2,
+        543.0
       ]
     },
     {
@@ -6737,11 +6695,12 @@
       "payment_date": "2027-01-11",
       "expected_dividend_pence": 15.0,
       "expected_dividend_gbp": 0.15,
-      "dividend_yield_pct": 6.14,
+      "dividend_yield_pct": 6.23,
       "dividend_type": "Interim",
       "days_remaining": 69,
       "status_badge": "\ud83d\udcc6 Q1 2027 (69 days)",
       "sparkline": [
+        248.6,
         249.4,
         248.2,
         246.8,
@@ -6760,8 +6719,7 @@
         242.4,
         243.2,
         241.6,
-        237.8,
-        234.4
+        237.8
       ]
     },
     {
@@ -6784,6 +6742,7 @@
       "days_remaining": 70,
       "status_badge": "\ud83d\udcc6 Q1 2027 (70 days)",
       "sparkline": [
+        1175.0,
         1174.0,
         1140.0,
         1124.0,
@@ -6802,8 +6761,7 @@
         1098.0,
         1095.0,
         1092.0,
-        1091.0,
-        1092.0
+        1091.0
       ]
     },
     {
@@ -6821,11 +6779,12 @@
       "payment_date": "2027-01-12",
       "expected_dividend_pence": 12.0,
       "expected_dividend_gbp": 0.12,
-      "dividend_yield_pct": 2.57,
+      "dividend_yield_pct": 2.66,
       "dividend_type": "Interim",
       "days_remaining": 72,
       "status_badge": "\ud83d\udcc6 Q1 2027 (72 days)",
       "sparkline": [
+        487.85,
         484.35,
         493.75,
         478.5,
@@ -6844,8 +6803,7 @@
         438.95,
         443.65,
         446.7,
-        447.3,
-        432.05
+        447.3
       ]
     },
     {
@@ -6863,11 +6821,12 @@
       "payment_date": "2027-01-12",
       "expected_dividend_pence": 54.0,
       "expected_dividend_gbp": 0.54,
-      "dividend_yield_pct": 3.78,
+      "dividend_yield_pct": 3.84,
       "dividend_type": "Interim",
       "days_remaining": 72,
       "status_badge": "\ud83d\udcc6 Q1 2027 (72 days)",
       "sparkline": [
+        1326.0,
         1322.0,
         1324.0,
         1320.0,
@@ -6886,8 +6845,7 @@
         1404.0,
         1417.0,
         1409.0,
-        1418.0,
-        1398.0
+        1418.0
       ]
     },
     {
@@ -6910,6 +6868,7 @@
       "days_remaining": 72,
       "status_badge": "\ud83d\udcc6 Q1 2027 (72 days)",
       "sparkline": [
+        332.0,
         333.0,
         332.5,
         331.5,
@@ -6927,7 +6886,6 @@
         330.0,
         336.0,
         334.0,
-        335.0,
         335.0,
         335.0
       ]
@@ -6947,11 +6905,12 @@
       "payment_date": "2027-01-15",
       "expected_dividend_pence": 181.0,
       "expected_dividend_gbp": 1.81,
-      "dividend_yield_pct": 2.34,
+      "dividend_yield_pct": 2.35,
       "dividend_type": "Interim",
       "days_remaining": 75,
       "status_badge": "\ud83d\udcc6 Q1 2027 (75 days)",
       "sparkline": [
+        7695.0,
         7665.0,
         7595.0,
         7780.0,
@@ -6970,8 +6929,7 @@
         7650.0,
         7675.0,
         7600.0,
-        7730.0,
-        7700.0
+        7730.0
       ]
     },
     {
@@ -6989,11 +6947,12 @@
       "payment_date": "2027-01-15",
       "expected_dividend_pence": 111.0,
       "expected_dividend_gbp": 1.11,
-      "dividend_yield_pct": 3.32,
+      "dividend_yield_pct": 3.33,
       "dividend_type": "Interim",
       "days_remaining": 75,
       "status_badge": "\ud83d\udcc6 Q1 2027 (75 days)",
       "sparkline": [
+        3266.0,
         3204.0,
         3177.0,
         3148.0,
@@ -7012,8 +6971,7 @@
         3274.0,
         3278.0,
         3293.0,
-        3347.0,
-        3338.0
+        3347.0
       ]
     },
     {
@@ -7031,11 +6989,12 @@
       "payment_date": "2027-01-15",
       "expected_dividend_pence": 2.0,
       "expected_dividend_gbp": 0.02,
-      "dividend_yield_pct": 2.51,
+      "dividend_yield_pct": 2.5,
       "dividend_type": "Interim",
       "days_remaining": 75,
       "status_badge": "\ud83d\udcc6 Q1 2027 (75 days)",
       "sparkline": [
+        68.5,
         69.6,
         71.6,
         58.2,
@@ -7054,8 +7013,7 @@
         60.1,
         59.3,
         59.7,
-        59.8,
-        60.1
+        59.8
       ]
     },
     {
@@ -7073,11 +7031,12 @@
       "payment_date": "2027-01-15",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 9.54,
+      "dividend_yield_pct": 9.88,
       "dividend_type": "Interim",
       "days_remaining": 75,
       "status_badge": "\ud83d\udcc6 Q1 2027 (75 days)",
       "sparkline": [
+        80.4,
         77.98,
         77.82,
         76.28,
@@ -7096,8 +7055,7 @@
         81.3,
         81.4,
         78.68,
-        79.88,
-        77.1
+        79.88
       ]
     },
     {
@@ -7150,8 +7108,8 @@
       "market": "NIFTY Midcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1429.3,
-      "price_gbp": 1429.3,
+      "price_pence": 1409.2,
+      "price_gbp": 1409.2,
       "ex_dividend_date": "2026-12-21",
       "last_buy_date": "2026-12-18",
       "payment_date": "2027-01-15",
@@ -7162,7 +7120,6 @@
       "days_remaining": 75,
       "status_badge": "\ud83d\udcc6 Q1 2027 (75 days)",
       "sparkline": [
-        1540.4,
         1543.6,
         1498.0,
         1498.0,
@@ -7181,7 +7138,8 @@
         1486.1,
         1486.1,
         1445.0,
-        1467.7
+        1467.7,
+        1409.0
       ]
     },
     {
@@ -7192,8 +7150,8 @@
       "market": "NIFTY Smallcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 810.5,
-      "price_gbp": 810.5,
+      "price_pence": 796.4,
+      "price_gbp": 796.4,
       "ex_dividend_date": "2026-12-21",
       "last_buy_date": "2026-12-18",
       "payment_date": "2027-01-15",
@@ -7204,8 +7162,6 @@
       "days_remaining": 75,
       "status_badge": "\ud83d\udcc6 Q1 2027 (75 days)",
       "sparkline": [
-        799.5,
-        803.5,
         788.0,
         788.0,
         790.0,
@@ -7223,7 +7179,9 @@
         805.0,
         805.0,
         797.0,
-        820.0
+        820.0,
+        810.5,
+        796.4
       ]
     },
     {
@@ -7246,6 +7204,7 @@
       "days_remaining": 77,
       "status_badge": "\ud83d\udcc6 Q1 2027 (77 days)",
       "sparkline": [
+        13450.0,
         13380.0,
         13670.0,
         13410.0,
@@ -7264,8 +7223,7 @@
         13540.0,
         13260.0,
         13280.0,
-        13320.0,
-        12830.0
+        13320.0
       ]
     },
     {
@@ -7283,11 +7241,12 @@
       "payment_date": "2027-01-18",
       "expected_dividend_pence": 5.0,
       "expected_dividend_gbp": 0.05,
-      "dividend_yield_pct": 2.21,
+      "dividend_yield_pct": 2.22,
       "dividend_type": "Interim",
       "days_remaining": 77,
       "status_badge": "\ud83d\udcc6 Q1 2027 (77 days)",
       "sparkline": [
+        213.0,
         214.2,
         211.6,
         216.4,
@@ -7306,8 +7265,7 @@
         211.2,
         212.6,
         208.0,
-        211.4,
-        210.6
+        211.4
       ]
     },
     {
@@ -7325,11 +7283,12 @@
       "payment_date": "2027-02-02",
       "expected_dividend_pence": 58.9,
       "expected_dividend_gbp": 0.589,
-      "dividend_yield_pct": 6.13,
+      "dividend_yield_pct": 6.0,
       "dividend_type": "Quarterly",
       "days_remaining": 78,
       "status_badge": "\ud83d\udcc6 Q1 2027 (78 days)",
       "sparkline": [
+        4030.0,
         4092.0,
         4100.0,
         4250.0,
@@ -7348,8 +7307,7 @@
         3984.0,
         3960.0,
         3978.0,
-        3999.0,
-        4084.0
+        3999.0
       ]
     },
     {
@@ -7367,11 +7325,12 @@
       "payment_date": "2027-01-18",
       "expected_dividend_pence": 15.0,
       "expected_dividend_gbp": 0.15,
-      "dividend_yield_pct": 4.94,
+      "dividend_yield_pct": 5.01,
       "dividend_type": "Interim",
       "days_remaining": 78,
       "status_badge": "\ud83d\udcc6 Q1 2027 (78 days)",
       "sparkline": [
+        327.2,
         323.0,
         327.4,
         318.0,
@@ -7390,8 +7349,7 @@
         317.0,
         314.0,
         311.2,
-        309.0,
-        304.2
+        309.0
       ]
     },
     {
@@ -7409,11 +7367,12 @@
       "payment_date": "2027-01-19",
       "expected_dividend_pence": 6.0,
       "expected_dividend_gbp": 0.06,
-      "dividend_yield_pct": 2.54,
+      "dividend_yield_pct": 2.56,
       "dividend_type": "Interim",
       "days_remaining": 79,
       "status_badge": "\ud83d\udcc6 Q1 2027 (79 days)",
       "sparkline": [
+        221.0,
         217.8,
         215.8,
         217.4,
@@ -7432,8 +7391,7 @@
         216.8,
         216.6,
         218.0,
-        218.4,
-        216.8
+        218.4
       ]
     },
     {
@@ -7451,11 +7409,12 @@
       "payment_date": "2027-01-19",
       "expected_dividend_pence": 89.0,
       "expected_dividend_gbp": 0.89,
-      "dividend_yield_pct": 14.38,
+      "dividend_yield_pct": 14.5,
       "dividend_type": "Interim",
       "days_remaining": 79,
       "status_badge": "\ud83d\udcc6 Q1 2027 (79 days)",
       "sparkline": [
+        645.0,
         630.0,
         630.5,
         617.5,
@@ -7474,8 +7433,7 @@
         607.5,
         615.0,
         618.5,
-        617.5,
-        612.5
+        617.5
       ]
     },
     {
@@ -7493,11 +7451,12 @@
       "payment_date": "2027-01-19",
       "expected_dividend_pence": 25.0,
       "expected_dividend_gbp": 0.25,
-      "dividend_yield_pct": 9.25,
+      "dividend_yield_pct": 9.3,
       "dividend_type": "Interim",
       "days_remaining": 79,
       "status_badge": "\ud83d\udcc6 Q1 2027 (79 days)",
       "sparkline": [
+        265.5,
         262.5,
         266.5,
         263.5,
@@ -7516,8 +7475,7 @@
         272.0,
         273.0,
         273.5,
-        272.5,
-        271.0
+        272.5
       ]
     },
     {
@@ -7535,11 +7493,12 @@
       "payment_date": "2027-01-19",
       "expected_dividend_pence": 6.0,
       "expected_dividend_gbp": 0.06,
-      "dividend_yield_pct": 2.11,
+      "dividend_yield_pct": 2.12,
       "dividend_type": "Interim",
       "days_remaining": 79,
       "status_badge": "\ud83d\udcc6 Q1 2027 (79 days)",
       "sparkline": [
+        299.5,
         301.0,
         301.5,
         301.0,
@@ -7558,8 +7517,7 @@
         295.5,
         294.5,
         294.0,
-        293.5,
-        293.0
+        293.5
       ]
     },
     {
@@ -7582,6 +7540,7 @@
       "days_remaining": 79,
       "status_badge": "\ud83d\udcc6 Q1 2027 (79 days)",
       "sparkline": [
+        540.0,
         542.5,
         540.5,
         533.0,
@@ -7600,8 +7559,7 @@
         504.0,
         506.0,
         501.0,
-        511.0,
-        501.0
+        511.0
       ]
     },
     {
@@ -7619,11 +7577,12 @@
       "payment_date": "2027-01-22",
       "expected_dividend_pence": 23.0,
       "expected_dividend_gbp": 0.23,
-      "dividend_yield_pct": 5.86,
+      "dividend_yield_pct": 5.91,
       "dividend_type": "Interim",
       "days_remaining": 82,
       "status_badge": "\ud83d\udcc6 Q1 2027 (82 days)",
       "sparkline": [
+        406.0,
         399.0,
         399.0,
         390.0,
@@ -7642,8 +7601,7 @@
         381.2,
         389.4,
         392.6,
-        394.6,
-        391.2
+        394.6
       ]
     },
     {
@@ -7661,11 +7619,12 @@
       "payment_date": "2027-01-22",
       "expected_dividend_pence": 25.0,
       "expected_dividend_gbp": 0.25,
-      "dividend_yield_pct": 70.0,
+      "dividend_yield_pct": 71.0,
       "dividend_type": "Interim",
       "days_remaining": 82,
       "status_badge": "\ud83d\udcc6 Q1 2027 (82 days)",
       "sparkline": [
+        3692.0,
         3588.0,
         3634.0,
         3432.0,
@@ -7684,8 +7643,7 @@
         3464.0,
         3600.0,
         3528.0,
-        3558.0,
-        3478.0
+        3558.0
       ]
     },
     {
@@ -7703,11 +7661,12 @@
       "payment_date": "2027-01-22",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 9.24,
+      "dividend_yield_pct": 9.21,
       "dividend_type": "Interim",
       "days_remaining": 82,
       "status_badge": "\ud83d\udcc6 Q1 2027 (82 days)",
       "sparkline": [
+        85.0,
         85.8,
         85.4,
         87.5,
@@ -7726,8 +7685,7 @@
         88.3,
         87.8,
         86.5,
-        87.0,
-        87.3
+        87.0
       ]
     },
     {
@@ -7745,11 +7703,12 @@
       "payment_date": "2027-01-22",
       "expected_dividend_pence": 34.0,
       "expected_dividend_gbp": 0.34,
-      "dividend_yield_pct": 4.9,
+      "dividend_yield_pct": 5.22,
       "dividend_type": "Interim",
       "days_remaining": 82,
       "status_badge": "\ud83d\udcc6 Q1 2027 (82 days)",
       "sparkline": [
+        817.5,
         809.0,
         811.0,
         803.0,
@@ -7768,8 +7727,7 @@
         743.0,
         739.5,
         731.5,
-        686.0,
-        644.0
+        686.0
       ]
     },
     {
@@ -7787,11 +7745,12 @@
       "payment_date": "2027-01-22",
       "expected_dividend_pence": 12.0,
       "expected_dividend_gbp": 0.12,
-      "dividend_yield_pct": 4.41,
+      "dividend_yield_pct": 4.52,
       "dividend_type": "Interim",
       "days_remaining": 82,
       "status_badge": "\ud83d\udcc6 Q1 2027 (82 days)",
       "sparkline": [
+        242.5,
         239.5,
         243.5,
         238.5,
@@ -7810,8 +7769,7 @@
         267.5,
         270.5,
         271.0,
-        276.5,
-        270.0
+        276.5
       ]
     },
     {
@@ -7829,11 +7787,12 @@
       "payment_date": "2027-01-22",
       "expected_dividend_pence": 201.0,
       "expected_dividend_gbp": 2.01,
-      "dividend_yield_pct": 3.93,
+      "dividend_yield_pct": 4.05,
       "dividend_type": "Interim",
       "days_remaining": 82,
       "status_badge": "\ud83d\udcc6 Q1 2027 (82 days)",
       "sparkline": [
+        5055.0,
         5050.0,
         5185.0,
         5100.0,
@@ -7852,8 +7811,7 @@
         5165.0,
         5075.0,
         5080.0,
-        5100.0,
-        4960.0
+        5100.0
       ]
     },
     {
@@ -7871,7 +7829,7 @@
       "payment_date": "2027-01-22",
       "expected_dividend_pence": 3.28,
       "expected_dividend_gbp": 3.28,
-      "dividend_yield_pct": 2.27,
+      "dividend_yield_pct": 2.23,
       "dividend_type": "Quarterly",
       "days_remaining": 82,
       "status_badge": "\ud83d\udcc6 Q1 2027 (82 days)",
@@ -7955,7 +7913,7 @@
       "payment_date": "2027-01-25",
       "expected_dividend_pence": 10.08,
       "expected_dividend_gbp": 10.08,
-      "dividend_yield_pct": 2.5,
+      "dividend_yield_pct": 2.44,
       "dividend_type": "Quarterly",
       "days_remaining": 83,
       "status_badge": "\ud83d\udcc6 Q1 2027 (83 days)",
@@ -7997,11 +7955,12 @@
       "payment_date": "2027-01-25",
       "expected_dividend_pence": 25.0,
       "expected_dividend_gbp": 0.25,
-      "dividend_yield_pct": 1.62,
+      "dividend_yield_pct": 1.63,
       "dividend_type": "Interim",
       "days_remaining": 84,
       "status_badge": "\ud83d\udcc6 Q1 2027 (84 days)",
       "sparkline": [
+        1496.0,
         1486.0,
         1510.0,
         1442.0,
@@ -8020,8 +7979,7 @@
         1468.0,
         1500.0,
         1534.0,
-        1542.0,
-        1530.0
+        1542.0
       ]
     },
     {
@@ -8032,8 +7990,8 @@
       "market": "NIFTY Smallcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 694.6,
-      "price_gbp": 694.6,
+      "price_pence": 669.8,
+      "price_gbp": 669.8,
       "ex_dividend_date": "2026-12-30",
       "last_buy_date": "2026-12-29",
       "payment_date": "2027-01-25",
@@ -8044,7 +8002,6 @@
       "days_remaining": 84,
       "status_badge": "\ud83d\udcc6 Q1 2027 (84 days)",
       "sparkline": [
-        715.0,
         712.0,
         711.0,
         711.0,
@@ -8063,7 +8020,8 @@
         677.25,
         677.25,
         683.85,
-        693.9
+        693.9,
+        669.8
       ]
     },
     {
@@ -8081,11 +8039,12 @@
       "payment_date": "2027-01-25",
       "expected_dividend_pence": 69.0,
       "expected_dividend_gbp": 0.69,
-      "dividend_yield_pct": 4.61,
+      "dividend_yield_pct": 4.62,
       "dividend_type": "Interim",
       "days_remaining": 85,
       "status_badge": "\ud83d\udcc6 Q1 2027 (85 days)",
       "sparkline": [
+        1470.0,
         1470.0,
         1470.0,
         1442.0,
@@ -8104,8 +8063,7 @@
         1468.0,
         1494.0,
         1502.0,
-        1500.0,
-        1498.0
+        1500.0
       ]
     },
     {
@@ -8123,11 +8081,12 @@
       "payment_date": "2027-01-26",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 0.13,
-      "dividend_yield_pct": 2.19,
+      "dividend_yield_pct": 2.21,
       "dividend_type": "Final",
       "days_remaining": 86,
       "status_badge": "\ud83d\udcc6 Q1 2027 (86 days)",
       "sparkline": [
+        625.4,
         599.7,
         605.5,
         591.0,
@@ -8146,8 +8105,7 @@
         545.3,
         561.4,
         569.3,
-        573.5,
-        568.9
+        573.5
       ]
     },
     {
@@ -8165,11 +8123,12 @@
       "payment_date": "2027-01-26",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 0.13,
-      "dividend_yield_pct": 6.52,
+      "dividend_yield_pct": 6.61,
       "dividend_type": "Final",
       "days_remaining": 86,
       "status_badge": "\ud83d\udcc6 Q1 2027 (86 days)",
       "sparkline": [
+        209.6,
         210.2,
         210.2,
         207.2,
@@ -8188,8 +8147,7 @@
         203.4,
         206.6,
         204.4,
-        205.4,
-        202.6
+        205.4
       ]
     },
     {
@@ -8212,6 +8170,7 @@
       "days_remaining": 89,
       "status_badge": "\ud83d\udcc6 Q1 2027 (89 days)",
       "sparkline": [
+        927.5,
         911.0,
         916.0,
         920.5,
@@ -8230,8 +8189,7 @@
         861.5,
         868.5,
         868.0,
-        879.5,
-        871.5
+        879.5
       ]
     },
     {
@@ -8265,7 +8223,7 @@
         0.97,
         0.97,
         0.97,
-        0.98,
+        0.97,
         0.98,
         0.98,
         0.98,
@@ -8291,11 +8249,12 @@
       "payment_date": "2027-01-29",
       "expected_dividend_pence": 5.0,
       "expected_dividend_gbp": 0.05,
-      "dividend_yield_pct": 3.81,
+      "dividend_yield_pct": 3.87,
       "dividend_type": "Final",
       "days_remaining": 89,
       "status_badge": "\ud83d\udcc6 Q1 2027 (89 days)",
       "sparkline": [
+        124.0,
         123.0,
         123.5,
         123.0,
@@ -8314,8 +8273,7 @@
         123.0,
         122.5,
         120.5,
-        119.5,
-        117.5
+        119.5
       ]
     },
     {
@@ -8333,11 +8291,12 @@
       "payment_date": "2027-01-29",
       "expected_dividend_pence": 3.0,
       "expected_dividend_gbp": 0.03,
-      "dividend_yield_pct": 3.85,
+      "dividend_yield_pct": 3.76,
       "dividend_type": "Final",
       "days_remaining": 89,
       "status_badge": "\ud83d\udcc6 Q1 2027 (89 days)",
       "sparkline": [
+        69.5,
         65.2,
         65.0,
         64.4,
@@ -8356,8 +8315,7 @@
         67.1,
         66.6,
         66.2,
-        66.2,
-        67.9
+        66.2
       ]
     },
     {
@@ -8375,11 +8333,12 @@
       "payment_date": "2027-01-29",
       "expected_dividend_pence": 30.0,
       "expected_dividend_gbp": 0.3,
-      "dividend_yield_pct": 4.34,
+      "dividend_yield_pct": 4.4,
       "dividend_type": "Final",
       "days_remaining": 89,
       "status_badge": "\ud83d\udcc6 Q1 2027 (89 days)",
       "sparkline": [
+        865.0,
         796.0,
         791.0,
         791.0,
@@ -8398,8 +8357,7 @@
         702.5,
         696.0,
         711.5,
-        696.5,
-        687.0
+        696.5
       ]
     },
     {
@@ -8417,11 +8375,12 @@
       "payment_date": "2027-01-29",
       "expected_dividend_pence": 9.0,
       "expected_dividend_gbp": 0.09,
-      "dividend_yield_pct": 7.47,
+      "dividend_yield_pct": 7.59,
       "dividend_type": "Final",
       "days_remaining": 89,
       "status_badge": "\ud83d\udcc6 Q1 2027 (89 days)",
       "sparkline": [
+        119.0,
         120.0,
         122.6,
         120.0,
@@ -8440,8 +8399,7 @@
         119.0,
         117.8,
         117.2,
-        115.6,
-        113.8
+        115.6
       ]
     },
     {
@@ -8459,11 +8417,12 @@
       "payment_date": "2027-01-29",
       "expected_dividend_pence": 12.0,
       "expected_dividend_gbp": 0.12,
-      "dividend_yield_pct": 1.56,
+      "dividend_yield_pct": 1.59,
       "dividend_type": "Final",
       "days_remaining": 89,
       "status_badge": "\ud83d\udcc6 Q1 2027 (89 days)",
       "sparkline": [
+        832.2,
         826.0,
         825.8,
         816.6,
@@ -8482,8 +8441,7 @@
         797.4,
         788.2,
         782.8,
-        795.8,
-        776.4
+        795.8
       ]
     },
     {
@@ -8501,11 +8459,12 @@
       "payment_date": "2027-01-29",
       "expected_dividend_pence": 17.0,
       "expected_dividend_gbp": 0.17,
-      "dividend_yield_pct": 5.29,
+      "dividend_yield_pct": 5.33,
       "dividend_type": "Final",
       "days_remaining": 89,
       "status_badge": "\ud83d\udcc6 Q1 2027 (89 days)",
       "sparkline": [
+        325.4,
         327.4,
         324.4,
         328.2,
@@ -8524,8 +8483,7 @@
         321.4,
         323.2,
         325.0,
-        325.2,
-        323.0
+        325.2
       ]
     },
     {
@@ -8543,11 +8501,12 @@
       "payment_date": "2027-01-29",
       "expected_dividend_pence": 11.0,
       "expected_dividend_gbp": 0.11,
-      "dividend_yield_pct": 9.95,
+      "dividend_yield_pct": 9.92,
       "dividend_type": "Final",
       "days_remaining": 89,
       "status_badge": "\ud83d\udcc6 Q1 2027 (89 days)",
       "sparkline": [
+        108.4,
         108.4,
         108.8,
         108.4,
@@ -8566,8 +8525,7 @@
         108.8,
         108.6,
         107.8,
-        108.6,
-        109.0
+        108.6
       ]
     },
     {
@@ -8627,7 +8585,7 @@
       "payment_date": "2027-01-29",
       "expected_dividend_pence": 2.1,
       "expected_dividend_gbp": 2.1,
-      "dividend_yield_pct": 28.0,
+      "dividend_yield_pct": 29.0,
       "dividend_type": "Quarterly",
       "days_remaining": 89,
       "status_badge": "\ud83d\udcc6 Q1 2027 (89 days)",
@@ -8711,11 +8669,12 @@
       "payment_date": "2027-02-01",
       "expected_dividend_pence": 158.0,
       "expected_dividend_gbp": 1.58,
-      "dividend_yield_pct": 1.88,
+      "dividend_yield_pct": 1.9,
       "dividend_type": "Final",
       "days_remaining": 91,
       "status_badge": "\ud83d\udcc6 Q1 2027 (91 days)",
       "sparkline": [
+        8512.0,
         8512.0,
         8238.0,
         8474.0,
@@ -8734,8 +8693,7 @@
         8120.0,
         8090.0,
         8240.0,
-        8386.0,
-        8316.0
+        8386.0
       ]
     },
     {
@@ -8753,11 +8711,12 @@
       "payment_date": "2027-02-01",
       "expected_dividend_pence": 14.0,
       "expected_dividend_gbp": 0.14,
-      "dividend_yield_pct": 2.03,
+      "dividend_yield_pct": 2.08,
       "dividend_type": "Final",
       "days_remaining": 91,
       "status_badge": "\ud83d\udcc6 Q1 2027 (91 days)",
       "sparkline": [
+        734.0,
         734.0,
         742.0,
         732.0,
@@ -8776,8 +8735,7 @@
         658.0,
         632.0,
         674.0,
-        679.0,
-        662.0
+        679.0
       ]
     },
     {
@@ -8795,11 +8753,12 @@
       "payment_date": "2027-02-01",
       "expected_dividend_pence": 45.0,
       "expected_dividend_gbp": 0.45,
-      "dividend_yield_pct": 5.77,
+      "dividend_yield_pct": 5.71,
       "dividend_type": "Final",
       "days_remaining": 91,
       "status_badge": "\ud83d\udcc6 Q1 2027 (91 days)",
       "sparkline": [
+        734.0,
         749.5,
         750.0,
         770.0,
@@ -8818,8 +8777,7 @@
         778.0,
         780.0,
         775.5,
-        780.5,
-        788.0
+        780.5
       ]
     },
     {
@@ -8837,11 +8795,12 @@
       "payment_date": "2027-02-01",
       "expected_dividend_pence": 103.0,
       "expected_dividend_gbp": 1.03,
-      "dividend_yield_pct": 4.21,
+      "dividend_yield_pct": 4.26,
       "dividend_type": "Final",
       "days_remaining": 92,
       "status_badge": "\ud83d\udcc6 Q1 2027 (92 days)",
       "sparkline": [
+        2310.0,
         2248.0,
         2236.0,
         2218.0,
@@ -8860,8 +8819,7 @@
         2370.0,
         2422.0,
         2406.0,
-        2436.0,
-        2412.0
+        2436.0
       ]
     },
     {
@@ -8879,7 +8837,7 @@
       "payment_date": "2027-02-01",
       "expected_dividend_pence": 0.88,
       "expected_dividend_gbp": 0.88,
-      "dividend_yield_pct": 26.0,
+      "dividend_yield_pct": 25.0,
       "dividend_type": "Quarterly",
       "days_remaining": 92,
       "status_badge": "\ud83d\udcc6 Q1 2027 (92 days)",
@@ -8956,20 +8914,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 954.0,
-      "price_gbp": 954.0,
+      "price_pence": 943.75,
+      "price_gbp": 943.75,
       "ex_dividend_date": "2027-01-07",
       "last_buy_date": "2027-01-06",
       "payment_date": "2027-02-01",
       "expected_dividend_pence": 17.35,
       "expected_dividend_gbp": 17.35,
-      "dividend_yield_pct": 1.81,
+      "dividend_yield_pct": 1.82,
       "dividend_type": "Final",
       "days_remaining": 92,
       "status_badge": "\ud83d\udcc6 Q1 2027 (92 days)",
       "sparkline": [
-        1000.5,
-        1009.7,
         995.7,
         995.7,
         968.0,
@@ -8987,7 +8943,9 @@
         954.1,
         954.1,
         958.0,
-        958.75
+        958.75,
+        954.0,
+        943.8
       ]
     },
     {
@@ -9005,11 +8963,12 @@
       "payment_date": "2027-02-02",
       "expected_dividend_pence": 63.0,
       "expected_dividend_gbp": 0.63,
-      "dividend_yield_pct": 80.0,
+      "dividend_yield_pct": 82.0,
       "dividend_type": "Final",
       "days_remaining": 93,
       "status_badge": "\ud83d\udcc6 Q1 2027 (93 days)",
       "sparkline": [
+        7085.0,
         7025.0,
         7115.0,
         7065.0,
@@ -9028,8 +8987,7 @@
         7690.0,
         7775.0,
         7870.0,
-        7860.0,
-        7700.0
+        7860.0
       ]
     },
     {
@@ -9052,6 +9010,7 @@
       "days_remaining": 93,
       "status_badge": "\ud83d\udcc6 Q1 2027 (93 days)",
       "sparkline": [
+        150.0,
         149.2,
         150.6,
         149.0,
@@ -9070,8 +9029,7 @@
         153.4,
         154.8,
         155.8,
-        157.0,
-        155.8
+        157.0
       ]
     },
     {
@@ -9124,20 +9082,18 @@
       "market": "NIFTY Smallcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 2064.4,
-      "price_gbp": 2064.4,
+      "price_pence": 2008.0,
+      "price_gbp": 2008.0,
       "ex_dividend_date": "2027-01-08",
       "last_buy_date": "2027-01-07",
       "payment_date": "2027-02-02",
       "expected_dividend_pence": 18.12,
       "expected_dividend_gbp": 18.12,
-      "dividend_yield_pct": 86.0,
+      "dividend_yield_pct": 88.0,
       "dividend_type": "Final",
       "days_remaining": 93,
       "status_badge": "\ud83d\udcc6 Q1 2027 (93 days)",
       "sparkline": [
-        2408.8,
-        2383.2,
         2339.0,
         2339.0,
         2236.0,
@@ -9155,7 +9111,9 @@
         2064.0,
         2064.0,
         2074.0,
-        2101.0
+        2101.0,
+        2064.4,
+        2007.9
       ]
     },
     {
@@ -9173,11 +9131,12 @@
       "payment_date": "2027-02-05",
       "expected_dividend_pence": 112.0,
       "expected_dividend_gbp": 1.12,
-      "dividend_yield_pct": 4.14,
+      "dividend_yield_pct": 4.16,
       "dividend_type": "Final",
       "days_remaining": 96,
       "status_badge": "\ud83d\udcc6 Q1 2027 (96 days)",
       "sparkline": [
+        3049.0,
         2959.0,
         3014.0,
         2912.0,
@@ -9196,8 +9155,7 @@
         2680.0,
         2696.0,
         2742.0,
-        2703.0,
-        2688.0
+        2703.0
       ]
     },
     {
@@ -9215,11 +9173,12 @@
       "payment_date": "2027-02-05",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 0.13,
-      "dividend_yield_pct": 1.5,
+      "dividend_yield_pct": 1.53,
       "dividend_type": "Final",
       "days_remaining": 96,
       "status_badge": "\ud83d\udcc6 Q1 2027 (96 days)",
       "sparkline": [
+        777.0,
         777.0,
         790.0,
         758.0,
@@ -9238,8 +9197,7 @@
         825.0,
         850.0,
         858.0,
-        865.0,
-        850.0
+        865.0
       ]
     },
     {
@@ -9257,11 +9215,12 @@
       "payment_date": "2027-02-05",
       "expected_dividend_pence": 470.0,
       "expected_dividend_gbp": 4.7,
-      "dividend_yield_pct": 3.4,
+      "dividend_yield_pct": 3.31,
       "dividend_type": "Final",
       "days_remaining": 96,
       "status_badge": "\ud83d\udcc6 Q1 2027 (96 days)",
       "sparkline": [
+        14900.0,
         14700.0,
         15100.0,
         14620.0,
@@ -9280,8 +9239,7 @@
         13500.0,
         14220.0,
         13900.0,
-        13840.0,
-        14200.0
+        13840.0
       ]
     },
     {
@@ -9299,11 +9257,12 @@
       "payment_date": "2027-02-05",
       "expected_dividend_pence": 53.0,
       "expected_dividend_gbp": 0.53,
-      "dividend_yield_pct": 1.63,
+      "dividend_yield_pct": 1.71,
       "dividend_type": "Final",
       "days_remaining": 96,
       "status_badge": "\ud83d\udcc6 Q1 2027 (96 days)",
       "sparkline": [
+        2870.0,
         2825.0,
         2840.0,
         2815.0,
@@ -9322,8 +9281,7 @@
         3245.0,
         3270.0,
         3295.0,
-        3255.0,
-        3100.0
+        3255.0
       ]
     },
     {
@@ -9341,11 +9299,12 @@
       "payment_date": "2027-02-05",
       "expected_dividend_pence": 155.0,
       "expected_dividend_gbp": 1.55,
-      "dividend_yield_pct": 5.46,
+      "dividend_yield_pct": 5.47,
       "dividend_type": "Final",
       "days_remaining": 96,
       "status_badge": "\ud83d\udcc6 Q1 2027 (96 days)",
       "sparkline": [
+        2970.0,
         2865.0,
         2875.0,
         2765.0,
@@ -9364,8 +9323,7 @@
         3050.0,
         2850.0,
         2880.0,
-        2845.0,
-        2840.0
+        2845.0
       ]
     },
     {
@@ -9383,11 +9341,12 @@
       "payment_date": "2027-02-05",
       "expected_dividend_pence": 20.0,
       "expected_dividend_gbp": 0.2,
-      "dividend_yield_pct": 3.53,
+      "dividend_yield_pct": 3.54,
       "dividend_type": "Final",
       "days_remaining": 96,
       "status_badge": "\ud83d\udcc6 Q1 2027 (96 days)",
       "sparkline": [
+        557.0,
         557.0,
         558.0,
         559.0,
@@ -9406,8 +9365,7 @@
         558.5,
         559.5,
         559.5,
-        561.0,
-        560.0
+        561.0
       ]
     },
     {
@@ -9425,7 +9383,7 @@
       "payment_date": "2027-02-05",
       "expected_dividend_pence": 3.68,
       "expected_dividend_gbp": 3.68,
-      "dividend_yield_pct": 2.03,
+      "dividend_yield_pct": 2.08,
       "dividend_type": "Quarterly",
       "days_remaining": 96,
       "status_badge": "\ud83d\udcc6 Q1 2027 (96 days)",
@@ -9467,11 +9425,12 @@
       "payment_date": "2027-02-08",
       "expected_dividend_pence": 58.0,
       "expected_dividend_gbp": 0.58,
-      "dividend_yield_pct": 1.52,
+      "dividend_yield_pct": 1.58,
       "dividend_type": "Final",
       "days_remaining": 98,
       "status_badge": "\ud83d\udcc6 Q1 2027 (98 days)",
       "sparkline": [
+        3998.0,
         3771.0,
         3790.0,
         3586.0,
@@ -9490,8 +9449,7 @@
         3690.0,
         3802.0,
         3838.0,
-        3829.0,
-        3692.0
+        3829.0
       ]
     },
     {
@@ -9509,11 +9467,12 @@
       "payment_date": "2027-02-08",
       "expected_dividend_pence": 7.0,
       "expected_dividend_gbp": 0.07,
-      "dividend_yield_pct": 8.22,
+      "dividend_yield_pct": 8.2,
       "dividend_type": "Final",
       "days_remaining": 98,
       "status_badge": "\ud83d\udcc6 Q1 2027 (98 days)",
       "sparkline": [
+        85.1,
         85.0,
         85.1,
         84.0,
@@ -9532,8 +9491,7 @@
         84.3,
         84.5,
         83.1,
-        83.6,
-        83.8
+        83.6
       ]
     },
     {
@@ -9593,11 +9551,12 @@
       "payment_date": "2027-02-08",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 83.0,
+      "dividend_yield_pct": 84.0,
       "dividend_type": "Final",
       "days_remaining": 99,
       "status_badge": "\ud83d\udcc6 Q1 2027 (99 days)",
       "sparkline": [
+        960.6,
         969.6,
         965.4,
         961.0,
@@ -9616,8 +9575,7 @@
         949.2,
         922.2,
         925.8,
-        906.6,
-        891.0
+        906.6
       ]
     },
     {
@@ -9635,11 +9593,12 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 18.5,
       "expected_dividend_gbp": 0.185,
-      "dividend_yield_pct": 4.21,
+      "dividend_yield_pct": 4.22,
       "dividend_type": "Interim",
       "days_remaining": 99,
       "status_badge": "\ud83d\udcc6 Q1 2027 (99 days)",
       "sparkline": [
+        1136.5,
         1128.5,
         1130.5,
         1105.0,
@@ -9658,8 +9617,7 @@
         1134.0,
         1146.5,
         1148.5,
-        1151.0,
-        1150.0
+        1151.0
       ]
     },
     {
@@ -9682,6 +9640,7 @@
       "days_remaining": 99,
       "status_badge": "\ud83d\udcc6 Q1 2027 (99 days)",
       "sparkline": [
+        1281.0,
         1290.0,
         1295.0,
         1297.0,
@@ -9700,8 +9659,7 @@
         1160.0,
         1140.0,
         1150.0,
-        1170.0,
-        1163.0
+        1170.0
       ]
     },
     {
@@ -9712,20 +9670,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1357.5,
-      "price_gbp": 1357.5,
+      "price_pence": 1354.0,
+      "price_gbp": 1354.0,
       "ex_dividend_date": "2027-01-14",
       "last_buy_date": "2027-01-13",
       "payment_date": "2027-02-08",
       "expected_dividend_pence": 12.0,
       "expected_dividend_gbp": 12.0,
-      "dividend_yield_pct": 89.0,
+      "dividend_yield_pct": 88.0,
       "dividend_type": "Final",
       "days_remaining": 99,
       "status_badge": "\ud83d\udcc6 Q1 2027 (99 days)",
       "sparkline": [
-        1389.1,
-        1384.5,
         1379.3,
         1379.3,
         1350.4,
@@ -9743,7 +9699,9 @@
         1310.6,
         1310.6,
         1332.0,
-        1342.8
+        1342.8,
+        1357.5,
+        1354.1
       ]
     },
     {
@@ -9761,11 +9719,12 @@
       "payment_date": "2027-02-09",
       "expected_dividend_pence": 19.0,
       "expected_dividend_gbp": 0.19,
-      "dividend_yield_pct": 97.0,
+      "dividend_yield_pct": 85.0,
       "dividend_type": "Final",
       "days_remaining": 100,
       "status_badge": "\ud83d\udcc6 Q1 2027 (100 days)",
       "sparkline": [
+        1810.0,
         1718.0,
         1710.0,
         1698.0,
@@ -9784,8 +9743,7 @@
         1838.0,
         1882.0,
         1886.0,
-        1908.0,
-        2190.0
+        1908.0
       ]
     },
     {
@@ -9803,11 +9761,12 @@
       "payment_date": "2027-02-09",
       "expected_dividend_pence": 14.0,
       "expected_dividend_gbp": 0.14,
-      "dividend_yield_pct": 5.56,
+      "dividend_yield_pct": 5.35,
       "dividend_type": "Final",
       "days_remaining": 100,
       "status_badge": "\ud83d\udcc6 Q1 2027 (100 days)",
       "sparkline": [
+        247.0,
         250.5,
         246.5,
         247.0,
@@ -9826,8 +9785,7 @@
         246.0,
         248.5,
         247.5,
-        246.5,
-        256.0
+        246.5
       ]
     },
     {
@@ -9845,11 +9803,12 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 5.0,
       "expected_dividend_gbp": 0.05,
-      "dividend_yield_pct": 1.71,
+      "dividend_yield_pct": 1.7,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
+        341.0,
         343.0,
         345.0,
         344.2,
@@ -9868,8 +9827,7 @@
         304.6,
         307.6,
         310.4,
-        310.6,
-        312.8
+        310.6
       ]
     },
     {
@@ -9887,11 +9845,12 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 63.0,
       "expected_dividend_gbp": 0.63,
-      "dividend_yield_pct": 3.44,
+      "dividend_yield_pct": 3.45,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
+        2020.0,
         1860.0,
         1843.5,
         1866.0,
@@ -9910,8 +9869,7 @@
         1831.0,
         1826.0,
         1811.5,
-        1834.0,
-        1827.0
+        1834.0
       ]
     },
     {
@@ -9929,11 +9887,12 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 52.0,
       "expected_dividend_gbp": 0.52,
-      "dividend_yield_pct": 2.29,
+      "dividend_yield_pct": 2.4,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
+        2263.0,
         2270.0,
         2298.0,
         2299.0,
@@ -9952,8 +9911,7 @@
         2218.0,
         2190.0,
         2246.0,
-        2253.0,
-        2151.0
+        2253.0
       ]
     },
     {
@@ -9971,11 +9929,12 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 42.0,
       "expected_dividend_gbp": 0.42,
-      "dividend_yield_pct": 1.58,
+      "dividend_yield_pct": 1.64,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
+        2788.0,
         2686.0,
         2722.0,
         2600.0,
@@ -9994,8 +9953,7 @@
         2574.0,
         2580.0,
         2582.0,
-        2662.0,
-        2560.0
+        2662.0
       ]
     },
     {
@@ -10013,11 +9971,12 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 38.0,
       "expected_dividend_gbp": 0.38,
-      "dividend_yield_pct": 4.03,
+      "dividend_yield_pct": 4.07,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
+        954.1,
         944.1,
         954.1,
         946.9,
@@ -10036,8 +9995,7 @@
         945.2,
         934.3,
         933.5,
-        941.8,
-        932.9
+        941.8
       ]
     },
     {
@@ -10055,11 +10013,12 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 18.0,
       "expected_dividend_gbp": 0.18,
-      "dividend_yield_pct": 5.45,
+      "dividend_yield_pct": 5.56,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
+        346.6,
         343.4,
         344.0,
         338.8,
@@ -10078,8 +10037,7 @@
         329.6,
         334.2,
         330.8,
-        334.4,
-        327.6
+        334.4
       ]
     },
     {
@@ -10097,11 +10055,12 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 9.0,
       "expected_dividend_gbp": 0.09,
-      "dividend_yield_pct": 6.32,
+      "dividend_yield_pct": 6.36,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
+        138.4,
         138.0,
         138.8,
         137.4,
@@ -10120,8 +10079,7 @@
         137.0,
         135.4,
         134.8,
-        136.6,
-        135.6
+        136.6
       ]
     },
     {
@@ -10139,11 +10097,12 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 163.0,
       "expected_dividend_gbp": 1.63,
-      "dividend_yield_pct": 3.88,
+      "dividend_yield_pct": 4.0,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
+        4040.0,
         3958.0,
         4034.0,
         4000.0,
@@ -10162,8 +10121,7 @@
         4208.0,
         4224.0,
         4172.0,
-        4200.0,
-        4078.0
+        4200.0
       ]
     },
     {
@@ -10181,11 +10139,12 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 24.0,
       "expected_dividend_gbp": 0.24,
-      "dividend_yield_pct": 76.0,
+      "dividend_yield_pct": 77.0,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
+        2774.0,
         2720.0,
         2760.0,
         2610.0,
@@ -10204,8 +10163,7 @@
         3014.0,
         3102.0,
         3048.0,
-        3112.0,
-        3048.0
+        3112.0
       ]
     },
     {
@@ -10223,11 +10181,12 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 9.95,
+      "dividend_yield_pct": 9.97,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
+        76.1,
         75.7,
         76.5,
         76.5,
@@ -10246,8 +10205,7 @@
         78.2,
         77.4,
         76.1,
-        75.9,
-        75.7
+        75.9
       ]
     },
     {
@@ -10265,7 +10223,7 @@
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 2.08,
       "expected_dividend_gbp": 2.08,
-      "dividend_yield_pct": 3.49,
+      "dividend_yield_pct": 3.5,
       "dividend_type": "Quarterly",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
@@ -10300,20 +10258,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 316.75,
-      "price_gbp": 316.75,
+      "price_pence": 313.25,
+      "price_gbp": 313.25,
       "ex_dividend_date": "2027-01-18",
       "last_buy_date": "2027-01-15",
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 12.35,
       "expected_dividend_gbp": 12.35,
-      "dividend_yield_pct": 3.84,
+      "dividend_yield_pct": 3.9,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
-        334.5,
-        335.0,
         333.4,
         333.4,
         329.5,
@@ -10331,7 +10287,9 @@
         315.1,
         315.1,
         321.8,
-        321.45
+        321.45,
+        316.75,
+        313.25
       ]
     },
     {
@@ -10342,19 +10300,18 @@
       "market": "NIFTY 50 (India)",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 10658.0,
-      "price_gbp": 10658.0,
+      "price_pence": 10575.0,
+      "price_gbp": 10575.0,
       "ex_dividend_date": "2027-01-18",
       "last_buy_date": "2027-01-15",
       "payment_date": "2027-02-12",
       "expected_dividend_pence": 240.0,
       "expected_dividend_gbp": 240.0,
-      "dividend_yield_pct": 2.23,
+      "dividend_yield_pct": 2.25,
       "dividend_type": "Final",
       "days_remaining": 103,
       "status_badge": "\ud83d\udcc6 Q1 2027 (103 days)",
       "sparkline": [
-        10900.0,
         10979.0,
         11000.0,
         11000.0,
@@ -10373,7 +10330,8 @@
         10710.0,
         10710.0,
         10850.0,
-        10750.0
+        10750.0,
+        10573.0
       ]
     },
     {
@@ -10396,6 +10354,7 @@
       "days_remaining": 104,
       "status_badge": "\ud83d\udcc6 Q1 2027 (104 days)",
       "sparkline": [
+        6320.0,
         6330.0,
         6330.0,
         6335.0,
@@ -10413,7 +10372,6 @@
         6430.0,
         6430.0,
         6435.0,
-        6440.0,
         6440.0,
         6440.0
       ]
@@ -10433,11 +10391,12 @@
       "payment_date": "2027-02-15",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 0.13,
-      "dividend_yield_pct": 3.48,
+      "dividend_yield_pct": 3.5,
       "dividend_type": "Final",
       "days_remaining": 104,
       "status_badge": "\ud83d\udcc6 Q1 2027 (104 days)",
       "sparkline": [
+        389.0,
         386.0,
         388.0,
         389.0,
@@ -10456,8 +10415,7 @@
         389.0,
         387.5,
         387.0,
-        386.5,
-        384.0
+        386.5
       ]
     },
     {
@@ -10475,11 +10433,12 @@
       "payment_date": "2027-02-15",
       "expected_dividend_pence": 19.0,
       "expected_dividend_gbp": 0.19,
-      "dividend_yield_pct": 3.35,
+      "dividend_yield_pct": 3.34,
       "dividend_type": "Final",
       "days_remaining": 104,
       "status_badge": "\ud83d\udcc6 Q1 2027 (104 days)",
       "sparkline": [
+        597.0,
         592.0,
         590.0,
         590.0,
@@ -10498,8 +10457,7 @@
         547.0,
         542.0,
         547.0,
-        558.0,
-        560.0
+        558.0
       ]
     },
     {
@@ -10517,11 +10475,12 @@
       "payment_date": "2027-02-15",
       "expected_dividend_pence": 10.0,
       "expected_dividend_gbp": 0.1,
-      "dividend_yield_pct": 2.29,
+      "dividend_yield_pct": 2.3,
       "dividend_type": "Final",
       "days_remaining": 104,
       "status_badge": "\ud83d\udcc6 Q1 2027 (104 days)",
       "sparkline": [
+        383.4,
         388.0,
         391.6,
         396.0,
@@ -10540,8 +10499,7 @@
         446.0,
         445.0,
         447.8,
-        444.8,
-        443.0
+        444.8
       ]
     },
     {
@@ -10559,11 +10517,12 @@
       "payment_date": "2027-02-15",
       "expected_dividend_pence": 12.0,
       "expected_dividend_gbp": 0.12,
-      "dividend_yield_pct": 2.5,
+      "dividend_yield_pct": 2.46,
       "dividend_type": "Final",
       "days_remaining": 105,
       "status_badge": "\ud83d\udcc6 Q1 2027 (105 days)",
       "sparkline": [
+        489.0,
         484.8,
         489.4,
         501.0,
@@ -10582,8 +10541,7 @@
         460.4,
         461.7,
         460.6,
-        464.5,
-        470.8
+        464.5
       ]
     },
     {
@@ -10601,11 +10559,12 @@
       "payment_date": "2027-02-15",
       "expected_dividend_pence": 15.0,
       "expected_dividend_gbp": 0.15,
-      "dividend_yield_pct": 3.09,
+      "dividend_yield_pct": 3.05,
       "dividend_type": "Final",
       "days_remaining": 105,
       "status_badge": "\ud83d\udcc6 Q1 2027 (105 days)",
       "sparkline": [
+        468.7,
         466.8,
         465.4,
         480.9,
@@ -10624,8 +10583,7 @@
         474.8,
         469.0,
         470.2,
-        470.0,
-        475.8
+        470.0
       ]
     },
     {
@@ -10643,11 +10601,12 @@
       "payment_date": "2027-02-15",
       "expected_dividend_pence": 5.0,
       "expected_dividend_gbp": 0.05,
-      "dividend_yield_pct": 2.05,
+      "dividend_yield_pct": 2.14,
       "dividend_type": "Final",
       "days_remaining": 105,
       "status_badge": "\ud83d\udcc6 Q1 2027 (105 days)",
       "sparkline": [
+        226.5,
         222.5,
         229.0,
         225.0,
@@ -10666,8 +10625,7 @@
         257.5,
         262.0,
         254.0,
-        253.5,
-        243.5
+        253.5
       ]
     },
     {
@@ -10685,11 +10643,12 @@
       "payment_date": "2027-02-15",
       "expected_dividend_pence": 60.0,
       "expected_dividend_gbp": 0.6,
-      "dividend_yield_pct": 6.7,
+      "dividend_yield_pct": 6.96,
       "dividend_type": "Final",
       "days_remaining": 105,
       "status_badge": "\ud83d\udcc6 Q1 2027 (105 days)",
       "sparkline": [
+        825.0,
         830.0,
         833.0,
         827.0,
@@ -10708,50 +10667,7 @@
         909.0,
         900.0,
         897.0,
-        888.0,
-        855.0
-      ]
-    },
-    {
-      "ticker": "ROSE",
-      "symbol": "ROSE.L",
-      "name": "Rosebank Industries",
-      "sector": "Industrial Goods and Services",
-      "market": "FTSE 250",
-      "currency": "GBp",
-      "currency_symbol": "\u00a3",
-      "price_pence": 307.0,
-      "price_gbp": 3.07,
-      "ex_dividend_date": "2027-01-20",
-      "last_buy_date": "2027-01-19",
-      "payment_date": "2027-02-15",
-      "expected_dividend_pence": 3.0,
-      "expected_dividend_gbp": 0.03,
-      "dividend_yield_pct": 98.0,
-      "dividend_type": "Final",
-      "days_remaining": 105,
-      "status_badge": "\ud83d\udcc6 Q1 2027 (105 days)",
-      "sparkline": [
-        329.0,
-        335.0,
-        324.0,
-        322.0,
-        316.0,
-        329.0,
-        321.0,
-        331.0,
-        331.0,
-        325.0,
-        315.0,
-        312.0,
-        312.0,
-        310.0,
-        313.0,
-        309.0,
-        315.0,
-        314.0,
-        317.0,
-        307.0
+        888.0
       ]
     },
     {
@@ -10769,7 +10685,7 @@
       "payment_date": "2027-02-15",
       "expected_dividend_pence": 5.88,
       "expected_dividend_gbp": 5.88,
-      "dividend_yield_pct": 63.0,
+      "dividend_yield_pct": 62.0,
       "dividend_type": "Quarterly",
       "days_remaining": 105,
       "status_badge": "\ud83d\udcc6 Q1 2027 (105 days)",
@@ -10860,6 +10776,7 @@
       "sparkline": [
         5850.0,
         5850.0,
+        5850.0,
         5855.0,
         5865.0,
         5880.0,
@@ -10876,8 +10793,7 @@
         5875.0,
         5880.0,
         5885.0,
-        5885.0,
-        5900.0
+        5885.0
       ]
     },
     {
@@ -10895,11 +10811,12 @@
       "payment_date": "2027-02-15",
       "expected_dividend_pence": 4.0,
       "expected_dividend_gbp": 0.04,
-      "dividend_yield_pct": 2.04,
+      "dividend_yield_pct": 1.91,
       "dividend_type": "Final",
       "days_remaining": 106,
       "status_badge": "\ud83d\udcc6 Q1 2027 (106 days)",
       "sparkline": [
+        2.48,
         2.41,
         2.44,
         2.41,
@@ -10918,8 +10835,7 @@
         2.04,
         2.06,
         2.02,
-        2.02,
-        2.16
+        2.02
       ]
     },
     {
@@ -10937,11 +10853,12 @@
       "payment_date": "2027-02-16",
       "expected_dividend_pence": 52.0,
       "expected_dividend_gbp": 0.52,
-      "dividend_yield_pct": 2.07,
+      "dividend_yield_pct": 2.04,
       "dividend_type": "Final",
       "days_remaining": 107,
       "status_badge": "\ud83d\udcc6 Q1 2027 (107 days)",
       "sparkline": [
+        2755.0,
         2779.0,
         2782.0,
         2858.0,
@@ -10960,8 +10877,7 @@
         2427.0,
         2457.0,
         2466.0,
-        2503.0,
-        2543.0
+        2503.0
       ]
     },
     {
@@ -10979,11 +10895,12 @@
       "payment_date": "2027-02-16",
       "expected_dividend_pence": 100.0,
       "expected_dividend_gbp": 1.0,
-      "dividend_yield_pct": 2.01,
+      "dividend_yield_pct": 2.04,
       "dividend_type": "Final",
       "days_remaining": 107,
       "status_badge": "\ud83d\udcc6 Q1 2027 (107 days)",
       "sparkline": [
+        47.68,
         47.28,
         47.6,
         47.0,
@@ -11002,8 +10919,7 @@
         49.2,
         48.6,
         49.62,
-        49.68,
-        49.06
+        49.68
       ]
     },
     {
@@ -11021,11 +10937,12 @@
       "payment_date": "2027-02-16",
       "expected_dividend_pence": 32.0,
       "expected_dividend_gbp": 0.32,
-      "dividend_yield_pct": 3.43,
+      "dividend_yield_pct": 3.45,
       "dividend_type": "Final",
       "days_remaining": 107,
       "status_badge": "\ud83d\udcc6 Q1 2027 (107 days)",
       "sparkline": [
+        935.8,
         932.6,
         933.4,
         930.8,
@@ -11044,50 +10961,7 @@
         912.6,
         915.2,
         915.4,
-        920.2,
-        913.6
-      ]
-    },
-    {
-      "ticker": "ATYM",
-      "symbol": "ATYM.L",
-      "name": "Atalaya Mining",
-      "sector": "Industrial Metals and Mining",
-      "market": "FTSE 250",
-      "currency": "GBp",
-      "currency_symbol": "\u00a3",
-      "price_pence": 1006.0,
-      "price_gbp": 10.06,
-      "ex_dividend_date": "2027-01-22",
-      "last_buy_date": "2027-01-21",
-      "payment_date": "2027-02-16",
-      "expected_dividend_pence": 10.0,
-      "expected_dividend_gbp": 0.1,
-      "dividend_yield_pct": 99.0,
-      "dividend_type": "Final",
-      "days_remaining": 107,
-      "status_badge": "\ud83d\udcc6 Q1 2027 (107 days)",
-      "sparkline": [
-        988.5,
-        975.0,
-        924.5,
-        918.5,
-        943.5,
-        1004.0,
-        1008.0,
-        1015.0,
-        1070.0,
-        1045.0,
-        1030.0,
-        1036.0,
-        1042.0,
-        1055.0,
-        1080.0,
-        1042.0,
-        1043.0,
-        1055.0,
-        1032.0,
-        1006.0
+        920.2
       ]
     },
     {
@@ -11105,11 +10979,12 @@
       "payment_date": "2027-02-16",
       "expected_dividend_pence": 15.0,
       "expected_dividend_gbp": 0.15,
-      "dividend_yield_pct": 2.55,
+      "dividend_yield_pct": 2.58,
       "dividend_type": "Final",
       "days_remaining": 107,
       "status_badge": "\ud83d\udcc6 Q1 2027 (107 days)",
       "sparkline": [
+        591.5,
         583.5,
         584.0,
         586.5,
@@ -11128,8 +11003,7 @@
         576.0,
         581.5,
         587.0,
-        577.5,
-        571.0
+        577.5
       ]
     },
     {
@@ -11147,11 +11021,12 @@
       "payment_date": "2027-02-16",
       "expected_dividend_pence": 30.0,
       "expected_dividend_gbp": 0.3,
-      "dividend_yield_pct": 2.39,
+      "dividend_yield_pct": 2.42,
       "dividend_type": "Final",
       "days_remaining": 107,
       "status_badge": "\ud83d\udcc6 Q1 2027 (107 days)",
       "sparkline": [
+        1190.0,
         1174.0,
         1186.0,
         1194.0,
@@ -11170,8 +11045,7 @@
         1211.0,
         1200.0,
         1204.0,
-        1238.0,
-        1221.0
+        1238.0
       ]
     },
     {
@@ -11189,11 +11063,12 @@
       "payment_date": "2027-02-19",
       "expected_dividend_pence": 29.0,
       "expected_dividend_gbp": 0.29,
-      "dividend_yield_pct": 69.0,
+      "dividend_yield_pct": 71.0,
       "dividend_type": "Final",
       "days_remaining": 110,
       "status_badge": "\ud83d\udcc6 Q1 2027 (110 days)",
       "sparkline": [
+        4175.0,
         3972.0,
         3990.0,
         3890.0,
@@ -11212,8 +11087,7 @@
         3979.0,
         4097.0,
         4180.0,
-        4152.0,
-        4059.0
+        4152.0
       ]
     },
     {
@@ -11231,11 +11105,12 @@
       "payment_date": "2027-02-19",
       "expected_dividend_pence": 104.0,
       "expected_dividend_gbp": 1.04,
-      "dividend_yield_pct": 2.45,
+      "dividend_yield_pct": 2.44,
       "dividend_type": "Final",
       "days_remaining": 110,
       "status_badge": "\ud83d\udcc6 Q1 2027 (110 days)",
       "sparkline": [
+        4456.0,
         4496.0,
         4494.0,
         4644.0,
@@ -11254,8 +11129,7 @@
         4206.0,
         4242.0,
         4254.0,
-        4236.0,
-        4248.0
+        4236.0
       ]
     },
     {
@@ -11273,11 +11147,12 @@
       "payment_date": "2027-02-19",
       "expected_dividend_pence": 39.0,
       "expected_dividend_gbp": 0.39,
-      "dividend_yield_pct": 6.23,
+      "dividend_yield_pct": 6.47,
       "dividend_type": "Final",
       "days_remaining": 110,
       "status_badge": "\ud83d\udcc6 Q1 2027 (110 days)",
       "sparkline": [
+        665.0,
         651.5,
         660.5,
         653.0,
@@ -11296,8 +11171,7 @@
         610.0,
         605.0,
         604.0,
-        618.0,
-        595.0
+        618.0
       ]
     },
     {
@@ -11315,11 +11189,12 @@
       "payment_date": "2027-02-19",
       "expected_dividend_pence": 179.0,
       "expected_dividend_gbp": 1.79,
-      "dividend_yield_pct": 4.13,
+      "dividend_yield_pct": 4.14,
       "dividend_type": "Final",
       "days_remaining": 110,
       "status_badge": "\ud83d\udcc6 Q1 2027 (110 days)",
       "sparkline": [
+        4324.0,
         4306.0,
         4352.0,
         4280.0,
@@ -11338,8 +11213,7 @@
         4416.0,
         4352.0,
         4286.0,
-        4326.0,
-        4320.0
+        4326.0
       ]
     },
     {
@@ -11357,11 +11231,12 @@
       "payment_date": "2027-02-19",
       "expected_dividend_pence": 7.0,
       "expected_dividend_gbp": 0.07,
-      "dividend_yield_pct": 3.6,
+      "dividend_yield_pct": 3.56,
       "dividend_type": "Final",
       "days_remaining": 110,
       "status_badge": "\ud83d\udcc6 Q1 2027 (110 days)",
       "sparkline": [
+        204.8,
         205.6,
         208.6,
         209.8,
@@ -11380,8 +11255,7 @@
         213.2,
         212.0,
         206.2,
-        205.8,
-        208.0
+        205.8
       ]
     },
     {
@@ -11399,11 +11273,12 @@
       "payment_date": "2027-02-19",
       "expected_dividend_pence": 4.0,
       "expected_dividend_gbp": 0.04,
-      "dividend_yield_pct": 2.33,
+      "dividend_yield_pct": 2.3,
       "dividend_type": "Final",
       "days_remaining": 110,
       "status_badge": "\ud83d\udcc6 Q1 2027 (110 days)",
       "sparkline": [
+        187.0,
         187.0,
         184.8,
         182.6,
@@ -11422,8 +11297,7 @@
         188.3,
         190.0,
         187.5,
-        188.9,
-        191.0
+        188.9
       ]
     },
     {
@@ -11441,11 +11315,12 @@
       "payment_date": "2027-02-22",
       "expected_dividend_pence": 9.0,
       "expected_dividend_gbp": 0.09,
-      "dividend_yield_pct": 1.94,
+      "dividend_yield_pct": 1.97,
       "dividend_type": "Final",
       "days_remaining": 111,
       "status_badge": "\ud83d\udcc6 Q1 2027 (111 days)",
       "sparkline": [
+        415.1,
         412.3,
         419.7,
         409.7,
@@ -11464,8 +11339,7 @@
         432.2,
         441.2,
         434.0,
-        439.7,
-        432.8
+        439.7
       ]
     },
     {
@@ -11483,11 +11357,12 @@
       "payment_date": "2027-02-22",
       "expected_dividend_pence": 143.0,
       "expected_dividend_gbp": 1.43,
-      "dividend_yield_pct": 3.93,
+      "dividend_yield_pct": 3.94,
       "dividend_type": "Final",
       "days_remaining": 112,
       "status_badge": "\ud83d\udcc6 Q1 2027 (112 days)",
       "sparkline": [
+        3778.0,
         3786.0,
         3786.0,
         3836.0,
@@ -11506,8 +11381,7 @@
         3586.0,
         3588.0,
         3574.0,
-        3650.0,
-        3634.0
+        3650.0
       ]
     },
     {
@@ -11530,6 +11404,7 @@
       "days_remaining": 112,
       "status_badge": "\ud83d\udcc6 Q1 2027 (112 days)",
       "sparkline": [
+        151.25,
         150.95,
         150.9,
         147.2,
@@ -11548,8 +11423,7 @@
         147.25,
         149.05,
         148.25,
-        147.7,
-        145.8
+        147.7
       ]
     },
     {
@@ -11567,11 +11441,12 @@
       "payment_date": "2027-02-22",
       "expected_dividend_pence": 26.0,
       "expected_dividend_gbp": 0.26,
-      "dividend_yield_pct": 2.08,
+      "dividend_yield_pct": 2.06,
       "dividend_type": "Final",
       "days_remaining": 112,
       "status_badge": "\ud83d\udcc6 Q1 2027 (112 days)",
       "sparkline": [
+        1166.5,
         1159.5,
         1160.5,
         1191.5,
@@ -11590,8 +11465,7 @@
         1223.5,
         1222.0,
         1229.5,
-        1233.0,
-        1243.0
+        1233.0
       ]
     },
     {
@@ -11609,11 +11483,12 @@
       "payment_date": "2027-02-22",
       "expected_dividend_pence": 14.0,
       "expected_dividend_gbp": 0.14,
-      "dividend_yield_pct": 4.26,
+      "dividend_yield_pct": 4.18,
       "dividend_type": "Final",
       "days_remaining": 112,
       "status_badge": "\ud83d\udcc6 Q1 2027 (112 days)",
       "sparkline": [
+        338.6,
         334.2,
         332.3,
         340.2,
@@ -11632,8 +11507,7 @@
         326.0,
         323.3,
         322.9,
-        321.8,
-        327.6
+        321.8
       ]
     },
     {
@@ -11651,11 +11525,12 @@
       "payment_date": "2027-02-22",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 1.59,
+      "dividend_yield_pct": 1.62,
       "dividend_type": "Final",
       "days_remaining": 112,
       "status_badge": "\ud83d\udcc6 Q1 2027 (112 days)",
       "sparkline": [
+        525.0,
         517.5,
         532.0,
         529.5,
@@ -11674,8 +11549,7 @@
         540.0,
         529.0,
         532.0,
-        508.5,
-        500.0
+        508.5
       ]
     },
     {
@@ -11693,11 +11567,12 @@
       "payment_date": "2027-02-22",
       "expected_dividend_pence": 9.0,
       "expected_dividend_gbp": 0.09,
-      "dividend_yield_pct": 3.48,
+      "dividend_yield_pct": 3.46,
       "dividend_type": "Final",
       "days_remaining": 112,
       "status_badge": "\ud83d\udcc6 Q1 2027 (112 days)",
       "sparkline": [
+        252.5,
         251.0,
         248.5,
         244.5,
@@ -11716,8 +11591,7 @@
         263.0,
         258.0,
         257.5,
-        258.5,
-        260.0
+        258.5
       ]
     },
     {
@@ -11735,7 +11609,7 @@
       "payment_date": "2027-02-22",
       "expected_dividend_pence": 5.52,
       "expected_dividend_gbp": 5.52,
-      "dividend_yield_pct": 1.9,
+      "dividend_yield_pct": 1.86,
       "dividend_type": "Quarterly",
       "days_remaining": 112,
       "status_badge": "\ud83d\udcc6 Q1 2027 (112 days)",
@@ -11777,11 +11651,12 @@
       "payment_date": "2027-02-22",
       "expected_dividend_pence": 87.0,
       "expected_dividend_gbp": 0.87,
-      "dividend_yield_pct": 4.92,
+      "dividend_yield_pct": 4.93,
       "dividend_type": "Final",
       "days_remaining": 113,
       "status_badge": "\ud83d\udcc6 Q1 2027 (113 days)",
       "sparkline": [
+        1925.0,
         1910.0,
         1903.0,
         1870.0,
@@ -11800,8 +11675,7 @@
         1795.0,
         1763.0,
         1764.0,
-        1767.0,
-        1764.0
+        1767.0
       ]
     },
     {
@@ -11824,6 +11698,7 @@
       "days_remaining": 113,
       "status_badge": "\ud83d\udcc6 Q1 2027 (113 days)",
       "sparkline": [
+        7602.0,
         7365.0,
         7374.0,
         7207.0,
@@ -11842,8 +11717,7 @@
         6954.0,
         7056.0,
         7183.0,
-        7164.0,
-        7022.0
+        7164.0
       ]
     },
     {
@@ -11861,11 +11735,12 @@
       "payment_date": "2027-02-22",
       "expected_dividend_pence": 2.0,
       "expected_dividend_gbp": 0.02,
-      "dividend_yield_pct": 3.03,
+      "dividend_yield_pct": 3.04,
       "dividend_type": "Final",
       "days_remaining": 113,
       "status_badge": "\ud83d\udcc6 Q1 2027 (113 days)",
       "sparkline": [
+        80.0,
         78.2,
         77.35,
         76.55,
@@ -11884,8 +11759,7 @@
         81.6,
         80.45,
         80.8,
-        81.1,
-        81.0
+        81.1
       ]
     },
     {
@@ -11945,11 +11819,12 @@
       "payment_date": "2027-02-23",
       "expected_dividend_pence": 10.0,
       "expected_dividend_gbp": 0.1,
-      "dividend_yield_pct": 3.92,
+      "dividend_yield_pct": 3.76,
       "dividend_type": "Final",
       "days_remaining": 114,
       "status_badge": "\ud83d\udcc6 Q1 2027 (114 days)",
       "sparkline": [
+        232.0,
         223.4,
         224.8,
         231.0,
@@ -11968,8 +11843,7 @@
         251.8,
         250.8,
         244.4,
-        244.6,
-        255.6
+        244.6
       ]
     },
     {
@@ -11987,11 +11861,12 @@
       "payment_date": "2027-02-23",
       "expected_dividend_pence": 5.0,
       "expected_dividend_gbp": 0.05,
-      "dividend_yield_pct": 3.2,
+      "dividend_yield_pct": 3.12,
       "dividend_type": "Final",
       "days_remaining": 114,
       "status_badge": "\ud83d\udcc6 Q1 2027 (114 days)",
       "sparkline": [
+        125.4,
         126.2,
         126.8,
         131.0,
@@ -12010,8 +11885,7 @@
         146.2,
         145.6,
         145.4,
-        145.2,
-        149.2
+        145.2
       ]
     },
     {
@@ -12029,7 +11903,7 @@
       "payment_date": "2027-02-23",
       "expected_dividend_pence": 2.48,
       "expected_dividend_gbp": 2.48,
-      "dividend_yield_pct": 2.58,
+      "dividend_yield_pct": 2.65,
       "dividend_type": "Quarterly",
       "days_remaining": 114,
       "status_badge": "\ud83d\udcc6 Q1 2027 (114 days)",
@@ -12071,11 +11945,12 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 43.0,
       "expected_dividend_gbp": 0.43,
-      "dividend_yield_pct": 4.43,
+      "dividend_yield_pct": 4.48,
       "dividend_type": "Final",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
       "sparkline": [
+        1354.0,
         1340.0,
         1331.0,
         1345.0,
@@ -12094,8 +11969,7 @@
         1279.0,
         990.0,
         986.0,
-        962.0,
-        950.0
+        962.0
       ]
     },
     {
@@ -12113,11 +11987,12 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 6.0,
       "expected_dividend_gbp": 0.06,
-      "dividend_yield_pct": 3.11,
+      "dividend_yield_pct": 3.12,
       "dividend_type": "Final",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
       "sparkline": [
+        199.2,
         196.4,
         194.0,
         196.2,
@@ -12136,8 +12011,7 @@
         198.2,
         197.2,
         193.2,
-        196.0,
-        195.4
+        196.0
       ]
     },
     {
@@ -12155,11 +12029,12 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 3.0,
       "expected_dividend_gbp": 0.03,
-      "dividend_yield_pct": 2.07,
+      "dividend_yield_pct": 2.05,
       "dividend_type": "Final",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
       "sparkline": [
+        151.7,
         148.1,
         147.7,
         146.3,
@@ -12178,8 +12053,7 @@
         145.7,
         146.8,
         146.1,
-        144.9,
-        146.2
+        144.9
       ]
     },
     {
@@ -12197,11 +12071,12 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 35.0,
       "expected_dividend_gbp": 0.35,
-      "dividend_yield_pct": 4.91,
+      "dividend_yield_pct": 4.94,
       "dividend_type": "Final",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
       "sparkline": [
+        685.0,
         667.5,
         666.5,
         681.5,
@@ -12220,8 +12095,7 @@
         702.0,
         698.5,
         695.0,
-        713.5,
-        708.0
+        713.5
       ]
     },
     {
@@ -12239,11 +12113,12 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 0.13,
-      "dividend_yield_pct": 7.24,
+      "dividend_yield_pct": 7.12,
       "dividend_type": "Final",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
       "sparkline": [
+        192.5,
         189.0,
         192.0,
         196.1,
@@ -12262,8 +12137,7 @@
         172.8,
         172.7,
         172.8,
-        174.9,
-        177.9
+        174.9
       ]
     },
     {
@@ -12281,11 +12155,12 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 2.0,
       "expected_dividend_gbp": 0.02,
-      "dividend_yield_pct": 1.84,
+      "dividend_yield_pct": 1.91,
       "dividend_type": "Final",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
       "sparkline": [
+        134.4,
         126.2,
         123.4,
         116.8,
@@ -12304,8 +12179,7 @@
         120.2,
         120.0,
         119.8,
-        119.0,
-        114.3
+        119.0
       ]
     },
     {
@@ -12323,11 +12197,12 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 71.0,
       "expected_dividend_gbp": 0.71,
-      "dividend_yield_pct": 2.19,
+      "dividend_yield_pct": 2.21,
       "dividend_type": "Final",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
       "sparkline": [
+        3618.0,
         3590.0,
         3592.0,
         3578.0,
@@ -12346,8 +12221,7 @@
         3416.0,
         3240.0,
         3270.0,
-        3244.0,
-        3206.0
+        3244.0
       ]
     },
     {
@@ -12365,11 +12239,12 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 23.0,
       "expected_dividend_gbp": 0.23,
-      "dividend_yield_pct": 3.0,
+      "dividend_yield_pct": 3.03,
       "dividend_type": "Final",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
       "sparkline": [
+        738.0,
         726.0,
         735.5,
         727.5,
@@ -12388,8 +12263,7 @@
         768.5,
         772.5,
         756.5,
-        764.0,
-        756.5
+        764.0
       ]
     },
     {
@@ -12407,11 +12281,12 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 11.0,
       "expected_dividend_gbp": 0.11,
-      "dividend_yield_pct": 1.73,
+      "dividend_yield_pct": 1.75,
       "dividend_type": "Final",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
       "sparkline": [
+        654.0,
         644.0,
         651.0,
         625.0,
@@ -12430,8 +12305,7 @@
         638.0,
         639.0,
         647.0,
-        660.0,
-        652.0
+        660.0
       ]
     },
     {
@@ -12449,7 +12323,7 @@
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 6.8,
       "expected_dividend_gbp": 6.8,
-      "dividend_yield_pct": 2.59,
+      "dividend_yield_pct": 2.58,
       "dividend_type": "Quarterly",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
@@ -12484,20 +12358,18 @@
       "market": "NIFTY Midcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1580.2,
-      "price_gbp": 1580.2,
+      "price_pence": 1542.0,
+      "price_gbp": 1542.0,
       "ex_dividend_date": "2027-02-01",
       "last_buy_date": "2027-01-29",
       "payment_date": "2027-02-26",
       "expected_dividend_pence": 10.0,
       "expected_dividend_gbp": 10.0,
-      "dividend_yield_pct": 62.0,
+      "dividend_yield_pct": 63.0,
       "dividend_type": "Final",
       "days_remaining": 117,
       "status_badge": "\ud83d\udcc6 Q1 2027 (117 days)",
       "sparkline": [
-        1857.1,
-        1872.0,
         1748.0,
         1748.0,
         1659.3,
@@ -12515,7 +12387,9 @@
         1595.8,
         1595.8,
         1599.9,
-        1610.0
+        1610.0,
+        1580.2,
+        1542.1
       ]
     },
     {
@@ -12533,11 +12407,12 @@
       "payment_date": "2027-03-01",
       "expected_dividend_pence": 1.0,
       "expected_dividend_gbp": 0.01,
-      "dividend_yield_pct": 56.0,
+      "dividend_yield_pct": 55.0,
       "dividend_type": "Final",
       "days_remaining": 118,
       "status_badge": "\ud83d\udcc6 Q1 2027 (118 days)",
       "sparkline": [
+        197.5,
         195.5,
         198.7,
         196.5,
@@ -12556,8 +12431,7 @@
         210.0,
         214.4,
         216.2,
-        216.8,
-        219.4
+        216.8
       ]
     },
     {
@@ -12580,6 +12454,7 @@
       "days_remaining": 118,
       "status_badge": "\ud83d\udcc6 Q1 2027 (118 days)",
       "sparkline": [
+        790.0,
         782.5,
         776.0,
         773.0,
@@ -12598,7 +12473,6 @@
         719.0,
         718.5,
         715.0,
-        705.0,
         705.0
       ]
     },
@@ -12617,7 +12491,7 @@
       "payment_date": "2027-03-01",
       "expected_dividend_pence": 6.52,
       "expected_dividend_gbp": 6.52,
-      "dividend_yield_pct": 76.0,
+      "dividend_yield_pct": 80.0,
       "dividend_type": "Quarterly",
       "days_remaining": 118,
       "status_badge": "\ud83d\udcc6 Q1 2027 (118 days)",
@@ -12659,11 +12533,12 @@
       "payment_date": "2027-03-01",
       "expected_dividend_pence": 8.0,
       "expected_dividend_gbp": 0.08,
-      "dividend_yield_pct": 2.59,
+      "dividend_yield_pct": 2.67,
       "dividend_type": "Final",
       "days_remaining": 119,
       "status_badge": "\ud83d\udcc6 Q1 2027 (119 days)",
       "sparkline": [
+        244.4,
         242.2,
         246.6,
         248.0,
@@ -12682,8 +12557,7 @@
         306.6,
         308.0,
         300.0,
-        300.8,
-        292.6
+        300.8
       ]
     },
     {
@@ -12701,11 +12575,12 @@
       "payment_date": "2027-03-01",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 0.13,
-      "dividend_yield_pct": 3.77,
+      "dividend_yield_pct": 3.87,
       "dividend_type": "Final",
       "days_remaining": 119,
       "status_badge": "\ud83d\udcc6 Q1 2027 (119 days)",
       "sparkline": [
+        304.8,
         306.6,
         305.0,
         306.0,
@@ -12724,8 +12599,7 @@
         316.4,
         322.2,
         321.4,
-        335.2,
-        327.0
+        335.2
       ]
     },
     {
@@ -12736,20 +12610,18 @@
       "market": "NIFTY Midcap 100",
       "currency": "INR",
       "currency_symbol": "\u20b9",
-      "price_pence": 1845.5,
-      "price_gbp": 1845.5,
+      "price_pence": 1791.1,
+      "price_gbp": 1791.1,
       "ex_dividend_date": "2027-02-03",
       "last_buy_date": "2027-02-02",
       "payment_date": "2027-03-01",
       "expected_dividend_pence": 2.5,
       "expected_dividend_gbp": 2.5,
-      "dividend_yield_pct": 13.0,
+      "dividend_yield_pct": 14.0,
       "dividend_type": "Final",
       "days_remaining": 119,
       "status_badge": "\ud83d\udcc6 Q1 2027 (119 days)",
       "sparkline": [
-        1885.3,
-        1890.0,
         1890.0,
         1890.0,
         1833.6,
@@ -12767,7 +12639,9 @@
         1930.0,
         1930.0,
         1935.0,
-        1883.5
+        1883.5,
+        1845.5,
+        1790.7
       ]
     },
     {
@@ -12785,11 +12659,12 @@
       "payment_date": "2027-03-01",
       "expected_dividend_pence": 69.0,
       "expected_dividend_gbp": 0.69,
-      "dividend_yield_pct": 2.28,
+      "dividend_yield_pct": 2.25,
       "dividend_type": "Final",
       "days_remaining": 120,
       "status_badge": "\ud83d\udcc6 Q1 2027 (120 days)",
       "sparkline": [
+        30.53,
         30.96,
         30.85,
         31.39,
@@ -12808,8 +12683,7 @@
         29.18,
         29.73,
         29.63,
-        30.0,
-        30.5
+        30.0
       ]
     },
     {
@@ -12832,6 +12706,7 @@
       "days_remaining": 120,
       "status_badge": "\ud83d\udcc6 Q1 2027 (120 days)",
       "sparkline": [
+        84.6,
         83.9,
         84.4,
         84.0,
@@ -12850,8 +12725,7 @@
         82.7,
         82.2,
         81.6,
-        81.9,
-        81.5
+        81.9
       ]
     },
     {
@@ -12869,11 +12743,12 @@
       "payment_date": "2027-03-01",
       "expected_dividend_pence": 13.0,
       "expected_dividend_gbp": 0.13,
-      "dividend_yield_pct": 4.51,
+      "dividend_yield_pct": 4.62,
       "dividend_type": "Final",
       "days_remaining": 120,
       "status_badge": "\ud83d\udcc6 Q1 2027 (120 days)",
       "sparkline": [
+        260.0,
         253.8,
         255.2,
         248.8,
@@ -12892,8 +12767,7 @@
         282.0,
         283.8,
         285.4,
-        286.2,
-        279.4
+        286.2
       ]
     },
     {
@@ -12911,11 +12785,12 @@
       "payment_date": "2027-03-01",
       "expected_dividend_pence": 3.0,
       "expected_dividend_gbp": 0.03,
-      "dividend_yield_pct": 1.79,
+      "dividend_yield_pct": 1.77,
       "dividend_type": "Final",
       "days_remaining": 120,
       "status_badge": "\ud83d\udcc6 Q1 2027 (120 days)",
       "sparkline": [
+        191.5,
         190.1,
         189.7,
         192.7,
@@ -12934,8 +12809,49 @@
         191.1,
         187.5,
         186.7,
-        188.0,
-        189.6
+        188.0
+      ]
+    },
+    {
+      "ticker": "III",
+      "symbol": "III.L",
+      "name": "3i",
+      "sector": "Financial services",
+      "market": "FTSE 100",
+      "currency": "GBp",
+      "currency_symbol": "\u00a3",
+      "price_pence": 2391.0,
+      "price_gbp": 23.91,
+      "ex_dividend_date": "2027-02-05",
+      "last_buy_date": "2027-02-04",
+      "payment_date": "2027-03-02",
+      "expected_dividend_pence": 85.0,
+      "expected_dividend_gbp": 0.85,
+      "dividend_yield_pct": 3.54,
+      "dividend_type": "Final",
+      "days_remaining": 121,
+      "status_badge": "\ud83d\udcc6 Q1 2027 (121 days)",
+      "sparkline": [
+        2701.0,
+        2632.0,
+        2651.0,
+        2631.0,
+        2599.0,
+        2668.0,
+        2715.0,
+        2664.0,
+        2711.0,
+        2673.0,
+        2655.0,
+        2617.0,
+        2664.0,
+        2635.0,
+        2652.0,
+        2624.0,
+        2544.0,
+        2555.0,
+        2412.0,
+        2389.0
       ]
     },
     {
@@ -12953,7 +12869,7 @@
       "payment_date": "2027-03-02",
       "expected_dividend_pence": 4.68,
       "expected_dividend_gbp": 4.68,
-      "dividend_yield_pct": 2.82,
+      "dividend_yield_pct": 2.79,
       "dividend_type": "Quarterly",
       "days_remaining": 121,
       "status_badge": "\ud83d\udcc6 Q1 2027 (121 days)",
@@ -13000,6 +12916,7 @@
       "days_remaining": 127,
       "status_badge": "\ud83d\udcc6 Q1 2027 (127 days)",
       "sparkline": [
+        1803.5,
         1775.5,
         1770.5,
         1854.5,
@@ -13018,8 +12935,7 @@
         1795.0,
         1779.5,
         1759.0,
-        1765.5,
-        1790.5
+        1765.5
       ]
     },
     {
@@ -13037,11 +12953,12 @@
       "payment_date": "2027-03-26",
       "expected_dividend_pence": 15.2,
       "expected_dividend_gbp": 0.152,
-      "dividend_yield_pct": 7.54,
+      "dividend_yield_pct": 7.61,
       "dividend_type": "Final",
       "days_remaining": 134,
       "status_badge": "\ud83d\udcc6 Q1 2027 (134 days)",
       "sparkline": [
+        287.7,
         286.0,
         287.1,
         290.0,
@@ -13060,8 +12977,7 @@
         285.6,
         287.2,
         288.8,
-        290.4,
-        288.1
+        290.4
       ]
     },
     {
@@ -13079,11 +12995,12 @@
       "payment_date": "2027-04-02",
       "expected_dividend_pence": 24.5,
       "expected_dividend_gbp": 0.245,
-      "dividend_yield_pct": 5.84,
+      "dividend_yield_pct": 5.94,
       "dividend_type": "Final",
       "days_remaining": 141,
       "status_badge": "\ud83d\udcc6 Q1 2027 (141 days)",
       "sparkline": [
+        704.8,
         703.6,
         707.2,
         709.0,
@@ -13102,8 +13019,7 @@
         672.4,
         678.4,
         677.2,
-        688.4,
-        677.2
+        688.4
       ]
     }
   ]

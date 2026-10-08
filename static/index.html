@@ -139,9 +139,11 @@
 
         <!-- Actions: Theme, Refresh, Export -->
         <div class="flex items-center space-x-1.5 flex-shrink-0">
-          <button onclick="refreshData()" id="refreshBtn" title="Refresh Live Market Data" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition flex items-center space-x-1 text-xs font-semibold">
-            <i data-lucide="refresh-cw" id="refreshIcon" class="w-4 h-4"></i>
-            <span class="hidden xl:inline">Refresh</span>
+          <button onclick="refreshData()" id="refreshBtn" title="Refresh Live Market Data" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition flex items-center space-x-1.5 text-xs font-semibold disabled:opacity-60 disabled:cursor-not-allowed">
+            <span id="refreshIconWrapper" class="inline-flex items-center justify-center">
+              <i data-lucide="refresh-cw" id="refreshIcon" class="w-4 h-4"></i>
+            </span>
+            <span class="hidden xl:inline" id="refreshBtnText">Refresh</span>
           </button>
           <button onclick="exportCurrentView()" title="Export Filtered List to CSV" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition flex items-center space-x-1 text-xs font-semibold">
             <i data-lucide="download" class="w-4 h-4"></i>

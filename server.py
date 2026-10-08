@@ -81,11 +81,22 @@ def background_refresh():
         return
     IS_REFRESHING = True
     def _run():
-        global IS_REFRESHING
+        global IS_REFRESHING, CACHE_DATA, DIVIDEND_DATA
         try:
             print("[INFO] Background market refresh started...")
-            data_fetcher.refresh_market_data()
-            load_memory_cache()
+            stocks, calendar = data_fetcher.refresh_market_data()
+            if stocks:
+                CACHE_DATA = {
+                    "updated_at": datetime.now().isoformat(),
+                    "count": len(stocks),
+                    "stocks": stocks
+                }
+            if calendar:
+                DIVIDEND_DATA = {
+                    "updated_at": datetime.now().isoformat(),
+                    "count": len(calendar),
+                    "calendar": calendar
+                }
             print("[INFO] Background market refresh finished successfully.")
         except Exception as e:
             print(f"[ERROR] Background refresh error: {e}")
@@ -271,11 +282,11 @@ def get_stocks_payload(query):
                 min_breakout = 2.0 if period == "1d" else (3.5 if period == "1w" else 5.0)
                 passes = p_chg >= min_breakout
             elif trending_filter == "all_qualifying":
-                passes = sc >= 35 and (p_chg > 0 or rvol >= 1.2)
+                passes = sc >= 25 and (p_chg >= 0 or rvol >= 1.15)
             elif trending_filter == "all":
                 passes = True
             else:  # default curated top20
-                passes = sc >= 35 and (p_chg > 0 or rvol >= 1.2)
+                passes = sc >= 25 and (p_chg >= 0 or rvol >= 1.15)
 
             if passes:
                 s_copy = dict(s)
@@ -284,14 +295,26 @@ def get_stocks_payload(query):
 
         trending_candidates.sort(key=lambda s: s.get("dynamic_trending_score", 0), reverse=True)
 
-        if trending_filter == "top20":
-            stocks = trending_candidates[:20]
-        elif trending_filter == "all_qualifying":
-            stocks = trending_candidates[:60]
-        elif trending_filter == "all":
-            stocks = trending_candidates
+        if trending_candidates:
+            if trending_filter == "top20":
+                stocks = trending_candidates[:20]
+            elif trending_filter == "all_qualifying":
+                stocks = trending_candidates[:60]
+            elif trending_filter == "all":
+                stocks = trending_candidates
+            else:
+                stocks = trending_candidates[:30]
         else:
-            stocks = trending_candidates[:30]
+            # Fallback if no stocks met threshold: show relative top leaders
+            all_scored = []
+            for s in stocks:
+                sc = compute_dynamic_trending_score(s, period)
+                s_copy = dict(s)
+                s_copy["dynamic_trending_score"] = sc
+                all_scored.append(s_copy)
+            all_scored.sort(key=lambda s: s.get("dynamic_trending_score", 0), reverse=True)
+            limit_n = 20 if trending_filter == "top20" else 30
+            stocks = all_scored[:limit_n]
     elif tab == "gainers":
         min_gain = float(query.get("min_gain_pct", [0.0])[0])
         stocks = [s for s in stocks if s.get(pct_key, 0) >= min_gain]
